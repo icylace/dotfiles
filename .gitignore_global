@@ -1,0 +1,86 @@
+*~
+
+# ------------------------------------------------------------------------------
+#  https://github.com/github/gitignore/blob/master/Global/Archives.gitignore
+# ------------------------------------------------------------------------------
+
+
+# It's better to unpack these files and commit the raw source because
+# git has its own built in compression methods.
+*.7z
+*.jar
+*.rar
+*.zip
+*.gz
+*.bzip
+*.bz2
+*.xz
+*.lzma
+
+#packing-only formats
+*.iso
+*.tar
+
+#package management formats
+*.dmg
+*.xpi
+*.gem
+*.egg
+*.deb
+*.rpm
+
+
+# ------------------------------------------------------------------------------
+#  https://github.com/github/gitignore/blob/master/Global/OSX.gitignore
+# ------------------------------------------------------------------------------
+
+
+.DS_Store
+.AppleDouble
+.LSOverride
+Icon
+
+# Thumbnails
+._*
+
+# Files that might appear on external disk
+.Spotlight-V100
+.Trashes
+
+
+# ------------------------------------------------------------------------------
+#  http://www.sublimetext.com/forum/viewtopic.php?f=6&t=1934#p8925
+#  https://github.com/github/gitignore/blob/master/Global/SublimeText.gitignore
+# ------------------------------------------------------------------------------
+
+
+*.pyc
+*.cache
+*.sublime-project
+*.sublime-workspace
+
+
+# ------------------------------------------------------------------------------
+#  https://help.github.com/articles/ignoring-files
+# ------------------------------------------------------------------------------
+
+
+# Compiled source #
+###################
+*.com
+*.class
+*.DLL
+*.exe
+*.o
+*.so
+
+# Logs and databases #
+######################
+*.log
+*.sql
+*.sqlite
+
+# OS generated files #
+######################
+ehthumbs.db
+Thumbs.db
