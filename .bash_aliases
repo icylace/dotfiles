@@ -10,6 +10,10 @@ alias hs='ghc -package-db=.cabal-sandbox/x86_64-osx-ghc-7.6.3-packages.conf.d'
 alias hsi='ghci -package-db=.cabal-sandbox/x86_64-osx-ghc-7.6.3-packages.conf.d'
 alias runhs='runghc -package-db=.cabal-sandbox/x86_64-osx-ghc-7.6.3-packages.conf.d'
 
+# Laravel
+alias a='php artisan'
+alias artisan='php artisan'
+
 # http://www.techrepublic.com/blog/10things/cut-down-on-linux-command-line-typing-with-these-10-handy-bash-aliases/352
 alias rm='rm -i'
 alias df='df -h'

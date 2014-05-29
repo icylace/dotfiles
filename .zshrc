@@ -185,3 +185,4 @@ export PATH="/Users/icylace/Library/Haskell/bin:$PATH"
 # # https://github.com/ashleynewson/SmartSim/issues/2#issuecomment-10306256
 # export PKG_CONFIG_PATH=/usr/X11/lib/pkgconfig
 # # pkg-config --variable pc_path pkg-config
+source /Users/icylace/.gulp-autocompletion-zsh/gulp-autocompletion.zsh
