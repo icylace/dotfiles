@@ -63,7 +63,8 @@ prompt_char() {
   # echo '২'
   # echo '͓'
   # echo '⁘'
-  echo '৶'
+  # echo '৶'
+  echo '९'
 }
 
 vcprompt_info() {
@@ -182,6 +183,8 @@ export PATH="/usr/local/bin:$PATH"
 export PATH="/Applications/MAMP/bin/php/php5.5.3/bin:$PATH"
 export PATH="/Applications/MAMP/Library/bin:$PATH"
 export PATH="/Users/icylace/Library/Haskell/bin:$PATH"
+export PATH="/Users/icylace/.cabal/bin:$PATH"
+export PATH="/Users/icylace/.composer/vendor/bin:$PATH"
 # # https://github.com/ashleynewson/SmartSim/issues/2#issuecomment-10306256
 # export PKG_CONFIG_PATH=/usr/X11/lib/pkgconfig
 # # pkg-config --variable pc_path pkg-config
