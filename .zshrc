@@ -104,9 +104,19 @@ ZSH_THEME_GIT_PROMPT_CLEAN=""
 
 #
 # Simple setup for a new Laravel project. This will do most of the setup.
-# After using this setup the database settings in "app/config/local/database.php".
 #
-laravel-basis() {
+# Usage:
+#   1. `cd` to the folder that will contain the project folder.
+#   2. `laravel-basis {NameOfApp}`
+#      Note:  Make sure there's no subfolder named `{NameOfApp}` already.
+#   3. Adjust "app/config/local/database.php" accordingly.
+#
+# Notes:
+#   - Eventually when the Laravel log gets created it's useful to make it
+#     writable for development.
+#     - sudo chmod -R 777 app/storage/logs/laravel.log
+#
+laravel-setup() {
   laravel new $1
   cd $1
   chmod -R 777 app/storage
@@ -115,10 +125,12 @@ laravel-basis() {
   php artisan key:generate
 }
 
-# based on:
+#
+# Based on:
 # http://hints.macworld.com/article.php?story=20070803053156346
 # http://www.macworld.com/article/1134810/zipmany.html
 # http://alexsantidote.com/334/batch-zip-and-rename/
+#
 batch-zip() {
   for f in "$@"; do
     # Check that the file exists and that it's not in fact a directory.
