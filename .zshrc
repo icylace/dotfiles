@@ -187,6 +187,7 @@ alias drush='nocorrect drush'
 alias ag='nocorrect ag'
 alias bower='nocorrect bower'
 alias composer='nocorrect composer'
+alias co='nocorrect composer'
 alias npm='nocorrect npm'
 
 # http://alias.sh/drupal-developer-mode
