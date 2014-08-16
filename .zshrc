@@ -164,7 +164,7 @@ c() {
   if [ -n "$1" ]; then
     cd $@
   fi
-  ls -AG
+  ls -AGp
 }
 
 alias c..='c ..'
