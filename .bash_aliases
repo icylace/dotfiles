@@ -2,6 +2,14 @@ alias cp='cp -i'
 alias cl='clear'
 alias li='ls -lAG'
 
+# https://github.com/yrammos/dotfiles/blob/master/.bashrc
+alias .=pwd
+alias mv='mv -i'
+
+# http://www.techrepublic.com/blog/10things/cut-down-on-linux-command-line-typing-with-these-10-handy-bash-aliases/352
+alias rm='rm -i'
+alias df='df -h'
+
 # Homebrew
 alias b='brew'
 alias buo='brew update; brew outdated'
@@ -16,14 +24,6 @@ alias runhs='runghc -package-db=.cabal-sandbox/x86_64-osx-ghc-7.6.3-packages.con
 # Laravel
 alias a='php artisan'
 alias artisan='php artisan'
-
-# http://www.techrepublic.com/blog/10things/cut-down-on-linux-command-line-typing-with-these-10-handy-bash-aliases/352
-alias rm='rm -i'
-alias df='df -h'
-
-# https://github.com/yrammos/dotfiles/blob/master/.bashrc
-alias .=pwd
-alias mv='mv -i'
 
 # http://alias.sh/cat-syntax-coloration
 # alias ccat='pygmentize -O bg=dark'

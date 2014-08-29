@@ -208,6 +208,9 @@ alias npm='nocorrect npm'
 
 # ------------------------------------------------------------------------------
 
+# My custom PHP development tools.
+export DEV_INC="/Users/icylace/others/Repositories/dev/includes/dev.inc"
+
 # http://stackoverflow.com/a/5545748/1935675
 # http://stackoverflow.com/a/8814780/1935675
 export PATH="/usr/local/bin:$PATH"
