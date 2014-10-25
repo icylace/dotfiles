@@ -46,9 +46,17 @@ fi
 
 # ------------------------------------------------------------------------------
 
-# based on:
+# https://github.com/sindresorhus/guides/blob/master/how-not-to-rm-yourself.md
+unsetopt RM_STAR_SILENT
+setopt RM_STAR_WAIT
+
+# ------------------------------------------------------------------------------
+
+#
+# Based on:
 # http://stevelosh.com/blog/2010/02/my-extravagant-zsh-prompt/
 # http://blog.munge.net/2011/10/fun-with-zsh-themes/
+#
 
 battery_charge() {
   python ~/others/Resources/scripts/battery_charge.py --color
@@ -99,6 +107,15 @@ ZSH_THEME_GIT_PROMPT_SUFFIX="%{$reset_color%}"
 ZSH_THEME_GIT_PROMPT_DIRTY="%{$fg[green]%}!"
 ZSH_THEME_GIT_PROMPT_UNTRACKED="%{$fg[green]%}?"
 ZSH_THEME_GIT_PROMPT_CLEAN=""
+
+# ------------------------------------------------------------------------------
+
+# drupal-setup() {
+#   mkdir $1
+#   cd $1
+#   drush dl drupal-7.x
+#   drush site-install standard --account-name=superuser --account-pass=password --db-url=mysql://root:99EvRzGwNbaSUW@localhost/ascopoc_drupal
+# }
 
 # ------------------------------------------------------------------------------
 
@@ -180,14 +197,18 @@ alias c-downloads='c ~/Downloads'
 alias c-sites='c ~/others/Sites'
 alias c-node='c /usr/local/lib/node_modules'
 
+#
 # Tell Z Shell to not try to autocorrect the following.
+#
+# Based on:
 # http://superuser.com/questions/251818/exceptions-to-zsh-correctall-feature/271897#271897
+#
 alias drush='nocorrect drush'
-
 alias ag='nocorrect ag'
+alias bo='nocorrect bower'
 alias bower='nocorrect bower'
-alias composer='nocorrect composer'
 alias co='nocorrect composer'
+alias composer='nocorrect composer'
 alias npm='nocorrect npm'
 
 # http://alias.sh/drupal-developer-mode
