@@ -26,12 +26,10 @@ if [ -f ~/.antigen/antigen.zsh ]; then
   # fi
 
   antigen bundles <<EOBUNDLES
-    bower
-    brew
 EOBUNDLES
+    # git
     # Tarrasch/zsh-functional
     # sublime
-    # git
     # github
     # osx
     # pip
@@ -193,9 +191,10 @@ alias c/='c /'
 alias c~='c ~'
 alias c-1='c -1'
 alias c+1='c +1'
-alias c-downloads='c ~/Downloads'
-alias c-sites='c ~/others/Sites'
-alias c-node='c /usr/local/lib/node_modules'
+alias c-d='c ~/Downloads'
+alias c-s='c ~/Sites'
+alias c-n='c /usr/local/lib/node_modules'
+alias c-v='c ~/vagrant-base'
 
 #
 # Tell Z Shell to not try to autocorrect the following.
@@ -203,13 +202,19 @@ alias c-node='c /usr/local/lib/node_modules'
 # Based on:
 # http://superuser.com/questions/251818/exceptions-to-zsh-correctall-feature/271897#271897
 #
+
 alias drush='nocorrect drush'
 alias ag='nocorrect ag'
-alias bo='nocorrect bower'
-alias bower='nocorrect bower'
 alias co='nocorrect composer'
 alias composer='nocorrect composer'
 alias npm='nocorrect npm'
+
+# Bower
+alias bower='nocorrect bower'
+alias bo='bower'
+alias boi="bower install"
+alias bol="bower list"
+alias bos="bower search"
 
 # http://alias.sh/drupal-developer-mode
 # function devmode {

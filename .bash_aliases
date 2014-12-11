@@ -10,9 +10,23 @@ alias mv='mv -i'
 alias rm='rm -i'
 alias df='df -h'
 
-# Homebrew
-alias b='brew'
-alias buo='brew update; brew outdated'
+# Drush
+alias dr='drush'
+alias drc='drush cc all'
+alias drd='drush dis'
+alias dre='drush en'
+alias drf='drush fra -y'
+alias drfu='drush fra -y; drush updb -y'
+alias drl='drush uli'
+alias dru='drush updb -y'
+
+# Git
+alias g='git'
+alias ga='git add .'
+alias gc='git commit -v -m'
+alias gm='git merge'
+alias glo='git pull origin'
+alias gpo='git push origin'
 
 # Haskell
 alias ca='cabal'
@@ -21,9 +35,14 @@ alias hs='ghc -package-db=.cabal-sandbox/x86_64-osx-ghc-7.6.3-packages.conf.d'
 alias hsi='ghci -package-db=.cabal-sandbox/x86_64-osx-ghc-7.6.3-packages.conf.d'
 alias runhs='runghc -package-db=.cabal-sandbox/x86_64-osx-ghc-7.6.3-packages.conf.d'
 
+# Homebrew
+alias b='brew'
+alias bl='brew list'
+alias bu='brew update; brew upgrade; brew cleanup'
+
 # Laravel
-alias a='php artisan'
 alias artisan='php artisan'
+alias a='php artisan'
 
 # http://alias.sh/cat-syntax-coloration
 # alias ccat='pygmentize -O bg=dark'
@@ -33,16 +52,6 @@ alias artisan='php artisan'
 
 # http://alias.sh/creating-drupal-sandbox
 # alias drupal-sandbox='drush qd --db-url="mysql://user:pass@localhost:3306/db_name" -y'
-
-# http://alias.sh/drupal-clear-cache
-# alias cc="drush cc all"
-# alias ccc="drush cc all; clear;"
-
-# http://alias.sh/common-drush-commands
-# alias cc='drush cc'
-# alias en='drush en'
-# alias dl='drush dl'
-# alias dis='drush dis'
 
 # http://stackoverflow.com/questions/5510734/install-pear-on-mamp/8178097#8178097
 alias mpear='/Applications/MAMP/bin/php/php5.3.14/bin/pear'
