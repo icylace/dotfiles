@@ -146,7 +146,7 @@ defaults write -g NSQuitAlwaysKeepsWindows -bool false
 defaults write -g NSAutomaticSpellingCorrectionEnabled -bool false
 
 # Display additional information on the login screen.
-defaults write /Library/Preferences/com.apple.loginwindow AdminHostInfo HostName
+sudo defaults write /Library/Preferences/com.apple.loginwindow AdminHostInfo HostName
 
 # # Change How Long (in seconds) Notification Banners Persist for in OS X
 # defaults write com.apple.notificationcenterui bannerTime [time in seconds]
