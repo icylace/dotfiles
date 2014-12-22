@@ -38,14 +38,6 @@ chflags nohidden ~/Library/
 # Can be undone be using:  defaults delete com.apple.dock expose-animation-duration
 #
 
-# # Don’t blink the caret (the value is in milliseconds).
-# # http://osxdaily.com/2012/10/09/best-defaults-write-commands-mac-os-x/#comment-435634
-# defaults write -g NSTextInsertionPointBlinkPeriod -int 9999999999999999
-
-# # Use a lighter text rendering style
-# # http://osxdaily.com/2012/10/09/best-defaults-write-commands-mac-os-x/#comment-435634
-# defaults write -g AppleFontSmoothing -int 1
-
 # Disable the animations for opening Quick Look windows.
 # http://osxdaily.com/2012/10/09/best-defaults-write-commands-mac-os-x/#comment-435634
 defaults write -g QLPanelAnimationDuration -float 0
@@ -53,6 +45,14 @@ defaults write -g QLPanelAnimationDuration -float 0
 # Display ASCII control characters in caret notation.
 # http://members.shaw.ca/akochoi-old/blog/2004/11-21/index.html
 defaults write -g NSTextShowsControlCharacters -bool true
+
+# # Don’t blink the caret (the value is in milliseconds).
+# # http://osxdaily.com/2012/10/09/best-defaults-write-commands-mac-os-x/#comment-435634
+# defaults write -g NSTextInsertionPointBlinkPeriod -int 9999999999999999
+
+# # Use a lighter text rendering style.
+# # http://osxdaily.com/2012/10/09/best-defaults-write-commands-mac-os-x/#comment-435634
+# defaults write -g AppleFontSmoothing -int 1
 
 # # Disable auto-save in AppleScript Editor.
 # # http://osxdaily.com/2012/10/09/best-defaults-write-commands-mac-os-x/#comment-435634
@@ -74,7 +74,7 @@ defaults write com.apple.dock showhidden -bool true
 # Disable the Dashboard.
 defaults write com.apple.dashboard mcx-disabled -bool true
 
-# Disable the Spaces Animation in Mac OS X
+# Disable Spaces animation.
 defaults write com.apple.dock workspaces-swoosh-animation-off -bool true
 
 # Speed Up Mission Control Animations
@@ -91,26 +91,26 @@ defaults write com.apple.dock expose-animation-duration -float 0.15
 # Allow text selection in the Quick Look window.
 defaults write com.apple.finder QLEnableTextSelection -bool true
 
-# Display full POSIX path in OS X Finder title Bar
+# Display full POSIX path in Finder's title bar.
 defaults write com.apple.finder _FXShowPosixPathInTitle -bool true
 
-# Disable window animations in OS X Finder
+# Disable window animations Finder.
 defaults write com.apple.finder DisableAllAnimations -bool true
 
-# Show hidden files in OS X Finder.
+# Show hidden files in Finder.
 defaults write com.apple.finder AppleShowAllFiles -bool true
 
-# Change default view style in OS X Finder
+# Change default view style in Finder.
 # - Nlsv = List View
 # - icnv = Icon View (default)
 # - clmv = Column View
 # - Flwv = Cover Flow View
 defaults write com.apple.finder FXPreferredViewStyle Nlsv
 
-# Disable the extension change warning in OS X Finder.
+# Disable the extension change warning in Finder.
 defaults write com.apple.finder FXEnableExtensionChangeWarning -bool false
 
-# Display the file extensions in Finder
+# Display all file extensions in Finder.
 defaults write -g AppleShowAllExtensions -bool true
 
 # # Restart Finder to apply the settings.
@@ -132,8 +132,7 @@ defaults write /System/Library/LaunchAgents/com.apple.notificationcenterui KeepA
 #  System settings.
 # ------------------------------------------------------------------------------
 
-# # Change the Default Backup Periods in Time Machine
-# # http://computers.tutsplus.com/tutorials/10-terminal-commands-that-every-mac-user-should-know--mac-4825
+# # Change the default backup periods in Time Machine.
 # sudo defaults write /System/Library/Launch\ Daemons/com.apple.backupd-auto StartInterval -int 1800
 
 # Change the frequency (in days) of software update checks.
@@ -143,20 +142,18 @@ defaults write /Library/Preferences/com.apple.SoftwareUpdate ScheduleFrequency 1
 defaults write -g NSQuitAlwaysKeepsWindows -bool false
 
 # Disable auto-correction.
-# http://www.defaults-write.com/disable-auto-correction-in-os-x/
 defaults write -g NSAutomaticSpellingCorrectionEnabled -bool false
 
 # Display additional information on the login screen.
 defaults write /Library/Preferences/com.apple.loginwindow AdminHostInfo HostName
 
 # # Change How Long (in seconds) Notification Banners Persist for in OS X
-# # http://osxdaily.com/2014/01/29/change-notifications-banner-time-mac-os-x/
 # defaults write com.apple.notificationcenterui bannerTime [time in seconds]
 
 # Re-enable the repeat key feature.
 defaults write -g ApplePressAndHoldEnabled -bool false
 
-# Increase the speed of OS X dialogs boxes.
+# Increase the speed of dialogs boxes.
 defaults write -g NSWindowResizeTime .1
 
 # Disable the creation of .DS_store files on network volumes.
@@ -168,10 +165,9 @@ defaults write -g NSWindowResizeTime .1
 defaults write com.apple.desktopservices DSDontWriteNetworkStores -bool true
 
 # Enable Dark Mode.
-# http://www.tekrevue.com/tip/dark-mode-dock-only/
 defaults write -g AppleInterfaceStyle Dark
-# defaults write /Library/Preferences/.GlobalPreferences AppleInterfaceTheme Dark
-# defaults write /Library/Preferences/.GlobalPreferences AppleInterfaceTheme Light
+# sudo defaults write /Library/Preferences/.GlobalPreferences AppleInterfaceTheme Dark
+# sudo defaults write /Library/Preferences/.GlobalPreferences AppleInterfaceTheme Light
 
 # Reboot for changes to take effect.
 
