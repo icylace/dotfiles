@@ -97,7 +97,7 @@ cask_formulas=(
 
   # CheatSheet
   # http://grandtotal.biz/CheatSheet/
-  cheetsheet
+  cheatsheet
 
   #
   #
@@ -435,13 +435,13 @@ brew cask alfred link
 
 # brew cask install dropbox --force --download
 
-
-
-
 # Upgrading Casks
 # https://github.com/caskroom/homebrew-cask/issues/7884#issuecomment-66114740
 # brew cask uninstall --force <token> && brew cask install <token>.
 
+# Make sure we longer have any unnecessary files laying around.
+brew cleanup
+brew cask cleanup
 
 # Reboot the system because some apps require a restart before becoming active.
 sudo shutdown -r now 'Rebooting now...'

@@ -136,6 +136,8 @@ formulas=(
 echo 'Installing Homebrew formulas...'
 brew install "${formulas[@]}"
 
+# Make sure we longer have any unnecessary files laying around.
+brew cleanup
 
 # http://nodejs.org/
 # cecho "Installing node (without npm)" $blue
