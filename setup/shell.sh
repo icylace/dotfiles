@@ -54,9 +54,9 @@ brew tap homebrew/homebrew-php
 
 formulas=(
 
-  #
-  # Updated versions of programs that come with OS X.
-  #
+  # ----------------------------------------------------------------------------
+  #  Updated versions of programs that come with OS X.
+  # ----------------------------------------------------------------------------
 
   # Bash: The GNU Bourne-Again SHell
   # A Unix shell.
@@ -66,10 +66,7 @@ formulas=(
   # A newer grep compared to the one that somes with OS X.
   grep
 
-  # Homebrew Cask
-  # Manages the administration of Mac applications distributed as binaries.
-  # http://caskroom.io/
-  caskroom/cask/brew-cask
+  # ----------------------------------------------------------------------------
 
   # GNU core utilities (those that come with OS X are outdated).
   coreutils

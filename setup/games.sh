@@ -17,7 +17,15 @@ brew doctor
 # Update Homebrew recipes.
 brew update
 
+# Access game formulas.
+brew tap homebrew/homebrew-php
+
 formulas=(
+
+  brogue
+  mame
+  stockfish
+  wesnoth
 
   # Homebrew Cask
   # Manages the administration of Mac applications distributed as binaries.
@@ -45,9 +53,6 @@ cask_formulas=(
 # - check these:
 #   - openemu
 #   - boxer
-#   - mame
-#   - wesnoth
-#   - brogue
 #   - stockfish ?
 #   - alephone
 
