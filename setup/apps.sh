@@ -12,11 +12,6 @@
 # https://github.com/kevinrenskers/dotfiles
 #
 
-
-# xcode-select -p
-# xcode-select --install
-
-
 # Homebrew
 # Package manager for OS X.
 # http://brew.sh

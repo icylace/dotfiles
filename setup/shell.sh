@@ -21,10 +21,6 @@
 #
 
 
-# xcode-select -p
-# xcode-select --install
-
-
 # Homebrew
 # Package manager for OS X.
 # http://brew.sh
@@ -49,6 +45,12 @@ brew update
 
 # Access more recent versions of some programs that come with OS X.
 brew tap homebrew/dupes
+
+# Access versioned formulas.
+brew tap homebrew/homebrew-php
+
+# Access PHP-related formulas.
+brew tap homebrew/homebrew-php
 
 formulas=(
 
