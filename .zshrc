@@ -25,28 +25,26 @@ if [ -f ~/.antigen/antigen.zsh ]; then
   #   antigen bundle osx
   # fi
 
-  antigen bundles <<EOBUNDLES
-EOBUNDLES
-    # git
-    # Tarrasch/zsh-functional
-    # sublime
-    # github
-    # osx
-    # pip
-    # python
-    # rupa/z
-    # zsh-users/zsh-syntax-highlighting
+  # antigen bundle git
+  # antigen bundle github
 
+  # Autocompletion for your Gulp tasks.
+  antigen bundle akoenig/gulp-autocompletion-zsh
+
+  # antigen bundle djui/alias-tips
+  # antigen bundle Tarrasch/zsh-functional
+
+  # Navigate your most used directories based on 'frecency'.
+  antigen bundle rupa/z
+
+  # Directory listings for zsh with git features.
+  antigen bundle supercrabtree/k
+
+  # A dark theme.
   antigen theme bira
 
   antigen apply
 fi
-
-# ------------------------------------------------------------------------------
-
-# https://github.com/sindresorhus/guides/blob/master/how-not-to-rm-yourself.md
-unsetopt RM_STAR_SILENT
-setopt RM_STAR_WAIT
 
 # ------------------------------------------------------------------------------
 
@@ -105,6 +103,12 @@ ZSH_THEME_GIT_PROMPT_SUFFIX="%{$reset_color%}"
 ZSH_THEME_GIT_PROMPT_DIRTY="%{$fg[green]%}!"
 ZSH_THEME_GIT_PROMPT_UNTRACKED="%{$fg[green]%}?"
 ZSH_THEME_GIT_PROMPT_CLEAN=""
+
+# ------------------------------------------------------------------------------
+
+# https://github.com/sindresorhus/guides/blob/master/how-not-to-rm-yourself.md
+unsetopt RM_STAR_SILENT
+setopt RM_STAR_WAIT
 
 # ------------------------------------------------------------------------------
 
@@ -174,7 +178,7 @@ batch-zip() {
 
 # I usually want to see immediately the contents of a directory I switch to.
 # Executing 'cd' with no arguments changes to the home directory but I have
-# 'c' simply list the current directory in that case.
+# `c` simply list the current directory in that case.
 c() {
   if [ -n "$1" ]; then
     cd $@
@@ -189,12 +193,13 @@ alias c.....='c .....'
 alias c......='c ......'
 alias c/='c /'
 alias c~='c ~'
-alias c-1='c -1'
-alias c+1='c +1'
+alias c-='c -1'
+alias c+='c +1'
 alias c-d='c ~/Downloads'
-alias c-s='c ~/Sites'
-alias c-n='c /usr/local/lib/node_modules'
-alias c-v='c ~/vagrant-base'
+alias cr='c ~/others/Repositories'
+alias cs='c ~/Sites'
+alias cn='c /usr/local/lib/node_modules'
+alias cv='c ~/vagrant-base'
 
 #
 # Tell Z Shell to not try to autocorrect the following.
@@ -203,7 +208,6 @@ alias c-v='c ~/vagrant-base'
 # http://superuser.com/questions/251818/exceptions-to-zsh-correctall-feature/271897#271897
 #
 
-alias drush='nocorrect drush'
 alias ag='nocorrect ag'
 alias co='nocorrect composer'
 alias composer='nocorrect composer'
@@ -215,6 +219,18 @@ alias bo='bower'
 alias boi="bower install"
 alias bol="bower list"
 alias bos="bower search"
+
+# Drush
+alias drush='nocorrect drush'
+alias dr='drush'
+alias drc='drush cc all'
+alias drcfu='drush cc all && drush fra -y && drush updb -y'
+alias drd='drush dis'
+alias dre='drush en'
+alias drf='drush fra -y'
+alias drfu='drush fra -y && drush updb -y'
+alias drl='drush uli'
+alias dru='drush updb -y'
 
 # http://alias.sh/drupal-developer-mode
 # function devmode {
@@ -245,7 +261,7 @@ export PATH="/Applications/MAMP/Library/bin:$PATH"
 export PATH="/Users/icylace/Library/Haskell/bin:$PATH"
 export PATH="/Users/icylace/.cabal/bin:$PATH"
 export PATH="/Users/icylace/.composer/vendor/bin:$PATH"
+
 # # https://github.com/ashleynewson/SmartSim/issues/2#issuecomment-10306256
 # export PKG_CONFIG_PATH=/usr/X11/lib/pkgconfig
 # # pkg-config --variable pc_path pkg-config
-source /Users/icylace/.gulp-autocompletion-zsh/gulp-autocompletion.zsh

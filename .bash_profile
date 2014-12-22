@@ -3,4 +3,7 @@ if [ -f ~/.bash_aliases ]; then
   source ~/.bash_aliases
 fi
 
+# http://lapwinglabs.com/blog/hacker-guide-to-setting-up-your-mac
+export PATH="$(brew --prefix coreutils)/libexec/gnubin:$PATH"
+
 [[ -s "$HOME/.rvm/scripts/rvm" ]] && source "$HOME/.rvm/scripts/rvm" # Load RVM into a shell session *as a function*
