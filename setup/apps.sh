@@ -441,3 +441,7 @@ brew cask alfred link
 # Upgrading Casks
 # https://github.com/caskroom/homebrew-cask/issues/7884#issuecomment-66114740
 # brew cask uninstall --force <token> && brew cask install <token>.
+
+
+# Reboot the system because some apps require a restart before becoming active.
+sudo shutdown -r now 'Rebooting now...'

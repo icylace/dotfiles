@@ -216,7 +216,7 @@ sudo nvram SystemAudioVolume=%80
 # defaults write -g ApplePressAndHoldEnabled -bool false
 
 
-# Reboot the Mac to ensure all settings take effect.
+# Reboot the system to ensure all settings take effect.
 sudo shutdown -r now 'Rebooting now...'
 
 
