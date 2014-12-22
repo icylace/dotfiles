@@ -5,7 +5,7 @@
 #
 # To use, open up ~/Applications/Utilities/Terminal then run:
 #
-#     bash <(curl -s https://raw.githubusercontent.com/icylace/dotfiles/setup/osx-defaults.sh)
+#     bash <(curl -s https://raw.githubusercontent.com/icylace/dotfiles/master/setup/osx-defaults.sh)
 
 #
 # Heavy influence (and sometimes direct copying) from:
@@ -22,8 +22,8 @@
 
 
 
-# Ask for the administrator password upfront.
-sudo -v
+# # Ask for the administrator password upfront.
+# sudo -v
 
 
 
