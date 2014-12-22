@@ -182,7 +182,7 @@ defaults write -g AppleInterfaceStyle Dark
 # Disable sound effects on boot.
 # http://osxdaily.com/2012/11/04/disable-mac-boot-chime/
 # https://github.com/mathiasbynens/dotfiles/blob/master/.osx
-sudo nvram SystemAudioVolume=%80
+sudo nvram SystemAudioVolume=' '
 # sudo nvram -d SystemAudioVolume
 
 
