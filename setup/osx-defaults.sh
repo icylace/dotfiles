@@ -6,6 +6,7 @@
 # To use, open up ~/Applications/Utilities/Terminal then run:
 #
 #     bash <(curl -s https://raw.githubusercontent.com/icylace/dotfiles/master/setup/osx-defaults.sh)
+#
 
 #
 # Heavy influence (and sometimes direct copying) from:
@@ -34,7 +35,7 @@ chflags nohidden ~/Library/
 #
 # Use `defaults delete {domain} {key}` to undo settings.
 #
-# For example, using:  defaults write com.apple.dock expose-animation-duration -float 0.15
+# For example, using:  defaults write com.apple.dock expose-animation-duration -float 0.1
 # Can be undone be using:  defaults delete com.apple.dock expose-animation-duration
 #
 
@@ -78,7 +79,7 @@ defaults write com.apple.dashboard mcx-disabled -bool true
 defaults write com.apple.dock workspaces-swoosh-animation-off -bool true
 
 # Speed Up Mission Control Animations
-defaults write com.apple.dock expose-animation-duration -float 0.15
+defaults write com.apple.dock expose-animation-duration -float 0.1
 
 # # Restart the Dock to apply the settings.
 # killall Dock

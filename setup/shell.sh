@@ -1,6 +1,19 @@
 #!/usr/bin/env bash
 
-# Any unsourced lines are likely to originate from:  https://mths.be/osx
+#
+# Installs programs via Homebrew.
+#
+# To use, open up ~/Applications/Utilities/Terminal then run:
+#
+#     bash <(curl -s https://raw.githubusercontent.com/icylace/dotfiles/master/setup/osx-defaults.sh)
+#
+
+#
+# Heavy influence (and sometimes direct copying) from:
+# https://mths.be/osx
+# https://github.com/holman/dotfiles/blob/master/osx/set-defaults.sh
+# http://www.defaults-write.com/
+#
 
 #
 # http://lapwinglabs.com/blog/hacker-guide-to-setting-up-your-mac
@@ -8,10 +21,8 @@
 #
 
 
-
 # xcode-select -p
 # xcode-select --install
-
 
 
 # Homebrew
@@ -38,7 +49,6 @@ brew update
 
 # Access more recent versions of some programs that come with OS X.
 brew tap homebrew/dupes
-
 
 formulas=(
 
@@ -121,6 +131,7 @@ formulas=(
   # A Unix shell.
   # http://zsh.sourceforge.net/
   zsh
+
 )
 
 echo 'Installing Homebrew formulas...'

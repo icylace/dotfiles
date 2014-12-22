@@ -1,6 +1,11 @@
 #!/usr/bin/env bash
 
-# Any unsourced lines are likely to originate from:  https://mths.be/osx
+#
+# Heavy influence (and sometimes direct copying) from:
+# https://mths.be/osx
+# https://github.com/holman/dotfiles/blob/master/osx/set-defaults.sh
+# http://www.defaults-write.com/
+#
 
 #
 # http://lapwinglabs.com/blog/hacker-guide-to-setting-up-your-mac
@@ -8,10 +13,8 @@
 #
 
 
-
 # xcode-select -p
 # xcode-select --install
-
 
 
 # Homebrew
