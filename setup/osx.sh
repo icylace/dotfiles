@@ -7,12 +7,14 @@
 #
 #     bash <(curl -s https://raw.githubusercontent.com/icylace/dotfiles/master/setup/osx-defaults.sh)
 #
-
+# Use `defaults delete {domain} {key}` to undo settings.  For example, using:
+# `defaults write com.apple.dock expose-animation-duration -float 0.1` can be
+# using `defaults delete com.apple.dock expose-animation-duration`.
 #
 # Heavy influence (and sometimes direct copying) from:
-# https://mths.be/osx
-# https://github.com/holman/dotfiles/blob/master/osx/set-defaults.sh
-# http://www.defaults-write.com/
+# - https://mths.be/osx
+# - https://github.com/holman/dotfiles/blob/master/osx/set-defaults.sh
+# - http://www.defaults-write.com/
 #
 
 #
@@ -20,35 +22,17 @@
 # https://github.com/kevinrenskers/dotfiles
 #
 
-
-
-
-# # Ask for the administrator password upfront.
-# sudo -v
-
-
-
-# Always Show the User Library Folder
-# http://osxdaily.com/2012/10/09/best-defaults-write-commands-mac-os-x/
+# Always show the user's Library folder.
 chflags nohidden ~/Library/
 
-#
-# Use `defaults delete {domain} {key}` to undo settings.
-#
-# For example, using:  defaults write com.apple.dock expose-animation-duration -float 0.1
-# Can be undone be using:  defaults delete com.apple.dock expose-animation-duration
-#
 
 # Disable the animations for opening Quick Look windows.
-# http://osxdaily.com/2012/10/09/best-defaults-write-commands-mac-os-x/#comment-435634
 defaults write -g QLPanelAnimationDuration -float 0
 
 # Display ASCII control characters in caret notation.
-# http://members.shaw.ca/akochoi-old/blog/2004/11-21/index.html
 defaults write -g NSTextShowsControlCharacters -bool true
 
-# # Don’t blink the caret (the value is in milliseconds).
-# # http://osxdaily.com/2012/10/09/best-defaults-write-commands-mac-os-x/#comment-435634
+# # Don’t blink the cursor caret (value is in milliseconds).
 # defaults write -g NSTextInsertionPointBlinkPeriod -int 9999999999999999
 
 # # Use a lighter text rendering style.
@@ -63,10 +47,11 @@ defaults write -g NSTextShowsControlCharacters -bool true
 
 
 # ------------------------------------------------------------------------------
-#  Dock settings.
+#  Dock settings.  Normally we would use `killall Dock` to apply
+#  the settings but here we'll restart the system instead.
 # ------------------------------------------------------------------------------
 
-# Remove the Dock auto-hiding and show delay.
+# Remove the delay for the Dock auto-hiding and auro-showing.
 defaults write com.apple.Dock autohide-delay -float 0
 
 # Show icons from hidden application translucent in OS X Dock.
@@ -81,12 +66,10 @@ defaults write com.apple.dock workspaces-swoosh-animation-off -bool true
 # Speed Up Mission Control Animations
 defaults write com.apple.dock expose-animation-duration -float 0.1
 
-# # Restart the Dock to apply the settings.
-# killall Dock
-
 
 # ------------------------------------------------------------------------------
-#  Finder settings.
+#  Finder settings.  Normally we would use `killall Finder` to apply
+#  the settings but here we'll restart the system instead.
 # ------------------------------------------------------------------------------
 
 # Allow text selection in the Quick Look window.
@@ -114,9 +97,6 @@ defaults write com.apple.finder FXEnableExtensionChangeWarning -bool false
 # Display all file extensions in Finder.
 defaults write -g AppleShowAllExtensions -bool true
 
-# # Restart Finder to apply the settings.
-# killall Finder
-
 
 # ------------------------------------------------------------------------------
 #  Notification Center settings.
@@ -130,7 +110,7 @@ defaults write /System/Library/LaunchAgents/com.apple.notificationcenterui KeepA
 
 
 # ------------------------------------------------------------------------------
-#  System settings.
+#  System settings.  The require a system restart.
 # ------------------------------------------------------------------------------
 
 # # Change the default backup periods in Time Machine.
@@ -170,7 +150,6 @@ defaults write -g AppleInterfaceStyle Dark
 # sudo defaults write /Library/Preferences/.GlobalPreferences AppleInterfaceTheme Dark
 # sudo defaults write /Library/Preferences/.GlobalPreferences AppleInterfaceTheme Light
 
-# Reboot for changes to take effect.
 
 
 
@@ -178,10 +157,14 @@ defaults write -g AppleInterfaceStyle Dark
 
 
 
-
-# Disable sound effects on boot.
+# Disable sound effect on boot.
 # http://osxdaily.com/2012/11/04/disable-mac-boot-chime/
 # https://github.com/mathiasbynens/dotfiles/blob/master/.osx
+#
+# Why the sound effect is useful:
+# https://discussions.apple.com/message/16577746#16577746#16577746
+#
+# This no longer works in Yosemite.
 sudo nvram SystemAudioVolume=' '
 # sudo nvram -d SystemAudioVolume
 
@@ -191,18 +174,15 @@ sudo nvram SystemAudioVolume=' '
 
 
 # Change the default location for screenshots in Mac OS X.
-# http://www.defaults-write.com/change-the-location-screenshots-in-mac-os-x/
 # defaults write com.apple.screencapture location [path]
 # defaults write com.apple.screencapture location ~/Desktop
 # killall SystemUIServer
 
 # Add a message to the login screen.
-# http://www.defaults-write.com/add-a-message-to-the-login-screen/
 # sudo defaults write /Library/Preferences/com.apple.loginwindow LoginwindowText "Your Message"
 # sudo defaults delete /Library/Preferences/com.apple.loginwindow LoginwindowText
 
 # Display the location path of current wallpaper in OS X
-# http://www.defaults-write.com/display-the-location-path-of-current-wallpaper-in-os-x/
 # defaults write com.apple.dock desktop-picture-show-debug-text -bool TRUE
 # defaults delete com.apple.dock desktop-picture-show-debug-text
 # killall Dock
@@ -211,8 +191,6 @@ sudo nvram SystemAudioVolume=' '
 
 
 # # Disable ‘press and hold’ option in Mac OS X 10.7+.
-# # http://www.defaults-write.com/disable-press-and-hold-option-in-mac-os-x-10-7/
-# # Default:  true
 # defaults write -g ApplePressAndHoldEnabled -bool false
 
 

@@ -1,10 +1,12 @@
 alias cp='cp -i'
-alias cl='clear'
-alias gr='grep -R -E'
 alias li='ls -lAG'
 
+# Preview the OS X clipboard in the terminal.
+# http://brettterpstra.com/2014/12/11/preview-the-os-x-clipboard-in-terminal/
+alias cbp='pbpaste | less'
+
 # https://github.com/yrammos/dotfiles/blob/master/.bashrc
-alias .=pwd
+alias .='pwd'
 alias mv='mv -i'
 
 # http://www.techrepublic.com/blog/10things/cut-down-on-linux-command-line-typing-with-these-10-handy-bash-aliases/352
@@ -43,6 +45,7 @@ alias g='git'
 alias ga='git add .'
 alias gb='git branch -a'
 alias gc='git commit -a -v -m'
+# alias gcb='git commit -a -v -m ...... $(git symbolic-ref --short HEAD)'
 alias gd='git diff'
 alias gdm='git diff master'
 alias go='git checkout'
@@ -51,6 +54,7 @@ alias gom='git checkout master'
 alias gm='git merge'
 alias glm='git pull origin master'
 alias glo='git pull origin'
+# alias gpb='git push origin $(git symbolic-ref --short HEAD)'
 alias gpm='git push origin master'
 alias gpo='git push origin'
 alias gs='git status'
@@ -59,6 +63,7 @@ alias gs='git status'
 # TODO
 # alias gg='git symbolic-ref --short HEAD | echo $1 cat'
 # alias gg='echo ${echo 1}'
+# alias gg='echo ${git symbolic-ref --short HEAD}'
 
 # Haskell
 alias h='ghc -package-db=.cabal-sandbox/x86_64-osx-ghc-7.6.3-packages.conf.d'
@@ -76,6 +81,7 @@ alias bkd='brew cask doctor'
 alias bki='brew cask info'
 alias bkl='brew cask list'
 alias bks='brew cask search'
+# alias bku='brew cask update'
 alias bl='brew list'
 alias bs='brew search'
 alias bu='brew update && brew upgrade && brew cleanup && brew cask cleanup'

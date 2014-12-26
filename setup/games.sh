@@ -24,7 +24,6 @@ formulas=(
 
   brogue
   mame
-  stockfish
   wesnoth
 
   # Homebrew Cask
@@ -37,15 +36,11 @@ formulas=(
 echo 'Installing Homebrew formulas...'
 brew install "${formulas[@]}"
 
-
-
-# brew tap caskroom/cask
-
 cask_formulas=(
 
-  # # Gaming
-  # battle-net
-  # steam
+  # Gaming
+  battle-net
+  steam
 
 )
 
@@ -53,7 +48,6 @@ cask_formulas=(
 # - check these:
 #   - openemu
 #   - boxer
-#   - stockfish ?
 #   - alephone
 
 brew cask install "${cask_formulas[@]}"

@@ -131,6 +131,9 @@ formulas=(
   # http://zsh.sourceforge.net/
   zsh
 
+  # aspell - useful to me ?
+  # terminal-notifier - useful to me ?
+
 )
 
 echo 'Installing Homebrew formulas...'
