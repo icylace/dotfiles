@@ -249,6 +249,14 @@ alias dru='drush updb -y'
 # }
 
 # ------------------------------------------------------------------------------
+#  Use Preview to read man pages.
+#  http://brettterpstra.com/2014/08/05/shell-tricks-man-pages/
+# ------------------------------------------------------------------------------
+
+alias manp='man -t [command] | open -f -a Preview'
+
+
+# ------------------------------------------------------------------------------
 
 # My custom PHP development tools.
 export DEV_INC="/Users/icylace/others/Repositories/dev/includes/dev.inc"

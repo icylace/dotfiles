@@ -1,0 +1,360 @@
+#
+# Here we define what applications, plugins, and fonts
+# we'll be installing using Homebrew Cask (http://caskroom.io/).
+#
+
+
+# ------------------------------------------------------------------------------
+#  Applications.
+# ------------------------------------------------------------------------------
+
+# 1Password
+# Password manager.
+# https://agilebits.com/onepassword/mac
+#
+# Minimum requirements:
+# Yosemite
+#
+1password-beta
+
+# Adobe Reader
+# PDF reader.
+# http://www.adobe.com/products/reader.html
+adobe-reader
+
+# # Alfred
+# # Application launcher, search tool, and workflow tool.
+# # http://www.alfredapp.com/
+# alfred
+# # Yosemite's Spotlight is good enough for me.
+
+# AppCleaner
+# Application uninstaller.
+# http://freemacsoft.net/appcleaner/
+appcleaner
+
+# Asepsis
+# Redirects the creation of .DS_Store files into a special folder.
+# http://asepsis.binaryage.com/
+asepsis
+
+# aText
+# Text expander.
+# http://www.trankynam.com/atext/
+atext
+
+# Bartender
+# Menu bar manager.
+# http://www.macbartender.com/
+bartender
+
+# Beyond Compare
+# File and folder comparison tool.
+# http://scootersoftware.com/
+beyond-compare
+
+# # Kaleidoscope
+# # File and folder comparison tool.
+# # http://www.kaleidoscopeapp.com/
+# kaleidoscope
+
+# Boom 2
+# System-wide volume booster and equalizer.
+# http://globaldelight.com/boom/
+boom
+
+# BootChamp
+# Quickly reboots into the Windows.
+# http://kainjow.com/
+bootchamp
+
+# Cakebrew
+# GUI front end for Homebrew.
+# https://cakebrew.com/
+cakebrew
+
+# CheatSheet
+# Lists all active shortcut keys for the current application.
+# http://grandtotal.biz/CheatSheet/
+cheatsheet
+
+# ControllerMate
+# Input device remapper.
+# http://orderedbytes.com/controllermate/
+controllermate
+
+# DaisyDisk
+# Disk space analyzer.
+# http://daisydiskapp.com/
+daisydisk
+
+# Dash
+# Offline API documentation viewer and code snippet manager.
+# http://kapeli.com/dash
+dash
+
+# DockMod
+# Dock themer.
+# http://spyresoft.com/dockmod/
+dockmod
+
+# Dropbox
+# File sharer with cloud storage.
+# https://www.dropbox.com/
+dropbox
+
+# Firefox Developer Edition
+# Web browser with preinstalled web developer tools.
+# https://www.mozilla.org/en-US/firefox/developer/
+firefoxdeveloperedition
+
+# Flash Player
+# Flash media player web browser plugin.
+# http://get.adobe.com/flashplayer/
+flash-player
+
+# Flux
+# Screen color temperature manager.
+# http://justgetflux.com
+flux
+
+# Google Chrome
+# Web browser.
+# http://www.google.com/chrome/
+google-chrome
+
+# Google Drive
+# File sharer with cloud storage.
+# https://drive.google.com/
+google-drive
+
+# Google Hangouts
+# Video conferencing web browser plugin.
+# https://google.com/tools/dlpage/hangoutplugin
+google-hangouts
+
+# HyperDock
+# Dock enhancer and window placement manager.
+# http://hyperdock.bahoom.com/
+hyperdock
+
+# HyperSwitch
+# Keyboard window switcher.
+# http://bahoom.com/hyperswitch
+hyperswitch
+
+# Integrity
+# Link checker for websites.
+# http://peacockmedia.co.uk/integrity/
+integrity
+
+# iStat Menus 5
+# System monitor.
+# http://bjango.com/mac/istatmenus/
+istat-menus
+
+# iTerm2
+# Terminal emulator.
+# http://iterm2.com/
+iterm2-beta
+
+# KeepingYouAwake
+# System sleep manager.
+# https://github.com/newmarcel/KeepingYouAwake
+#
+# Minimum requirements:
+# Yosemite
+#
+keepingyouawake
+
+# LibreOffice
+# Office suite.
+# libreoffice.org
+libreoffice
+
+# Mactracker
+# Mac computer info database.
+# http://mactracker.ca/
+mactracker
+
+# nvALT
+# Notes manager.
+# http://brettterpstra.com/projects/nvalt/
+nvalt
+
+# OnyX
+# System maintenance utility.
+# http://www.titanium.free.fr/onyx.html
+onyx
+
+# Opera
+# Web browser.
+# http://www.opera.com/
+opera
+
+# Pacifist
+# Archive file manager.
+# http://charlessoft.com/
+pacifist
+
+# Path Finder
+# File manager.
+# http://cocoatech.com/pathfinder/
+path-finder
+
+# PhpStorm
+# PHP-oriented IDE.
+# https://www.jetbrains.com/phpstorm/
+phpstorm
+
+# Sequel Pro
+# MySQL database manager.
+# http://nightly.sequelpro.com/
+sequel-pro-nightly
+
+# Shortcat
+# Keyboard tool that lets you "Click" buttons and control your apps.
+# http://shortcatapp.com/
+shortcat
+
+# Skype
+# VoIP and video conferencing client.
+# http://www.skype.com/en/
+skype
+
+# SourceTree
+# Git client.
+# http://sourcetreeapp.com/
+sourcetree
+
+# Sublime Text
+# Text editor.
+# http://www.sublimetext.com/3dev
+sublime-text-dev
+
+# Synergy
+# Keyboard and mouse switcher for multiple computers.
+# http://synergy-project.org/
+synergy
+
+# The Hit List
+# To-do list manager.
+# http://www.karelia.com/products/the-hit-list/mac.html
+the-hit-list
+
+# The Unarchiver
+# Archive file extractor.
+# http://unarchiver.c3.cx/unarchiver
+the-unarchiver
+
+# Transmission
+# BitTorrent client.
+# https://www.transmissionbt.com/
+transmission
+
+# Transmit
+# File transfer tool.
+# http://panic.com/transmit/
+transmit
+
+# Vagrant
+# Virtual development environment manager.
+# https://www.vagrantup.com/
+vagrant
+
+# VirtualBox
+# Virtual environment manager.
+# https://www.virtualbox.org/
+virtualbox
+
+# VLC
+# Media player.
+# http://www.videolan.org/vlc/
+vlc
+
+
+# ------------------------------------------------------------------------------
+#  Quick Look plugins.
+# ------------------------------------------------------------------------------
+
+# BetterZip Quick Look Generator
+# Previews archives.
+# http://macitbetter.com/BetterZip-Quick-Look-Generator/
+betterzipql
+
+# BrushView QuickLook PlugIn
+# Previews Photoshop brush files.
+# http://brushviewer.sourceforge.net/
+brushviewql
+
+# Invisor QuickLook Plug-In
+# Previews video and audio with technical details.
+# http://pozdeev.com/invisor/
+invisorql
+
+# QLColorCode
+# Previews source code files with syntax highlighting.
+# https://code.google.com/p/qlcolorcode/
+qlcolorcode
+
+# qlImageSize
+# Displays the dimensions of an image and its file size in the title bar.  It also previews some additional image formats.
+# https://github.com/Nyx0uf/qlImageSize
+qlimagesize
+
+# QLMarkdown
+# Previews Markdown files.
+# https://github.com/toland/qlmarkdown
+qlmarkdown
+
+# QLPrettyPatch
+# Previews .patch files.
+# https://github.com/atnan/QLPrettyPatch
+qlprettypatch
+
+# QuicklookStephen
+# Previews plain text files without a file extension.
+# https://github.com/whomwah/qlstephen
+qlstephen
+
+# QuickLook Video
+# Previews most types of video files.
+# https://github.com/Marginal/QLVideo
+qlvideo
+
+# A QuickLook Plugin for CSV Files
+# Previews CSV files.
+# https://github.com/p2/quicklook-csv
+quicklook-csv
+
+# quick look JSON
+# Previews JSON files.
+# http://sagtau.com/quicklookjson
+quicklook-json
+
+# QuickNFO
+# Previews demoscene NFO files.
+# https://github.com/planbnet/QuickNFO
+quicknfo
+
+# Suspicious Package
+# Previews the contents of a standard Apple installer package.
+# http://www.mothersruin.com/software/SuspiciousPackage/
+suspicious-package
+
+
+# ------------------------------------------------------------------------------
+#  Fonts.
+# ------------------------------------------------------------------------------
+
+# Input
+# http://input.fontbureau.com/
+font-input
+
+# M+
+# http://mplus-fonts.sourceforge.jp/mplus-outline-fonts/design/index-en.html
+font-m-plus
+
+# Source Code Pro
+# http://adobe-fonts.github.io/source-code-pro/
+font-source-code-pro

@@ -1,6 +1,5 @@
 #!/usr/bin/env bash
 
-
 # Homebrew
 # Package manager for OS X.
 # http://brew.sh
@@ -18,11 +17,12 @@ brew doctor
 brew update
 
 # Access game formulas.
-brew tap homebrew/homebrew-php
+brew tap homebrew/homebrew-games
 
 formulas=(
 
   brogue
+  gnu-chess
   mame
   wesnoth
 
@@ -38,17 +38,12 @@ brew install "${formulas[@]}"
 
 cask_formulas=(
 
-  # Gaming
   battle-net
+  boxer
+  openemu-experimental
   steam
 
 )
-
-# TODO
-# - check these:
-#   - openemu
-#   - boxer
-#   - alephone
 
 brew cask install "${cask_formulas[@]}"
 
@@ -59,3 +54,23 @@ brew cask install "${cask_formulas[@]}"
 
 # Joystick Show
 # http://chibatacreations.com/app/joystickshow/
+
+
+# ------------------------------------------------------------------------------
+#  Utilities to install manually.
+# ------------------------------------------------------------------------------
+
+# NDSQuickLook
+# Displays technical details of Nintendo DS ROM files.
+# http://bluezbox.com/ndsquicklook/
+
+# QuickROM
+# Displays technical details of ROM files.
+# http://eludevisibility.org/quickrom/
+
+
+# ------------------------------------------------------------------------------
+#  Games to install manually.
+# ------------------------------------------------------------------------------
+
+#   alephone

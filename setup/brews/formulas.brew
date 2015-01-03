@@ -1,0 +1,135 @@
+#
+# Here we define what programs we'll be installing
+# using Homebrew (http://brew.sh/).
+#
+
+
+# ------------------------------------------------------------------------------
+#  Updated versions of programs that come with OS X.
+# ------------------------------------------------------------------------------
+
+# Bash: The GNU Bourne-Again SHell
+# A Unix shell.
+# https://tiswww.case.edu/php/chet/bash/bashtop.html
+bash
+
+# GNU Core Utilities
+# Basic file, shell, and text manipulation utilities.
+# http://www.gnu.org/software/coreutils/
+coreutils
+
+# GNU Grep
+# Searches input files for text matching a specified pattern.
+# http://www.gnu.org/software/grep/
+grep
+
+
+# ------------------------------------------------------------------------------
+#  Utilities specific to OS X.
+# ------------------------------------------------------------------------------
+
+# duti
+# Sets default applications for document types and URL schemes.
+# http://duti.org/
+duti
+
+
+# ------------------------------------------------------------------------------
+#  Git utilities.
+# ------------------------------------------------------------------------------
+
+# Git
+# A distributed version control system.
+# http://git-scm.com/
+git
+
+# Git Extras
+# Extra commands for Git.
+# https://github.com/tj/git-extras
+git-extras
+
+# hub
+# Wrapper for Git that makes you better at GitHub.
+# https://hub.github.com/
+hub
+
+# Legit
+# Extra commands for Git.
+# http://git-legit.org/
+legit
+
+
+# ------------------------------------------------------------------------------
+#  General programs.
+# ------------------------------------------------------------------------------
+
+# Drush
+# Shell interface for Drupal.
+# https://github.com/drush-ops/drush
+drush
+
+# GNU Find Utilities
+# Basic directory searching utilities.
+# http://www.gnu.org/software/findutils/
+# GNU `find`, `locate`, `updatedb`, and `xargs`, g-prefixed.
+findutils
+
+# GraphicsMagick
+# Image processor.
+# http://www.graphicsmagick.org/
+graphicsmagick
+
+# Graphviz
+# Graph visualizer.
+# http://graphviz.org/
+graphviz
+
+# HTTPie
+# HTTP client.
+# http://httpie.org/
+httpie
+
+# jq
+# JSON processor.
+# http://stedolan.github.io/jq/
+jq
+
+# Pipe Viewer
+# Progress monitor for data through a pipeline.
+# http://ivarch.com/programs/pv
+pv
+
+# Python
+# A programming language.
+# https://www.python.org/
+python
+
+# Python
+# A programming language.
+# https://www.python.org/
+python3
+
+# rename
+# File renamer.
+# http://plasmasturm.org/code/rename/
+rename
+
+# The Silver Searcher
+# Searches source code matching a specified pattern.
+# http://geoff.greer.fm/ag/
+the_silver_searcher
+
+# Tree
+# Recursive directory lister.
+# http://mama.indstate.edu/users/ice/tree/
+tree
+
+# GNU Wget
+# HTTP, HTTPS, and FTP client.
+# http://www.gnu.org/software/wget/
+wget
+
+# Z shell
+# A Unix shell.
+# http://zsh.sourceforge.net/
+zsh
