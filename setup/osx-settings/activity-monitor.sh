@@ -8,11 +8,11 @@ defaults write com.apple.ActivityMonitor OpenMainWindow -bool true
 echo -e "\tVisualize CPU usage in the Activity Monitor's Dock icon."
 defaults write com.apple.ActivityMonitor IconType -int 5
 
-echo '\tShow all processes by default.'
+echo -e '\tShow all processes by default.'
 defaults write com.apple.ActivityMonitor ShowCategory -int 0
 # Default: 100
 
-echo '\tSort results by CPU usage.'
+echo -e '\tSort results by CPU usage.'
 defaults write com.apple.ActivityMonitor SortColumn -string 'CPUUsage'
 defaults write com.apple.ActivityMonitor SortDirection -int 0
 

@@ -151,11 +151,11 @@ sudo nvram SystemAudioVolume=' '
 
 # if [$(which defaults)]; then
 
-  for f in "osx-settings/*.sh"; do
+  for f in "osx-settings/*.sh" ; do
     source $f
   done
 
-  for f in "app-settings/*.sh"; do
+  for f in "app-settings/*.sh" ; do
     source $f
   done
 
