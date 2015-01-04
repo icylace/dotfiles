@@ -161,7 +161,7 @@ install_casks
 
 # # LastPass
 # # A password manager.
-# laspass
+# lastpass
 # # Run `open -a 'LastPass Installer'` to complete installation.
 
 # Flavours
