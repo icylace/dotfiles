@@ -10,6 +10,10 @@ defaults write com.surteesstudios.Bartender showMenuBarIcon -bool true
 echo '\tMake sure the menu bar icon is the bartender.'
 defaults write com.surteesstudios.Bartender statusBarImageNamed -string 'Bartender'
 
+# barLocation = "-1";
+# barLocationPercentage = "0.8673611";
+
+
 # {
 #     appBartenderOrder =     (
 #         "com.cycling74.Soundflowerbed",

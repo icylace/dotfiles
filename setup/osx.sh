@@ -149,7 +149,7 @@ sudo nvram SystemAudioVolume=' '
 
 
 
-if [$(which defaults)]; then
+# if [$(which defaults)]; then
 
   for f in "osx-settings/*.sh"; do
     source $f
@@ -161,4 +161,4 @@ if [$(which defaults)]; then
 
   echo 'OS X defaults written. Note that some of these changes require a logout/restart to take effect.'
 
-fi
+# fi
