@@ -36,8 +36,14 @@ defaults write -g AppleShowScrollBars -string 'Always'
 echo '\tIncreasing mouse tracking to 3.'
 defaults write -g com.apple.mouse.scaling -float 3
 
-echo '\tDisable volume change audio feedback.'
-defaults write -g com.apple.sound.beep.feedback -int 0
+echo '\tDisable feedback sound when changing volume.'
+defaults write -g com.apple.sound.beep.feedback -bool false
+
+echo '\tRemove the spring loading delay for directories.'
+defaults write -g com.apple.springing.delay -float 0
+
+echo '\tEnable spring loading for directories.'
+defaults write -g com.apple.springing.enabled -bool true
 
 echo '\tDisable "natural" (touchscreen-style) scrolling.'
 defaults write -g com.apple.swipescrolldirection -bool false
@@ -60,11 +66,14 @@ defaults write -g NSAutomaticDashSubstitutionEnabled -bool false
 echo "\tDisable smart quotes as they're annoying when typing code."
 defaults write -g NSAutomaticQuoteSubstitutionEnabled -bool false
 
-# echo '\tMaking the scroll dragging speed faster.'
-# defaults write -g NSAutoscrollResponseMultiplier -float 3
+echo '\tDisable window opening and closing animations.'
+defaults write -g NSAutomaticWindowAnimationsEnabled -bool false
 
 echo '\tDisable auto-correct.  Go to http://www.damnyouautocorrect.com/ to see why.'
 defaults write -g NSAutomaticSpellingCorrectionEnabled -bool false
+
+# echo '\tMaking the scroll dragging speed faster.'
+# defaults write -g NSAutoscrollResponseMultiplier -float 3
 
 # echo '\tDisable automatic termination of inactive apps.'
 # defaults write -g NSDisableAutomaticTermination -bool true
@@ -114,8 +123,8 @@ defaults write -g NSUserKeyEquivalents -dict-add 'Select Previous Tab' '@~\U2190
 defaults write -g NSUserKeyEquivalents -dict-add 'Next Tab'            '@~\U2192'
 defaults write -g NSUserKeyEquivalents -dict-add 'Previous Tab'        '@~\U2190'
 
-echo '\tIncrease window resize speed.'
-defaults write -g NSWindowResizeTime .1
+echo '\tIncrease window resize speed for Cocoa applications.'
+defaults write -g NSWindowResizeTime -floar 0.01
 
 echo '\tExpand the print panel by default.'
 defaults write -g PMPrintingExpandedStateForPrint -bool true

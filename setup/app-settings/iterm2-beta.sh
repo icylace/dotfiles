@@ -4,5 +4,5 @@
 #  http://iterm2.com/
 # ------------------------------------------------------------------------------
 
-# Don't display the annoying prompt when quitting.
+echo "\tDon't display the annoying prompt when quitting."
 defaults write com.googlecode.iterm2 PromptOnQuit -bool false

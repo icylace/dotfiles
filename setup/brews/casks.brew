@@ -8,25 +8,10 @@
 #  Applications.
 # ------------------------------------------------------------------------------
 
-# 1Password
-# Password manager.
-# https://agilebits.com/onepassword/mac
-#
-# Minimum requirements:
-# Yosemite
-#
-1password-beta
-
 # Adobe Reader
 # PDF reader.
 # http://www.adobe.com/products/reader.html
 adobe-reader
-
-# # Alfred
-# # Application launcher, search tool, and workflow tool.
-# # http://www.alfredapp.com/
-# alfred
-# # Yosemite's Spotlight is good enough for me.
 
 # AppCleaner
 # Application uninstaller.
@@ -53,11 +38,6 @@ bartender
 # http://scootersoftware.com/
 beyond-compare
 
-# # Kaleidoscope
-# # File and folder comparison tool.
-# # http://www.kaleidoscopeapp.com/
-# kaleidoscope
-
 # Boom 2
 # System-wide volume booster and equalizer.
 # http://globaldelight.com/boom/
@@ -72,6 +52,14 @@ bootchamp
 # GUI front end for Homebrew.
 # https://cakebrew.com/
 cakebrew
+
+# cDock
+# Dock themer.
+# http://sourceforge.net/projects/cdock/
+#
+# Note: EasySIMBL does not seem to be required.
+#
+cdock
 
 # CheatSheet
 # Lists all active shortcut keys for the current application.
@@ -92,11 +80,6 @@ daisydisk
 # Offline API documentation viewer and code snippet manager.
 # http://kapeli.com/dash
 dash
-
-# DockMod
-# Dock themer.
-# http://spyresoft.com/dockmod/
-dockmod
 
 # Dropbox
 # File sharer with cloud storage.
@@ -157,15 +140,6 @@ istat-menus
 # Terminal emulator.
 # http://iterm2.com/
 iterm2-beta
-
-# KeepingYouAwake
-# System sleep manager.
-# https://github.com/newmarcel/KeepingYouAwake
-#
-# Minimum requirements:
-# Yosemite
-#
-keepingyouawake
 
 # LibreOffice
 # Office suite.
@@ -271,6 +245,29 @@ virtualbox
 # Media player.
 # http://www.videolan.org/vlc/
 vlc
+
+
+# ------------------------------------------------------------------------------
+#  Applications that require at least Yosemite.
+# ------------------------------------------------------------------------------
+
+# 1Password
+# Password manager.
+# https://agilebits.com/onepassword/mac
+#
+# Minimum requirements:
+# Yosemite
+#
+1password-beta
+
+# KeepingYouAwake
+# System sleep manager.
+# https://github.com/newmarcel/KeepingYouAwake
+#
+# Minimum requirements:
+# Yosemite
+#
+keepingyouawake
 
 
 # ------------------------------------------------------------------------------

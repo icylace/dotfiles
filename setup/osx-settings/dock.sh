@@ -5,6 +5,9 @@
 echo '\tEnable Dashboard dev mode (allows keeping widgets on the desktop).'
 defaults write com.apple.dashboard devmode -bool true
 
+# echo '\tShow the dashboard as an overlay.'
+# defaults write com.apple.dashboard enabled-state -int 3
+
 echo '\tDisable Dashboard.'
 defaults write com.apple.dashboard mcx-disabled -bool true
 
@@ -41,27 +44,28 @@ defaults write com.apple.dock hide-mirror -bool true
 # echo '\tEnable iTunes track notifications in the Dock.'
 # defaults write com.apple.dock itunes-notifications -bool true
 
-echo '\tSet magnification size.'
+echo '\tSet magnification size to 80.'
 defaults write com.apple.dock largesize -float 80
 # Default: 128
 
 # # Don’t animate opening applications from the Dock
 # defaults write com.apple.dock launchanim -bool false
 
-# # Change minimize/maximize window effect to scale mode.
-# #  genie = Genie
-# #  scale = Scale
-# #  suck = Suck
-# defaults write com.apple.dock mineffect -string 'scale'
+echo '\tChange minimize/maximize window effect to suck mode.'
+defaults write com.apple.dock mineffect -string 'suck'
+# Possible values:
+#   genie = Genie
+#   scale = Scale
+#   suck = Suck
 
-# # Minimize windows into their application’s icon
-# defaults write com.apple.dock minimize-to-application -bool true
-
-# echo "\tDon't automatically rearrange Spaces based on most recent use."
-# defaults write com.apple.dock mru-spaces -bool false
+echo "\tDo not minimize windows into their application’s icon."
+defaults write com.apple.dock minimize-to-application -bool false
 
 echo '\tEnable highlight hover effect for the grid view of a stack.'
 defaults write com.apple.dock mouse-over-hilite-stack -bool true
+
+echo "\tDon't automatically rearrange Spaces based on most recent use."
+defaults write com.apple.dock mru-spaces -bool false
 
 # echo '\tEnable 2D mode.'
 # defaults write com.apple.dock no-glass -bool true
@@ -80,7 +84,7 @@ defaults delete com.apple.dock persistent-others
 # or if you don't use the Dock to launch apps.
 
 echo '\tReset Launchpad.  Pre-Yosemite.'
-[ -e ~/Library/Application\ Support/Dock/*.db ] && rm ~/Library/Application\ Support/Dock/*.db
+[ -e ${HOME}/Library/Application\ Support/Dock/*.db ] && rm ${HOME}/Library/Application\ Support/Dock/*.db
 
 echo '\tReset Launchpad.  Yosemite.'
 defaults write com.apple.dock ResetLaunchPad -bool true
@@ -104,8 +108,16 @@ defaults write com.apple.dock static-only -bool true
 echo '\tSet the icon size of Dock items.'
 defaults write com.apple.dock tilesize -int 60
 
-# echo '\tDisable Spaces animation.'
-# defaults write com.apple.dock workspaces-swoosh-animation-off -bool true
+echo '\tStop from switching spaces due to an app coming to the foreground.'
+defaults write com.apple.dock workspaces-auto-swoosh -bool false
+# http://apple.stackexchange.com/a/4821
+
+echo '\tStop (slow down) from switching spaces if your mouse presses against the edge of the desktop.'
+defaults write com.apple.dock workspaces-edge-delay -bool true
+# http://apple.stackexchange.com/a/4821
+
+echo '\tDisable Spaces animation.'
+defaults write com.apple.dock workspaces-swoosh-animation-off -bool true
 
 # # Clear out the Dock.
 # /usr/bin/dockutil --remove all

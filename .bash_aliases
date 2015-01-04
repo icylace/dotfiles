@@ -10,8 +10,10 @@ alias .='pwd'
 alias mv='mv -i'
 
 # http://www.techrepublic.com/blog/10things/cut-down-on-linux-command-line-typing-with-these-10-handy-bash-aliases/352
-alias rm='rm -i'
 alias df='df -h'
+
+# https://github.com/sindresorhus/guides/blob/master/how-not-to-rm-yourself.md#safeguard-rm
+alias rm='rm -i'
 
 # http://stackoverflow.com/questions/5510734/install-pear-on-mamp/8178097#8178097
 alias mpear='/Applications/MAMP/bin/php/php5.3.14/bin/pear'

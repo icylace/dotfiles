@@ -33,6 +33,11 @@ grep
 # http://duti.org/
 duti
 
+# trash
+# Moves files and folders to the OS X trash.
+# http://hasseg.org/trash/
+trash
+
 
 # ------------------------------------------------------------------------------
 #  Git utilities.
@@ -93,11 +98,6 @@ httpie
 # JSON processor.
 # http://stedolan.github.io/jq/
 jq
-
-# Pipe Viewer
-# Progress monitor for data through a pipeline.
-# http://ivarch.com/programs/pv
-pv
 
 # Python
 # A programming language.

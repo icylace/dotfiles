@@ -17,6 +17,7 @@
 #  - http://www.defaults-write.com/
 #  - https://github.com/virtualswede/osx-bootstrap
 #  - https://github.com/travi/dotfiles
+#  - https://github.com/holman/dotfiles
 #
 
 #
@@ -25,7 +26,7 @@
 #
 
 
-# We're only doing OS X-only stuff so abort if we're not in OS X.
+# We're focusing on OS X so abort if we're not in OS X.
 [[ "$OSTYPE" =~ ^darwin ]] || return 1
 
 install_formulas() {
@@ -127,10 +128,19 @@ sudo shutdown -r now 'Rebooting now...'
 #  Other formulas.
 # ------------------------------------------------------------------------------
 
+# # GNU Aspell
+# # Spell checker.
+# # http://aspell.net/
+# aspell
+
 # # Composer
+# # Dependency manager for PHP.
 # # http://getcomposer.org/
+# #
+# # https://github.com/composer/composer/pull/3523#issuecomment-66768640
+# # https://github.com/composer/composer/issues/3255#issuecomment-60742259
+# #
 # composer
-# TODO
 
 # # FFmpeg
 # # Audio and video converter, recorder, and streamer.
@@ -142,23 +152,43 @@ sudo shutdown -r now 'Rebooting now...'
 # # http://nekohako.xware.cx/id3tool/
 # id3tool
 
-# aspell
+# # Pipe Viewer
+# # Progress monitor for data through a pipeline.
+# # http://ivarch.com/programs/pv
+# pv
 
+# # spark
+# # Data visualizer using sparklines.
+# # http://zachholman.com/spark/
+# spark
+
+# # terminal-notifier
+# # Send Mac OS X User Notifications.
+# # https://github.com/alloy/terminal-notifier
 # terminal-notifier
 
-# # trash
-# # Moves files and folders to the OS X trash.
-# # http://hasseg.org/trash/
-# #
-# # TODO
-# # - maybe redefine rm behavior instead ?
-# #
-# trash
+# # Generic Colouriser
+# # Colorizes output of commands and log files.
+# # http://korpus.juls.savba.sk/~garabik/software/grc.html
+# grc
 
 
 # ------------------------------------------------------------------------------
 #  Other casks.
 # ------------------------------------------------------------------------------
+
+# # Alfred
+# # Application launcher, search tool, and workflow tool.
+# # http://www.alfredapp.com/
+# alfred
+# # Yosemite's Spotlight is good enough for me.
+# # Alfred might still be worth it for its clipboard functionality.
+
+# # Kaleidoscope
+# # File and folder comparison tool.
+# # http://www.kaleidoscopeapp.com/
+# kaleidoscope
+# # Seeing how Beyond Compare works out.
 
 # # LastPass
 # # A password manager.
@@ -173,6 +203,7 @@ sudo shutdown -r now 'Rebooting now...'
 # https://interacto.zendesk.com/entries/53605899-Yosemite-and-the-future-Flavours-2
 #
 # flavours
+
 
 #
 # Considering:
@@ -296,3 +327,8 @@ sudo shutdown -r now 'Rebooting now...'
 # Tagger
 # http://hasseg.org/tagger/
 # - anything better ?
+
+
+
+
+# exit 0
