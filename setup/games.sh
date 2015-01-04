@@ -1,9 +1,5 @@
 #!/usr/bin/env bash
 
-# Homebrew
-# Package manager for OS X.
-# http://brew.sh
-
 # Check for Homebrew and install if we don't have it.
 if [ ! "$(which brew)" ]; then
   echo 'Installing homebrew...'

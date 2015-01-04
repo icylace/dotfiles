@@ -150,14 +150,15 @@ sudo nvram SystemAudioVolume=' '
 
 
 if [$(which defaults)]; then
+
   for f in "osx-settings/*.sh"; do
     source $f
   done
+
   for f in "app-settings/*.sh"; do
     source $f
   done
+
   echo 'OS X defaults written. Note that some of these changes require a logout/restart to take effect.'
 
-  # # Reboot the system to ensure all settings take effect.
-  # sudo shutdown -r now 'Rebooting now...'
 fi
