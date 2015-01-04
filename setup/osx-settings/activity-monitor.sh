@@ -2,10 +2,10 @@
 #  Activity Monitor settings.
 # ------------------------------------------------------------------------------
 
-echo '\tShow the main window when launching.'
+echo -e '\tShow the main window when launching.'
 defaults write com.apple.ActivityMonitor OpenMainWindow -bool true
 
-echo "\tVisualize CPU usage in the Activity Monitor's Dock icon."
+echo -e "\tVisualize CPU usage in the Activity Monitor's Dock icon."
 defaults write com.apple.ActivityMonitor IconType -int 5
 
 echo '\tShow all processes by default.'
