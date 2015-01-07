@@ -71,7 +71,6 @@ install_casks() {
   # # https://github.com/caskroom/homebrew-cask/issues/8052#issuecomment-66736053
   # defaults read com.runningwithcrayons.Alfred-Preferences syncfolder
   # brew cask alfred link
-  # # Yosemite's Spotlight is good enough for me.
 
   # Make sure we longer have any unnecessary files laying around.
   brew cleanup
@@ -145,13 +144,6 @@ install_casks
 # ------------------------------------------------------------------------------
 #  Other casks.
 # ------------------------------------------------------------------------------
-
-# # Alfred
-# # Application launcher, search tool, and workflow tool.
-# # http://www.alfredapp.com/
-# alfred
-# # Yosemite's Spotlight is good enough for me.
-# # Alfred might still be worth it for its clipboard functionality.
 
 # # Kaleidoscope
 # # File and folder comparison tool.

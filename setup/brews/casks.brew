@@ -13,6 +13,11 @@
 # http://www.adobe.com/products/reader.html
 adobe-reader
 
+# Alfred
+# Application launcher, search tool, and workflow tool.
+# http://www.alfredapp.com/
+alfred
+
 # AppCleaner
 # Application uninstaller.
 # http://freemacsoft.net/appcleaner/

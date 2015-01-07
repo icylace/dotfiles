@@ -91,6 +91,8 @@ source 'osx.sh'
 #  Apps to install manually via the Mac App Store.
 # ------------------------------------------------------------------------------
 
+# cobook
+
 # CodeBox
 # Code snippets manager.
 # http://www.shpakovski.com/codebox/
@@ -103,6 +105,8 @@ source 'osx.sh'
 # Frees up unused memory.
 # https://fiplab.com/apps/memory-clean-for-mac
 
+# shazam
+
 # Ulysses III
 # Text document manager and editor designed for writing.
 # http://ulyssesapp.com/
@@ -111,8 +115,6 @@ source 'osx.sh'
 # Application development system from Apple.
 # https://developer.apple.com/xcode/
 
-# cobook - still useful ?
-# shazam - useful to me ?
 # celtx - still useful ?
 # tunatic - useful to me ?
 # colorchooser ?
@@ -157,3 +159,19 @@ source 'osx.sh'
 
 
 # exit 0
+
+
+
+# ------------------------------------------------------------------------------
+#  Post-install setup.
+# ------------------------------------------------------------------------------
+
+# FirefoxDeveloperEdition#
+# - add HipChat to search engine list
+# - add BitBucket to search engine list
+
+
+
+
+# TODO
+# Figure out a way to programmatically turn off Caps Lock key
