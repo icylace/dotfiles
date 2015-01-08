@@ -33,6 +33,9 @@
 #  - https://github.com/ymendel/dotfiles/tree/master/osx
 #
 
+# We're focusing on OS X so abort if we're not in OS X.
+[[ "$OSTYPE" =~ ^darwin ]] || return 1
+
 
 # # # Change the default backup periods in Time Machine.
 # # sudo defaults write /System/Library/Launch\ Daemons/com.apple.backupd-auto StartInterval -int 1800
@@ -147,17 +150,13 @@ sudo nvram SystemAudioVolume=' '
 # echo '\tEnable AirDrop over Ethernet and on unsupported Macs running Lion.'
 # defaults write com.apple.NetworkBrowser BrowseAllInterfaces -bool true
 
-
-
 # if [$(which defaults)]; then
 
-  for f in osx-settings/*.sh
-  do
+  for f in osx-settings/*.sh; do
     source $f
   done
 
-  for f in app-settings/*.sh
-  do
+  for f in app-settings/*.sh; do
     source $f
   done
 

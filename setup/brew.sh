@@ -2,9 +2,6 @@
 #  Setup Homebrew.
 # ------------------------------------------------------------------------------
 
-# We're focusing on OS X so abort if we're not in OS X.
-[[ "$OSTYPE" =~ ^darwin ]] || return 1
-
 install_formulas() {
 
   # Install Homebrew if we need to.
@@ -71,14 +68,13 @@ install_casks() {
   # # https://github.com/caskroom/homebrew-cask/issues/8052#issuecomment-66736053
   # defaults read com.runningwithcrayons.Alfred-Preferences syncfolder
   # brew cask alfred link
-  # # Yosemite's Spotlight is good enough for me.
 
   # Make sure we longer have any unnecessary files laying around.
   brew cleanup
   brew cask cleanup
 
-  # Activate the Quick Look plugins.
-  qlmanage -r
+  # # Activate the Quick Look plugins.
+  # qlmanage -r
 
 
   # brew cask install dropbox --force --download
@@ -146,18 +142,11 @@ install_casks
 #  Other casks.
 # ------------------------------------------------------------------------------
 
-# # Alfred
-# # Application launcher, search tool, and workflow tool.
-# # http://www.alfredapp.com/
-# alfred
-# # Yosemite's Spotlight is good enough for me.
-# # Alfred might still be worth it for its clipboard functionality.
-
-# # Kaleidoscope
-# # File and folder comparison tool.
-# # http://www.kaleidoscopeapp.com/
-# kaleidoscope
-# # Seeing how Beyond Compare works out.
+# # Default Folder X
+# # Open and Save dialog box enhancer.
+# # http://stclairsoft.com/DefaultFolderX/
+# default-folder-x
+# There is a Cask for it but it needs fixing.
 
 # # LastPass
 # # A password manager.

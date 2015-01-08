@@ -51,11 +51,11 @@ fi
 #
 # Based on:
 # http://stevelosh.com/blog/2010/02/my-extravagant-zsh-prompt/
-# http://blog.munge.net/2011/10/fun-with-zsh-themes/
+# http://blog.munge.net/fun-with-zsh-themes/
 #
 
 battery_charge() {
-  python ~/others/Resources/scripts/battery_charge.py --color
+  python ~/dotfiles/prompt/battery_charge.py --color
 }
 
 prompt_char() {
@@ -72,10 +72,29 @@ prompt_char() {
 }
 
 vcprompt_info() {
-  vcprompt \
-    --format-git "on %{$fg[magenta]%}%b%{$reset_color%}%{$fg[green]%}%u%m%a%{$reset_color%}" \
-    --format-hg  "on %{$fg[magenta]%}%b%{$reset_color%}%{$fg[green]%}%u%m%{$reset_color%}" \
-    --format     "on %s %{$fg[magenta]%}%b%{$reset_color%}%{$fg[green]%}%u%m%{$reset_color%}"
+  # vcprompt
+  # https://bitbucket.org/gward/vcprompt
+  # installed via brew
+
+  vcprompt -f "on %b %u%m"
+
+  # Format strings use printf-like "%" escape sequences:
+
+  #   %n  name of the VC system managing the current directory
+  #       (e.g. "cvs", "hg", "git", "svn")
+  #   %b  current branch name
+  #   %r  current revision
+  #   %u  ? if there are any unknown files
+  #   %m  + if there are any uncommitted changes (added, modified, or
+  #       removed files)
+  #   %%  a single % character
+
+  # vcprompt -f "on %{$fg[magenta]%}%b%{$reset_color%}%{$fg[green]%}%u%m%a%{$reset_color%}"
+
+  # vcprompt \
+  #   --format-git "on %{$fg[magenta]%}%b%{$reset_color%}%{$fg[green]%}%u%m%a%{$reset_color%}" \
+  #   --format-hg  "on %{$fg[magenta]%}%b%{$reset_color%}%{$fg[green]%}%u%m%{$reset_color%}" \
+  #   --format     "on %s %{$fg[magenta]%}%b%{$reset_color%}%{$fg[green]%}%u%m%{$reset_color%}"
 }
 
 virtualenv_info() {
@@ -196,10 +215,10 @@ alias c~='c ~'
 alias c-='c -1'
 alias c+='c +1'
 alias c-d='c ~/Downloads'
-alias cr='c ~/others/Repositories'
+alias cr='c ~/My/Repositories'
 alias cs='c ~/Sites'
 alias cn='c /usr/local/lib/node_modules'
-alias cv='c ~/vagrant-base'
+alias cv='c ~/My/Repositories/vagrant-base'
 
 #
 # Tell Z Shell to not try to autocorrect the following.
@@ -255,11 +274,15 @@ alias dru='drush updb -y'
 
 alias manp='man -t [command] | open -f -a Preview'
 
+# ------------------------------------------------------------------------------
+
+# Suggested by the caveats section from `brew info rbenv`.
+if which rbenv > /dev/null; then eval "$(rbenv init -)"; fi
 
 # ------------------------------------------------------------------------------
 
 # My custom PHP development tools.
-export DEV_INC="/Users/icylace/others/Repositories/dev/includes/dev.inc"
+export DEV_INC="/Users/icylace/My/Repositories/dev/includes/dev.inc"
 
 # http://stackoverflow.com/a/5545748/1935675
 # http://stackoverflow.com/a/8814780/1935675
