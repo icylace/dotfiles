@@ -108,9 +108,9 @@ defaults write com.apple.dock static-only -bool true
 echo '\tSet the icon size of Dock items.'
 defaults write com.apple.dock tilesize -int 60
 
-echo '\tStop from switching spaces due to an app coming to the foreground.'
-defaults write com.apple.dock workspaces-auto-swoosh -bool false
-# http://apple.stackexchange.com/a/4821
+# echo '\tStop from switching spaces due to an app coming to the foreground.'
+# defaults write com.apple.dock workspaces-auto-swoosh -bool false
+# # http://apple.stackexchange.com/a/4821
 
 echo '\tStop (slow down) from switching spaces if your mouse presses against the edge of the desktop.'
 defaults write com.apple.dock workspaces-edge-delay -bool true
