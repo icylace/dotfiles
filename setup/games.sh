@@ -69,4 +69,4 @@ brew cask install "${cask_formulas[@]}"
 #  Games to install manually.
 # ------------------------------------------------------------------------------
 
-#   alephone
+# alephone

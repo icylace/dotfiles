@@ -8,7 +8,7 @@
 # `defaults write com.apple.dock expose-animation-duration -float 0.1` can be
 # using `defaults delete com.apple.dock expose-animation-duration`.
 #
-#  Heavy influence and much direct copying from:
+#  Heavy influence and much copying from:
 #  - https://mths.be/osx
 #  - http://jasahackintosh.wordpress.com/2014/09/04/tweak-os-x-from-command-terminal/
 #  - http://lifehacker.com/how-to-make-your-own-bulk-app-installer-for-os-x-1586252163

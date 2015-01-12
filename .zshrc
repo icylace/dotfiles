@@ -195,14 +195,38 @@ batch-zip() {
   done
 }
 
-# I usually want to see immediately the contents of a directory I switch to.
-# Executing 'cd' with no arguments changes to the home directory but I have
-# `c` simply list the current directory in that case.
+# ------------------------------------------------------------------------------
+
+#
+# NAME
+#     c - See the contents of a directory or file.
+#
+# SYNOPSIS
+#     c [file]
+#
+# DESCRIPTION
+#     If no operand is given the contents of the current directory is shown.
+#     If a directory is given switch to it and shown its contents.
+#     If a file is given show its contents.
+#
+# NOTES
+#     I usually want to see immediately the contents of a directory I switch to.
+#
+#     Executing 'cd' with no arguments changes to the home directory but I have
+#     `c` simply list the current directory in that case.
+#
+# TODO
+# - don't run `ls` if `cd` errors out.
+#
 c() {
-  if [ -n "$1" ]; then
-    cd $@
+  if [ -f "$1" ]; then
+    cat $@
+  else
+    if [ -n "$1" ]; then
+      cd $@
+    fi
+    ls -AGp
   fi
-  ls -AGp
 }
 
 alias c..='c ..'
@@ -219,6 +243,8 @@ alias cr='c ~/My/Repositories'
 alias cs='c ~/Sites'
 alias cn='c /usr/local/lib/node_modules'
 alias cv='c ~/My/Repositories/vagrant-base'
+
+# ------------------------------------------------------------------------------
 
 #
 # Tell Z Shell to not try to autocorrect the following.
