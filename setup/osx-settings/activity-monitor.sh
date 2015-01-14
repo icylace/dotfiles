@@ -1,6 +1,8 @@
-# ------------------------------------------------------------------------------
-#  Activity Monitor settings.
-# ------------------------------------------------------------------------------
+e ''
+e '###############################################' $blue
+e '#              ACTIVITY MONITOR               #' $blue
+e '###############################################' $blue
+e ''
 
 e '\tShow the main window when launching.'
 defaults write com.apple.ActivityMonitor OpenMainWindow -bool true

@@ -1,6 +1,8 @@
-# ------------------------------------------------------------------------------
-#  Finder settings.
-# ------------------------------------------------------------------------------
+e ''
+e '###############################################' $blue
+e '#                   FINDER                    #' $blue
+e '###############################################' $blue
+e ''
 
 e '\tDisplay full POSIX path in the title bar.'
 defaults write com.apple.finder _FXShowPosixPathInTitle -bool true

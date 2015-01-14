@@ -1,8 +1,10 @@
-# ------------------------------------------------------------------------------
-#  Bartender
-#  Menu bar manager.
-#  http://www.macbartender.com/
-# ------------------------------------------------------------------------------
+e ''
+e '###############################################' $blue
+e '#                  BARTENDER                  #' $blue
+e '#              Menu bar manager.              #' $blue
+e '#         http://www.macbartender.com/        #' $blue
+e '###############################################' $blue
+e ''
 
 e '\tShow the menu bar icon.'
 defaults write com.surteesstudios.Bartender showMenuBarIcon -bool true
@@ -13,8 +15,6 @@ defaults write com.surteesstudios.Bartender statusBarImageNamed -string 'Bartend
 # barLocation = "-1";
 # barLocationPercentage = "0.8673611";
 
-
-# {
 #     appBartenderOrder =     (
 #         "com.cycling74.Soundflowerbed",
 #         "com.trankynam.aText",
@@ -410,6 +410,3 @@ defaults write com.surteesstudios.Bartender statusBarImageNamed -string 'Bartend
 #         "com.apple.menuextra.textinput",
 #         "com.apple.Spotlight"
 #     );
-#     numberOfAttempts = 0;
-#     trialStart = "2014-11-10 09:45:25 +0000";
-# }

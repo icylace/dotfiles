@@ -1,6 +1,8 @@
-# ------------------------------------------------------------------------------
-#  General system settings.
-# ------------------------------------------------------------------------------
+e ''
+e '###############################################' $blue
+e '#               GENERAL SYSTEM                #' $blue
+e '###############################################' $blue
+e ''
 
 e 'Disable menu bar transparency.'
 defaults write -g AppleEnableMenuBarTransparency -bool false
@@ -105,6 +107,14 @@ defaults write -g NSTextShowsControlCharacters -bool true
 e '\tSet sidebar icon size to medium.'
 defaults write -g NSTableViewDefaultSizeMode -int 2
 
+e '\tFor all applications change tabs with cmd-opt-arrow.'
+defaults write -g NSUserKeyEquivalents -dict-add 'Show Next Tab'       '@~\U2192'
+defaults write -g NSUserKeyEquivalents -dict-add 'Show Previous Tab'   '@~\U2190'
+defaults write -g NSUserKeyEquivalents -dict-add 'Select Next Tab'     '@~\U2192'
+defaults write -g NSUserKeyEquivalents -dict-add 'Select Previous Tab' '@~\U2190'
+defaults write -g NSUserKeyEquivalents -dict-add 'Next Tab'            '@~\U2192'
+defaults write -g NSUserKeyEquivalents -dict-add 'Previous Tab'        '@~\U2190'
+#
 # Keyboard shortcuts modifier key legend:
 #  @ = command
 #  ^ = control
@@ -115,13 +125,6 @@ defaults write -g NSTableViewDefaultSizeMode -int 2
 # These shortcuts will not show in System Preferences
 # and setting new shortcuts there will overwrite these.
 #
-e '\tFor all applications change tabs with cmd-opt-arrow.'
-defaults write -g NSUserKeyEquivalents -dict-add 'Show Next Tab'       '@~\U2192'
-defaults write -g NSUserKeyEquivalents -dict-add 'Show Previous Tab'   '@~\U2190'
-defaults write -g NSUserKeyEquivalents -dict-add 'Select Next Tab'     '@~\U2192'
-defaults write -g NSUserKeyEquivalents -dict-add 'Select Previous Tab' '@~\U2190'
-defaults write -g NSUserKeyEquivalents -dict-add 'Next Tab'            '@~\U2192'
-defaults write -g NSUserKeyEquivalents -dict-add 'Previous Tab'        '@~\U2190'
 
 e '\tIncrease window resize speed for Cocoa applications.'
 defaults write -g NSWindowResizeTime -floar 0.01

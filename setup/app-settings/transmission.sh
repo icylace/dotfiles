@@ -1,8 +1,10 @@
-# ------------------------------------------------------------------------------
-#  Transmission
-#  BitTorrent client.
-#  https://www.transmissionbt.com/
-# ------------------------------------------------------------------------------
+e ''
+e '###############################################' $blue
+e '#                Transmission                 #' $blue
+e '#             BitTorrent client.              #' $blue
+e '#       https://www.transmissionbt.com/       #' $blue
+e '###############################################' $blue
+e ''
 
 e "\tDon't prompt for confirmation before downloading."
 defaults write org.m0k.transmission DownloadAsk -bool false

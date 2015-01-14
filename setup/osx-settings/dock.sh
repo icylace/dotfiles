@@ -1,6 +1,9 @@
-# ------------------------------------------------------------------------------
-#  Dock, Dashboard, Mission Control, Spaces, and trackpad settings.
-# ------------------------------------------------------------------------------
+e ''
+e '###############################################' $blue
+e '#      DOCK, DASHBOARD, MISSION CONTROL       #' $blue
+e '#            SPACES, AND TRACKPAD             #' $blue
+e '###############################################' $blue
+e ''
 
 e '\tEnable Dashboard dev mode (allows keeping widgets on the desktop).'
 defaults write com.apple.dashboard devmode -bool true
@@ -126,7 +129,7 @@ defaults write com.apple.dock workspaces-swoosh-animation-off -bool true
 # /usr/bin/dockutil --add /Applications/Firefox.app
 # /usr/bin/dockutil --add /Applications/Google\ Chrome.app
 
-# Display the location path of current wallpaper in OS X
+# e '\tDisplay the location path of current wallpaper in OS X.'
 # defaults write com.apple.dock desktop-picture-show-debug-text -bool true
 
 # # Hot corners
@@ -142,45 +145,21 @@ defaults write com.apple.dock workspaces-swoosh-animation-off -bool true
 # # 11: Launchpad
 # # 12: Notification Center
 
-# # Top left screen corner → Mission Control
+# e '\tSet the top-left screen corner to Mission Control.'
 # defaults write com.apple.dock wvous-tl-corner -int 2
 # defaults write com.apple.dock wvous-tl-modifier -int 0
-# # Top right screen corner → Desktop
-# defaults write com.apple.dock wvous-tr-corner -int 4
-# defaults write com.apple.dock wvous-tr-modifier -int 0
-# # Bottom left screen corner → Start screen saver
-# defaults write com.apple.dock wvous-bl-corner -int 5
-# defaults write com.apple.dock wvous-bl-modifier -int 0
 
-# e "\tSetting top-left corner to Mission Control..."
-# defaults write com.apple.dock wvous-tl-corner -int 2    # Mission Control
-# defaults write com.apple.dock wvous-tl-modifier -int 0
-
-# e "\tSetting top-right corner to Notification Center..."
-# defaults write com.apple.dock wvous-tr-corner -int 12   # Notification Center
+# e '\tSet the top-right corner to Notification Center.'
+# defaults write com.apple.dock wvous-tr-corner -int 12
 # defaults write com.apple.dock wvous-tr-modifier -int 0
 
-# e "\tSetting bottom-left corner to Show Desktop..."
+# e '\tSet the bottom-left corner to Show Desktop.'
 # defaults write com.apple.dock wvous-bl-corner -int 4    # Show Desktop
-# defaults write com.apple.dock wvous-bl-modifier -int 0
-
-# # Run the screensaver if we're in the bottom-left hot corner.
-# defaults write com.apple.dock wvous-bl-corner -int 5
 # defaults write com.apple.dock wvous-bl-modifier -int 0
 
 # e "\tSetting bottom-right corner to Launchpad..."
 # defaults write com.apple.dock wvous-br-corner -int 11   # Launchpad
 # defaults write com.apple.dock wvous-br-modifier -int 0
-
-# e 'Hot corners'
-# e 'Top left screen corner → Mission Control'
-# defaults write com.apple.dock wvous-tl-corner -int 2
-# defaults write com.apple.dock wvous-tl-modifier -int 0
-# defaults write com.apple.dock wvous-br-corner -int 2
-# defaults write com.apple.dock wvous-br-modifier -int 0
-# e 'Top right screen corner → Desktop'
-# defaults write com.apple.dock wvous-bl-corner -int 4
-# defaults write com.apple.dock wvous-bl-modifier -int 0
 
 # # Restart the Dock to apply the settings.
 # killall Dock

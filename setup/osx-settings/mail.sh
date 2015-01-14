@@ -1,6 +1,8 @@
-# ------------------------------------------------------------------------------
-#  Mail settings.
-# ------------------------------------------------------------------------------
+e ''
+e '###############################################' $blue
+e '#                    MAIL                     #' $blue
+e '###############################################' $blue
+e ''
 
 # e '\tCopy email addresses as `foo@example.com` instead of `Foo Bar <foo@example.com>`.'
 # defaults write com.apple.mail AddressesIncludeNameOnPasteboard -bool false

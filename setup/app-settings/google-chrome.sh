@@ -1,8 +1,10 @@
-# ------------------------------------------------------------------------------
-#  Google Chrome
-#  Web browser.
-#  http://www.google.com/chrome/
-# ------------------------------------------------------------------------------
+e ''
+e '###############################################' $blue
+e '#                GOOGLE CHROME                #' $blue
+e '#                 Web browser.                #' $blue
+e '#        http://www.google.com/chrome/        #' $blue
+e '###############################################' $blue
+e ''
 
 e '\tDisable two-finger swipe navigation.'
 defaults write com.google.Chrome AppleEnableSwipeNavigateWithScrolls -bool false
