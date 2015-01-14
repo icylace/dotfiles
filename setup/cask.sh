@@ -5,7 +5,7 @@
 # Homebrew Cask
 # Manages the administration of Mac applications distributed as binaries.
 # http://caskroom.io/
-echo 'Installing Homebrew Cask'
+e 'Installing Homebrew Cask'
 brew install caskroom/cask/brew-cask
 
 # Check if there are problems.
@@ -22,16 +22,16 @@ brew tap caskroom/fonts
 # Make sure our Homebrew Cask recipes are updated.
 brew cask update
 
-echo 'Installing casks...'
+e 'Installing casks...'
 brew cask install $(cat brews/casks.brew | grep -v \#)
 
 # Check if there are problems.
 brew cask doctor
 
-# # Modify Alfred's search scope to include the Caskroom directory where Applications are stored.
-# # https://github.com/caskroom/homebrew-cask/issues/8052#issuecomment-66736053
-# defaults read com.runningwithcrayons.Alfred-Preferences syncfolder
-# brew cask alfred link
+# Modify Alfred's search scope to include the Caskroom directory where Applications are stored.
+# https://github.com/caskroom/homebrew-cask/issues/8052#issuecomment-66736053
+defaults write com.runningwithcrayons.Alfred-Preferences syncfolder -string '~/My/Dropbox/Sync/Alfred Preferences'
+brew cask alfred link
 
 # Make sure we longer have any unnecessary files laying around.
 brew cleanup

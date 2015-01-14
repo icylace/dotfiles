@@ -7,7 +7,7 @@ if [ ! "$(which brew)" ]; then
   # Homebrew
   # Package manager for OS X.
   # http://brew.sh
-  echo 'Installing homebrew...'
+  e 'Installing homebrew...'
   ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
 fi
 

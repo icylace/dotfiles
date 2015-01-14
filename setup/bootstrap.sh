@@ -60,7 +60,7 @@ source 'brew.sh'
 source 'cask.sh'
 source 'osx.sh'
 
-# echo 'Done.  Note that some apps and settings changs require a logout/restart to take effect.'
+# e 'Done.  Note that some apps and settings changs require a logout/restart to take effect.'
 # sudo shutdown -r now 'Rebooting now...'
 
 #
@@ -112,10 +112,10 @@ source 'osx.sh'
 
 
 # http://nodejs.org/
-# cecho "Installing node (without npm)" $blue
+# e "Installing node (without npm)" $blue
 # # For more info, see here https://gist.github.com/DanHerbert/9520689
 # brew install node --without-npm
-# echo prefix=~/.node >> ~/.npmrc
+# e prefix=~/.node >> ~/.npmrc
 # curl -L https://www.npmjs.org/install.sh | sh
 # export PATH="$HOME/.node/bin:$PATH"
 

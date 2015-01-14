@@ -2,7 +2,7 @@
 #  Archive utility settings.
 # ------------------------------------------------------------------------------
 
-echo '\tMove archive files to trash after expansion.'
+e '\tMove archive files to trash after expansion.'
 defaults write com.apple.archiveutility dearchive-move-after -string '~/.Trash'
 # Other values:
 #   /dev/null = delete directly

@@ -4,10 +4,10 @@
 #  http://www.macbartender.com/
 # ------------------------------------------------------------------------------
 
-echo '\tShow the menu bar icon.'
+e '\tShow the menu bar icon.'
 defaults write com.surteesstudios.Bartender showMenuBarIcon -bool true
 
-echo '\tMake sure the menu bar icon is the bartender.'
+e '\tMake sure the menu bar icon is the bartender.'
 defaults write com.surteesstudios.Bartender statusBarImageNamed -string 'Bartender'
 
 # barLocation = "-1";

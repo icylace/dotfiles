@@ -40,11 +40,11 @@
 # # # Change the default backup periods in Time Machine.
 # # sudo defaults write /System/Library/Launch\ Daemons/com.apple.backupd-auto StartInterval -int 1800
 
-# echo "Check for software updates daily, not just once per week."
+# e "Check for software updates daily, not just once per week."
 # defaults write com.apple.SoftwareUpdate ScheduleFrequency -int 1
 # # Frequency is measured in days.
 
-# echo "Disabling local Time Machine backups"
+# e "Disabling local Time Machine backups"
 # hash tmutil &> /dev/null && sudo tmutil disablelocal
 
 # # Display additional information on the login screen.
@@ -58,10 +58,10 @@
 # sudo systemsetup -settimezone 'America/New_York' > /dev/null
 
 # # if [ ${OSTYPE} = darwin14* ];then
-# #   echo -e "\tEnabling dark mode..."
+# #   e -e "\tEnabling dark mode..."
 # #   defaults write /Library/Preferences/.GlobalPreferences AppleInterfaceTheme Dark
 # # else
-# #   echo "Not Yosemite"
+# #   e "Not Yosemite"
 # # fi
 
 
@@ -98,7 +98,7 @@ chflags nohidden ~/Library/
 # # Add iOS Simulator to Launchpad
 # sudo ln -sf "/Applications/Xcode.app/Contents/Developer/Applications/iOS Simulator.app" "/Applications/iOS Simulator.app"
 
-# echo '\tDisabling local Time Machine backups.'
+# e '\tDisabling local Time Machine backups.'
 # hash tmutil &> /dev/null && sudo tmutil disablelocal
 
 # # Reset Launchpad, but keep the desktop wallpaper intact
@@ -120,7 +120,7 @@ sudo nvram SystemAudioVolume=' '
 
 
 
-# echo '\tDisable Notification Center and remove the menu bar icon.'
+# e '\tDisable Notification Center and remove the menu bar icon.'
 # launchctl unload -w /System/Library/LaunchAgents/com.apple.notificationcenterui.plist
 
 # defaults write com.apple.iphoto MapScrollWheel -bool YES
@@ -147,7 +147,7 @@ sudo nvram SystemAudioVolume=' '
 # #  OS X Lion setings.
 # # ------------------------------------------------------------------------------
 
-# echo '\tEnable AirDrop over Ethernet and on unsupported Macs running Lion.'
+# e '\tEnable AirDrop over Ethernet and on unsupported Macs running Lion.'
 # defaults write com.apple.NetworkBrowser BrowseAllInterfaces -bool true
 
 # if [$(which defaults)]; then
@@ -160,6 +160,6 @@ sudo nvram SystemAudioVolume=' '
     source $f
   done
 
-  echo 'OS X defaults written. Note that some of these changes require a logout/restart to take effect.'
+  e 'OS X defaults written. Note that some of these changes require a logout/restart to take effect.'
 
 # fi
