@@ -6,11 +6,13 @@ e '#         http://www.macbartender.com/        #' $blue
 e '###############################################' $blue
 e ''
 
+alias dw='defaults write com.surteesstudios.Bartender'
+
 e '\tShow the menu bar icon.'
-defaults write com.surteesstudios.Bartender showMenuBarIcon -bool true
+dw showMenuBarIcon -bool true
 
 e '\tMake sure the menu bar icon is the bartender.'
-defaults write com.surteesstudios.Bartender statusBarImageNamed -string 'Bartender'
+dw statusBarImageNamed -string 'Bartender'
 
 # barLocation = "-1";
 # barLocationPercentage = "0.8673611";

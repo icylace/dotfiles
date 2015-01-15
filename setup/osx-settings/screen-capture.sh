@@ -1,18 +1,22 @@
-# ------------------------------------------------------------------------------
-#  Screen capture settings.
-# ------------------------------------------------------------------------------
+e ''
+e '###############################################' $blue
+e '#               SCREEN CAPTURE                #' $blue
+e '###############################################' $blue
+e ''
+
+alias dw='defaults write com.apple.screencapture'
 
 e '\tDisable the shadow in screenshots.'
-defaults write com.apple.screencapture disable-shadow -bool true
+dw disable-shadow -bool true
 
 e '\tSave screenshots into the downloads folder to keep the desktop uncluttered.'
-defaults write com.apple.screencapture location -string "${HOME}/Downloads"
+dw location -string "${HOME}/Downloads"
 
 e '\tSet the screenshot base name.'
-defaults write com.apple.screencapture name -string 'screen'
+dw name -string 'screen'
 
 e '\tUse JPEG instead of PNG for smaller file sizes.'
-defaults write com.apple.screencapture type -string 'jpg'
+dw type -string 'jpg'
 # Other options: BMP, GIF, JPG, PDF, TIFF
 
 # # Restart SystemUIServer to apply the settings.

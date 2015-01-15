@@ -6,9 +6,14 @@ e '#        http://www.google.com/chrome/        #' $blue
 e '###############################################' $blue
 e ''
 
+alias dw='defaults write com.google.Chrome'
+
 e '\tDisable two-finger swipe navigation.'
-defaults write com.google.Chrome AppleEnableSwipeNavigateWithScrolls -bool false
+dw AppleEnableSwipeNavigateWithScrolls -bool false
 
 e '\tAllow installing user scripts via GitHub Gist or Userscripts.org.'
-defaults write com.google.Chrome ExtensionInstallSources -array 'https://gist.githubusercontent.com/' 'http://userscripts.org/*'
-defaults write com.google.Chrome.canary ExtensionInstallSources -array 'https://gist.githubusercontent.com/' 'http://userscripts.org/*'
+dw ExtensionInstallSources -array 'https://gist.githubusercontent.com/' 'http://userscripts.org/*'
+
+alias dw='defaults write com.google.Chrome.canary'
+
+dw ExtensionInstallSources -array 'https://gist.githubusercontent.com/' 'http://userscripts.org/*'

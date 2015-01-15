@@ -6,5 +6,7 @@ e '#             http://iterm2.com/              #' $blue
 e '###############################################' $blue
 e ''
 
+alias dw='defaults write com.googlecode.iterm2'
+
 e "\tDon't display the annoying prompt when quitting."
-defaults write com.googlecode.iterm2 PromptOnQuit -bool false
+dw PromptOnQuit -bool false

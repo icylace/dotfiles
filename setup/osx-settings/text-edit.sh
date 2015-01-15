@@ -1,10 +1,14 @@
-# ------------------------------------------------------------------------------
-#  Text Edit settings.
-# ------------------------------------------------------------------------------
+e ''
+e '###############################################' $blue
+e '#                  TEXT EDIT                  #' $blue
+e '###############################################' $blue
+e ''
+
+alias dw='defaults write com.apple.TextEditw'
 
 e '\tOpen and save files as UTF-8.'
-defaults write com.apple.TextEdit PlainTextEncoding -int 4
-defaults write com.apple.TextEdit PlainTextEncodingForWrite -int 4
+dw PlainTextEncoding -int 4
+dw PlainTextEncodingForWrite -int 4
 
 e '\tUse plain text mode for new documents.'
-defaults write com.apple.TextEdit RichText -int 0
+dw RichText -int 0

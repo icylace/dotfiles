@@ -1,6 +1,10 @@
-# ------------------------------------------------------------------------------
-#  OS X Terminal.
-# ------------------------------------------------------------------------------
+e ''
+e '###############################################' $blue
+e '#                  TERMINAL                   #' $blue
+e '###############################################' $blue
+e ''
+
+alias dw='defaults write com.apple.terminal'
 
 e '\tOnly use UTF-8.'
-defaults write com.apple.terminal StringEncodings -array 4
+dw StringEncodings -array 4
