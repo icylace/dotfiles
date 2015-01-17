@@ -68,7 +68,6 @@
 # ------------------------------------------------------------------------------
 
 
-
 # Hidden wallpapers.
 # /Library/Screen Savers/Default Collections
 
@@ -116,8 +115,6 @@ chflags nohidden ~/Library/
 sudo nvram SystemAudioVolume=' '
 # To undo:
 # sudo nvram -d SystemAudioVolume
-
-
 
 
 # e '\tDisable Notification Center and remove the menu bar icon.'

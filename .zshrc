@@ -76,10 +76,10 @@ vcprompt_info() {
   # https://bitbucket.org/gward/vcprompt
   # installed via brew
 
-  vcprompt -f "on %b %u%m"
+  vcprompt -f 'on %b %u%m'
 
   # Format strings use printf-like "%" escape sequences:
-
+  #
   #   %n  name of the VC system managing the current directory
   #       (e.g. "cvs", "hg", "git", "svn")
   #   %b  current branch name
@@ -210,7 +210,8 @@ batch-zip() {
 #     If a file is given show its contents.
 #
 # NOTES
-#     I usually want to see immediately the contents of a directory I switch to.
+#     The original reason why I made this was because I usually want to see
+#     immediately the contents of a directory I switch to.
 #
 #     Executing 'cd' with no arguments changes to the home directory but I have
 #     `c` simply list the current directory in that case.
@@ -224,8 +225,10 @@ c() {
   else
     if [ -n "$1" ]; then
       cd $@
+      ls -AGp
+    else
+      ls -AGp
     fi
-    ls -AGp
   fi
 }
 

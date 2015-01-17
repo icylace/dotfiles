@@ -1,13 +1,15 @@
-# ------------------------------------------------------------------------------
-#  Setup Homebrew.
-# ------------------------------------------------------------------------------
+e ''
+e '-----------------------------------------------' $blue
+e '-                  Homebrew                   -' $blue
+e '-----------------------------------------------' $blue
+e ''
 
 # Install Homebrew if we need to.
 if [ ! "$(which brew)" ]; then
   # Homebrew
   # Package manager for OS X.
   # http://brew.sh
-  e 'Installing homebrew...'
+  e '\tInstalling homebrew...'
   ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
 fi
 
@@ -23,7 +25,7 @@ brew tap homebrew/dupes
 # Access PHP-related formulas.
 brew tap homebrew/homebrew-php
 
-echo 'Installing formulas...'
+echo '\tInstalling formulas...'
 brew install $(cat brews/formulas.brew | grep -v \#)
 
 # Check if there are problems.

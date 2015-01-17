@@ -1,8 +1,8 @@
-e ''
-e '###############################################' $blue
-e '#                  FIREWALL                   #' $blue
-e '###############################################' $blue
-e ''
+# e ''
+# e '-----------------------------------------------' $blue
+# e '-                  Firewall                   -' $blue
+# e '-----------------------------------------------' $blue
+# e ''
 
 # e '\tEnable the OS X firewall.'
 # sudo defaults write /Library/Preferences/com.apple.alf globalstate -int 1

@@ -1,7 +1,7 @@
 e ''
-e '###############################################' $blue
-e '#              ACTIVITY MONITOR               #' $blue
-e '###############################################' $blue
+e '-----------------------------------------------' $blue
+e '-              Activity Monitor               -' $blue
+e '-----------------------------------------------' $blue
 e ''
 
 alias dw='defaults write com.apple.ActivityMonitor'

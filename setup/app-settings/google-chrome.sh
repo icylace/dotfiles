@@ -1,9 +1,9 @@
 e ''
-e '###############################################' $blue
-e '#                GOOGLE CHROME                #' $blue
-e '#                 Web browser.                #' $blue
-e '#        http://www.google.com/chrome/        #' $blue
-e '###############################################' $blue
+e '-----------------------------------------------' $blue
+e '-                Google Chrome                -' $blue
+e '-                 Web browser.                -' $blue
+e '-        http://www.google.com/chrome/        -' $blue
+e '-----------------------------------------------' $blue
 e ''
 
 alias dw='defaults write com.google.Chrome'

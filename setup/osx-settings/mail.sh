@@ -1,10 +1,10 @@
-e ''
-e '###############################################' $blue
-e '#                    MAIL                     #' $blue
-e '###############################################' $blue
-e ''
+# e ''
+# e '-----------------------------------------------' $blue
+# e '-                    Mail                     -' $blue
+# e '-----------------------------------------------' $blue
+# e ''
 
-alias dw='defaults write com.apple.mail'
+# alias dw='defaults write com.apple.mail'
 
 # e '\tCopy email addresses as `foo@example.com` instead of `Foo Bar <foo@example.com>`.'
 # dw AddressesIncludeNameOnPasteboard -bool false

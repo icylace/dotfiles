@@ -1,8 +1,8 @@
 e ''
-e '###############################################' $blue
-e '#      DOCK, DASHBOARD, MISSION CONTROL       #' $blue
-e '#            SPACES, AND TRACKPAD             #' $blue
-e '###############################################' $blue
+e '-----------------------------------------------' $blue
+e '-      Dock, Dashboard, Mission Control       -' $blue
+e '-            Spaces, and Trackpad             -' $blue
+e '-----------------------------------------------' $blue
 e ''
 
 alias dw='defaults write com.apple.dashboard'

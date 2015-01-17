@@ -1,7 +1,7 @@
 e ''
-e '###############################################' $blue
-e '#                   OTHERS                    #' $blue
-e '###############################################' $blue
+e '-----------------------------------------------' $blue
+e '-                   Others                    -' $blue
+e '-----------------------------------------------' $blue
 e ''
 
 e '\tDisable infrared remote control.'
@@ -109,7 +109,6 @@ defaults write com.apple.ScriptEditor2 ApplePersistence -bool false
 
 e '\tPrevent Time Machine from prompting to use new hard drives as a backup volume.'
 defaults write com.apple.TimeMachine DoNotOfferNewDisksForBackup -bool true
-
 
 # # Disable Notification Center.
 # defaults write /System/Library/LaunchAgents/com.apple.notificationcenterui KeepAlive -bool false

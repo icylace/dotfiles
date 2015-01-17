@@ -1,7 +1,7 @@
 e ''
-e '###############################################' $blue
-e '#               ARCHIVE UTILITY               #' $blue
-e '###############################################' $blue
+e '-----------------------------------------------' $blue
+e '-               Archive Utility               ' $blue
+e '-----------------------------------------------' $blue
 e ''
 
 alias dw='defaults write com.apple.archiveutility'
