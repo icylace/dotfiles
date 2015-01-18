@@ -199,11 +199,61 @@ source 'osx.sh'
 #  Post-install setup.
 # ------------------------------------------------------------------------------
 
+#
+# Google Chrome - Stylish
+#
+# Chess.com
+# 1.  Dark Forces for Chess.com
+#     https://userstyles.org/styles/66123/dark-forces-for-chess-com
+#
+# Facebook
+# 1.  dark-facebook 2
+#     http://dtinth.github.io/dark-facebook/
+# 2.  Facebook Declutter
+#     https://userstyles.org/styles/100032/facebook-declutter
+# 3.  MINIMAL FACEBOOK PRO - CLEAN DARK /by robertgall/
+#     https://userstyles.org/styles/98266/minimal-facebook-pro-clean-dark-by-robertgall
+#
+# Github
+# 1.  Github Dark
+#     https://github.com/StylishThemes/GitHub-Dark
+#
+# Google
+# 1.  MINIMAL GOOGLE PRO - CLEAN DARK /by robertgall/
+#     https://userstyles.org/styles/98262/minimal-google-pro-clean-dark-by-robertgall
+#
+# Google Calendar
+# 1.  Google Calendar - Dark Style
+#     https://userstyles.org/styles/102256/google-calendar-dark-style
+#
+# Google Mail
+# 1.  Gmail dark
+#     https://userstyles.org/styles/101479/gmail-dark
+#
+# reddit
+# 1.  Reddit Web 2.0 Dynamic (Wide) (RES Friendly)
+#     https://userstyles.org/styles/80084/reddit-web-2-0-dynamic-wide-res-friendly
+#
+# StackOverflow
+# 1.  Stackoverflow Dark theme for Stylish
+#     https://github.com/StylishThemes/StackOverflow-Dark
+#
+# Stylish
+# 1.  MINIMAL USERSTYLES PRO - CLEAN DARK /by robertgall/
+#     https://userstyles.org/styles/98263/minimal-userstyles-pro-clean-dark-by-robertgall
+#
+# Sublime Text
+# 1.  Sublimetext themes and skins
+#     https://userstyles.org/styles/browse/sublimetext
+#
+# Wikipedia
+# 1.  Wikipedia - Dark, blue, simple
+#     https://userstyles.org/styles/64023/wikipedia-dark-blue-simple
+#
+
 # FirefoxDeveloperEdition#
 # - add HipChat to search engine list
 # - add BitBucket to search engine list
-
-
 
 
 # TODO
