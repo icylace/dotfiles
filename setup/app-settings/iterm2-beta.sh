@@ -8,5 +8,5 @@ e ''
 
 alias dw='defaults write com.googlecode.iterm2'
 
-e "\tDon't display the annoying prompt when quitting."
+et "Don't display the annoying prompt when quitting."
 dw PromptOnQuit -bool false

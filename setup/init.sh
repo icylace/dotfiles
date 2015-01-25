@@ -11,9 +11,6 @@ blue='\033[0;34m'
 magenta='\033[0;35m'
 cyan='\033[0;36m'
 
-# # Reset text attributes to normal + without clearing screen.
-# alias Reset="tput sgr0"
-
 #
 # Echo with color.
 #
@@ -24,6 +21,11 @@ e() {
   echo -e "${2}${1}"
   # Reset text attributes to normal without clearing screen.
   tput sgr0
-  # Reset # Reset to normal.
-  return
+}
+
+#
+# Indented echo with color.
+#
+et() {
+  e "\t${1}" ${2}
 }

@@ -200,6 +200,17 @@ source 'osx.sh'
 # ------------------------------------------------------------------------------
 
 #
+# Google Chromw
+# 1.  Go to `chrome://flags`.
+# 2.  Enable "Enable Developer Tools experiments."
+# 3.  Restart Chrome.
+# 4.  Open "Developer Tools" (View -> Developer -> Developer Tools)
+# 5.  Click on the gear icon in the upper-right corner to open up the settings popup.
+# 6.  Go to the "Experiments" panel and check off "Allow custom UI themes".
+# 7.  Restart Chrome for it to take effect.
+#
+
+#
 # Google Chrome - Stylish
 #
 # Chess.com
@@ -258,3 +269,114 @@ source 'osx.sh'
 
 # TODO
 # Figure out a way to programmatically turn off Caps Lock key
+
+
+# install script stuff:
+
+# find a way to disable default system shortcut keys
+
+# http://osxdaily.com/2012/03/21/change-shell-mac-os-x/
+# chsh -s /bin/zsh
+
+# https://github.com/sstephenson/ruby-build
+# rbenv install 2.2.0
+# rbenv global 2.2.0
+
+# automate install Antigen via git
+# http://antigen.sharats.me/
+
+# adjust:
+# defaults write -g InitialKeyRepeat -int 12
+# defaults write -g KeyRepeat -int 0
+
+
+# uninstall some quicklook plugins and remove their script setups
+
+
+# brew with node and npm
+
+
+
+# brews:
+
+# rbenv
+# ruby-build
+# vcprompt
+
+
+
+# casks:
+
+# default-folder-x
+# font-inconsolata-g-for-powerline
+
+
+
+
+
+
+
+# get working:
+
+# new vcprompt setup
+
+# dotfiles
+# Beyond Compare (buy)
+# Boom 2 (buy)
+# MAMP PRO (buy?)
+# batch zip
+
+
+
+
+# sync through Dropbox support built-in:
+
+# Path Finder ?
+
+
+
+# manual sync through Dropbox:
+
+# MAMP & MAMP PRO (export)?
+# Sublime Text ?
+
+
+
+# other sync:
+
+# Firefox Sync
+# Google Dashboard
+# iCloud ?
+
+
+# figure out preferences sharing:
+
+# Ulysses
+# VirtualBox
+# LibreOffice
+# PhpStorm
+
+
+
+# ----
+
+# consider using .plist or "defaults write"
+
+# CodeBox
+# nvALT
+# The Hit List
+# VLC
+# Sequel Pro
+
+# ----
+
+# ~ Transmit
+
+
+# lookup:
+# sartorial
+# droit du seigneur
+# dalliance
+# dalliances
+
+

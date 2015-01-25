@@ -16,7 +16,6 @@ brew update
 brew tap homebrew/homebrew-games
 
 formulas=(
-
   brogue
   gnu-chess
   mame
@@ -26,19 +25,16 @@ formulas=(
   # Manages the administration of Mac applications distributed as binaries.
   # http://caskroom.io/
   caskroom/cask/brew-cask
-
 )
 
 e 'Installing Homebrew formulas...'
 brew install "${formulas[@]}"
 
 cask_formulas=(
-
   battle-net
   boxer
   openemu-experimental
   steam
-
 )
 
 brew cask install "${cask_formulas[@]}"

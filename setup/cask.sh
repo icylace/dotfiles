@@ -7,7 +7,7 @@ e ''
 # Homebrew Cask
 # Manages the administration of Mac applications distributed as binaries.
 # http://caskroom.io/
-e 'Installing Homebrew Cask'
+et 'Installing Homebrew Cask'
 brew install caskroom/cask/brew-cask
 
 # Check if there are problems.
@@ -24,7 +24,7 @@ brew tap caskroom/fonts
 # Make sure our Homebrew Cask recipes are updated.
 brew cask update
 
-e 'Installing casks...'
+et 'Installing casks...'
 brew cask install $(cat brews/casks.brew | grep -v \#)
 
 # Check if there are problems.
@@ -57,12 +57,14 @@ brew cask cleanup
 # # Open and Save dialog box enhancer.
 # # http://stclairsoft.com/DefaultFolderX/
 # default-folder-x
-# There is a Cask for it but it needs fixing.
+# There is a Cask for it but it needs fixing.  The workaround is to install manually.
 
 # # LastPass
 # # A password manager.
 # lastpass
 # # Run `open -a 'LastPass Installer'` to complete installation.
+
+# lighttable
 
 # Flavours
 # System themer.

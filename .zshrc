@@ -60,7 +60,7 @@ battery_charge() {
 
 prompt_char() {
   git branch >/dev/null 2>/dev/null && echo '±' && return
-  hg root >/dev/null 2>/dev/null && echo '☿' && return
+  # hg root >/dev/null 2>/dev/null && echo '☿' && return
   # echo '♿'
   # echo '❆'
   # echo '⑁'
@@ -273,6 +273,7 @@ alias drush='nocorrect drush'
 alias dr='drush'
 alias drc='drush cc all'
 alias drcfu='drush cc all && drush fra -y && drush updb -y'
+alias drcr='drush cr'
 alias drd='drush dis'
 alias dre='drush en'
 alias drf='drush fra -y'
@@ -301,7 +302,7 @@ alias dru='drush updb -y'
 #  http://brettterpstra.com/2014/08/05/shell-tricks-man-pages/
 # ------------------------------------------------------------------------------
 
-alias manp='man -t [command] | open -f -a Preview'
+alias manp="man -t ${1} | open -f -a Preview"
 
 # ------------------------------------------------------------------------------
 
@@ -311,16 +312,19 @@ if which rbenv > /dev/null; then eval "$(rbenv init -)"; fi
 # ------------------------------------------------------------------------------
 
 # My custom PHP development tools.
-export DEV_INC="/Users/icylace/My/Repositories/dev/includes/dev.inc"
+export DEV_INC="${HOME}/My/Repositories/dev/includes/dev.inc"
 
 # http://stackoverflow.com/a/5545748/1935675
 # http://stackoverflow.com/a/8814780/1935675
 export PATH="/usr/local/bin:$PATH"
 export PATH="/Applications/MAMP/bin/php/php5.5.3/bin:$PATH"
 export PATH="/Applications/MAMP/Library/bin:$PATH"
-export PATH="/Users/icylace/Library/Haskell/bin:$PATH"
-export PATH="/Users/icylace/.cabal/bin:$PATH"
-export PATH="/Users/icylace/.composer/vendor/bin:$PATH"
+# export PATH="/Users/icylace/Library/Haskell/bin:$PATH"
+# export PATH="/Users/icylace/.cabal/bin:$PATH"
+# export PATH="/Users/icylace/.composer/vendor/bin:$PATH"
+export PATH="${HOME}/Library/Haskell/bin:$PATH"
+export PATH="${HOME}/.cabal/bin:$PATH"
+export PATH="${HOME}/.composer/vendor/bin:$PATH"
 
 # # https://github.com/ashleynewson/SmartSim/issues/2#issuecomment-10306256
 # export PKG_CONFIG_PATH=/usr/X11/lib/pkgconfig
