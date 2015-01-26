@@ -1,23 +1,23 @@
-e ''
-e '###############################################' $blue
-e '#                  FIREWALL                   #' $blue
-e '###############################################' $blue
-e ''
+# e ''
+# e '-----------------------------------------------' $blue
+# e '-                  Firewall                   -' $blue
+# e '-----------------------------------------------' $blue
+# e ''
 
-# e '\tEnable the OS X firewall.'
+# et 'Enable the OS X firewall.'
 # sudo defaults write /Library/Preferences/com.apple.alf globalstate -int 1
 # # Possible values:
 # #   0 = off
 # #   1 = on for specific services
 # #   2 = on for essential services
 
-# e '\tEnable Stealth mode.'
+# et 'Enable Stealth mode.'
 # sudo defaults write /Library/Preferences/com.apple.alf stealthenabled -int 1
 
-# e '\tEnable Firewall logging.'
+# et 'Enable Firewall logging.'
 # sudo defaults write /Library/Preferences/com.apple.alf loggingenabled -int 1
 
-# e '\tReload the firewall.'
+# et 'Reload the firewall.'
 # launchctl unload /System/Library/LaunchAgents/com.apple.alf.useragent.plist
 # sudo launchctl unload /System/Library/LaunchDaemons/com.apple.alf.agent.plist
 # sudo launchctl load /System/Library/LaunchDaemons/com.apple.alf.agent.plist

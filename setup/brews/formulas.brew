@@ -84,11 +84,6 @@ findutils
 # http://www.graphicsmagick.org/
 graphicsmagick
 
-# Graphviz
-# Graph visualizer.
-# http://graphviz.org/
-graphviz
-
 # HTTPie
 # HTTP client.
 # http://httpie.org/
@@ -114,10 +109,10 @@ python3
 # http://plasmasturm.org/code/rename/
 rename
 
-# The Silver Searcher
+# The Platinum Searcher
 # Searches source code matching a specified pattern.
-# http://geoff.greer.fm/ag/
-the_silver_searcher
+# https://github.com/monochromegane/the_platinum_searcher
+the_platinum_searcher
 
 # Tree
 # Recursive directory lister.

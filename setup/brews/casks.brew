@@ -71,6 +71,11 @@ cdock
 # http://grandtotal.biz/CheatSheet/
 cheatsheet
 
+# Skala Color
+# Color picker.
+# http://bjango.com/mac/skalacolor/
+colorpicker-skalacolor
+
 # ControllerMate
 # Input device remapper.
 # http://orderedbytes.com/controllermate/
@@ -283,11 +288,6 @@ keepingyouawake
 # Previews archives.
 # http://macitbetter.com/BetterZip-Quick-Look-Generator/
 betterzipql
-
-# BrushView QuickLook PlugIn
-# Previews Photoshop brush files.
-# http://brushviewer.sourceforge.net/
-brushviewql
 
 # Invisor QuickLook Plug-In
 # Previews video and audio with technical details.
