@@ -46,19 +46,16 @@ alias cw='compass watch'
 alias g='git'
 alias ga='git add .'
 alias gb='git branch -a'
-alias gc='git commit -a -v -m'
+alias gc='git commit -v -m'
+alias gca='git commit -a -v -m'
 # alias gcb='git commit -a -v -m ...... $(git symbolic-ref --short HEAD)'
 alias gd='git diff'
-alias gdm='git diff master'
 alias gl='git log'
-alias glm='git pull origin master'
 alias glo='git pull origin'
+alias gm='git merge'
 alias go='git checkout'
 alias gob='git checkout -b'
-alias gom='git checkout master'
-alias gm='git merge'
 # alias gpb='git push origin $(git symbolic-ref --short HEAD)'
-alias gpm='git push origin master'
 alias gpo='git push origin'
 alias gs='git status'
 # NOTE: `gs` is normally GhostScript.
@@ -79,19 +76,24 @@ alias hr='runghc -package-db=.cabal-sandbox/x86_64-osx-ghc-7.6.3-packages.conf.d
 alias b='brew'
 alias bd='brew doctor'
 alias bi='brew info'
+alias bl='brew list'
+alias bs='brew search'
+alias bu='brew update && brew upgrade && brew cleanup && brew cask cleanup'
+
+# Homebrew Cask
 alias bk='brew cask'
 alias bkd='brew cask doctor'
 alias bki='brew cask info'
 alias bkl='brew cask list'
 alias bks='brew cask search'
 # alias bku='brew cask update'
-alias bl='brew list'
-alias bs='brew search'
-alias bu='brew update && brew upgrade && brew cleanup && brew cask cleanup'
 
 # Laravel
 alias artisan='php artisan'
 alias a='php artisan'
+
+# Symfony
+alias sr='php app/console server:run'
 
 # Vagrant
 alias v='cd ~/My/Repositories/vagrant-base && vagrant'
@@ -110,3 +112,6 @@ alias vu='v up'
 alias vu3='v up php53'
 alias vu4='v up php54'
 alias vu5='v up php55'
+
+# http://stackoverflow.com/a/28054871
+alias b2d='boot2docker start; $(boot2docker shellinit)'

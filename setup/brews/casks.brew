@@ -309,20 +309,10 @@ qlimagesize
 # https://github.com/toland/qlmarkdown
 qlmarkdown
 
-# QLPrettyPatch
-# Previews .patch files.
-# https://github.com/atnan/QLPrettyPatch
-qlprettypatch
-
 # QuicklookStephen
 # Previews plain text files without a file extension.
 # https://github.com/whomwah/qlstephen
 qlstephen
-
-# QuickLook Video
-# Previews most types of video files.
-# https://github.com/Marginal/QLVideo
-qlvideo
 
 # A QuickLook Plugin for CSV Files
 # Previews CSV files.
@@ -333,11 +323,6 @@ quicklook-csv
 # Previews JSON files.
 # http://sagtau.com/quicklookjson
 quicklook-json
-
-# QuickNFO
-# Previews demoscene NFO files.
-# https://github.com/planbnet/QuickNFO
-quicknfo
 
 # Suspicious Package
 # Previews the contents of a standard Apple installer package.

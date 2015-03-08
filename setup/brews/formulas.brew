@@ -94,10 +94,10 @@ httpie
 # http://stedolan.github.io/jq/
 jq
 
-# Python
-# A programming language.
-# https://www.python.org/
-python
+# # Python
+# # A programming language.
+# # https://www.python.org/
+# python
 
 # Python
 # A programming language.

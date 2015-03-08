@@ -140,6 +140,17 @@ chflags nohidden ~/Library/
 # http://www.defaults-write.com/safari-highlight-non-retina-images/
 
 
+# # Alcatraz
+# # Package manager for Xcode.
+# # http://alcatraz.io/
+# curl -fsSL https://raw.github.com/supermarin/Alcatraz/master/Scripts/install.sh | sh
+
+# # CocoaPods
+# # Dependency manager for Cocoa projects.
+# # http://cocoapods.org/
+# sudo gem install cocoapods
+
+
 # # ------------------------------------------------------------------------------
 # #  OS X Lion setings.
 # # ------------------------------------------------------------------------------

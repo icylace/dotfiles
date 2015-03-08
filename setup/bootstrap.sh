@@ -22,6 +22,10 @@
 #  - https://gist.github.com/brandonb927/3195465
 #
 
+# TODO
+# - Check out:
+#   https://github.com/oleganza/bash-settings
+
 source 'init.sh'
 
 e ''

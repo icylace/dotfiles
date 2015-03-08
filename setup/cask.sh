@@ -30,11 +30,6 @@ brew cask install $(cat brews/casks.brew | grep -v \#)
 # Check if there are problems.
 brew cask doctor
 
-# Modify Alfred's search scope to include the Caskroom directory where Applications are stored.
-# https://github.com/caskroom/homebrew-cask/issues/8052#issuecomment-66736053
-defaults write com.runningwithcrayons.Alfred-Preferences syncfolder -string '~/My/Dropbox/Sync/Alfred Preferences'
-brew cask alfred link
-
 # Make sure we longer have any unnecessary files laying around.
 brew cleanup
 brew cask cleanup
@@ -52,6 +47,14 @@ brew cask cleanup
 #
 # Other casks.
 #
+
+# atom
+
+# atom-shell
+
+# https://github.com/ttscoff/reiki/blob/master/reiki.plugin.bash#L298
+
+# https://gist.github.com/brandonb927/3195465
 
 # # Default Folder X
 # # Open and Save dialog box enhancer.

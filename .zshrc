@@ -232,6 +232,7 @@ c() {
   fi
 }
 
+alias c.='c ..'
 alias c..='c ..'
 alias c...='c ...'
 alias c....='c ....'
@@ -242,9 +243,11 @@ alias c~='c ~'
 alias c-='c -1'
 alias c+='c +1'
 alias c-d='c ~/Downloads'
+alias c-o='c ~/My/Output'
 alias cr='c ~/My/Repositories'
 alias cs='c ~/Sites'
 alias cn='c /usr/local/lib/node_modules'
+alias ct='c ~/My/tmp'
 alias cv='c ~/My/Repositories/vagrant-base'
 
 # ------------------------------------------------------------------------------
@@ -311,8 +314,7 @@ if which rbenv > /dev/null; then eval "$(rbenv init -)"; fi
 
 # ------------------------------------------------------------------------------
 
-# My custom PHP development tools.
-export DEV_INC="${HOME}/My/Repositories/dev/includes/dev.inc"
+export DOCKER_HOST=tcp://192.168.59.103:2375
 
 # http://stackoverflow.com/a/5545748/1935675
 # http://stackoverflow.com/a/8814780/1935675
@@ -329,3 +331,9 @@ export PATH="${HOME}/.composer/vendor/bin:$PATH"
 # # https://github.com/ashleynewson/SmartSim/issues/2#issuecomment-10306256
 # export PKG_CONFIG_PATH=/usr/X11/lib/pkgconfig
 # # pkg-config --variable pc_path pkg-config
+
+# My custom PHP development tools.
+export DEV_INC="${HOME}/My/Repositories/dev/includes/dev.inc"
+
+# Extra stuff that's too sensitive to be committed to a public repository.
+source ~/.extra
