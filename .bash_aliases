@@ -57,6 +57,7 @@ alias go='git checkout'
 alias gob='git checkout -b'
 # alias gpb='git push origin $(git symbolic-ref --short HEAD)'
 alias gpo='git push origin'
+alias gr='git reset --hard; git clean -fd'
 alias gs='git status'
 # NOTE: `gs` is normally GhostScript.
 
