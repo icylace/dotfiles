@@ -150,6 +150,8 @@ chflags nohidden ~/Library/
 # # http://cocoapods.org/
 # sudo gem install cocoapods
 
+# nvm alias default stable
+# npm install -g slush
 
 # # ------------------------------------------------------------------------------
 # #  OS X Lion setings.

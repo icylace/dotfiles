@@ -94,6 +94,11 @@ httpie
 # http://stedolan.github.io/jq/
 jq
 
+# Node Version Manager
+# A manager for handling different versions of Node.js.
+# https://github.com/creationix/nvm
+nvm
+
 # # Python
 # # A programming language.
 # # https://www.python.org/

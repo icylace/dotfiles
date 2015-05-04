@@ -327,6 +327,11 @@ export PATH="/Applications/MAMP/Library/bin:$PATH"
 export PATH="${HOME}/Library/Haskell/bin:$PATH"
 export PATH="${HOME}/.cabal/bin:$PATH"
 export PATH="${HOME}/.composer/vendor/bin:$PATH"
+export PATH="${HOME}/.node/bin:$PATH"
+
+# Recommended by Homebrew.
+export NVM_DIR=~/.nvm
+source $(brew --prefix nvm)/nvm.sh
 
 # # https://github.com/ashleynewson/SmartSim/issues/2#issuecomment-10306256
 # export PKG_CONFIG_PATH=/usr/X11/lib/pkgconfig
@@ -336,4 +341,7 @@ export PATH="${HOME}/.composer/vendor/bin:$PATH"
 export DEV_INC="${HOME}/My/Repositories/dev/includes/dev.inc"
 
 # Extra stuff that's too sensitive to be committed to a public repository.
-source ~/.extra
+if [ -d ~/.extra ]; then
+  source ~/.extra
+  # Control will enter here if $DIRECTORY exists.
+fi
