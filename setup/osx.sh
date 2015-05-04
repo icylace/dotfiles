@@ -150,8 +150,45 @@ chflags nohidden ~/Library/
 # # http://cocoapods.org/
 # sudo gem install cocoapods
 
+
+
+
 # nvm alias default stable
-# npm install -g slush
+
+
+# # blacklisted-gulp
+# # Searches for blacklisted Gulp plugins in your project.
+# # https://github.com/ernestoalejo/blacklisted-gulp
+# # https://www.npmjs.com/package/blacklisted-gulp
+# npm install --global blacklisted-gulp
+
+# # Bower
+# # Package manager for the web projects.
+# # http://bower.io/
+# npm install --global bower
+
+# # deps-ok
+# # Fast checking of top level dependencies based on version numbers.
+# # https://www.npmjs.com/package/deps-ok
+# npm install --global deps-ok
+
+# # Gulp
+# # The streaming build system.
+# # http://gulpjs.com/
+# npm install --global gulp
+
+# # npm-check-updates
+# # Finds newer versions of dependencies than what your package.json allows.
+# # https://www.npmjs.com/package/npm-check-updates
+# npm install --global npm-check-updates
+
+# # Slush
+# # The streaming scaffolding system.
+# # http://slushjs.github.io/#/
+# npm install --global slush
+
+
+
 
 # # ------------------------------------------------------------------------------
 # #  OS X Lion setings.
