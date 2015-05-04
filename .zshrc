@@ -329,9 +329,12 @@ export PATH="${HOME}/.cabal/bin:$PATH"
 export PATH="${HOME}/.composer/vendor/bin:$PATH"
 export PATH="${HOME}/.node/bin:$PATH"
 
-# Recommended by Homebrew.
-export NVM_DIR=~/.nvm
-source $(brew --prefix nvm)/nvm.sh
+nvm_file="$(brew --prefix nvm)/nvm.sh"
+if [ -f $nvm_file ]; then
+  # Recommended by Homebrew.
+  export NVM_DIR=~/.nvm
+  source $nvm_file
+fi
 
 # # https://github.com/ashleynewson/SmartSim/issues/2#issuecomment-10306256
 # export PKG_CONFIG_PATH=/usr/X11/lib/pkgconfig
