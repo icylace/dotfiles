@@ -67,7 +67,8 @@ alias gob='git checkout -b'
 # alias gp='git push origin $(gsr)'
 alias gpo='git push origin'
 alias gr='git reset --hard; git clean -fd'
-alias gs='git status'
+# alias gs='git status --untracked-files'
+alias gs='git status --untracked-files --short'
 # NOTE: `gs` is normally GhostScript.
 
 # TODO
@@ -107,9 +108,6 @@ alias sr='php app/console server:run'
 
 # Vagrant
 alias v='cd ~/My/Repositories/vagrant-base && vagrant'
-alias v3='v up php53'
-alias v4='v up php54'
-alias v5='v up php55'
 alias vh='v halt'
 alias vh3='v halt php53'
 alias vh4='v halt php54'
@@ -122,6 +120,9 @@ alias vu='v up'
 alias vu3='v up php53'
 alias vu4='v up php54'
 alias vu5='v up php55'
+alias v3='vu3; vs3'
+alias v4='vu4; vs4'
+alias v5='vu5; vs5'
 
 # http://stackoverflow.com/a/28054871
 alias b2d='boot2docker start; $(boot2docker shellinit)'

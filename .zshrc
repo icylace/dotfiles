@@ -318,7 +318,9 @@ export DOCKER_HOST=tcp://192.168.59.103:2375
 
 # http://stackoverflow.com/a/5545748/1935675
 # http://stackoverflow.com/a/8814780/1935675
+
 export PATH="/usr/local/bin:$PATH"
+export PATH="/usr/local/sbin:$PATH"
 export PATH="/Applications/MAMP/bin/php/php5.5.3/bin:$PATH"
 export PATH="/Applications/MAMP/Library/bin:$PATH"
 # export PATH="/Users/icylace/Library/Haskell/bin:$PATH"
