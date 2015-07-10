@@ -125,19 +125,13 @@ alias artisan='php artisan'
 alias a='php artisan'
 
 # Swift
-alias s='swift'
-# c() {
-#   if [ -f "$1" ]; then
-#     cat $@
-#   else
-#     if [ -n "$1" ]; then
-#       cd $@
-#       ls -AGp
-#     else
-#       ls -AGp
-#     fi
-#   fi
-# }
+s() {
+  if [ -n "$1" ]; then
+    swift "$1.swift"
+  else
+    swift main.swift
+  fi
+}
 
 # Symfony
 alias sr='php app/console server:run'
