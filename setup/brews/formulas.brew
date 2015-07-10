@@ -53,6 +53,11 @@ git
 # https://github.com/tj/git-extras
 git-extras
 
+# Git STree
+# Git subtree helper command.
+# http://tdd.github.io/git-stree/
+git-stree
+
 # hub
 # Wrapper for Git that makes you better at GitHub.
 # https://hub.github.com/
@@ -128,6 +133,11 @@ tree
 # HTTP, HTTPS, and FTP client.
 # http://www.gnu.org/software/wget/
 wget
+
+# tup
+# File-based build system.
+# http://gittup.org/tup/
+tup
 
 # Z shell
 # A Unix shell.

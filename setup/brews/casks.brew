@@ -86,11 +86,6 @@ controllermate
 # http://daisydiskapp.com/
 daisydisk
 
-# Dash
-# Offline API documentation viewer and code snippet manager.
-# http://kapeli.com/dash
-dash
-
 # Dropbox
 # File sharer with cloud storage.
 # https://www.dropbox.com/
@@ -255,6 +250,16 @@ virtualbox
 # Media player.
 # http://www.videolan.org/vlc/
 vlc
+
+
+# ------------------------------------------------------------------------------
+#  Command-line Utilities.
+# ------------------------------------------------------------------------------
+
+# ngrok
+# Introspected tunnels to localhost.
+# https://ngrok.com/
+ngrok
 
 
 # ------------------------------------------------------------------------------

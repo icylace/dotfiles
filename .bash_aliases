@@ -1,6 +1,26 @@
 alias cp='cp -i'
 alias li='ls -lAG'
 
+#
+# Pipes in/out of the clipboard.
+#
+# Usage: someapp | cb     # Pipe someapp's output into clipboard
+#        cb | someapp     # Pipe clipboard's content into someapp
+#
+# http://stackoverflow.com/a/19458217
+#
+cb() {
+  if [[ -p /dev/stdin ]]; then
+    # stdin is a pipe.
+    # stdin -> clipboard
+    pbcopy
+  else
+    # stdin is not a pipe.
+    # clipboard -> stdout
+    pbpaste
+  fi
+}
+
 # Preview the OS X clipboard in the terminal.
 # http://brettterpstra.com/2014/12/11/preview-the-os-x-clipboard-in-terminal/
 alias cbp='pbpaste | less'
@@ -51,10 +71,10 @@ alias gb='git branch -a'
 alias gc='git commit -v -m'
 alias gsr='git symbolic-ref --short HEAD'
 # alias gcb='git commit -a -v -m ...... $(gsr)'
-alias gd='git diff'
-alias gds='git diff --staged'
-alias gdsw='git diff --staged --word-diff'
-alias gdw='git diff --word-diff'
+alias gd='git diff HEAD --minimal'
+alias gds='git diff HEAD --minimal --staged'
+alias gdsw='git diff HEAD --minimal --staged --word-diff'
+alias gdw='git diff HEAD --minimal --word-diff'
 # Based on:
 # https://drupalize.me/videos/moving-through-git-history?p=1173
 alias gl='git log --graph --pretty=format:"%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset" --abbrev-commit --date=relative'
@@ -70,6 +90,7 @@ alias gr='git reset --hard; git clean -fd'
 # alias gs='git status --untracked-files'
 alias gs='git status --untracked-files --short'
 # NOTE: `gs` is normally GhostScript.
+alias gy='git apply --verbose'
 
 # TODO
 # alias gg='git symbolic-ref --short HEAD | echo $1 cat'
@@ -103,6 +124,21 @@ alias bks='brew cask search'
 alias artisan='php artisan'
 alias a='php artisan'
 
+# Swift
+alias s='swift'
+# c() {
+#   if [ -f "$1" ]; then
+#     cat $@
+#   else
+#     if [ -n "$1" ]; then
+#       cd $@
+#       ls -AGp
+#     else
+#       ls -AGp
+#     fi
+#   fi
+# }
+
 # Symfony
 alias sr='php app/console server:run'
 
@@ -112,6 +148,9 @@ alias vh='v halt'
 alias vh3='v halt php53'
 alias vh4='v halt php54'
 alias vh5='v halt php55'
+alias vp3='v provision php53'
+alias vp4='v provision php54'
+alias vp5='v provision php55'
 alias vs='v status'
 alias vs3='v ssh php53'
 alias vs4='v ssh php54'

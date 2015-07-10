@@ -40,16 +40,16 @@
 #
 
 
-# Bundle ID             UTI/ext/MIME Type            Role
+# Bundle ID             UTI/ext/MIME Type             Role
 
-com.sublimetext.3       public.html                  all
-com.sublimetext.3       public.plain-text            all
-com.sublimetext.3       public.unix-executable       all
-com.sublimetext.3       public.xml                   all
-cx.c3.theunarchiver     public.archive               all
-org.m0k.transmission    org.bittorrent.torrent       all
-org.videolan.vlc        public.audiovisual-​content   viewer
-# com.chipmunkninja.JustLooking   public.image    viewer
+com.sublimetext.3       public.html                   all
+com.sublimetext.3       public.plain-text             all
+com.sublimetext.3       public.unix-executable        all
+com.sublimetext.3       public.xml                    all
+cx.c3.theunarchiver     public.archive                all
+org.m0k.transmission    org.bittorrent.torrent        all
+org.videolan.vlc        public.audiovisual-​content    viewer
+# com.chipmunkninja.JustLooking    public.image    viewer
 
 
 # Last line must be blank

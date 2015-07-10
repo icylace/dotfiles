@@ -195,6 +195,8 @@ batch-zip() {
   done
 }
 
+alias bz='batch-zip'
+
 # ------------------------------------------------------------------------------
 
 #
@@ -216,16 +218,15 @@ batch-zip() {
 #     Executing 'cd' with no arguments changes to the home directory but I have
 #     `c` simply list the current directory in that case.
 #
-# TODO
-# - don't run `ls` if `cd` errors out.
-#
 c() {
   if [ -f "$1" ]; then
-    cat $@
+    cat $@ | less
   else
     if [ -n "$1" ]; then
       cd $@
-      ls -AGp
+      if [ -d "$1" ]; then
+        ls -AGp
+      fi
     else
       ls -AGp
     fi
@@ -242,6 +243,8 @@ alias c/='c /'
 alias c~='c ~'
 alias c-='c -1'
 alias c+='c +1'
+
+# Personalized uses:
 alias c-d='c ~/Downloads'
 alias c-o='c ~/My/Output'
 alias cr='c ~/My/Repositories'
