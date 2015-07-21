@@ -78,6 +78,11 @@ legit
 # https://github.com/drush-ops/drush
 drush
 
+# FFmpeg
+# Records, converts, and streams audio and video.
+# http://ffmpeg.org/
+ffmpeg
+
 # GNU Find Utilities
 # Basic directory searching utilities.
 # http://www.gnu.org/software/findutils/
@@ -93,26 +98,6 @@ graphicsmagick
 # HTTP client.
 # http://httpie.org/
 httpie
-
-# jq
-# JSON processor.
-# http://stedolan.github.io/jq/
-jq
-
-# Node Version Manager
-# A manager for handling different versions of Node.js.
-# https://github.com/creationix/nvm
-nvm
-
-# # Python
-# # A programming language.
-# # https://www.python.org/
-# python
-
-# Python
-# A programming language.
-# https://www.python.org/
-python3
 
 # rename
 # File renamer.
@@ -133,11 +118,6 @@ tree
 # HTTP, HTTPS, and FTP client.
 # http://www.gnu.org/software/wget/
 wget
-
-# tup
-# File-based build system.
-# http://gittup.org/tup/
-tup
 
 # Z shell
 # A Unix shell.

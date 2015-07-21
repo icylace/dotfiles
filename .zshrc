@@ -37,8 +37,8 @@ if [ -f ~/.antigen/antigen.zsh ]; then
   # Navigate your most used directories based on 'frecency'.
   antigen bundle rupa/z
 
-  # Directory listings for zsh with git features.
-  antigen bundle supercrabtree/k
+  # # Directory listings for zsh with git features.
+  # antigen bundle rimraf/k
 
   # A dark theme.
   antigen theme bira
@@ -218,18 +218,25 @@ alias bz='batch-zip'
 #     Executing 'cd' with no arguments changes to the home directory but I have
 #     `c` simply list the current directory in that case.
 #
+#     `k` (https://github.com/rimraf/k) will be used if it is installed.
+#
 c() {
   if [ -f "$1" ]; then
     cat $@ | less
   else
+    alias c__lister="k"
+    if hash $($lister) 2>/dev/null; then
+      alias c__lister="ls -AGp"
+    fi
     if [ -n "$1" ]; then
       cd $@
       if [ -d "$1" ]; then
-        ls -AGp
+        c__lister
       fi
     else
-      ls -AGp
+      c__lister
     fi
+    # unalias c__lister
   fi
 }
 

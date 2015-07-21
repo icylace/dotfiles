@@ -127,9 +127,11 @@ alias a='php artisan'
 # Swift
 s() {
   if [ -n "$1" ]; then
-    swift "$1.swift"
+    if [ -f "$1" ]; then
+      swift "$1.swift"
+    fi
   else
-    swift main.swift
+    swift *.swift
   fi
 }
 

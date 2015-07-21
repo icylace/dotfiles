@@ -4,13 +4,13 @@
 #  Setup a Mac.
 # ------------------------------------------------------------------------------
 #
-#  First, make OS X is updated and restart if necessary:
+#  First, make sure OS X is updated and restart if necessary:
 #
 #      sudo softwareupdate -i -a
 #
-#  To use, open up ~/Applications/Utilities/Terminal then run:
+#  To use this setup script, open up ~/Applications/Utilities/Terminal then run:
 #
-#      bash <(curl -s https://raw.githubusercontent.com/icylace/dotfiles/master/setup/init.sh)
+#      bash <(curl -s https://raw.githubusercontent.com/icylace/dotfiles/master/setup/bootstrap.sh)
 #
 #  Heavy influence and much copying from:
 #  - http://lapwinglabs.com/blog/hacker-guide-to-setting-up-your-mac
