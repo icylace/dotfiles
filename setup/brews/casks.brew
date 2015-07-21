@@ -48,11 +48,6 @@ beyond-compare
 # http://globaldelight.com/boom/
 boom
 
-# BootChamp
-# Quickly reboots into the Windows.
-# http://kainjow.com/
-bootchamp
-
 # Cakebrew
 # GUI front end for Homebrew.
 # https://cakebrew.com/
@@ -131,11 +126,6 @@ hyperdock
 # http://bahoom.com/hyperswitch
 hyperswitch
 
-# Integrity
-# Link checker for websites.
-# http://peacockmedia.co.uk/integrity/
-integrity
-
 # iStat Menus 5
 # System monitor.
 # http://bjango.com/mac/istatmenus/
@@ -150,11 +140,6 @@ iterm2-beta
 # Office suite.
 # libreoffice.org
 libreoffice
-
-# Mactracker
-# Mac computer info database.
-# http://mactracker.ca/
-mactracker
 
 # nvALT
 # Notes manager.
@@ -196,40 +181,15 @@ sequel-pro-nightly
 # http://shortcatapp.com/
 shortcat
 
-# Skype
-# VoIP and video conferencing client.
-# http://www.skype.com/en/
-skype
-
-# SourceTree
-# Git client.
-# http://sourcetreeapp.com/
-sourcetree
-
 # Sublime Text
 # Text editor.
 # http://www.sublimetext.com/3dev
 sublime-text-dev
 
-# Synergy
-# Keyboard and mouse switcher for multiple computers.
-# http://synergy-project.org/
-synergy
-
-# The Hit List
-# To-do list manager.
-# http://www.karelia.com/products/the-hit-list/mac.html
-the-hit-list
-
 # The Unarchiver
 # Archive file extractor.
 # http://unarchiver.c3.cx/unarchiver
 the-unarchiver
-
-# Transmission
-# BitTorrent client.
-# https://www.transmissionbt.com/
-transmission
 
 # Transmit
 # File transfer tool.
@@ -253,16 +213,6 @@ vlc
 
 
 # ------------------------------------------------------------------------------
-#  Command-line Utilities.
-# ------------------------------------------------------------------------------
-
-# ngrok
-# Introspected tunnels to localhost.
-# https://ngrok.com/
-ngrok
-
-
-# ------------------------------------------------------------------------------
 #  Applications that require at least Yosemite.
 # ------------------------------------------------------------------------------
 
@@ -283,56 +233,6 @@ ngrok
 # Yosemite
 #
 keepingyouawake
-
-
-# ------------------------------------------------------------------------------
-#  Quick Look plugins.
-# ------------------------------------------------------------------------------
-
-# BetterZip Quick Look Generator
-# Previews archives.
-# http://macitbetter.com/BetterZip-Quick-Look-Generator/
-betterzipql
-
-# Invisor QuickLook Plug-In
-# Previews video and audio with technical details.
-# http://pozdeev.com/invisor/
-invisorql
-
-# QLColorCode
-# Previews source code files with syntax highlighting.
-# https://code.google.com/p/qlcolorcode/
-qlcolorcode
-
-# qlImageSize
-# Displays the dimensions of an image and its file size in the title bar.  It also previews some additional image formats.
-# https://github.com/Nyx0uf/qlImageSize
-qlimagesize
-
-# QLMarkdown
-# Previews Markdown files.
-# https://github.com/toland/qlmarkdown
-qlmarkdown
-
-# QuicklookStephen
-# Previews plain text files without a file extension.
-# https://github.com/whomwah/qlstephen
-qlstephen
-
-# A QuickLook Plugin for CSV Files
-# Previews CSV files.
-# https://github.com/p2/quicklook-csv
-quicklook-csv
-
-# quick look JSON
-# Previews JSON files.
-# http://sagtau.com/quicklookjson
-quicklook-json
-
-# Suspicious Package
-# Previews the contents of a standard Apple installer package.
-# http://www.mothersruin.com/software/SuspiciousPackage/
-suspicious-package
 
 
 # ------------------------------------------------------------------------------
