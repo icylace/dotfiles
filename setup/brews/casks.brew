@@ -166,11 +166,6 @@ pacifist
 # http://cocoatech.com/pathfinder/
 path-finder
 
-# PhpStorm
-# PHP-oriented IDE.
-# https://www.jetbrains.com/phpstorm/
-phpstorm
-
 # Sequel Pro
 # MySQL database manager.
 # http://nightly.sequelpro.com/

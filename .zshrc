@@ -37,8 +37,8 @@ if [ -f ~/.antigen/antigen.zsh ]; then
   # Navigate your most used directories based on 'frecency'.
   antigen bundle rupa/z
 
-  # # Directory listings for zsh with git features.
-  # antigen bundle rimraf/k
+  # Directory listings for zsh with git features.
+  antigen bundle rimraf/k
 
   # A dark theme.
   antigen theme bira
@@ -224,19 +224,22 @@ c() {
   if [ -f "$1" ]; then
     cat $@ | less
   else
-    alias c__lister="k"
-    if hash $($lister) 2>/dev/null; then
-      alias c__lister="ls -AGp"
-    fi
+    listing=false
     if [ -n "$1" ]; then
-      cd $@
       if [ -d "$1" ]; then
-        c__lister
+        listing=true
       fi
+      cd $@
     else
-      c__lister
+      listing=true
     fi
-    # unalias c__lister
+    if [[ "$listing" == true ]]; then
+      if type k >/dev/null 2>&1; then
+        k
+      else
+        ls -AGp
+      fi
+    fi
   fi
 }
 
