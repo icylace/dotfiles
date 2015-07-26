@@ -9,10 +9,10 @@ e ''
 alias dw='defaults write com.cocoatech.PathFinder'
 
 et 'Set the text editor to use.'
-dw textEditorApplicationPath -string '/opt/homebrew-cask/Caskroom/sublime-text-dev/Build 3066/Sublime Text.app'
+dw textEditorApplicationPath -string "'$(readlink ~/Applications/Sublime\ Text.app)'"
 
 et 'Set the terminal emulator to use.'
-dw kTerminalApplicationPath -string '/opt/homebrew-cask/Caskroom/iterm2-beta/2.0.0.20141103/iTerm.app'
+dw kTerminalApplicationPath -string "'$(readlink ~/Applications/iTerm.app)'"
 
 et 'Make Path Finder the default file viewer.'
 dw pathFinderIsDefaultFileViewer -bool true

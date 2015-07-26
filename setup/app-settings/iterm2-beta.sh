@@ -11,5 +11,5 @@ alias dw='defaults write com.googlecode.iterm2'
 et "Don't display the annoying prompt when quitting."
 dw PromptOnQuit -bool false
 
-et "Turn on dark mode."
+et 'Turn on dark mode.'
 dw TabStyle -bool true

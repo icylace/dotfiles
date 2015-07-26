@@ -12,7 +12,7 @@ et "Don't prompt for confirmation before downloading."
 dw DownloadAsk -bool false
 
 et 'Use a certain folder to store incomplete downloads.'
-dw IncompleteDownloadFolder -string "${HOME}/Documents/_ torrents"
+dw IncompleteDownloadFolder -string "${HOME}/Downloads/_ torrents"
 dw UseIncompleteDownloadFolder -bool true
 
 et 'Hide the donate message.'
