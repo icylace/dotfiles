@@ -63,7 +63,7 @@ alias wtf='tail -f /var/log/{dmesg,messages,*{,/*}{log,err}}'
 alias cw='compass watch'
 
 # Git
-alias g='git'
+alias g='git status --untracked-files --short'
 alias ga='git add .'
 # alias ga='git add --all'
 # alias gau='git add -u'
@@ -88,8 +88,6 @@ alias gob='git checkout -b'
 alias gpo='git push origin'
 alias gr='git reset --hard; git clean -fd'
 # alias gs='git status --untracked-files'
-alias gs='git status --untracked-files --short'
-# NOTE: `gs` is normally GhostScript.
 alias gy='git apply --verbose'
 
 # TODO
@@ -161,3 +159,10 @@ alias v5='vu5; vs5'
 
 # http://stackoverflow.com/a/28054871
 alias b2d='boot2docker start; $(boot2docker shellinit)'
+
+# yadm
+alias y='yadm status'
+alias ya='yadm add'
+alias yc='yadm commit -m'
+alias ylo='yadm pull origin master'
+alias ypo='yadm push -u origin master'
