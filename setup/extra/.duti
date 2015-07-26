@@ -46,7 +46,8 @@
 
 # Bundle ID             URL Scheme
 
-org.m0k.transmission    magnet
+org.m0k.transmission    magnet                        all
+org.m0k.transmission    org.bittorrent.torrent        all
 
 
 # Last line must be blank

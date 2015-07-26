@@ -142,6 +142,8 @@ source 'osx.sh'
 # Frees up unused memory.
 # https://fiplab.com/apps/memory-clean-for-mac
 
+# quiver
+
 # shazam
 
 # Ulysses III
@@ -157,8 +159,6 @@ source 'osx.sh'
 # colorchooser ?
 # fontdoctor ?
 # fontvista ?
-# Adobe CC ?
-# Adobe CS6 - use CC instead ?
 # winclone - still useful ?
 # jackpilot - still useful ?
 # plug spy - still useful ?
@@ -168,7 +168,6 @@ source 'osx.sh'
 # sugarsync - still useful ?
 # elephant drive - still useful ?
 # shade - still useful ?
-# iserial reader - still useful to mew ?
 
 
 # ------------------------------------------------------------------------------
@@ -179,10 +178,6 @@ source 'osx.sh'
 # iTunes playback controller.
 # https://github.com/steakknife/breakaway
 # Fork of http://mutablecode.com/apps/breakaway.html
-
-# Neat
-# Document scanner and manager.
-# http://www.neat.com/
 
 # Obsidian Menu Bar
 # A hack that makes your OS X menu bar black.
@@ -204,7 +199,7 @@ source 'osx.sh'
 # ------------------------------------------------------------------------------
 
 #
-# Google Chromw
+# Google Chrome
 # 1.  Go to `chrome://flags`.
 # 2.  Enable "Enable Developer Tools experiments."
 # 3.  Restart Chrome.
@@ -265,10 +260,6 @@ source 'osx.sh'
 # 1.  Wikipedia - Dark, blue, simple
 #     https://userstyles.org/styles/64023/wikipedia-dark-blue-simple
 #
-
-# FirefoxDeveloperEdition#
-# - add HipChat to search engine list
-# - add BitBucket to search engine list
 
 
 # TODO
@@ -375,12 +366,3 @@ source 'osx.sh'
 # ----
 
 # ~ Transmit
-
-
-# lookup:
-# sartorial
-# droit du seigneur
-# dalliance
-# dalliances
-
-
