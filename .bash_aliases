@@ -59,6 +59,9 @@ alias wtf='tail -f /var/log/{dmesg,messages,*{,/*}{log,err}}'
 # http://alias.sh/creating-drupal-sandbox
 # alias drupal-sandbox='drush qd --db-url="mysql://user:pass@localhost:3306/db_name" -y'
 
+# http://stackoverflow.com/a/28054871
+alias b2d='boot2docker start; $(boot2docker shellinit)'
+
 # Compass
 alias cw='compass watch'
 
@@ -137,32 +140,42 @@ s() {
 alias sr='php app/console server:run'
 
 # Vagrant
-alias v='cd ~/My/Repositories/vagrant-base && vagrant'
-alias vh='v halt'
-alias vh3='v halt php53'
-alias vh4='v halt php54'
-alias vh5='v halt php55'
-alias vp3='v provision php53'
-alias vp4='v provision php54'
-alias vp5='v provision php55'
-alias vs='v status'
-alias vs3='v ssh php53'
-alias vs4='v ssh php54'
-alias vs5='v ssh php55'
-alias vu='v up'
-alias vu3='v up php53'
-alias vu4='v up php54'
-alias vu5='v up php55'
+alias v='vagrant status'
+alias vd='vagrant destroy'
+alias vg='vagrant global-status --prune'
+alias vh='vagrant halt'
+alias vp='vagrant provision'
+alias vs='vagrant ssh'
+alias vu='vagrant up'
+# PHP 5.5 box.
+alias vbase='cd ~/My/Repositories/vagrant-base'
+# PHP 5.3 box.
+alias vh3='vbase && vagrant halt php53'
+alias vp3='vbase && vagrant provision php53'
+alias vs3='vbase && vagrant ssh php53'
+alias vu3='vbase && vagrant up php53'
 alias v3='vu3; vs3'
+# PHP 5.4 box.
+alias vh4='vbase && vagrant halt php54'
+alias vp4='vbase && vagrant provision php54'
+alias vs4='vbase && vagrant ssh php54'
+alias vu4='vbase && vagrant up php54'
 alias v4='vu4; vs4'
+# PHP 5.5 box.
+alias vh5='vbase && vagrant halt php55'
+alias vp5='vbase && vagrant provision php55'
+alias vs5='vbase && vagrant ssh php55'
+alias vu5='vbase && vagrant up php55'
 alias v5='vu5; vs5'
-
-# http://stackoverflow.com/a/28054871
-alias b2d='boot2docker start; $(boot2docker shellinit)'
 
 # yadm
 alias y='yadm status'
 alias ya='yadm add'
+alias yaa='yadm add --update'
 alias yc='yadm commit -m'
-alias yl='yadm pull origin master'
-alias yp='yadm push -u origin master'
+alias yd='yadm diff HEAD --minimal'
+# Based on:
+# https://drupalize.me/videos/moving-through-git-history?p=1173
+alias yl='yadm log --graph --pretty=format:"%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset" --abbrev-commit --date=relative'
+alias ylm='yadm pull origin master'
+alias ypm='yadm push -u origin master'
