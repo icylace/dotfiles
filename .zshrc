@@ -135,7 +135,7 @@ setopt RM_STAR_WAIT
 #   mkdir $1
 #   cd $1
 #   drush dl drupal-7.x
-#   drush site-install standard --account-name=superuser --account-pass=password --db-url=mysql://root:99EvRzGwNbaSUW@localhost/ascopoc_drupal
+#   drush site-install standard --account-name=superuser --account-pass=password --db-url=mysql://root:clever-password@localhost/drupal_site
 # }
 
 # ------------------------------------------------------------------------------
@@ -224,7 +224,7 @@ c() {
   if [ -f "$1" ]; then
     cat $@ | less
   else
-    listing=false
+    local listing=false
     if [ -n "$1" ]; then
       if [ -d "$1" ]; then
         listing=true
@@ -265,6 +265,17 @@ alias cv='c ~/My/Repositories/vagrant-base'
 
 # ------------------------------------------------------------------------------
 
+# Manually update things.
+u() {
+  upgrade_oh_my_zsh
+  antigen update
+  npm update -g
+  # Update Homebrew stuff by using our alias.
+  bu
+}
+
+# ------------------------------------------------------------------------------
+
 #
 # Tell Z Shell to not try to autocorrect the following.
 #
@@ -272,7 +283,6 @@ alias cv='c ~/My/Repositories/vagrant-base'
 # http://superuser.com/questions/251818/exceptions-to-zsh-correctall-feature/271897#271897
 #
 
-alias ag='nocorrect ag'
 alias co='nocorrect composer'
 alias composer='nocorrect composer'
 alias npm='nocorrect npm'
@@ -297,27 +307,10 @@ alias drfu='drush fra -y && drush updb -y'
 alias drl='drush uli'
 alias dru='drush updb -y'
 
-# http://alias.sh/drupal-developer-mode
-# function devmode {
-#   drush vset preprocess_css 0 -y
-#   drush vset preprocess_js 0 -y
-#   drush vset page_compression 0 -y
-#   drush vset cache 0 -y
-#   drush vset block_cache 0 -y
-#   drush vset less_devel 1 -y
-# }
-
-# http://alias.sh/downloand-and-enable-drush-module
-# function dm {
-#   drush dl $1;
-#   drush en -y $1;
-# }
-
 # ------------------------------------------------------------------------------
 #  Use Preview to read man pages.
 #  http://brettterpstra.com/2014/08/05/shell-tricks-man-pages/
 # ------------------------------------------------------------------------------
-
 alias manp="man -t ${1} | open -f -a Preview"
 
 # ------------------------------------------------------------------------------
@@ -329,16 +322,13 @@ if which rbenv > /dev/null; then eval "$(rbenv init -)"; fi
 
 export DOCKER_HOST=tcp://192.168.59.103:2375
 
-# http://stackoverflow.com/a/5545748/1935675
-# http://stackoverflow.com/a/8814780/1935675
+# http://stackoverflow.com/questions/5545715/how-do-i-add-usr-local-git-bin-to-the-path-on-mac-osx/5545748#5545748
+# http://stackoverflow.com/questions/8814618/installing-mysqldb-on-mac/8814780#8814780
 
 export PATH="/usr/local/bin:$PATH"
 export PATH="/usr/local/sbin:$PATH"
 export PATH="/Applications/MAMP/bin/php/php5.5.3/bin:$PATH"
 export PATH="/Applications/MAMP/Library/bin:$PATH"
-# export PATH="/Users/icylace/Library/Haskell/bin:$PATH"
-# export PATH="/Users/icylace/.cabal/bin:$PATH"
-# export PATH="/Users/icylace/.composer/vendor/bin:$PATH"
 export PATH="${HOME}/Library/Haskell/bin:$PATH"
 export PATH="${HOME}/.cabal/bin:$PATH"
 export PATH="${HOME}/.composer/vendor/bin:$PATH"
@@ -361,5 +351,4 @@ export DEV_INC="${HOME}/My/Repositories/dev/includes/dev.inc"
 # Extra stuff that's too sensitive to be committed to a public repository.
 if [ -d ~/.extra ]; then
   source ~/.extra
-  # Control will enter here if $DIRECTORY exists.
 fi
