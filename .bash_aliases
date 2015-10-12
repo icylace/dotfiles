@@ -81,7 +81,7 @@ alias gdw='git diff HEAD --minimal --word-diff'
 # https://drupalize.me/videos/moving-through-git-history?p=1173
 alias gl='git log --abbrev-commit --date=relative --graph --pretty=format:"%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset"'
 alias gll='git log --decorate --graph --all'
-# alias gll='git log --decorate --graph --all --oneline'
+# alias gllo='git log --decorate --graph --all --oneline'
 alias glo='git pull origin'
 alias gm='git merge'
 alias go='git checkout'
