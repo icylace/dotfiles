@@ -141,6 +141,8 @@ alias sr='php app/console server:run'
 
 # Vagrant
 alias v='vagrant status'
+alias vbl='vagrant box list'
+alias vbr='vagrant box remove'
 alias vd='vagrant destroy'
 alias vg='vagrant global-status --prune'
 alias vh='vagrant halt'
