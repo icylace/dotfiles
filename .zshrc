@@ -235,7 +235,7 @@ c() {
     fi
     if [[ "$listing" == true ]]; then
       if type k >/dev/null 2>&1; then
-        k
+        k --almost-all --human
       else
         ls -AGp
       fi
