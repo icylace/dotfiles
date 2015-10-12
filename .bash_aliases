@@ -68,7 +68,7 @@ alias cw='compass watch'
 # Git
 alias g='git status --untracked-files --short'
 alias ga='git add .'
-# alias ga='git add --all'
+# alias gaa='git add --all'
 alias gb='git branch --all'
 alias gc='git commit --verbose -m'
 alias gsr='git symbolic-ref --short HEAD'
@@ -89,7 +89,8 @@ alias gob='git checkout -b'
 # alias gp='git push origin $(gsr)'
 alias gpo='git push origin'
 alias gr='git reset --hard; git clean --force -d'
-# alias gs='git status --untracked-files'
+# Note: `gs` is also for Ghostscript.
+alias gs='git status --untracked-files'
 alias gu='git add --update'
 alias gy='git apply --verbose'
 
