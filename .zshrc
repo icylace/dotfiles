@@ -4,9 +4,9 @@
 
 # ------------------------------------------------------------------------------
 
-# Use the same aliases as bash.
-if [ -f ~/.bash_aliases ]; then
-  source ~/.bash_aliases
+# Use aliases in common with Bash.
+if [ -f ~/.aliases ]; then
+  source ~/.aliases
 fi
 
 # ------------------------------------------------------------------------------
@@ -276,42 +276,13 @@ u() {
 
 # ------------------------------------------------------------------------------
 
-#
 # Tell Z Shell to not try to autocorrect the following.
-#
 # Based on:
 # http://superuser.com/questions/251818/exceptions-to-zsh-correctall-feature/271897#271897
-#
-
-alias co='nocorrect composer'
-alias composer='nocorrect composer'
-alias npm='nocorrect npm'
-
-# Bower
 alias bower='nocorrect bower'
-alias bo='bower'
-alias boi="bower install"
-alias bol="bower list"
-alias bos="bower search"
-
-# Drush
+alias composer='nocorrect composer'
 alias drush='nocorrect drush'
-alias dr='drush'
-alias drc='drush cc all'
-alias drcfu='drush cc all && drush fra -y && drush updb -y'
-alias drcr='drush cr'
-alias drd='drush dis'
-alias dre='drush en'
-alias drf='drush fra -y'
-alias drfu='drush fra -y && drush updb -y'
-alias drl='drush uli'
-alias dru='drush updb -y'
-
-# ------------------------------------------------------------------------------
-#  Use Preview to read man pages.
-#  http://brettterpstra.com/2014/08/05/shell-tricks-man-pages/
-# ------------------------------------------------------------------------------
-alias manp="man -t ${1} | open -f -a Preview"
+alias npm='nocorrect npm'
 
 # ------------------------------------------------------------------------------
 

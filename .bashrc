@@ -1,6 +1,6 @@
-# http://kvz.io/blog/2012/10/03/quick-server-debugging-with-wtf/
-if [ -f ~/.bash_aliases ]; then
-  source ~/.bash_aliases
+# Use aliases in common with Z shell.
+if [ -f ~/.aliases ]; then
+  source ~/.aliases
 fi
 
 # http://lapwinglabs.com/blog/hacker-guide-to-setting-up-your-mac
@@ -12,3 +12,8 @@ export PATH="$PATH:/Applications/DevDesktop/drush"
 
 export NVM_DIR="~/.nvm"
 source $(brew --prefix nvm)/nvm.sh
+
+# Extra stuff that's too sensitive to be committed to a public repository.
+if [ -d ~/.extra ]; then
+  source ~/.extra
+fi
