@@ -102,6 +102,7 @@ alias gd1='git diff HEAD~1 HEAD --minimal'
 alias gds='git diff HEAD --minimal --staged'
 alias gdsw='git diff HEAD --minimal --staged --word-diff'
 alias gdw='git diff HEAD --minimal --word-diff'
+alias gf='git fetch --all'
 # Based on:
 # https://drupalize.me/videos/moving-through-git-history?p=1173
 alias gl='git log --abbrev-commit --date=relative --graph --pretty=format:"%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset"'
