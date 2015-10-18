@@ -270,6 +270,7 @@ u() {
   upgrade_oh_my_zsh
   antigen update
   npm update -g
+  gem update
   # Update Homebrew stuff by using our alias.
   bu
 }
