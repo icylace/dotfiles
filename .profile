@@ -14,7 +14,7 @@ export PATH="${HOME}/.rbenv/bin:${PATH}"
 nvm_file="$(brew --prefix nvm)/nvm.sh"
 if [ -f $nvm_file ]; then
   # Recommended by Homebrew.
-  export NVM_DIR="~/.nvm"
+  export NVM_DIR=~/.nvm
   source $nvm_file
 fi
 
