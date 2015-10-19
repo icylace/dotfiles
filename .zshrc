@@ -317,9 +317,6 @@ fi
 # export PKG_CONFIG_PATH=/usr/X11/lib/pkgconfig
 # # pkg-config --variable pc_path pkg-config
 
-# My custom PHP development tools.
-export DEV_INC="${HOME}/My/Repositories/dev/includes/dev.inc"
-
 # Extra stuff that's too sensitive to be committed to a public repository.
 if [ -f ~/.extra ]; then
   source ~/.extra
