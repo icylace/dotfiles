@@ -1,13 +1,23 @@
-# Uncomment these to use the GNU Core Utilities with their normal names.
-# PATH="/usr/local/opt/coreutils/libexec/gnubin:${PATH}:$HOME/.rvm/bin"
-# MANPATH="/usr/local/opt/coreutils/libexec/gnuman:$MANPATH"
+# http://superuser.com/questions/187639/zsh-not-hitting-profile/187673#187673
+if [ -f ~/.profile ]; then
+  emulate sh -c 'source ~/.profile'
+fi
 
-# ------------------------------------------------------------------------------
-
-# Use aliases in common with Bash.
 if [ -f ~/.aliases ]; then
   source ~/.aliases
 fi
+
+# Tell Z Shell to not try to autocorrect the following.
+# Based on:
+# http://superuser.com/questions/251818/exceptions-to-zsh-correctall-feature/271897#271897
+alias bower='nocorrect bower'
+alias composer='nocorrect composer'
+alias drush='nocorrect drush'
+alias npm='nocorrect npm'
+
+# https://github.com/sindresorhus/guides/blob/master/how-not-to-rm-yourself.md
+unsetopt RM_STAR_SILENT
+setopt RM_STAR_WAIT
 
 # ------------------------------------------------------------------------------
 
@@ -120,12 +130,6 @@ ZSH_THEME_GIT_PROMPT_SUFFIX="%{$reset_color%}"
 ZSH_THEME_GIT_PROMPT_DIRTY="%{$fg[green]%}!"
 ZSH_THEME_GIT_PROMPT_UNTRACKED="%{$fg[green]%}?"
 ZSH_THEME_GIT_PROMPT_CLEAN=""
-
-# ------------------------------------------------------------------------------
-
-# https://github.com/sindresorhus/guides/blob/master/how-not-to-rm-yourself.md
-unsetopt RM_STAR_SILENT
-setopt RM_STAR_WAIT
 
 # ------------------------------------------------------------------------------
 
@@ -243,23 +247,16 @@ c() {
 
 alias c.='c ..'
 alias c..='c ..'
-alias c..2='c ...'
-alias c..3='c ....'
-alias c..4='c .....'
-alias c..5='c ......'
+alias c.2='c ...'
+alias c.3='c ....'
+alias c.4='c .....'
+alias c.5='c ......'
 alias c/='c /'
 alias c~='c ~'
 alias c-='c -1'
 alias c+='c +1'
-
-# Personalized uses:
 alias c-d='c ~/Downloads'
-alias c-o='c ~/My/Output'
-alias cr='c ~/My/Repositories'
 alias cs='c ~/Sites'
-alias cn='c /usr/local/lib/node_modules'
-alias ct='c ~/My/tmp'
-alias cv='c ~/My/Repositories/vagrant-base'
 
 # ------------------------------------------------------------------------------
 
@@ -274,38 +271,6 @@ u() {
 }
 
 # ------------------------------------------------------------------------------
-
-# Tell Z Shell to not try to autocorrect the following.
-# Based on:
-# http://superuser.com/questions/251818/exceptions-to-zsh-correctall-feature/271897#271897
-alias bower='nocorrect bower'
-alias composer='nocorrect composer'
-alias drush='nocorrect drush'
-alias npm='nocorrect npm'
-
-# ------------------------------------------------------------------------------
-
-# Suggested by the caveats section from `brew info rbenv`.
-if which rbenv > /dev/null; then eval "$(rbenv init -)"; fi
-
-# ------------------------------------------------------------------------------
-
-export DOCKER_HOST=tcp://192.168.59.103:2375
-
-# http://stackoverflow.com/questions/5545715/how-do-i-add-usr-local-git-bin-to-the-path-on-mac-osx/5545748#5545748
-# http://stackoverflow.com/questions/8814618/installing-mysqldb-on-mac/8814780#8814780
-
-export PATH="/usr/local/bin:${PATH}"
-export PATH="/usr/local/sbin:${PATH}"
-export PATH="${HOME}/.node/bin:${PATH}"
-export PATH="${HOME}/.rbenv/bin:${PATH}"
-
-nvm_file="$(brew --prefix nvm)/nvm.sh"
-if [ -f $nvm_file ]; then
-  # Recommended by Homebrew.
-  export NVM_DIR=~/.nvm
-  source $nvm_file
-fi
 
 # # https://github.com/ashleynewson/SmartSim/issues/2#issuecomment-10306256
 # export PKG_CONFIG_PATH=/usr/X11/lib/pkgconfig

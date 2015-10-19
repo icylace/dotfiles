@@ -1,3 +1,7 @@
+# ------------------------------------------------------------------------------
+#  Defines aliases and functions common to both Bash and Z shell.
+# ------------------------------------------------------------------------------
+
 alias cp='cp -i'
 alias li='ls -lAG'
 
@@ -22,35 +26,9 @@ alias drfu='drush fra -y && drush updb -y'
 alias drl='drush uli'
 alias dru='drush updb -y'
 
-# ------------------------------------------------------------------------------
-#  Use Preview to read man pages.
-#  http://brettterpstra.com/2014/08/05/shell-tricks-man-pages/
-# ------------------------------------------------------------------------------
+# Use Preview to read man pages.
+# http://brettterpstra.com/2014/08/05/shell-tricks-man-pages/
 alias manp="man -t ${1} | open -f -a Preview"
-
-#
-# Pipes in/out of the clipboard.
-#
-# Usage: someapp | cb     # Pipe someapp's output into clipboard
-#        cb | someapp     # Pipe clipboard's content into someapp
-#
-# http://stackoverflow.com/a/19458217
-#
-cb() {
-  if [[ -p /dev/stdin ]]; then
-    # stdin is a pipe.
-    # stdin -> clipboard
-    pbcopy
-  else
-    # stdin is not a pipe.
-    # clipboard -> stdout
-    pbpaste
-  fi
-}
-
-# Preview the OS X clipboard in the terminal.
-# http://brettterpstra.com/2014/12/11/preview-the-os-x-clipboard-in-terminal/
-alias cbp='pbpaste | less'
 
 # https://github.com/yrammos/dotfiles/blob/master/.bashrc
 alias .='pwd'
@@ -82,12 +60,6 @@ alias wtf='tail -f /var/log/{dmesg,messages,*{,/*}{log,err}}'
 
 # http://alias.sh/creating-drupal-sandbox
 # alias drupal-sandbox='drush qd --db-url="mysql://user:pass@localhost:3306/db_name" -y'
-
-# http://stackoverflow.com/a/28054871
-alias b2d='boot2docker start; $(boot2docker shellinit)'
-
-# Compass
-alias cw='compass watch'
 
 # Git
 alias g='git status --untracked-files --short'
@@ -152,17 +124,6 @@ alias bks='brew cask search'
 alias artisan='php artisan'
 alias a='php artisan'
 
-# Swift
-s() {
-  if [ -n "$1" ]; then
-    if [ -f "$1" ]; then
-      swift "$1.swift"
-    fi
-  else
-    swift *.swift
-  fi
-}
-
 # Symfony
 alias sr='php app/console server:run'
 
@@ -177,26 +138,6 @@ alias vh='vagrant halt'
 alias vp='vagrant provision'
 alias vs='vagrant ssh'
 alias vu='vagrant up'
-# PHP 5.5 box.
-alias vbase='cd ~/My/Repositories/vagrant-base'
-# PHP 5.3 box.
-alias vh3='vbase && vagrant halt php53'
-alias vp3='vbase && vagrant provision php53'
-alias vs3='vbase && vagrant ssh php53'
-alias vu3='vbase && vagrant up php53'
-alias v3='vu3; vs3'
-# PHP 5.4 box.
-alias vh4='vbase && vagrant halt php54'
-alias vp4='vbase && vagrant provision php54'
-alias vs4='vbase && vagrant ssh php54'
-alias vu4='vbase && vagrant up php54'
-alias v4='vu4; vs4'
-# PHP 5.5 box.
-alias vh5='vbase && vagrant halt php55'
-alias vp5='vbase && vagrant provision php55'
-alias vs5='vbase && vagrant ssh php55'
-alias vu5='vbase && vagrant up php55'
-alias v5='vu5; vs5'
 
 # yadm
 # https://github.com/TheLocehiliosan/yadm
@@ -204,9 +145,45 @@ alias y='yadm status --untracked-files=no'
 alias ya='yadm add'
 alias yc='yadm commit -m'
 alias yd='yadm diff HEAD --minimal'
+alias yd1='yadm diff HEAD~1 HEAD --minimal'
 alias yu='yadm add --update'
 # Based on:
 # https://drupalize.me/videos/moving-through-git-history?p=1173
 alias yl='yadm log --graph --pretty=format:"%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset" --abbrev-commit --date=relative'
 alias ylm='yadm pull origin master'
 alias ypm='yadm push --set-upstream origin master'
+
+#
+# Pipes in/out of the OS X clipboard.
+#
+# Usage: someapp | cb     # Pipe someapp's output into clipboard
+#        cb | someapp     # Pipe clipboard's content into someapp
+#
+# http://stackoverflow.com/a/19458217
+#
+cb() {
+  if [[ -p /dev/stdin ]]; then
+    # stdin is a pipe.
+    # stdin -> clipboard
+    pbcopy
+  else
+    # stdin is not a pipe.
+    # clipboard -> stdout
+    pbpaste
+  fi
+}
+
+# Preview the OS X clipboard in the terminal.
+# http://brettterpstra.com/2014/12/11/preview-the-os-x-clipboard-in-terminal/
+alias cbp='pbpaste | less'
+
+# Swift
+s() {
+  if [ -n "$1" ]; then
+    if [ -f "$1" ]; then
+      swift "$1.swift"
+    fi
+  else
+    swift *.swift
+  fi
+}
