@@ -105,20 +105,17 @@ alias hi='ghci -package-db=.cabal-sandbox/x86_64-osx-ghc-7.6.3-packages.conf.d'
 alias hr='runghc -package-db=.cabal-sandbox/x86_64-osx-ghc-7.6.3-packages.conf.d'
 
 # Homebrew
-alias b='brew'
+alias b='brew info; brew list'
 alias bd='brew doctor'
 alias bi='brew info'
-alias bl='brew list'
 alias bs='brew search'
 alias bu='brew update && brew upgrade --all && brew cleanup && brew cask cleanup'
 
 # Homebrew Cask
-alias bk='brew cask'
+alias bk='brew cask list'
 alias bkd='brew cask doctor'
 alias bki='brew cask info'
-alias bkl='brew cask list'
 alias bks='brew cask search'
-# alias bku='brew cask update'
 
 # Laravel
 alias artisan='php artisan'
