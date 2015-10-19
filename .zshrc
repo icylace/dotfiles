@@ -266,6 +266,7 @@ u() {
   antigen update
   npm update -g
   gem update
+  pip install --upgrade pip setuptools
   # Update Homebrew stuff by using our alias.
   bu
 }
