@@ -149,6 +149,7 @@ alias yu='yadm add --update'
 alias yl='yadm log --graph --pretty=format:"%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset" --abbrev-commit --date=relative'
 alias ylm='yadm pull origin master'
 alias ypm='yadm push --set-upstream origin master'
+alias ys='yadm list -a'
 
 #
 # Pipes in/out of the OS X clipboard.
