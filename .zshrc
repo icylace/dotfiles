@@ -1,5 +1,5 @@
 # Uncomment these to use the GNU Core Utilities with their normal names.
-# PATH="/usr/local/opt/coreutils/libexec/gnubin:$PATH:$HOME/.rvm/bin"
+# PATH="/usr/local/opt/coreutils/libexec/gnubin:${PATH}:$HOME/.rvm/bin"
 # MANPATH="/usr/local/opt/coreutils/libexec/gnuman:$MANPATH"
 
 # ------------------------------------------------------------------------------
@@ -60,7 +60,6 @@ battery_charge() {
 
 prompt_char() {
   git branch >/dev/null 2>/dev/null && echo '±' && return
-  # hg root >/dev/null 2>/dev/null && echo '☿' && return
   # echo '♿'
   # echo '❆'
   # echo '⑁'
@@ -93,7 +92,6 @@ vcprompt_info() {
 
   # vcprompt \
   #   --format-git "on %{$fg[magenta]%}%b%{$reset_color%}%{$fg[green]%}%u%m%a%{$reset_color%}" \
-  #   --format-hg  "on %{$fg[magenta]%}%b%{$reset_color%}%{$fg[green]%}%u%m%{$reset_color%}" \
   #   --format     "on %s %{$fg[magenta]%}%b%{$reset_color%}%{$fg[green]%}%u%m%{$reset_color%}"
 }
 
@@ -103,7 +101,7 @@ virtualenv_info() {
 
 local return_status="%{$fg[red]%}%(?..✘)%{$reset_color%}"
 
-# $(hg_prompt_info)$(git_prompt_info)
+# $(git_prompt_info)
 
 PROMPT='
 %{$fg[magenta]%}%n%{$reset_color%} \
@@ -297,14 +295,10 @@ export DOCKER_HOST=tcp://192.168.59.103:2375
 # http://stackoverflow.com/questions/5545715/how-do-i-add-usr-local-git-bin-to-the-path-on-mac-osx/5545748#5545748
 # http://stackoverflow.com/questions/8814618/installing-mysqldb-on-mac/8814780#8814780
 
-export PATH="/usr/local/bin:$PATH"
-export PATH="/usr/local/sbin:$PATH"
-export PATH="/Applications/MAMP/bin/php/php5.5.3/bin:$PATH"
-export PATH="/Applications/MAMP/Library/bin:$PATH"
-export PATH="${HOME}/Library/Haskell/bin:$PATH"
-export PATH="${HOME}/.cabal/bin:$PATH"
-export PATH="${HOME}/.composer/vendor/bin:$PATH"
-export PATH="${HOME}/.node/bin:$PATH"
+export PATH="/usr/local/bin:${PATH}"
+export PATH="/usr/local/sbin:${PATH}"
+export PATH="${HOME}/.node/bin:${PATH}"
+export PATH="${HOME}/.rbenv/bin:${PATH}"
 
 nvm_file="$(brew --prefix nvm)/nvm.sh"
 if [ -f $nvm_file ]; then
