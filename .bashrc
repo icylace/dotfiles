@@ -17,6 +17,9 @@ export PATH="${HOME}/.rbenv/bin:${PATH}"
 export NVM_DIR="~/.nvm"
 source $(brew --prefix nvm)/nvm.sh
 
+# Suggested by the caveats section from `brew info rbenv`.
+if which rbenv > /dev/null; then eval "$(rbenv init -)"; fi
+
 # Extra stuff that's too sensitive to be committed to a public repository.
 if [ -d ~/.extra ]; then
   source ~/.extra
