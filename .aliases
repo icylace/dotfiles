@@ -127,6 +127,9 @@ alias bks='brew cask search'
 alias artisan='php artisan'
 alias a='php artisan'
 
+# sift
+alias f='sift'
+
 # Symfony
 alias sr='php app/console server:run'
 
