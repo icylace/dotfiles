@@ -64,41 +64,57 @@ alias wtf='tail -f /var/log/{dmesg,messages,*{,/*}{log,err}}'
 # http://alias.sh/creating-drupal-sandbox
 # alias drupal-sandbox='drush qd --db-url="mysql://user:pass@localhost:3306/db_name" -y'
 
-# Git
-# https://drupalize.me/videos/moving-through-git-history?p=1173
-# https://medium.com/@porteneuve/30-git-cli-options-you-should-know-about-15423e8771df
-# https://medium.com/@porteneuve/getting-solid-at-git-rebase-vs-merge-4fa1a48c53aa
+# ------------------------------------------------------------------------------
+#  Git
+#  https://drupalize.me/videos/moving-through-git-history?p=1173
+#  https://medium.com/@porteneuve/30-git-cli-options-you-should-know-about-15423e8771df
+#  https://medium.com/@porteneuve/getting-solid-at-git-rebase-vs-merge-4fa1a48c53aa
+# ------------------------------------------------------------------------------
+
+# Info
 alias g='git status --branch --short --untracked-files=no'
-alias ga='git add .'
-alias ga+='git add --all'
 alias gb='git branch --all --verbose --verbose'
 alias gbl='git blame --minimal --show-number --show-stats'
-alias gc='git commit --verbose -m'
-alias gsr='git symbolic-ref --short HEAD'
 alias gd='git diff HEAD --minimal --word-diff=color'
 alias gd1='git diff HEAD~1 HEAD --minimal --word-diff=color'
 alias gdc='git diff --minimal --word-diff=color'
-alias gdp='git diff HEAD --minimal'
 alias gds='git diff HEAD --minimal --staged --word-diff=color'
-alias gf='git fetch --all'
 alias gl='git log --abbrev-commit --date=relative --graph --pretty=format:"%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset"'
 alias gld='gl --patch-with-stat --minimal'
 alias gll='git log --decorate --graph --all'
 alias gllo='git log --decorate --graph --all --oneline'
+alias gsr='git symbolic-ref --short HEAD'
+alias gsu='git status --untracked-files'
+
+# Adding and updating
+alias ga='git add .'
+alias ga+='git add --all'
+alias gc='git commit --verbose -m'
+alias gf='git fetch --all'
 alias glo='git pull --rebase=preserve origin'
 alias gm='git merge --no-ff'
 alias gmf='git merge --ff-only'
-alias go='git checkout'
 alias gob='git checkout -b'
 # alias gp='git push origin $(gsr)'
 alias gpo='git push --set-upstream origin'
 alias gr='git rebase'
-alias gsu='git status --untracked-files'
+alias gu='git add --update'
+
+# Navigating
+alias go='git checkout'
+
+# Patching
+alias gdp='git diff HEAD --minimal'
+alias gy='git apply --verbose'
+
+# Stashing
 alias gss='git stash save -u'
 alias gsp='git stash pop --index'
+
+# Resetting
 alias gtfo='git reset --hard; git clean --force -d'
-alias gu='git add --update'
-alias gy='git apply --verbose'
+
+# ------------------------------------------------------------------------------
 
 # TODO
 # alias gg='git symbolic-ref --short HEAD | echo $1 cat'
