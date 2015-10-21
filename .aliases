@@ -6,9 +6,8 @@ alias cp='cp -i'
 alias li='ls -lAG'
 
 # Bower
-alias bo='bower'
+alias bo='bower list'
 alias boi='bower install'
-alias bol='bower list'
 alias bos='bower search'
 
 # Composer
@@ -28,6 +27,7 @@ alias drl='drush uli'
 alias drli='drush uli --browser'
 alias drlint='drush coder-review'
 alias dru='drush updb -y'
+alias drun='drush pmu -y'
 
 # Use Preview to read man pages.
 # http://brettterpstra.com/2014/08/05/shell-tricks-man-pages/
@@ -57,12 +57,6 @@ alias wtf='tail -f /var/log/{dmesg,messages,*{,/*}{log,err}}'
 # alias stx='subl .;subl *.xiki'
 # # Create Xiki buffer from terminal.
 # alias xiki='pwd > tree.xiki'
-
-# http://alias.sh/run-multi-site-drush-commands
-# alias ms="drush @sites -y"
-
-# http://alias.sh/creating-drupal-sandbox
-# alias drupal-sandbox='drush qd --db-url="mysql://user:pass@localhost:3306/db_name" -y'
 
 # ------------------------------------------------------------------------------
 #  Git
@@ -116,12 +110,12 @@ alias gsp='git stash pop --index'
 # Resetting
 alias gtfo='git reset --hard; git clean --force -d'
 
-# ------------------------------------------------------------------------------
-
 # TODO
 # alias gg='git symbolic-ref --short HEAD | echo $1 cat'
 # alias gg='echo ${echo 1}'
 # alias gg='echo ${git symbolic-ref --short HEAD}'
+
+# ------------------------------------------------------------------------------
 
 # Haskell
 alias h='ghc -package-db=.cabal-sandbox/x86_64-osx-ghc-7.6.3-packages.conf.d'
