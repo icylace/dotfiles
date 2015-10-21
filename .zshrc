@@ -133,15 +133,6 @@ ZSH_THEME_GIT_PROMPT_CLEAN=""
 
 # ------------------------------------------------------------------------------
 
-# drupal-setup() {
-#   mkdir $1
-#   cd $1
-#   drush dl drupal-7.x
-#   drush site-install standard --account-name=superuser --account-pass=password --db-url=mysql://root:clever-password@localhost/drupal_site
-# }
-
-# ------------------------------------------------------------------------------
-
 #
 # Simple setup for a new Laravel project. This will do most of the setup.
 #
