@@ -98,6 +98,8 @@ alias gob='git checkout -b'
 # alias gp='git push origin $(gsr)'
 alias gpo='git push --set-upstream origin'
 alias gr='git rebase'
+alias grm='git rebase master'
+# alias grs='git rebase staging'
 alias gu='git add --update'
 
 # Navigating
@@ -162,6 +164,7 @@ alias vh='vagrant halt'
 alias vp='vagrant provision'
 alias vs='vagrant ssh'
 alias vu='vagrant up'
+alias vdu='vd1 && vu'
 
 # yadm
 # https://github.com/TheLocehiliosan/yadm
