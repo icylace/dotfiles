@@ -22,8 +22,11 @@ alias drcr='drush cr'
 alias drd='drush dis'
 alias dre='drush en'
 alias drf='drush fra -y'
+alias drff='drush fra --force -y'
 alias drfu='drush fra -y && drush updb -y'
 alias drl='drush uli'
+alias drli='drush uli --browser'
+alias drlint='drush coder-review'
 alias dru='drush updb -y'
 
 # Use Preview to read man pages.
