@@ -146,7 +146,7 @@ alias artisan='php artisan'
 alias a='php artisan'
 
 # sift
-alias f='sift'
+alias s='sift'
 
 # Symfony
 alias sr='php app/console server:run'
@@ -202,7 +202,7 @@ cb() {
 alias cbp='pbpaste | less'
 
 # Swift
-s() {
+sw() {
   if [ -n "$1" ]; then
     if [ -f "$1" ]; then
       swift "$1.swift"
