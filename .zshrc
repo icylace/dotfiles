@@ -246,7 +246,7 @@ alias c/='c /'
 alias c~='c ~'
 alias c-='c -1'
 alias c+='c +1'
-alias c-d='c ~/Downloads'
+alias c.d='c ~/Downloads'
 alias cs='c ~/Sites'
 
 # ------------------------------------------------------------------------------
