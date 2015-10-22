@@ -73,8 +73,8 @@ alias gd='git diff HEAD --minimal --word-diff=color'
 alias gd1='git diff HEAD~1 HEAD --minimal --word-diff=color'
 alias gdc='git diff --minimal --word-diff=color'
 alias gds='git diff HEAD --minimal --staged --word-diff=color'
-alias gl='git log --abbrev-commit --date=relative --graph --pretty=format:"%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset"'
-alias gld='gl --patch-with-stat --minimal'
+alias gl='git log --graph --pretty=format:"%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset"'
+alias gld='gl --patch-with-stat --minimal --word-diff=color'
 alias gll='git log --decorate --graph --all'
 alias gllo='git log --decorate --graph --all --oneline'
 alias gsr='git symbolic-ref --short HEAD'
@@ -104,8 +104,8 @@ alias gdp='git diff HEAD --minimal'
 alias gy='git apply --verbose'
 
 # Stashing
-alias gsl='git stash list'
-alias gss='git stash save -u'
+alias gsl='git stash list --pretty=format:"%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset"'
+alias gss='git stash save --include-untracked'
 alias gsp='git stash pop --index'
 
 # Resetting
