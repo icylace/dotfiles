@@ -104,6 +104,7 @@ alias gdp='git diff HEAD --minimal'
 alias gy='git apply --verbose'
 
 # Stashing
+alias gsl='git stash list'
 alias gss='git stash save -u'
 alias gsp='git stash pop --index'
 

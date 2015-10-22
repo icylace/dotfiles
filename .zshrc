@@ -62,6 +62,7 @@ fi
 # Based on:
 # http://stevelosh.com/blog/2010/02/my-extravagant-zsh-prompt/
 # http://blog.munge.net/fun-with-zsh-themes/
+# http://justin.jetfive.com/2012/12/01/my-new-zsh-theme.html
 #
 
 battery_charge() {
@@ -69,7 +70,7 @@ battery_charge() {
 }
 
 prompt_char() {
-  git branch >/dev/null 2>/dev/null && echo '±' && return
+  # git branch >/dev/null 2>/dev/null && echo '±' && return
   # echo '♿'
   # echo '❆'
   # echo '⑁'
@@ -77,32 +78,9 @@ prompt_char() {
   # echo '͓'
   # echo '⁘'
   # echo '৶'
-  echo '९'
-}
-
-vcprompt_info() {
-  # vcprompt
-  # https://bitbucket.org/gward/vcprompt
-  # installed via brew
-
-  vcprompt -f 'on %b %u%m'
-
-  # Format strings use printf-like "%" escape sequences:
-  #
-  #   %n  name of the VC system managing the current directory
-  #       (e.g. "cvs", "hg", "git", "svn")
-  #   %b  current branch name
-  #   %r  current revision
-  #   %u  ? if there are any unknown files
-  #   %m  + if there are any uncommitted changes (added, modified, or
-  #       removed files)
-  #   %%  a single % character
-
-  # vcprompt -f "on %{$fg[magenta]%}%b%{$reset_color%}%{$fg[green]%}%u%m%a%{$reset_color%}"
-
-  # vcprompt \
-  #   --format-git "on %{$fg[magenta]%}%b%{$reset_color%}%{$fg[green]%}%u%m%a%{$reset_color%}" \
-  #   --format     "on %s %{$fg[magenta]%}%b%{$reset_color%}%{$fg[green]%}%u%m%{$reset_color%}"
+  # echo '९'
+  # echo '﷽'
+  echo "%{$fg_bold[grey]%}ઑ%{$reset_color%}"
 }
 
 virtualenv_info() {
@@ -111,25 +89,32 @@ virtualenv_info() {
 
 local return_status="%{$fg[red]%}%(?..✘)%{$reset_color%}"
 
-# $(git_prompt_info)
+export GIT_RADAR_COLOR_BRANCH="%{$fg_bold[cyan]%}"
+export GIT_RADAR_FORMAT="on %{remote: }%{branch}%{ :local}%{ :changes}"
 
-PROMPT='
-%{$fg[magenta]%}%n%{$reset_color%} \
+zsh_stash_status() {
+  git branch >/dev/null 2>/dev/null || return
+  # https://lists.gnu.org/archive/html/bug-coreutils/2008-01/msg00123.html
+  local number_stashes="$(echo $(git stash list | wc -l))"
+  if [ $number_stashes -gt 0 ]; then
+    printf %s " $number_stashes%{$fg_bold[yellow]%}ॾ%{$reset_color%}"
+  fi
+}
+
+export PROMPT='%{$fg[magenta]%}%n%{$reset_color%} \
 at %{$fg[yellow]%}%m%{$reset_color%} \
 in %{$fg_bold[green]%}${PWD/#$HOME/~}%{$reset_color%} \
-$(vcprompt_info)
-$(virtualenv_info)$(prompt_char)${return_status} '
-
-# http://justin.jetfive.com/2012/12/01/my-new-zsh-theme.html
+$(git-radar --zsh --fetch)$(zsh_stash_status)
+$(virtualenv_info)$(prompt_char)${return_status}  '
 
 # Display the date and battery charge.
-RPROMPT='$(battery_charge)  $(date "+%Y ∴ %m∙%d ∴ %l:%M %p")'
+export RPROMPT="$(battery_charge)  $(date "+%Y ∴ %m∙%d ∴ %l:%M %p")"
 
-ZSH_THEME_GIT_PROMPT_PREFIX=" on %{$fg[magenta]%}"
-ZSH_THEME_GIT_PROMPT_SUFFIX="%{$reset_color%}"
-ZSH_THEME_GIT_PROMPT_DIRTY="%{$fg[green]%}!"
-ZSH_THEME_GIT_PROMPT_UNTRACKED="%{$fg[green]%}?"
-ZSH_THEME_GIT_PROMPT_CLEAN=""
+# export ZSH_THEME_GIT_PROMPT_PREFIX=" on %{$fg[magenta]%}"
+# export ZSH_THEME_GIT_PROMPT_SUFFIX="%{$reset_color%}"
+# export ZSH_THEME_GIT_PROMPT_DIRTY="%{$fg[green]%}!"
+# export ZSH_THEME_GIT_PROMPT_UNTRACKED="%{$fg[green]%}?"
+# export ZSH_THEME_GIT_PROMPT_CLEAN=""
 
 # ------------------------------------------------------------------------------
 
