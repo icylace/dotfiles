@@ -8,7 +8,6 @@ if [ -f ~/.aliases ]; then
 fi
 
 # Tell Z Shell to not try to autocorrect the following.
-# Based on:
 # http://superuser.com/questions/251818/exceptions-to-zsh-correctall-feature/271897#271897
 alias bower='nocorrect bower'
 alias composer='nocorrect composer'
@@ -220,6 +219,11 @@ c() {
       fi
     fi
   fi
+}
+
+cz() {
+  z "$1"
+  c
 }
 
 alias c.='c ..'
