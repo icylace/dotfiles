@@ -97,7 +97,7 @@ zsh_stash_status() {
   # https://lists.gnu.org/archive/html/bug-coreutils/2008-01/msg00123.html
   local number_stashes="$(echo $(git stash list | wc -l))"
   if [ $number_stashes -gt 0 ]; then
-    printf %s " $number_stashes%{$fg_bold[yellow]%}ॾ%{$reset_color%}"
+    printf %s " $number_stashes%{$fg_bold[white]%}ॾ%{$reset_color%}"
   fi
 }
 
