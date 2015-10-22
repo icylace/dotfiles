@@ -65,6 +65,9 @@ alias wtf='tail -f /var/log/{dmesg,messages,*{,/*}{log,err}}'
 #  https://medium.com/@porteneuve/getting-solid-at-git-rebase-vs-merge-4fa1a48c53aa
 # ------------------------------------------------------------------------------
 
+# Setup
+alias gcl='git clone --verbose'
+
 # Info
 alias g='git status --branch --short --untracked-files=no'
 alias gb='git branch --all --verbose --verbose'
@@ -79,6 +82,13 @@ alias gll='git log --decorate --graph --all'
 alias gllo='git log --decorate --graph --all --oneline'
 alias gsr='git symbolic-ref --short HEAD'
 alias gsu='git status --untracked-files'
+
+# git log origin/master..master
+
+# http://stackoverflow.com/a/4082762
+
+alias gg='git log origin/$(gsr)..$(gsr)'
+
 
 # Adding and updating
 alias ga='git add .'
