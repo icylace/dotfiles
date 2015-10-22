@@ -101,7 +101,8 @@ zsh_stash_status() {
   fi
 }
 
-export PROMPT='%{$fg[magenta]%}%n%{$reset_color%} \
+export PROMPT='
+%{$fg[magenta]%}%n%{$reset_color%} \
 at %{$fg[yellow]%}%m%{$reset_color%} \
 in %{$fg_bold[green]%}${PWD/#$HOME/~}%{$reset_color%} \
 $(git-radar --zsh --fetch)$(zsh_stash_status)
