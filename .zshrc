@@ -70,16 +70,17 @@ battery_charge() {
 
 prompt_char() {
   # git branch >/dev/null 2>/dev/null && echo '±' && return
-  # echo '♿'
-  # echo '❆'
-  # echo '⑁'
-  # echo '২'
-  # echo '͓'
-  # echo '⁘'
-  # echo '৶'
-  # echo '९'
-  # echo '﷽'
-  echo "%{$fg_bold[grey]%}ઑ%{$reset_color%}"
+  # local prompter='♿'
+  # local prompter='❆'
+  # local prompter='⑁'
+  # local prompter='২'
+  # local prompter='͓'
+  # local prompter='⁘'
+  # local prompter='৶'
+  # local prompter='९'
+  # local prompter='﷽'
+  local prompter='ઑ'
+  echo "%{$fg_bold[magenta]%}$prompter %{$reset_color%}"
 }
 
 virtualenv_info() {
@@ -105,7 +106,7 @@ export PROMPT='
 at %{$fg[yellow]%}%m%{$reset_color%} \
 in %{$fg_bold[green]%}${PWD/#$HOME/~}%{$reset_color%} \
 $(git-radar --zsh --fetch)$(zsh_stash_status)
-$(virtualenv_info)$(prompt_char)${return_status}  '
+$(virtualenv_info)$(prompt_char)${return_status} '
 
 # Display the date and battery charge.
 export RPROMPT="$(battery_charge)  $(date "+%Y ∴ %m∙%d ∴ %l:%M %p")"
