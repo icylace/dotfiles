@@ -90,7 +90,7 @@ virtualenv_info() {
 local return_status="%{$fg[red]%}%(?..✘)%{$reset_color%}"
 
 export GIT_RADAR_COLOR_BRANCH="%{$fg_bold[cyan]%}"
-export GIT_RADAR_FORMAT="on %{remote: }%{branch}%{ :local}%{ :changes}"
+export GIT_RADAR_FORMAT="on %{remote: }%{branch}%{  :local}%{ :changes}"
 
 zsh_stash_status() {
   git branch >/dev/null 2>/dev/null || return
@@ -110,12 +110,6 @@ $(virtualenv_info)$(prompt_char)${return_status} '
 
 # Display the date and battery charge.
 export RPROMPT="$(battery_charge)  $(date "+%Y ∴ %m∙%d ∴ %l:%M %p")"
-
-# export ZSH_THEME_GIT_PROMPT_PREFIX=" on %{$fg[magenta]%}"
-# export ZSH_THEME_GIT_PROMPT_SUFFIX="%{$reset_color%}"
-# export ZSH_THEME_GIT_PROMPT_DIRTY="%{$fg[green]%}!"
-# export ZSH_THEME_GIT_PROMPT_UNTRACKED="%{$fg[green]%}?"
-# export ZSH_THEME_GIT_PROMPT_CLEAN=""
 
 # ------------------------------------------------------------------------------
 
