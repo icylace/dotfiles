@@ -193,6 +193,9 @@ alias bz='batch-zip'
 #
 #     `k` (https://github.com/rimraf/k) will be used if it is installed.
 #
+# TODO
+# - use z (if exists) if $1 is ostensibly not a directory or file
+# - use catimg (if exists) if $1 appears to be an image
 c() {
   if [ -f "$1" ]; then
     cat $@ | less
