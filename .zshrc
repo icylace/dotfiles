@@ -93,7 +93,7 @@ virtualenv_info() {
 local return_status="%{$fg[red]%}%(?..✘)%{$reset_color%}"
 
 export GIT_RADAR_COLOR_BRANCH="%{$fg_bold[cyan]%}"
-export GIT_RADAR_FORMAT="on %{branch}%{  :remote}%{ :local}%{  :changes}"
+export GIT_RADAR_FORMAT="on %{branch}%{  :remote}%{  :local}%{  :changes}"
 
 zsh_stash_status() {
   git branch >/dev/null 2>/dev/null || return
