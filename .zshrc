@@ -79,7 +79,10 @@ prompt_char() {
   # local prompter='৶'
   # local prompter='९'
   # local prompter='﷽'
-  local prompter='ઑ'
+  # local prompter='ઑ'
+  # local prompter='☙'
+  # local prompter='♞'
+  local prompter='♘'
   echo "%{$fg_bold[magenta]%}$prompter %{$reset_color%}"
 }
 
@@ -90,7 +93,7 @@ virtualenv_info() {
 local return_status="%{$fg[red]%}%(?..✘)%{$reset_color%}"
 
 export GIT_RADAR_COLOR_BRANCH="%{$fg_bold[cyan]%}"
-export GIT_RADAR_FORMAT="on %{remote: }%{branch}%{  :local}%{ :changes}"
+export GIT_RADAR_FORMAT="on %{branch}%{  :remote}%{ :local}%{  :changes}"
 
 zsh_stash_status() {
   git branch >/dev/null 2>/dev/null || return

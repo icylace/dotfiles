@@ -66,6 +66,7 @@ alias wtf='tail -f /var/log/{dmesg,messages,*{,/*}{log,err}}'
 # ------------------------------------------------------------------------------
 
 # Setup
+alias git='hub'
 alias gcl='git clone --verbose'
 
 # Info
