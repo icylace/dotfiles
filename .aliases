@@ -70,7 +70,7 @@ alias gcl='git clone --verbose'
 
 # Info
 alias g='git status --branch --short --untracked-files=no'
-alias gb='git branch --all --verbose --verbose'
+alias gba='git branch --all --verbose --verbose'
 alias gbl='git blame --minimal --show-number --show-stats'
 alias gd='git diff HEAD --minimal --word-diff=color'
 alias gd1='git diff HEAD~1 HEAD --minimal --word-diff=color'
@@ -82,24 +82,19 @@ alias gll='git log --decorate --graph --all'
 alias gllo='git log --decorate --graph --all --oneline'
 alias gsr='git symbolic-ref --short HEAD'
 alias gsu='git status --untracked-files'
-
-# git log origin/master..master
-
-# http://stackoverflow.com/a/4082762
-
 alias gg='git log origin/$(gsr)..$(gsr)'
-
 
 # Adding and updating
 alias ga='git add .'
 alias ga+='git add --all'
+alias gb+='git checkout -b'
 alias gc='git commit --verbose -m'
 alias gf='git fetch --all'
 alias glo='git pull --rebase=preserve origin'
 alias gm='git merge --no-ff'
 alias gmf='git merge --ff-only'
-alias gob='git checkout -b'
 # alias gp='git push origin $(gsr)'
+alias gp='git push'
 alias gpo='git push --set-upstream origin'
 alias gr='git rebase'
 alias grm='git rebase master'
@@ -107,7 +102,7 @@ alias grm='git rebase master'
 alias gu='git add --update'
 
 # Navigating
-alias go='git checkout'
+alias gb='git checkout'
 
 # Patching
 alias gdp='git diff HEAD --minimal'
