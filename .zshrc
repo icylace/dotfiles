@@ -184,8 +184,9 @@ alias bz='batch-zip'
 #
 # DESCRIPTION
 #     If no operand is given the contents of the current directory is shown.
-#     If a directory is given switch to it and shown its contents.
-#     If a file is given show its contents.
+#     If a directory is given switch to it and show its contents.
+#     If a file is given show its contents.  Otherwise try to switch to a
+#     "frecent" directory of a similar name to the given operand.
 #
 # NOTES
 #     The original reason why I made this was because I usually want to see
@@ -200,31 +201,30 @@ alias bz='batch-zip'
 # - use z (if exists) if $1 is ostensibly not a directory or file
 # - use catimg (if exists) if $1 appears to be an image
 c() {
+  # If we're given a file view it.
   if [ -f "$1" ]; then
     cat $@ | less
-  else
-    local listing=false
-    if [ -n "$1" ]; then
-      if [ -d "$1" ]; then
-        listing=true
-      fi
-      cd $@
-    else
-      listing=true
-    fi
-    if [[ "$listing" == true ]]; then
-      if type k >/dev/null 2>&1; then
-        k --almost-all --human
-      else
-        ls -AGp
-      fi
+    return
+  fi
+
+  # If we're given something and it's not a file then it must be a
+  # directory so try to switch to it.
+  if [ -d "$1" ]; then
+    cd $@
+  elif type z >/dev/null 2>&1; then
+    z $@
+    if [ $? -ne 0 ]; then
+      echo "\"$1\" could not be found."
+      return
     fi
   fi
-}
 
-cz() {
-  z "$1"
-  c
+  # Show the contents of the current directory.
+  if type k >/dev/null 2>&1; then
+    k --almost-all --human
+  else
+    ls -AGp
+  fi
 }
 
 alias c.='c ..'
