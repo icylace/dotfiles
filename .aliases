@@ -50,7 +50,8 @@ alias myip='curl icanhazip.com'
 alias wtf='tail -f /var/log/{dmesg,messages,*{,/*}{log,err}}'
 
 # http://alias.sh/cat-syntax-coloration
-# alias ccat='pygmentize -O bg=dark'
+# http://stackoverflow.com/questions/7851134/syntax-highlighting-colorizing-cat/14799752#14799752
+alias ccat='pygmentize -O bg=dark'
 
 # # https://tutsplus.com/forums/topic/handy-aliasses-for-opening-sublimetext-with-xiki-buffer/
 # # OPEN UP XIKI SUBLIME TEXT 2

@@ -20,39 +20,53 @@ setopt RM_STAR_WAIT
 
 # ------------------------------------------------------------------------------
 
-# https://github.com/mikl/dotfiles/blob/master/zshrc
+# https://github.com/tarjoilija/zgen#automatically-check-for-filechanges-and-regenerate-zinit
+export ZGEN_RESET_ON_CHANGE="${HOME}/.zshrc"
 
-# Use Antigen if installed.
-# https://github.com/zsh-users/antigen
-if [ -f ~/.antigen/antigen.zsh ]; then
-  source ~/.antigen/antigen.zsh
+export ZSH_THEME="random"
 
-  antigen use oh-my-zsh
+# zgen
+# A lightweight plugin manager for ZSH inspired by Antigen.
+# https://github.com/tarjoilija/zgen
+# https://github.com/unixorn/zsh-quickstart-kit/blob/master/zsh/.zgen-setup
+if [ ! -f "${HOME}/zgen/zgen.zsh" ]; then
+  git clone git@github.com:tarjoilija/zgen.git "${HOME}/zgen"
+fi
 
-  # # http://mgdm.net/weblog/zsh-antigen/
-  # if [ "$OSTYPE"="darwin11.0" ]; then
-  #   antigen bundle osx
-  # fi
+source "${HOME}/zgen/zgen.zsh"
 
-  # antigen bundle git
-  # antigen bundle github
+if ! zgen saved; then
+  echo 'Creating a zgen init script.'
 
-  # Autocompletion for your Gulp tasks.
-  antigen bundle akoenig/gulp-autocompletion-zsh
+  zgen oh-my-zsh
 
-  # antigen bundle djui/alias-tips
-  # antigen bundle Tarrasch/zsh-functional
+  # alias-tips
+  # Reminds you of aliases you have already.
+  # https://github.com/djui/alias-tips
+  zgen load djui/alias-tips
 
-  # Navigate your most used directories based on 'frecency'.
-  antigen bundle rupa/z
-
+  # k
   # Directory listings for zsh with git features.
-  antigen bundle rimraf/k
+  # https://github.com/rimraf/k
+  zgen load rimraf/k
 
-  # A dark theme.
-  antigen theme bira
+  # z
+  # Navigate your most used directories based on 'frecency'.
+  # https://github.com/rupa/z
+  zgen load rupa/z
 
-  antigen apply
+  # # A dark theme.
+  # zgen oh-my-zsh themes/bira
+  zgen oh-my-zsh themes/amuse
+
+  # zsh-syntax-highlighting
+  # Provides syntax highlighting of commands as they are typed at the prompt.
+  # https://github.com/zsh-users/zsh-syntax-highlighting
+  # TODO
+  # - get this working
+  #zgen load zsh-users/zsh-syntax-highlighting
+
+  zgen save
 fi
 
 # ------------------------------------------------------------------------------
@@ -65,7 +79,7 @@ fi
 #
 
 battery_charge() {
-  python ~/My/Shell/battery_charge.py --color
+  python "${HOME}/My/Shell/battery_charge.py" --color
 }
 
 prompt_char() {
@@ -74,7 +88,6 @@ prompt_char() {
   # local prompter='❆'
   # local prompter='⑁'
   # local prompter='২'
-  # local prompter='͓'
   # local prompter='⁘'
   # local prompter='৶'
   # local prompter='९'
@@ -86,16 +99,12 @@ prompt_char() {
   echo "%{$fg_bold[magenta]%}$prompter %{$reset_color%}"
 }
 
-virtualenv_info() {
-  [ $VIRTUAL_ENV ] && echo '('$(basename $VIRTUAL_ENV)') '
-}
-
 local return_status="%{$fg[red]%}%(?..✘)%{$reset_color%}"
 
 export GIT_RADAR_COLOR_BRANCH="%{$fg_bold[cyan]%}"
 export GIT_RADAR_FORMAT="on %{branch}%{  :remote}%{  :local}%{  :changes}"
 
-zsh_stash_status() {
+git_stash_status_zsh() {
   git branch >/dev/null 2>/dev/null || return
   # https://lists.gnu.org/archive/html/bug-coreutils/2008-01/msg00123.html
   local number_stashes="$(echo $(git stash list | wc -l))"
@@ -108,11 +117,116 @@ export PROMPT='
 %{$fg[magenta]%}%n%{$reset_color%} \
 at %{$fg[yellow]%}%m%{$reset_color%} \
 in %{$fg_bold[green]%}${PWD/#$HOME/~}%{$reset_color%} \
-$(git-radar --zsh --fetch)$(zsh_stash_status)
-$(virtualenv_info)$(prompt_char)${return_status} '
+$(git-radar --zsh --fetch)$(git_stash_status_zsh)
+$(prompt_char)${return_status} '
 
 # Display the date and battery charge.
 export RPROMPT="$(battery_charge)  $(date "+%Y ∴ %m∙%d ∴ %l:%M %p")"
+
+# ------------------------------------------------------------------------------
+
+#
+# Batch Zip
+#
+# Based on:
+# http://hints.macworld.com/article.php?story=20070803053156346
+# http://www.macworld.com/article/1134810/zipmany.html
+# http://alexsantidote.com/334/batch-zip-and-rename/
+#
+bz() {
+  for f in "$@"; do
+    # Check that the file exists and that it's not in fact a directory.
+    if [[ -e "$f" && ! (-d "$f") ]]; then
+      zip -j -9 "${f%.*}.zip" "$f"
+      mv "$f" ~/.Trash
+    fi
+  done
+}
+
+# ------------------------------------------------------------------------------
+
+#
+# NAME
+#     c - See the contents of a directory or file.
+#
+# SYNOPSIS
+#     c [file]
+#
+# DESCRIPTION
+#     If no operand is given the contents of the current directory is shown.
+#     If a directory is given switch to it and show its contents.
+#     If a file is given show its contents.  Otherwise try to switch to a
+#     "frecent" directory of a similar name to the given operand.
+#
+# NOTES
+#     The original reason why I made this was because I usually want to see
+#     immediately the contents of a directory I switch to.
+#
+#     Executing 'cd' with no arguments changes to the home directory but I have
+#     `c` simply list the current directory in that case.
+#
+#     `k` (https://github.com/rimraf/k) will be used if it is installed.
+#
+# TODO
+# - use z (if exists) if $1 is ostensibly not a directory or file
+# - use catimg (if exists) if $1 appears to be an image
+c() {
+  # If we're given a file view it.
+  if [ -f "$1" ]; then
+    cat $@ | less
+    return
+  fi
+
+  # If we're given something and it's not a file then it must be a
+  # directory so try to switch to it.
+  if [ -n "$1" ]; then
+    if [ -d "$1" ]; then
+      cd $@
+    elif type z >/dev/null 2>&1; then
+      z $@
+      if [ $? -ne 0 ]; then
+        echo "\"$1\" could not be found."
+        return
+      fi
+    fi
+  fi
+
+  # Show the contents of the current directory.
+  if type k >/dev/null 2>&1; then
+    k --almost-all --human
+  else
+    ls -AGp
+  fi
+}
+
+alias c.='c ..'
+alias c..='c ..'
+alias c.2='c ...'
+alias c.3='c ....'
+alias c.4='c .....'
+alias c.5='c ......'
+alias c/='c /'
+alias c~='c ~'
+alias c-='c -1'
+alias c+='c +1'
+alias c.d='c ~/Downloads'
+alias cs='c ~/Sites'
+
+# ------------------------------------------------------------------------------
+
+# Manually update things.
+u() {
+  upgrade_oh_my_zsh
+  # antigen update
+  zgen selfupdate
+  zgen update
+  npm update -g
+  gem update
+  pip install --upgrade pip setuptools
+  pip-review --auto
+  # Update Homebrew stuff by using our alias.
+  bu
+}
 
 # ------------------------------------------------------------------------------
 
@@ -151,106 +265,6 @@ laravel-setup() {
   cp app/config/database.php app/config/local/database.php
   cp app/config/mail.php app/config/local/mail.php
   php artisan key:generate
-}
-
-# ------------------------------------------------------------------------------
-
-#
-# Based on:
-# http://hints.macworld.com/article.php?story=20070803053156346
-# http://www.macworld.com/article/1134810/zipmany.html
-# http://alexsantidote.com/334/batch-zip-and-rename/
-#
-batch-zip() {
-  for f in "$@"; do
-    # Check that the file exists and that it's not in fact a directory.
-    if [[ -e "$f" && ! (-d "$f") ]]; then
-      zip -j -9 "${f%.*}.zip" "$f"
-      mv "$f" ~/.Trash
-    fi
-  done
-}
-
-alias bz='batch-zip'
-
-# ------------------------------------------------------------------------------
-
-#
-# NAME
-#     c - See the contents of a directory or file.
-#
-# SYNOPSIS
-#     c [file]
-#
-# DESCRIPTION
-#     If no operand is given the contents of the current directory is shown.
-#     If a directory is given switch to it and show its contents.
-#     If a file is given show its contents.  Otherwise try to switch to a
-#     "frecent" directory of a similar name to the given operand.
-#
-# NOTES
-#     The original reason why I made this was because I usually want to see
-#     immediately the contents of a directory I switch to.
-#
-#     Executing 'cd' with no arguments changes to the home directory but I have
-#     `c` simply list the current directory in that case.
-#
-#     `k` (https://github.com/rimraf/k) will be used if it is installed.
-#
-# TODO
-# - use z (if exists) if $1 is ostensibly not a directory or file
-# - use catimg (if exists) if $1 appears to be an image
-c() {
-  # If we're given a file view it.
-  if [ -f "$1" ]; then
-    cat $@ | less
-    return
-  fi
-
-  # If we're given something and it's not a file then it must be a
-  # directory so try to switch to it.
-  if [ -d "$1" ]; then
-    cd $@
-  elif type z >/dev/null 2>&1; then
-    z $@
-    if [ $? -ne 0 ]; then
-      echo "\"$1\" could not be found."
-      return
-    fi
-  fi
-
-  # Show the contents of the current directory.
-  if type k >/dev/null 2>&1; then
-    k --almost-all --human
-  else
-    ls -AGp
-  fi
-}
-
-alias c.='c ..'
-alias c..='c ..'
-alias c.2='c ...'
-alias c.3='c ....'
-alias c.4='c .....'
-alias c.5='c ......'
-alias c/='c /'
-alias c~='c ~'
-alias c-='c -1'
-alias c+='c +1'
-alias c.d='c ~/Downloads'
-alias cs='c ~/Sites'
-
-# ------------------------------------------------------------------------------
-
-# Manually update things.
-u() {
-  upgrade_oh_my_zsh
-  antigen update
-  npm update -g
-  gem update
-  pip install --upgrade pip setuptools
-  # Update Homebrew stuff by using our alias.
-  bu
 }
 
 # ------------------------------------------------------------------------------
