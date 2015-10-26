@@ -23,7 +23,7 @@ setopt RM_STAR_WAIT
 # https://github.com/tarjoilija/zgen#automatically-check-for-filechanges-and-regenerate-zinit
 export ZGEN_RESET_ON_CHANGE="${HOME}/.zshrc"
 
-export ZSH_THEME="random"
+# export ZSH_THEME="bira"
 
 # zgen
 # A lightweight plugin manager for ZSH inspired by Antigen.
@@ -55,16 +55,10 @@ if ! zgen saved; then
   # https://github.com/rupa/z
   zgen load rupa/z
 
-  # # A dark theme.
-  # zgen oh-my-zsh themes/bira
-  zgen oh-my-zsh themes/amuse
-
-  # zsh-syntax-highlighting
-  # Provides syntax highlighting of commands as they are typed at the prompt.
-  # https://github.com/zsh-users/zsh-syntax-highlighting
   # TODO
-  # - get this working
-  #zgen load zsh-users/zsh-syntax-highlighting
+  # - create a custom theme
+  # zgen oh-my-zsh themes/bira
+  # zgen oh-my-zsh themes/amuse
 
   zgen save
 fi
@@ -166,9 +160,9 @@ bz() {
 #     `c` simply list the current directory in that case.
 #
 #     `k` (https://github.com/rimraf/k) will be used if it is installed.
+#     `z` (https://github.com/rupa/z) will be used if it is installed.
 #
 # TODO
-# - use z (if exists) if $1 is ostensibly not a directory or file
 # - use catimg (if exists) if $1 appears to be an image
 c() {
   # If we're given a file view it.
@@ -271,11 +265,18 @@ laravel-setup() {
 
 # ------------------------------------------------------------------------------
 
-# # https://github.com/ashleynewson/SmartSim/issues/2#issuecomment-10306256
-# export PKG_CONFIG_PATH=/usr/X11/lib/pkgconfig
-# # pkg-config --variable pc_path pkg-config
-
 # Extra stuff that's too sensitive to be committed to a public repository.
 if [ -f ~/.extra ]; then
   source ~/.extra
 fi
+
+# zsh-syntax-highlighting
+# Provides syntax highlighting of commands as they are typed at the prompt.
+# https://github.com/zsh-users/zsh-syntax-highlighting
+# TODO
+# - get this working
+
+# export ZSH_HIGHLIGHT_HIGHLIGHTERS=(main brackets pattern cursor)
+
+# source /Users/ronmartinez/.zgen/zsh-users/zsh-syntax-highlighting-master/highlighters/main/main-highlighter.zsh
+# source /Users/ronmartinez/.zgen/zsh-users/zsh-syntax-highlighting-master/zsh-syntax-highlighting.zsh
