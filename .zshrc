@@ -164,6 +164,8 @@ bz() {
 #
 # TODO
 # - use catimg (if exists) if $1 appears to be an image
+# - use pygmentize for syntax highlighting but only for appropriate files
+#
 c() {
   # If we're given a file view it.
   if [ -f "$1" ]; then
