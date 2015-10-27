@@ -175,8 +175,9 @@ bz() {
 #     `z` (https://github.com/rupa/z) will be used if it is installed.
 #
 # TODO
-# - use catimg (if exists) if $1 appears to be an image
-# - use pygmentize for syntax highlighting but only for appropriate files
+# - use catimg (if it exists) if $1 appears to be an image
+# - use pygmentize (if it exists) for syntax highlighting but only for appropriate files
+# - use `cd` for arguments like "-1" and "+1"
 #
 c() {
   # If we're given a file view it.
