@@ -196,9 +196,8 @@ c() {
       if [ $? -ne 0 ]; then
         echo "\"$1\" could not be found."
         return
-      else
-        pwd
       fi
+      pwd
     fi
   fi
 
