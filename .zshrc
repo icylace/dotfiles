@@ -115,7 +115,18 @@ $(git-radar --zsh --fetch)$(git_stash_status_zsh)
 $(prompt_char)${return_status} '
 
 # Display the date and battery charge.
-export RPROMPT="$(battery_charge)  $(date "+%Y ∴ %m∙%d ∴ %l:%M %p")"
+export RPROMPT="$(battery_charge)  %D{%Y ∴ %m∙%d ∴ %L:%M:%S %p}"
+
+# TODO
+# - check if TMOUT will prematurely terminate scripts that wait for input
+#   - http://www.thegeekstuff.com/2010/05/tmout-exit-bash-shell-when-no-activity/#comment-46144
+#   - http://h30499.www3.hp.com/t5/Languages-and-Scripting/TMOUT-cause-scripts-end/m-p/5249728#M40881
+#   - http://h30499.www3.hp.com/t5/Languages-and-Scripting/TMOUT-cause-scripts-end/m-p/5249732#M40885
+TMOUT=1
+
+TRAPALRM() {
+  zle reset-prompt
+}
 
 # ------------------------------------------------------------------------------
 
@@ -126,6 +137,7 @@ export RPROMPT="$(battery_charge)  $(date "+%Y ∴ %m∙%d ∴ %l:%M %p")"
 # http://hints.macworld.com/article.php?story=20070803053156346
 # http://www.macworld.com/article/1134810/zipmany.html
 # http://alexsantidote.com/334/batch-zip-and-rename/
+# http://askubuntu.com/questions/360063/how-to-show-a-running-clock-in-terminal-before-the-command-prompt/360172#360172
 #
 bz() {
   for f in "$@"; do
