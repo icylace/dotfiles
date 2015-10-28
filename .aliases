@@ -87,7 +87,7 @@ alias gsu='git status --untracked-files'
 alias gg='git log origin/$(gsr)..$(gsr)'
 
 # Adding and updating
-alias ga='git add .'
+alias ga='git add'
 alias ga+='git add --all'
 alias gb+='git checkout -b'
 alias gc='git commit --verbose -m'
