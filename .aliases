@@ -86,6 +86,9 @@ alias gsr='git symbolic-ref --short HEAD'
 alias gsu='git status --untracked-files'
 alias gg='git log origin/$(gsr)..$(gsr)'
 
+# Navigating
+alias gb='git checkout'
+
 # Adding and updating
 alias ga='git add'
 alias ga+='git add --all'
@@ -103,9 +106,6 @@ alias grm='git rebase master'
 # alias grs='git rebase staging'
 alias gu='git add --update'
 
-# Navigating
-alias gb='git checkout'
-
 # Patching
 alias gdp='git diff HEAD --minimal'
 alias gy='git apply --verbose'
@@ -117,6 +117,8 @@ alias gsp='git stash pop --index'
 
 # Resetting
 alias gtfo='git reset --hard; git clean --force -d'
+# http://stackoverflow.com/questions/10906554/how-do-i-revert-my-changes-to-a-git-submodule/27415757#27415757
+alias gtfo+='gtfo; git submodule deinit --force .; git submodule update --init'
 
 # TODO
 # alias gg='git symbolic-ref --short HEAD | echo $1 cat'
