@@ -88,6 +88,7 @@ alias gg='git log origin/$(gsr)..$(gsr)'
 
 # Navigating
 alias gb='git checkout'
+alias gbm='git checkout master'
 
 # Adding and updating
 alias ga='git add'
@@ -100,6 +101,7 @@ alias gm='git merge --no-ff'
 alias gmf='git merge --ff-only'
 # alias gp='git push origin $(gsr)'
 alias gp='git push'
+alias gpl='git pull --rebase=preserve'
 alias gpo='git push --set-upstream origin'
 alias gr='git rebase'
 alias grm='git rebase master'
