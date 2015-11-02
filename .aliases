@@ -94,6 +94,7 @@ alias gbm='git checkout master'
 # Adding and updating
 alias ga='git add'
 alias ga+='git add --all'
+alias gap='git add --patch'
 alias gb+='git checkout -b'
 alias gc='git commit --verbose -m'
 alias gf='git fetch --all'
