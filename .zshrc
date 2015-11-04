@@ -76,24 +76,22 @@ battery_charge() {
   python "${HOME}/My/Shell/battery_charge.py" --color
 }
 
-prompt_char() {
+show_prompt() {
   # git branch >/dev/null 2>/dev/null && echo '±' && return
-  # local prompter='♿'
-  # local prompter='❆'
-  # local prompter='⑁'
-  # local prompter='২'
-  # local prompter='⁘'
-  # local prompter='৶'
-  # local prompter='९'
-  # local prompter='﷽'
-  # local prompter='ઑ'
-  # local prompter='☙'
-  # local prompter='♞'
-  local prompter='♘'
-  echo "%{$fg_bold[magenta]%}$prompter %{$reset_color%}"
+  # local prompt_char='♿'
+  # local prompt_char='❆'
+  # local prompt_char='⑁'
+  # local prompt_char='২'
+  # local prompt_char='⁘'
+  # local prompt_char='৶'
+  # local prompt_char='९'
+  # local prompt_char='﷽'
+  # local prompt_char='ઑ'
+  # local prompt_char='☙'
+  # local prompt_char='♞'
+  local prompt_char='♘'
+  echo "%{$fg_bold[magenta]%}$prompt_char %{$reset_color%}"
 }
-
-local return_status="%{$fg[red]%}%(?..✘)%{$reset_color%}"
 
 export GIT_RADAR_COLOR_BRANCH="%{$fg_bold[cyan]%}"
 export GIT_RADAR_FORMAT="on %{branch}%{  :remote}%{  :local}%{  :changes}"
@@ -102,20 +100,25 @@ git_stash_status_zsh() {
   git branch >/dev/null 2>/dev/null || return
   # https://lists.gnu.org/archive/html/bug-coreutils/2008-01/msg00123.html
   local number_stashes="$(echo $(git stash list | wc -l))"
-  if [ $number_stashes -gt 0 ]; then
+  if [[ $number_stashes -gt 0 ]]; then
     printf %s " $number_stashes%{$fg_bold[white]%}ॾ%{$reset_color%}"
   fi
 }
+
+# local return_char='✘'
+# local return_char='⏎'
+# local return_char='↵'
+local return_status="%{$fg[red]%}%(?.. %?)%{$reset_color%}"
 
 export PROMPT='
 %{$fg[magenta]%}%n%{$reset_color%} \
 at %{$fg[yellow]%}%m%{$reset_color%} \
 in %{$fg_bold[green]%}${PWD/#$HOME/~}%{$reset_color%} \
 $(git-radar --zsh --fetch)$(git_stash_status_zsh)
-$(prompt_char)${return_status} '
+$(show_prompt)${return_status} '
 
 # Display the date and battery charge.
-export RPROMPT="$(battery_charge)  %D{%Y ∴ %m∙%d ∴ %L:%M:%S %p}"
+export RPROMPT='$(battery_charge)  %D{%Y ∴ %m∙%d ∴ %L:%M:%S %p}'
 
 # TODO
 # - check if TMOUT will prematurely terminate scripts that wait for input
@@ -143,7 +146,7 @@ bz() {
   for f in "$@"; do
     # Check that the file exists and that it's not in fact a directory.
     if [[ -e "$f" && ! (-d "$f") ]]; then
-      zip -j -9 "${f%.*}.zip" "$f"
+      zip --junk-paths -9 "${f%.*}.zip" "$f"
       mv "$f" ~/.Trash
     fi
   done
