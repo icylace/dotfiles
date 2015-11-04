@@ -74,6 +74,9 @@ alias gcl='git clone --verbose'
 alias g='git status --branch --short --untracked-files=no'
 alias gba='git branch --all --verbose --verbose'
 alias gbl='git blame --minimal --show-number --show-stats'
+# TODO
+# - combine `gd` and `gdc` into a function
+# - turn `gds` into a function with a little more functionality
 alias gd='git diff HEAD --minimal --word-diff=color'
 alias gd1='git diff HEAD~1 HEAD --minimal --word-diff=color'
 alias gdc='git diff --minimal --word-diff=color'
@@ -96,7 +99,7 @@ alias ga='git add'
 alias ga+='git add --all'
 alias gap='git add --patch'
 alias gb+='git checkout -b'
-alias gbr='git checkout --'
+alias gb--='git checkout --'
 alias gc='git commit --verbose -m'
 alias gf='git fetch --all'
 alias glo='git pull --rebase=preserve origin'
@@ -121,10 +124,14 @@ alias gsl='git stash list --pretty=format:"%Cred%h%Creset -%C(yellow)%d%Creset %
 alias gss='git stash save --include-untracked'
 alias gsp='git stash pop --index'
 
-# Resetting
-alias gtfo='git reset --hard; git clean --force -d'
+# Resetting and deleting
+alias gtg='git reset --hard; git clean --force -d'
 # http://stackoverflow.com/questions/10906554/how-do-i-revert-my-changes-to-a-git-submodule/27415757#27415757
-alias gtfo+='gtfo; git submodule deinit --force .; git submodule update --init'
+alias gtg+='gtfo; git submodule deinit --force .; git submodule update --init'
+# http://stackoverflow.com/questions/2003505/delete-a-git-branch-both-locally-and-remotely/2003515#2003515
+alias gtfo='git branch --delete --force'
+alias gtfo+='git push origin --delete'
+
 
 # TODO
 # alias gg='git symbolic-ref --short HEAD | echo $1 cat'
