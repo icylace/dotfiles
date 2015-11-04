@@ -108,7 +108,7 @@ git_stash_status_zsh() {
 # local return_char='✘'
 # local return_char='⏎'
 # local return_char='↵'
-local return_status="%{$fg[red]%}%(?.. %?)%{$reset_color%}"
+local return_status="%{$fg[red]%}%(?.. ∙%?∙)%{$reset_color%}"
 
 export PROMPT='
 %{$fg[magenta]%}%n%{$reset_color%} \
@@ -118,7 +118,7 @@ $(git-radar --zsh --fetch)$(git_stash_status_zsh)
 $(show_prompt)${return_status} '
 
 # Display the date and battery charge.
-export RPROMPT='$(battery_charge)  %D{%Y ∴ %m∙%d ∴ %L:%M:%S %p}'
+export RPROMPT='$(battery_charge)  %D{%Y ∴ %m-%d ∴ %L:%M:%S %p}'
 
 # TODO
 # - check if TMOUT will prematurely terminate scripts that wait for input
