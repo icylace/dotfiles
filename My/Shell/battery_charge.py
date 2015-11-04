@@ -1,7 +1,7 @@
 #!/usr/bin/env python
 # coding=UTF-8
 
-# based on:
+# Based on:
 # http://stevelosh.com/blog/2010/02/my-extravagant-zsh-prompt/#my-right-prompt-battery-capacity
 # https://gist.github.com/ascarter/1181082
 

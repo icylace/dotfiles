@@ -72,10 +72,6 @@ fi
 # http://justin.jetfive.com/2012/12/01/my-new-zsh-theme.html
 #
 
-battery_charge() {
-  python "${HOME}/My/Shell/battery_charge.py" --color
-}
-
 show_prompt() {
   # git branch >/dev/null 2>/dev/null && echo '±' && return
   # local prompt_char='♿'
@@ -105,6 +101,14 @@ git_stash_status_zsh() {
   fi
 }
 
+battery_charge() {
+  python "${HOME}/My/Shell/battery_charge.py" --color
+}
+
+# if [ -f ~/My/Shell/battery_charge.sh ]; then
+#   source ~/My/Shell/battery_charge.sh
+# fi
+
 # local return_char='✘'
 # local return_char='⏎'
 # local return_char='↵'
@@ -118,7 +122,7 @@ $(git-radar --zsh --fetch)$(git_stash_status_zsh)
 $(show_prompt)${return_status} '
 
 # Display the date and battery charge.
-export RPROMPT='$(battery_charge)  %D{%Y ∴ %m-%d ∴ %L:%M:%S %p}'
+export RPROMPT='$(battery_charge)  %{$fg_bold[grey]%}%D{%Y ∴ %m-%d ∴ %L:%M:%S %p}%{$reset_color%}'
 
 # TODO
 # - check if TMOUT will prematurely terminate scripts that wait for input
@@ -243,44 +247,9 @@ u() {
 
 # ------------------------------------------------------------------------------
 
-#
-# Simple setup for a new Laravel project. This will do most of the setup.
-#
-# Usage:
-#
-#   1. `cd` to the folder that will contain the project folder.
-#
-#   2. `laravel-basis {NameOfApp}`
-#      Note:  Make sure there's no subfolder named `{NameOfApp}` already.
-#
-#   3. Adjust "app/config/local/database.php" and
-#      "app/config/local/mail.php" accordingly.
-#
-#   4. Edit the environment detection in "bootstrap/start.php" with this:
-#
-#        $env = $app->detectEnvironment(function () {
-#          return getenv('LARAVEL_ENV') ?: 'local';
-#        });
-#
-# Notes:
-#
-#   - Eventually when certain files get created it's useful to make them
-#     writable for development.
-#
-#        sudo chmod -R 777 app/storage/logs/laravel.log
-#        sudo chmod -R 777 app/storage/meta/services.json
-#
-laravel-setup() {
-  laravel new $1
-  cd $1
-  chmod -R 777 app/storage
-  sed -i '' "s/your-machine-name/$(hostname)/g" bootstrap/start.php
-  cp app/config/database.php app/config/local/database.php
-  cp app/config/mail.php app/config/local/mail.php
-  php artisan key:generate
-}
-
-# ------------------------------------------------------------------------------
+if [ -f ~/My/Shell/laravel.sh ]; then
+  source ~/My/Shell/laravel.sh
+fi
 
 # Extra stuff that's too sensitive to be committed to a public repository.
 if [ -f ~/.extra ]; then

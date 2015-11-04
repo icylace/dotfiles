@@ -152,10 +152,6 @@ alias bkd='brew cask doctor'
 alias bki='brew cask info'
 alias bks='brew cask search'
 
-# Laravel
-alias artisan='php artisan'
-alias a='php artisan'
-
 # sift
 alias s='sift'
 
