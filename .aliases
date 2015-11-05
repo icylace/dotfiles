@@ -66,6 +66,11 @@ alias ccat='pygmentize -O bg=dark'
 #  https://medium.com/@porteneuve/getting-solid-at-git-rebase-vs-merge-4fa1a48c53aa
 # ------------------------------------------------------------------------------
 
+# TODO
+# - combine `gd` and `gdc` into a function called `gd`
+# - turn `gds` into a function with a little more functionality
+# - combine `gb` and `gba` into a function called `gb`
+
 # Setup
 alias git='hub'
 alias gcl='git clone --verbose'
@@ -74,9 +79,6 @@ alias gcl='git clone --verbose'
 alias g='git status --branch --short --untracked-files=no'
 alias gba='git branch --all --verbose --verbose'
 alias gbl='git blame --minimal --show-number --show-stats'
-# TODO
-# - combine `gd` and `gdc` into a function
-# - turn `gds` into a function with a little more functionality
 alias gd='git diff HEAD --minimal --word-diff=color'
 alias gd1='git diff HEAD~1 HEAD --minimal --word-diff=color'
 alias gdc='git diff --minimal --word-diff=color'
