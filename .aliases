@@ -98,10 +98,10 @@ alias gbm='git checkout master'
 
 # Adding and updating
 alias ga='git add'
+alias g+='git add'
 alias ga+='git add --all'
 alias gap='git add --patch'
 alias gb+='git checkout -b'
-alias gb--='git checkout --'
 alias gc='git commit --verbose -m'
 alias gf='git fetch --all'
 alias glo='git pull --rebase=preserve origin'
@@ -127,6 +127,8 @@ alias gss='git stash save --include-untracked'
 alias gsp='git stash pop --index'
 
 # Resetting and deleting
+alias g-='git reset --'
+alias g--='git checkout --'
 alias gtg='git reset --hard; git clean --force -d'
 # http://stackoverflow.com/questions/10906554/how-do-i-revert-my-changes-to-a-git-submodule/27415757#27415757
 alias gtg+='gtfo; git submodule deinit --force .; git submodule update --init'
