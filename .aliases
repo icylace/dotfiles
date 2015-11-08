@@ -66,23 +66,14 @@ alias ccat='pygmentize -O bg=dark'
 #  https://medium.com/@porteneuve/getting-solid-at-git-rebase-vs-merge-4fa1a48c53aa
 # ------------------------------------------------------------------------------
 
-# TODO
-# - combine `gd` and `gdc` into a function called `gd`
-# - turn `gds` into a function with a little more functionality
-# - combine `gb` and `gba` into a function called `gb`
-
 # Setup
 alias git='hub'
 alias gcl='git clone --verbose'
 
 # Info
 alias g='git status --branch --short --untracked-files=no'
-alias gba='git branch --all --verbose --verbose'
 alias gbl='git blame --minimal --show-number --show-stats'
-alias gd='git diff HEAD --minimal --word-diff=color'
-alias gd1='git diff HEAD~1 HEAD --minimal --word-diff=color'
-alias gdc='git diff --minimal --word-diff=color'
-alias gds='git diff HEAD --minimal --staged --word-diff=color'
+alias gd1='git diff --minimal --word-diff=color HEAD~1 HEAD'
 alias gl='git log --graph --pretty=format:"%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset"'
 alias gld='gl --patch-with-stat --minimal --word-diff=color'
 alias gll='git log --decorate --graph --all'
@@ -90,11 +81,31 @@ alias gllo='git log --decorate --graph --all --oneline'
 alias gsr='git symbolic-ref --short HEAD'
 alias gsu='git status --untracked-files'
 alias gg='git log origin/$(gsr)..$(gsr)'
+gd() {
+  if [ -n "$1" ]; then
+    git diff --minimal --word-diff=color
+  else
+    git diff --minimal --word-diff=color HEAD
+  fi
+}
+gds() {
+  if [ -n "$1" ]; then
+    git diff --minimal --staged --word-diff=color
+  else
+    git diff --minimal --staged --word-diff=color HEAD
+  fi
+}
 
 # Navigating
-alias gb='git checkout'
 alias gbd='git checkout dev'
 alias gbm='git checkout master'
+gb() {
+  if [ -n "$1" ]; then
+    git checkout $1
+  else
+    git branch --all --verbose --verbose
+  fi
+}
 
 # Adding and updating
 alias ga='git add'
@@ -118,7 +129,7 @@ alias grm='git rebase master'
 alias gu='git add --update'
 
 # Patching
-alias gdp='git diff HEAD --minimal'
+alias gdp='git diff --minimal HEAD'
 alias gy='git apply --verbose'
 
 # Stashing
