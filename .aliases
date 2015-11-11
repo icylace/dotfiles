@@ -109,8 +109,8 @@ gb() {
 
 # Adding and updating
 alias ga='git add'
-alias g+='git add'
 alias ga+='git add --all'
+alias gau='git add --update'
 alias gap='git add --patch'
 alias gb+='git checkout -b'
 alias gc='git commit --verbose -m'
@@ -126,7 +126,6 @@ alias gpr='git pull-request'
 alias gr='git rebase'
 alias grm='git rebase master'
 # alias grs='git rebase staging'
-alias gu='git add --update'
 
 # Patching
 alias gdp='git diff --minimal HEAD'
