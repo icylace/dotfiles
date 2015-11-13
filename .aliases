@@ -79,7 +79,7 @@ alias gld='gl --patch-with-stat --minimal --word-diff=color'
 alias gll='git log --decorate --graph --all'
 alias gllo='git log --decorate --graph --all --oneline'
 alias gsr='git symbolic-ref --short HEAD'
-alias gsu='git status --untracked-files'
+alias gu='git status --untracked-files'
 alias gg='gl origin/$(gsr)..$(gsr)'
 gd() {
   if [ -n "$1" ]; then
@@ -141,7 +141,7 @@ alias gsp='git stash pop --index'
 
 # Resetting and deleting
 alias g-='git reset --'
-alias g--='git checkout --'
+alias gb-='git checkout --'
 alias gtg='git reset --hard; git clean --force -d'
 # http://stackoverflow.com/questions/10906554/how-do-i-revert-my-changes-to-a-git-submodule/27415757#27415757
 alias gtg+='gtfo; git submodule deinit --force .; git submodule update --init'
