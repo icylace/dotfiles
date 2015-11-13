@@ -80,7 +80,7 @@ alias gll='git log --decorate --graph --all'
 alias gllo='git log --decorate --graph --all --oneline'
 alias gsr='git symbolic-ref --short HEAD'
 alias gsu='git status --untracked-files'
-alias gg='git log origin/$(gsr)..$(gsr)'
+alias gg='gl origin/$(gsr)..$(gsr)'
 gd() {
   if [ -n "$1" ]; then
     git diff --minimal --word-diff=color
@@ -118,14 +118,17 @@ alias gf='git fetch --all'
 alias glo='git pull --rebase=preserve origin'
 alias gm='git merge --no-ff'
 alias gmf='git merge --ff-only'
-# alias gp='git push origin $(gsr)'
 alias gp='git push'
 alias gpl='git pull --rebase=preserve'
 alias gpo='git push --set-upstream origin'
 alias gpr='git pull-request'
-alias gr='git rebase'
-alias grm='git rebase master'
-# alias grs='git rebase staging'
+gr() {
+  if [ -n "$1" ]; then
+    git rebase $1
+  else
+    git rebase master
+  fi
+}
 
 # Patching
 alias gdp='git diff --minimal HEAD'
@@ -145,12 +148,6 @@ alias gtg+='gtfo; git submodule deinit --force .; git submodule update --init'
 # http://stackoverflow.com/questions/2003505/delete-a-git-branch-both-locally-and-remotely/2003515#2003515
 alias gtfo='git branch --delete --force'
 alias gtfo+='git push origin --delete'
-
-
-# TODO
-# alias gg='git symbolic-ref --short HEAD | echo $1 cat'
-# alias gg='echo ${echo 1}'
-# alias gg='echo ${git symbolic-ref --short HEAD}'
 
 # ------------------------------------------------------------------------------
 
