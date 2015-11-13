@@ -171,6 +171,10 @@ alias bkd='brew cask doctor'
 alias bki='brew cask info'
 alias bks='brew cask search'
 
+# Find files
+# http://stackoverflow.com/questions/4034896/find-all-files-with-a-filename-beginning-with-a-specified-string-which-may-match/4034907#4034907
+alias f='find . -name'
+
 # sift
 alias s='sift'
 
