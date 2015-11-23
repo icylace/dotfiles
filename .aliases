@@ -110,18 +110,25 @@ gb() {
 # Adding and updating
 alias ga='git add'
 alias ga+='git add --all'
+alias ga-='git reset'
 alias gau='git add --update'
 alias gap='git add --patch'
 alias gb+='git checkout -b'
-alias gc='git commit --verbose -m'
 alias gf='git fetch --all'
-alias glo='git pull --rebase=preserve origin'
 alias gm='git merge --no-ff'
 alias gmf='git merge --ff-only'
 alias gp='git push'
 alias gpl='git pull --rebase=preserve'
+alias gplo='git pull --rebase=preserve origin'
+alias gplr='git pull-request'
 alias gpo='git push --set-upstream origin'
-alias gpr='git pull-request'
+gc() {
+  if [ -n "$1" ]; then
+    git commit --verbose -m $1
+  else
+    git commit --verbose
+  fi
+}
 gr() {
   if [ -n "$1" ]; then
     git rebase $1
@@ -140,14 +147,19 @@ alias gss='git stash save --include-untracked'
 alias gsp='git stash pop --index'
 
 # Resetting and deleting
-alias g-='git reset --'
-alias gb-='git checkout --'
+# alias g-='git reset --'
+# alias gb-='git checkout --'
 alias gtg='git reset --hard; git clean --force -d'
+# alias gtfo='git reset --hard; git clean --force -d'
 # http://stackoverflow.com/questions/10906554/how-do-i-revert-my-changes-to-a-git-submodule/27415757#27415757
-alias gtg+='gtfo; git submodule deinit --force .; git submodule update --init'
+alias gtg+='gtg; git submodule deinit --force .; git submodule update --init'
+# alias gtfo+='gtfo; git submodule deinit --force .; git submodule update --init'
 # http://stackoverflow.com/questions/2003505/delete-a-git-branch-both-locally-and-remotely/2003515#2003515
+# alias gb-= # delete local branch
+# alias gb--= # delete remote branch
 alias gtfo='git branch --delete --force'
 alias gtfo+='git push origin --delete'
+# alias gtfo='gb-; gb--'
 
 # ------------------------------------------------------------------------------
 
@@ -203,7 +215,7 @@ alias yc='yadm commit -m'
 alias yd='yadm diff --minimal --word-diff=color HEAD'
 alias yd1='yadm diff --minimal --word-diff=color HEAD~1 HEAD'
 alias yl='yadm log --graph --pretty=format:"%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset"'
-alias ylm='yadm pull --rebase=preserve origin master'
+alias yplm='yadm pull --rebase=preserve origin master'
 alias ypm='yadm push --set-upstream origin master'
 alias ys='yadm list -a'
 alias yy='yau; yc "WIP"; ypm'
