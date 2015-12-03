@@ -78,6 +78,7 @@ alias gl='git log --graph --pretty=format:"%Cred%h%Creset -%C(yellow)%d%Creset %
 alias gld='gl --patch-with-stat --minimal --word-diff=color'
 alias gll='git log --decorate --graph --all'
 alias gllo='git log --decorate --graph --all --oneline'
+alias gs='git status --branch --short'
 alias gsr='git symbolic-ref --short HEAD'
 alias gu='git status --untracked-files'
 alias gg='gl origin/$(gsr)..$(gsr)'
