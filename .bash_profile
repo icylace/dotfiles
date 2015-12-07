@@ -1,4 +1,4 @@
-# http://superuser.com/questions/789448/choosing-between-bashrc-profile-bash-profile-etc/789465#789465
+# http://superuser.com/a/789465
 if [ -f ~/.profile ]; then
   source ~/.profile
 fi
