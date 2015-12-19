@@ -59,6 +59,7 @@ alias ccat='pygmentize -O bg=dark'
 # # Create Xiki buffer from terminal.
 # alias xiki='pwd > tree.xiki'
 
+
 # ------------------------------------------------------------------------------
 #  Git
 #  https://drupalize.me/videos/moving-through-git-history?p=1173
@@ -68,20 +69,22 @@ alias ccat='pygmentize -O bg=dark'
 
 # Setup
 alias git='hub'
+# TODO
+# - improve gcl so it switches into the repo directory after cloning
 alias gcl='git clone --verbose'
 
 # Info
 alias g='git status --branch --short --untracked-files=no'
 alias gbl='git blame --minimal --show-number --show-stats'
 alias gd1='git diff --minimal --word-diff=color HEAD~1 HEAD'
+alias gg='git status --branch --short'
 alias gl='git log --graph --pretty=format:"%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset"'
 alias gld='gl --patch-with-stat --minimal --word-diff=color'
 alias gll='git log --decorate --graph --all'
-alias gllo='git log --decorate --graph --all --oneline'
-alias gs='git status --branch --short'
+alias gll1='git log --decorate --graph --all --oneline'
 alias gsr='git symbolic-ref --short HEAD'
+alias glo='gl origin/$(gsr)..$(gsr)'
 alias gu='git status --untracked-files'
-alias gg='gl origin/$(gsr)..$(gsr)'
 gd() {
   if [ -n "$1" ]; then
     git diff --minimal --word-diff=color
@@ -110,15 +113,15 @@ gb() {
 
 # Adding and updating
 alias ga='git add'
-alias ga+='git add --all'
-alias ga-='git reset'
+alias gal='git add --all'
+alias gre='git reset'
 alias gau='git add --update'
 alias gap='git add --patch'
-alias gb+='git checkout -b'
+alias gba='git checkout -b'
 alias gf='git fetch --all'
 alias gm='git merge --no-ff'
 alias gmf='git merge --ff-only'
-alias gp='git push'
+alias gpu='git push'
 alias gpl='git pull --rebase=preserve'
 alias gplo='git pull --rebase=preserve origin'
 alias gplr='git pull-request'
