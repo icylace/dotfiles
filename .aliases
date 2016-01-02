@@ -55,7 +55,7 @@ alias ccat='pygmentize -O bg=dark'
 
 # # https://tutsplus.com/forums/topic/handy-aliasses-for-opening-sublimetext-with-xiki-buffer/
 # # OPEN UP XIKI SUBLIME TEXT 2
-# alias stx='subl .;subl *.xiki'
+# alias stx='subl . ; subl *.xiki'
 # # Create Xiki buffer from terminal.
 # alias xiki='pwd > tree.xiki'
 
@@ -77,6 +77,7 @@ alias gcl='git clone --verbose'
 alias g='git status --branch --short --untracked-files=no'
 alias gbl='git blame --minimal --show-number --show-stats'
 alias gd1='git diff --minimal --word-diff=color HEAD~1 HEAD'
+alias gd2='git diff --minimal --word-diff=color HEAD~2 HEAD'
 alias gg='git status --branch --short'
 alias gl='git log --graph --pretty=format:"%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset"'
 alias gld='gl --patch-with-stat --minimal --word-diff=color'
@@ -87,20 +88,21 @@ alias glo='gl origin/$(gsr)..$(gsr)'
 alias gu='git status --untracked-files'
 gd() {
   if [ -n "$1" ]; then
-    git diff --minimal --word-diff=color
+    git diff --minimal --word-diff=color $1
   else
     git diff --minimal --word-diff=color HEAD
   fi
 }
 gds() {
   if [ -n "$1" ]; then
-    git diff --minimal --staged --word-diff=color
+    git diff --minimal --staged --word-diff=color $1
   else
     git diff --minimal --staged --word-diff=color HEAD
   fi
 }
 
 # Navigating
+# alias gbc='git compare' (?)
 alias gbd='git checkout dev'
 alias gbm='git checkout master'
 gb() {
@@ -114,7 +116,6 @@ gb() {
 # Adding and updating
 alias ga='git add'
 alias gal='git add --all'
-alias gre='git reset'
 alias gau='git add --update'
 alias gap='git add --patch'
 alias gba='git checkout -b'
@@ -126,6 +127,7 @@ alias gpl='git pull --rebase=preserve'
 alias gplo='git pull --rebase=preserve origin'
 alias gplr='git pull-request'
 alias gpo='git push --set-upstream origin'
+alias gre='git reset'
 gc() {
   if [ -n "$1" ]; then
     git commit --verbose -m $1
@@ -153,17 +155,17 @@ alias gsp='git stash pop --index'
 # Resetting and deleting
 # alias g-='git reset --'
 # alias gb-='git checkout --'
-alias gtg='git reset --hard; git clean --force -d'
-# alias gtfo='git reset --hard; git clean --force -d'
+alias gtg='git reset --hard ; git clean --force -d'
+# alias gtfo='git reset --hard ; git clean --force -d'
 # http://stackoverflow.com/questions/10906554/how-do-i-revert-my-changes-to-a-git-submodule/27415757#27415757
-alias gtg+='gtg; git submodule deinit --force .; git submodule update --init'
-# alias gtfo+='gtfo; git submodule deinit --force .; git submodule update --init'
+alias gtg+='gtg ; git submodule deinit --force . ; git submodule update --init'
+# alias gtfo+='gtfo ; git submodule deinit --force . ; git submodule update --init'
 # http://stackoverflow.com/questions/2003505/delete-a-git-branch-both-locally-and-remotely/2003515#2003515
 # alias gb-= # delete local branch
 # alias gb--= # delete remote branch
 alias gtfo='git branch --delete --force'
 alias gtfo+='git push origin --delete'
-# alias gtfo='gb-; gb--'
+# alias gtfo='gb- ; gb--'
 
 # ------------------------------------------------------------------------------
 
@@ -175,7 +177,7 @@ alias hi='ghci -package-db=.cabal-sandbox/x86_64-osx-ghc-7.6.3-packages.conf.d'
 alias hr='runghc -package-db=.cabal-sandbox/x86_64-osx-ghc-7.6.3-packages.conf.d'
 
 # Homebrew
-alias b='brew info; brew list'
+alias b='brew info ; brew list'
 alias bd='brew doctor'
 alias bi='brew info'
 alias bs='brew search'
@@ -222,7 +224,7 @@ alias yl='yadm log --graph --pretty=format:"%Cred%h%Creset -%C(yellow)%d%Creset 
 alias yplm='yadm pull --rebase=preserve origin master'
 alias ypm='yadm push --set-upstream origin master'
 alias ys='yadm list -a'
-alias yy='yau; yc "WIP"; ypm'
+alias yy='yau ; yc "WIP" ; ypm'
 
 #
 # Pipes in/out of the OS X clipboard.
