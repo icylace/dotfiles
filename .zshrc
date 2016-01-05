@@ -21,7 +21,7 @@ setopt RM_STAR_WAIT
 # ------------------------------------------------------------------------------
 
 # https://github.com/tarjoilija/zgen#automatically-check-for-filechanges-and-regenerate-zinit
-export ZGEN_RESET_ON_CHANGE="${HOME}/.zshrc"
+export ZGEN_RESET_ON_CHANGE="$HOME/.zshrc"
 
 # export ZSH_THEME="bira"
 
@@ -29,11 +29,11 @@ export ZGEN_RESET_ON_CHANGE="${HOME}/.zshrc"
 # A lightweight plugin manager for ZSH inspired by Antigen.
 # https://github.com/tarjoilija/zgen
 # https://github.com/unixorn/zsh-quickstart-kit/blob/master/zsh/.zgen-setup
-if [ ! -f "${HOME}/zgen/zgen.zsh" ]; then
-  git clone git@github.com:tarjoilija/zgen.git "${HOME}/zgen"
+if [ ! -f "$HOME/zgen/zgen.zsh" ]; then
+  git clone git@github.com:tarjoilija/zgen.git "$HOME/zgen"
 fi
 
-source "${HOME}/zgen/zgen.zsh"
+source "$HOME/zgen/zgen.zsh"
 
 if ! zgen saved; then
   echo 'Creating a zgen init script.'
@@ -102,7 +102,7 @@ git_stash_status_zsh() {
 }
 
 battery_charge() {
-  python "${HOME}/My/Shell/battery_charge.py" --color
+  python "$HOME/My/Shell/battery_charge.py" --color
 }
 
 # if [ -f ~/My/Shell/battery_charge.sh ]; then
