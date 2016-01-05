@@ -195,6 +195,7 @@ alias f='find . -name'
 
 # sift
 alias s='sift'
+alias sn='sift --exclude-dirs=node_modules'
 
 # Symfony
 alias sr='php app/console server:run'
