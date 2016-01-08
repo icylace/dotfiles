@@ -74,19 +74,19 @@ alias git='hub'
 alias gcl='git clone --verbose'
 
 # Info
-alias g='git status --branch --short --untracked-files=no'
+alias g='git status --branch --short'
 alias gbc='git compare'
 alias gbl='git blame --minimal --show-number --show-stats'
 alias gd1='git diff --minimal --word-diff=color HEAD~1 HEAD'
 alias gd2='git diff --minimal --word-diff=color HEAD~2 HEAD'
-alias gg='git status --branch --short'
+alias gg='git status --branch'
+alias ggs='git status --branch --untracked-files'
 alias gl='git log --graph --pretty=format:"%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset"'
 alias gld='gl --patch-with-stat --minimal --word-diff=color'
 alias gll='git log --decorate --graph --all'
 alias gll1='git log --decorate --graph --all --oneline'
 alias gsr='git symbolic-ref --short HEAD'
 alias glo='gl origin/$(gsr)..$(gsr)'
-alias gu='git status --untracked-files'
 gd() {
   if [ -n "$1" ]; then
     git diff --minimal --word-diff=color $1
