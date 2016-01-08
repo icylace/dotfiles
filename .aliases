@@ -224,10 +224,10 @@ alias yc='yadm commit -m'
 alias yd='yadm diff --minimal --word-diff=color HEAD'
 alias yd1='yadm diff --minimal --word-diff=color HEAD~1 HEAD'
 alias yl='yadm log --graph --pretty=format:"%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset"'
-alias yplm='yadm pull --rebase=preserve origin master'
-alias ypm='yadm push --set-upstream origin master'
+alias ypl='yadm pull --rebase=preserve origin master'
+alias ypu='yadm push --set-upstream origin master'
 alias ys='yadm list -a'
-alias yy='yau ; yc "WIP" ; ypm'
+alias yy='yau ; yc "WIP" ; ypu'
 
 #
 # Pipes in/out of the OS X clipboard.
