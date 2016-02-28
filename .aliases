@@ -255,11 +255,9 @@ alias cbp='pbpaste | less'
 
 # Swift
 sw() {
-  if [ -n "$1" ]; then
-    if [ -f "$1" ]; then
-      swift "$1.swift"
-    fi
-  else
-    swift *.swift
+  if [ -f $1 ]; then
+    swift $1
+  elif [ -f $1.swift ]; then
+    swift $1.swift
   fi
 }

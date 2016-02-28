@@ -234,22 +234,21 @@ alias cs='c ~/Sites'
 # Manually update things.
 u() {
   upgrade_oh_my_zsh
-  # antigen update
   zgen selfupdate
   zgen update
   npm update -g
+  gem update --system
   gem update
   pip install --upgrade pip setuptools
   pip-review --auto
-  # Update Homebrew stuff by using our alias.
-  bu
+  brew update && brew upgrade --all && brew cleanup && brew cask cleanup
 }
 
 # ------------------------------------------------------------------------------
 
-if [ -f ~/My/Shell/laravel.sh ]; then
-  source ~/My/Shell/laravel.sh
-fi
+# if [ -f ~/My/Shell/laravel.sh ]; then
+#   source ~/My/Shell/laravel.sh
+# fi
 
 # Extra stuff that's too sensitive to be committed to a public repository.
 if [ -f ~/.extra ]; then
