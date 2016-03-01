@@ -256,11 +256,11 @@ x() {
 
   local platform='iOS Simulator'
   local device='iPhone 5s'
-  local os_version='latest'
+  local os='latest'
   local sdk='iphonesimulator'
   local config='Debug'        # May also be set to "Release".
   local data_path='./output'
-  local dest="platform=$platform,name=$device,OS=$os_version"
+  local dest="platform=$platform,name=$device,OS=$os"
   local app="./output/Build/Products/$config-$sdk/$scheme.app"
   local bundle_id="com.sleepytimebacon.$scheme"
 
@@ -292,17 +292,15 @@ xr() {
 
 # Load/reload the simulator.
 xs() {
-  # Use `xcrun simctl list` to find the UDID for the device we need.
-  # TODO
-  # - use `jq` to automate this
-  #   - use with `xcrun simctl list --json`
+  local device='iPhone 5s'
+  local os='iOS 9.2'
+  local udid=$(xcrun simctl list --json devices | jq ".devices.\"$os\" | .[] | select(.name==\"$device\") | .udid")
 
   local running=$(pgrep -x 'Simulator' | wc -l)
   if [ $running -gt 0 ]; then
     osascript -e 'quit app "Simulator"'
   fi
 
-  local udid='60575C6D-F3D9-4A00-BAF7-6F55FB07C066'
   open -a 'Simulator' --args -CurrentDeviceUDID $udid
 }
 
