@@ -247,22 +247,45 @@ u() {
 # ------------------------------------------------------------------------------
 
 x() {
-  # If no scheme name is provided by the caller
-  # get the scheme name from the directory.
+  xb
+
+  if [ $? -ne 0 ]; then
+    return
+  fi
+
+  # If no scheme name is provided by the caller then
+  # get the scheme name from the current directory.
   local scheme="$1"
   if [ -z $scheme ]; then
     scheme=$(basename "$(pwd)")
   fi
 
-  local platform='iOS Simulator'
-  local device='iPhone 5s'
-  local os='latest'
-  local sdk='iphonesimulator'
   local config='Debug'        # May also be set to "Release".
-  local data_path='./output'
-  local dest="platform=$platform,name=$device,OS=$os"
+  local sdk='iphonesimulator'
+
   local app="./output/Build/Products/$config-$sdk/$scheme.app"
   local bundle_id="com.sleepytimebacon.$scheme"
+
+  xcrun simctl install booted $app
+  xcrun simctl launch booted $bundle_id
+}
+
+xb() {
+  # If no scheme name is provided by the caller then
+  # get the scheme name from the current directory.
+  local scheme="$1"
+  if [ -z $scheme ]; then
+    scheme=$(basename "$(pwd)")
+  fi
+
+  local config='Debug'        # May also be set to "Release".
+  local sdk='iphonesimulator'
+
+  local data_path='./output'
+  local platform='iOS Simulator'
+  local device='iPhone 5s'
+  local os='9.2'
+  local dest="platform=$platform,name=$device,OS=$os"
 
   xctool -configuration $config      \
          -derivedDataPath $data_path \
@@ -271,37 +294,30 @@ x() {
          -scheme $scheme             \
          -sdk $sdk                   \
          build
+}
 
-  if [ $? -ne 0 ]; then
-    return
+# Load/reload the simulator.
+xl() {
+  local device='iPhone 5s'
+  local os='iOS 9.2'
+  local udid=$(xcrun simctl list --json devices | jq ".devices.\"$os\" | .[] | select(.name==\"$device\") | .udid")
+  xq
+  open -a 'Simulator' --args -CurrentDeviceUDID $udid
+}
+
+# Quit the simulator.
+xq() {
+  local running=$(pgrep -x 'Simulator' | wc -l)
+  if [ $running -gt 0 ]; then
+    osascript -e 'quit app "Simulator"'
   fi
-
-  xcrun simctl install booted $app
-  xcrun simctl launch booted $bundle_id
 }
 
 # Reset all the simulators.
 # http://stackoverflow.com/a/33818402
 xr() {
-  local running=$(pgrep -x 'Simulator' | wc -l)
-  if [ $running -gt 0 ]; then
-    osascript -e 'quit app "Simulator"'
-  fi
+  xq
   xcrun simctl erase all
-}
-
-# Load/reload the simulator.
-xs() {
-  local device='iPhone 5s'
-  local os='iOS 9.2'
-  local udid=$(xcrun simctl list --json devices | jq ".devices.\"$os\" | .[] | select(.name==\"$device\") | .udid")
-
-  local running=$(pgrep -x 'Simulator' | wc -l)
-  if [ $running -gt 0 ]; then
-    osascript -e 'quit app "Simulator"'
-  fi
-
-  open -a 'Simulator' --args -CurrentDeviceUDID $udid
 }
 
 # ------------------------------------------------------------------------------
