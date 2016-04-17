@@ -4,6 +4,7 @@
 
 alias cp='cp -i'
 alias li='ls -lAG'
+alias o='open'
 
 # Bower
 alias bo='bower list'

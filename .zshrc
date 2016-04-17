@@ -90,8 +90,10 @@ show_prompt() {
 }
 
 export GIT_RADAR_COLOR_BRANCH="%{$fg_bold[cyan]%}"
-export GIT_RADAR_FORMAT="on %{branch}%{  :remote}%{  :local}%{  :changes}"
+export GIT_RADAR_FORMAT="on %{$fg_bold[grey]%}git:(%{$reset_color%}%{remote: }%{branch}%{ :local}%{$fg_bold[grey]%})%{$reset_color%}%{ :stash}%{ :changes}"
 
+# TODO
+# - check if this is still necessary
 git_stash_status_zsh() {
   git branch >/dev/null 2>/dev/null || return
   # https://lists.gnu.org/archive/html/bug-coreutils/2008-01/msg00123.html
@@ -240,7 +242,6 @@ u() {
   gem update --system
   gem update
   pip install --upgrade pip setuptools
-  pip-review --auto
   brew update && brew upgrade --all && brew cleanup && brew cask cleanup
 }
 
