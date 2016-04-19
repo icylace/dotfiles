@@ -90,37 +90,34 @@ show_prompt() {
 }
 
 export GIT_RADAR_COLOR_BRANCH="%{$fg_bold[cyan]%}"
+
+# Our custom Git Radar prompt is a slight modification of the default one.
+# https://github.com/michaeldfallen/git-radar/blob/master/radar-base.sh#L99
 export GIT_RADAR_FORMAT="on %{$fg_bold[grey]%}git:(%{$reset_color%}%{remote: }%{branch}%{ :local}%{$fg_bold[grey]%})%{$reset_color%}%{ :stash}%{ :changes}"
 
-# TODO
-# - check if this is still necessary
-git_stash_status_zsh() {
-  git branch >/dev/null 2>/dev/null || return
-  # https://lists.gnu.org/archive/html/bug-coreutils/2008-01/msg00123.html
-  local number_stashes="$(echo $(git stash list | wc -l))"
-  if [[ $number_stashes -gt 0 ]]; then
-    printf %s " $number_stashes%{$fg_bold[white]%}ॾ%{$reset_color%}"
+battery_charge() {
+  local battery_charge_code="$HOME/My/Shell/battery_charge.py"
+  # TODO
+  # local battery_charge_code="$HOME/My/Shell/battery_charge.sh"
+  if [ -f $battery_charge_code ]; then
+    python $battery_charge_code --color
+    # TODO
+    # source $battery_charge_code
   fi
 }
-
-battery_charge() {
-  python "$HOME/My/Shell/battery_charge.py" --color
-}
-
-# if [ -f ~/My/Shell/battery_charge.sh ]; then
-#   source ~/My/Shell/battery_charge.sh
-# fi
 
 # local return_char='✘'
 # local return_char='⏎'
 # local return_char='↵'
 local return_status="%{$fg[red]%}%(?.. ∙%?∙)%{$reset_color%}"
 
+# Our prompt consists of the username, machine name,
+# current directory, and any Git info.
 export PROMPT='
 %{$fg[magenta]%}%n%{$reset_color%} \
 at %{$fg[yellow]%}%m%{$reset_color%} \
 in %{$fg_bold[green]%}${PWD/#$HOME/~}%{$reset_color%} \
-$(git-radar --zsh --fetch)$(git_stash_status_zsh)
+$(git-radar --zsh --fetch)
 $(show_prompt)${return_status} '
 
 # Display the date and battery charge.
@@ -184,14 +181,21 @@ bz() {
 #     `z` (https://github.com/rupa/z) will be used if it is installed.
 #
 # TODO
-# - use catimg (if it exists) if $1 appears to be an image
-# - use pygmentize (if it exists) for syntax highlighting but only for appropriate files
+# - use pygmentize (if it exists) for syntax highlighting but only for
+#   appropriate files
 # - use `cd` for arguments like "-1" and "+1"
 #
 c() {
   # If we're given a file view it.
   if [ -f "$1" ]; then
-    cat $@ | less
+    local it_is_an_image=$(file --brief $1 | grep --count --regexp=image)
+    if [ "$it_is_an_image" -ne 0 ]; then
+      if type catimg >/dev/null 2>&1; then
+        catimg $@
+      fi
+    else
+      cat $@ | less
+    fi
     return
   fi
 

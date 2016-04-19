@@ -258,8 +258,11 @@ alias cbp='pbpaste | less'
 # Swift
 sw() {
   if [ -f $1 ]; then
+    echo ${1//\\/\\\\}
     swift $1
   elif [ -f $1.swift ]; then
     swift $1.swift
+  else
+    echo 'Not a Swift file.'
   fi
 }
