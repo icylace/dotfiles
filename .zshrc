@@ -193,6 +193,11 @@ c() {
       if type catimg >/dev/null 2>&1; then
         catimg $@
       fi
+    elif type pygmentize >/dev/null 2>&1; then
+      # Piping pygmentize through cat before piping to less prevents
+      # broken pipe errors.
+      cat $@ | pygmentize -f terminal256 -O style=native -g | cat | less
+      # http://unix.stackexchange.com/questions/19439/how-can-i-display-syntax-highlighting-on-a-file#comment82094_19440
     else
       cat $@ | less
     fi
