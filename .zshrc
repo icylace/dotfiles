@@ -181,8 +181,6 @@ bz() {
 #     `z` (https://github.com/rupa/z) will be used if it is installed.
 #
 # TODO
-# - use pygmentize (if it exists) for syntax highlighting but only for
-#   appropriate files
 # - use `cd` for arguments like "-1" and "+1"
 #
 c() {
@@ -193,11 +191,8 @@ c() {
       if type catimg >/dev/null 2>&1; then
         catimg $@
       fi
-    elif type pygmentize >/dev/null 2>&1; then
-      # Piping pygmentize through cat before piping to less prevents
-      # broken pipe errors.
-      cat $@ | pygmentize -f terminal256 -O style=native -g | cat | less
-      # http://unix.stackexchange.com/questions/19439/how-can-i-display-syntax-highlighting-on-a-file#comment82094_19440
+    elif type highlight >/dev/null 2>&1; then
+      highlight --style=andes --out-format=xterm256 $@ | less
     else
       cat $@ | less
     fi
