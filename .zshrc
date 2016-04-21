@@ -177,8 +177,11 @@ bz() {
 #     Executing 'cd' with no arguments changes to the home directory but I have
 #     `c` simply list the current directory in that case.
 #
-#     `k` (https://github.com/rimraf/k) will be used if it is installed.
-#     `z` (https://github.com/rupa/z) will be used if it is installed.
+#     The following are used if they are installed:
+#     - `catimg`: https://github.com/posva/catimg
+#     - `highlight`: http://andre-simon.de/doku/highlight/en/highlight.php
+#     - `k`: https://github.com/rimraf/k
+#     - `z`: https://github.com/rupa/z
 #
 # TODO
 # - use `cd` for arguments like "-1" and "+1"
