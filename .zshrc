@@ -185,6 +185,7 @@ bz() {
 #
 # TODO
 # - use `cd` for arguments like "-1" and "+1"
+# - consider using `vim -R` for viewing text files
 #
 c() {
   # If we're given a file view it.
