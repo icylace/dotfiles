@@ -50,10 +50,6 @@ alias myip='curl icanhazip.com'
 # http://kvz.io/blog/2012/10/03/quick-server-debugging-with-wtf/
 alias wtf='tail -f /var/log/{dmesg,messages,*{,/*}{log,err}}'
 
-# http://alias.sh/cat-syntax-coloration
-# http://stackoverflow.com/a/14799752
-alias ccat='pygmentize -O bg=dark'
-
 # # https://tutsplus.com/forums/topic/handy-aliasses-for-opening-sublimetext-with-xiki-buffer/
 # # OPEN UP XIKI SUBLIME TEXT 2
 # alias stx='subl . ; subl *.xiki'
@@ -258,7 +254,7 @@ alias cbp='pbpaste | less'
 # Swift
 sw() {
   if [ -f $1 ]; then
-    echo ${1//\\/\\\\}
+    # echo ${1//\\/\\\\}
     swift $1
   elif [ -f $1.swift ]; then
     swift $1.swift

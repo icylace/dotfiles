@@ -155,6 +155,7 @@ bz() {
   done
 }
 
+
 # ------------------------------------------------------------------------------
 
 #
@@ -193,7 +194,7 @@ c() {
     local it_is_an_image=$(file --brief $1 | grep --count --regexp=image)
     if [ "$it_is_an_image" -ne 0 ]; then
       if type catimg >/dev/null 2>&1; then
-        catimg $@
+        catimg -l 0 $@
       fi
     elif type highlight >/dev/null 2>&1; then
       highlight --style=andes --out-format=xterm256 $@ | less
@@ -206,6 +207,18 @@ c() {
   # If we're given something and it's not a file then it must be a
   # directory so try to switch to it.
   if [ -n "$1" ]; then
+
+    # TODO
+    # - complete this
+    #
+    # # If the input begins with `-` or `+` followed by a number use `cd`.
+    # local first_character=${word::1}
+    # if [ $first_character = '-' ]; then
+    #   if [ following token is an integer ]; then
+    #     cd $@
+    #   fi
+    # fi
+
     if [ -d "$1" ]; then
       cd $@
     elif type z >/dev/null 2>&1; then
