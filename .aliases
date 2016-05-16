@@ -35,7 +35,6 @@ alias drun='drush pm-uninstall --yes'
 alias manp="man -t ${1} | open -f -a Preview"
 
 # https://github.com/yrammos/dotfiles/blob/master/.bashrc
-alias .='pwd'
 alias mv='mv -i'
 
 # http://www.techrepublic.com/blog/10things/cut-down-on-linux-command-line-typing-with-these-10-handy-bash-aliases/352
@@ -230,33 +229,34 @@ alias yy='yau ; yc "WIP" ; ypu'
 #
 # Pipes in/out of the OS X clipboard.
 #
-# Usage: someapp | cb     # Pipe someapp's output into clipboard
-#        cb | someapp     # Pipe clipboard's content into someapp
+# Usage: <command> | cb     # Copy stdin.
+#        cb <file>          # Copy a file's contents.
+#        cb | <command>     # Pipe clipboard's content into a command.
+#        cb > <file>        # Paste into a file.
 #
+# Based on:
 # http://stackoverflow.com/a/19458217
+# https://github.com/robbyrussell/oh-my-zsh/blob/master/lib/clipboard.zsh
 #
 cb() {
-  if [[ -p /dev/stdin ]]; then
-    # stdin is a pipe.
-    # stdin -> clipboard
+  if [[ -p /dev/stdin ]] ; then
     pbcopy
   else
-    # stdin is not a pipe.
-    # clipboard -> stdout
-    pbpaste
+    local file=$1
+    if [[ -n $file ]] ; then
+      cat $file | pbcopy
+    else
+      pbpaste
+    fi
   fi
 }
 
-# Preview the OS X clipboard in the terminal.
-# http://brettterpstra.com/2014/12/11/preview-the-os-x-clipboard-in-terminal/
-alias cbp='pbpaste | less'
-
 # Swift
 sw() {
-  if [ -f $1 ]; then
+  if [ -f $1 ] ; then
     # echo ${1//\\/\\\\}
     swift $1
-  elif [ -f $1.swift ]; then
+  elif [ -f $1.swift ] ; then
     swift $1.swift
   else
     echo 'Not a Swift file.'

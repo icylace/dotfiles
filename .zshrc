@@ -1,10 +1,12 @@
+#!/usr/local/bin/zsh
+
 # http://superuser.com/questions/187639/zsh-not-hitting-profile/187673#187673
-if [ -f ~/.profile ]; then
-  emulate sh -c 'source ~/.profile'
+if [ -f "$HOME/.profile" ] ; then
+  emulate sh -c "source $HOME/.profile"
 fi
 
-if [ -f ~/.aliases ]; then
-  source ~/.aliases
+if [ -f "$HOME/.aliases" ] ; then
+  source "$HOME/.aliases"
 fi
 
 # Tell Z Shell to not try to autocorrect the following.
@@ -20,48 +22,52 @@ setopt RM_STAR_WAIT
 
 # ------------------------------------------------------------------------------
 
-# https://github.com/tarjoilija/zgen#automatically-check-for-filechanges-and-regenerate-zinit
-export ZGEN_RESET_ON_CHANGE="$HOME/.zshrc"
+setup_with_zplug() {
+  export ZPLUG_HOME=/usr/local/opt/zplug
 
-# export ZSH_THEME="bira"
+  if [ ! -f "$ZPLUG_HOME/init.zsh" ] ; then
+    echo 'zplug is not installed.'
+    return
+  fi
 
-# zgen
-# A lightweight plugin manager for ZSH inspired by Antigen.
-# https://github.com/tarjoilija/zgen
-# https://github.com/unixorn/zsh-quickstart-kit/blob/master/zsh/.zgen-setup
-if [ ! -f "$HOME/zgen/zgen.zsh" ]; then
-  git clone git@github.com:tarjoilija/zgen.git "$HOME/zgen"
-fi
+  source "$ZPLUG_HOME/init.zsh"
 
-source "$HOME/zgen/zgen.zsh"
-
-if ! zgen saved; then
-  echo 'Creating a zgen init script.'
-
-  zgen oh-my-zsh
+  zplug "lib/history", from:oh-my-zsh
+  zplug "lib/key-bindings", from:oh-my-zsh
+  zplug "lib/misc", from:oh-my-zsh
+  zplug "lib/spectrum", from:oh-my-zsh
+  zplug "lib/theme-and-appearance", from:oh-my-zsh
 
   # alias-tips
   # Reminds you of aliases you have already.
   # https://github.com/djui/alias-tips
-  zgen load djui/alias-tips
+  zplug "djui/alias-tips"
 
   # k
   # Directory listings for zsh with git features.
   # https://github.com/rimraf/k
-  zgen load rimraf/k
+  zplug "rimraf/k"
 
   # z
   # Navigate your most used directories based on 'frecency'.
   # https://github.com/rupa/z
-  zgen load rupa/z
+  zplug "rupa/z", use:"*.sh"
 
-  # TODO
-  # - create a custom theme
-  # zgen oh-my-zsh themes/bira
-  # zgen oh-my-zsh themes/amuse
+  # zsh-syntax-highlighting
+  # Syntax highlighing for the command line.
+  # https://github.com/zsh-users/zsh-syntax-highlighting
+  zplug "zsh-users/zsh-syntax-highlighting", nice:19
 
-  zgen save
-fi
+  # Ensure plugins are installed.
+  if ! zplug check --verbose ; then
+    zplug install
+  fi
+
+  # Source plugins and add commands to `$PATH`.
+  zplug load --verbose
+}
+
+setup_with_zplug
 
 # ------------------------------------------------------------------------------
 
@@ -99,17 +105,19 @@ battery_charge() {
   local battery_charge_code="$HOME/My/Shell/battery_charge.py"
   # TODO
   # local battery_charge_code="$HOME/My/Shell/battery_charge.sh"
-  if [ -f $battery_charge_code ]; then
-    python $battery_charge_code --color
+  if [ -f "$battery_charge_code" ] ; then
+    python "$battery_charge_code" --color
     # TODO
-    # source $battery_charge_code
+    # source "$battery_charge_code"
   fi
 }
 
-# local return_char='✘'
-# local return_char='⏎'
-# local return_char='↵'
-local return_status="%{$fg[red]%}%(?.. ∙%?∙)%{$reset_color%}"
+# local return_status="%{$fg[red]%}%(?.. ∙%?∙)%{$reset_color%}"
+# local return_status="%{$fg[red]%}%(?.. %?✘)%{$reset_color%}"
+local return_status="%{$fg[red]%}%(?.. %?⏎)%{$reset_color%}"
+# local return_status="%{$fg[red]%}%(?.. %?↵)%{$reset_color%}"
+# local return_status="%{$fg[red]%}%(?.. %?∠)%{$reset_color%}"
+# local return_status="%{$fg[red]%}%(?.. %?∢)%{$reset_color%}"
 
 # Our prompt consists of the username, machine name,
 # current directory, and any Git info.
@@ -123,16 +131,17 @@ $(show_prompt)${return_status} '
 # Display the date and battery charge.
 export RPROMPT='$(battery_charge)  %{$fg_bold[grey]%}%D{%Y ∴ %m-%d ∴ %L:%M:%S %p}%{$reset_color%}'
 
-# TODO
-# - check if TMOUT will prematurely terminate scripts that wait for input
-#   - http://www.thegeekstuff.com/2010/05/tmout-exit-bash-shell-when-no-activity/#comment-46144
-#   - http://h30499.www3.hp.com/t5/Languages-and-Scripting/TMOUT-cause-scripts-end/m-p/5249728#M40881
-#   - http://h30499.www3.hp.com/t5/Languages-and-Scripting/TMOUT-cause-scripts-end/m-p/5249732#M40885
-TMOUT=1
+# # TODO
+# # - check if TMOUT will prematurely terminate scripts that wait for input
+# #   - http://www.thegeekstuff.com/2010/05/tmout-exit-bash-shell-when-no-activity/#comment-46144
+# #   - http://h30499.www3.hp.com/t5/Languages-and-Scripting/TMOUT-cause-scripts-end/m-p/5249728#M40881
+# #   - http://h30499.www3.hp.com/t5/Languages-and-Scripting/TMOUT-cause-scripts-end/m-p/5249732#M40885
+# TMOUT=1
 
-TRAPALRM() {
-  zle reset-prompt
-}
+# TRAPALRM() {
+#   # This seems to prevent accessing command line history after the prompt resets.
+#   zle reset-prompt
+# }
 
 # ------------------------------------------------------------------------------
 
@@ -146,11 +155,11 @@ TRAPALRM() {
 # http://askubuntu.com/questions/360063/how-to-show-a-running-clock-in-terminal-before-the-command-prompt/360172#360172
 #
 bz() {
-  for f in "$@"; do
+  for f in "$@" ; do
     # Check that the file exists and that it's not in fact a directory.
-    if [[ -e "$f" && ! (-d "$f") ]]; then
+    if [[ -e "$f" && ! (-d "$f") ]] ; then
       zip --junk-paths -9 "${f%.*}.zip" "$f"
-      mv "$f" ~/.Trash
+      mv "$f" "$HOME/.Trash"
     fi
   done
 }
@@ -190,40 +199,41 @@ bz() {
 #
 c() {
   # If we're given a file view it.
-  if [ -f "$1" ]; then
+  if [ -f "$1" ] ; then
     local it_is_an_image=$(file --brief $1 | grep --count --regexp=image)
-    if [ "$it_is_an_image" -ne 0 ]; then
-      if type catimg >/dev/null 2>&1; then
-        catimg -l 0 $@
+    if [ "$it_is_an_image" -ne 0 ] ; then
+      if type catimg >/dev/null 2>&1 ; then
+        catimg -l 0 "$@"
       fi
-    elif type highlight >/dev/null 2>&1; then
-      highlight --style=andes --out-format=xterm256 $@ | less
+    elif type highlight >/dev/null 2>&1 ; then
+      local color_text=$(highlight --style=andes --out-format=xterm256 "$@")
+      echo $color_text | less
     else
-      cat $@ | less
+      cat "$@" | less
     fi
     return
   fi
 
   # If we're given something and it's not a file then it must be a
   # directory so try to switch to it.
-  if [ -n "$1" ]; then
+  if [ -n "$1" ] ; then
 
     # TODO
     # - complete this
     #
     # # If the input begins with `-` or `+` followed by a number use `cd`.
     # local first_character=${word::1}
-    # if [ $first_character = '-' ]; then
-    #   if [ following token is an integer ]; then
+    # if [ $first_character = '-' ] ; then
+    #   if [ following token is an integer ] ; then
     #     cd $@
     #   fi
     # fi
 
-    if [ -d "$1" ]; then
-      cd $@
-    elif type z >/dev/null 2>&1; then
-      z $@
-      if [ $? -ne 0 ]; then
+    if [ -d "$1" ] ; then
+      cd "$@"
+    elif type z >/dev/null 2>&1 ; then
+      z "$@"
+      if [ $? -ne 0 ] ; then
         echo "\"$1\" could not be found."
         return
       fi
@@ -232,7 +242,7 @@ c() {
   fi
 
   # Show the contents of the current directory.
-  if type k >/dev/null 2>&1; then
+  if type k >/dev/null 2>&1 ; then
     k --almost-all --human
   else
     ls -AGp
@@ -256,9 +266,9 @@ alias cs='c ~/Sites'
 
 # Manually update things.
 u() {
-  upgrade_oh_my_zsh
-  zgen selfupdate
-  zgen update
+  # upgrade_oh_my_zsh
+  # zgen selfupdate
+  # zgen update
   npm update -g
   gem update --system
   gem update
@@ -271,14 +281,14 @@ u() {
 x() {
   xb
 
-  if [ $? -ne 0 ]; then
+  if [ $? -ne 0 ] ; then
     return
   fi
 
   # If no scheme name is provided by the caller then
   # get the scheme name from the current directory.
   local scheme="$1"
-  if [ -z $scheme ]; then
+  if [ -z "$scheme" ] ; then
     scheme=$(basename "$(pwd)")
   fi
 
@@ -288,15 +298,15 @@ x() {
   local app="./output/Build/Products/$config-$sdk/$scheme.app"
   local bundle_id="com.sleepytimebacon.$scheme"
 
-  xcrun simctl install booted $app
-  xcrun simctl launch booted $bundle_id
+  xcrun simctl install booted "$app"
+  xcrun simctl launch booted "$bundle_id"
 }
 
 xb() {
   # If no scheme name is provided by the caller then
   # get the scheme name from the current directory.
   local scheme="$1"
-  if [ -z $scheme ]; then
+  if [ -z "$scheme" ] ; then
     scheme=$(basename "$(pwd)")
   fi
 
@@ -309,12 +319,12 @@ xb() {
   local os='9.2'
   local dest="platform=$platform,name=$device,OS=$os"
 
-  xctool -configuration $config      \
-         -derivedDataPath $data_path \
-         -destination $dest          \
-         -reporter pretty            \
-         -scheme $scheme             \
-         -sdk $sdk                   \
+  xctool -configuration "$config"      \
+         -derivedDataPath "$data_path" \
+         -destination "$dest"          \
+         -reporter pretty              \
+         -scheme "$scheme"             \
+         -sdk "$sdk"                   \
          build
 }
 
@@ -322,15 +332,17 @@ xb() {
 xl() {
   local device='iPhone 5s'
   local os='iOS 9.2'
-  local udid=$(xcrun simctl list --json devices | jq ".devices.\"$os\" | .[] | select(.name==\"$device\") | .udid")
+  local udid
+  udid=$(xcrun simctl list --json devices | jq ".devices.\"$os\" | .[] | select(.name==\"$device\") | .udid")
   xq
-  open -a 'Simulator' --args -CurrentDeviceUDID $udid
+  open -a 'Simulator' --args -CurrentDeviceUDID "$udid"
 }
 
 # Quit the simulator.
 xq() {
-  local running=$(pgrep -x 'Simulator' | wc -l)
-  if [ $running -gt 0 ]; then
+  local running
+  running=$(pgrep -x 'Simulator' | wc -l)
+  if [ "$running" -gt 0 ] ; then
     osascript -e 'quit app "Simulator"'
   fi
 }
@@ -344,22 +356,11 @@ xr() {
 
 # ------------------------------------------------------------------------------
 
-# if [ -f ~/My/Shell/laravel.sh ]; then
-#   source ~/My/Shell/laravel.sh
+# if [ -f "$HOME/My/Shell/laravel.sh" ] ; then
+#   source "$HOME/My/Shell/laravel.sh'
 # fi
 
 # Extra stuff that's too sensitive to be committed to a public repository.
-if [ -f ~/.extra ]; then
-  source ~/.extra
+if [ -f "$HOME/.extra" ] ; then
+  source "$HOME/.extra"
 fi
-
-# zsh-syntax-highlighting
-# Provides syntax highlighting of commands as they are typed at the prompt.
-# https://github.com/zsh-users/zsh-syntax-highlighting
-# TODO
-# - get this working
-
-# export ZSH_HIGHLIGHT_HIGHLIGHTERS=(main brackets pattern cursor)
-
-# source /Users/ronmartinez/.zgen/zsh-users/zsh-syntax-highlighting-master/highlighters/main/main-highlighter.zsh
-# source /Users/ronmartinez/.zgen/zsh-users/zsh-syntax-highlighting-master/zsh-syntax-highlighting.zsh
