@@ -32,6 +32,7 @@ setup_with_zplug() {
 
   source "$ZPLUG_HOME/init.zsh"
 
+  zplug "lib/functions", from:oh-my-zsh
   zplug "lib/history", from:oh-my-zsh
   zplug "lib/key-bindings", from:oh-my-zsh
   zplug "lib/misc", from:oh-my-zsh
@@ -79,7 +80,6 @@ setup_with_zplug
 #
 
 show_prompt() {
-  # git branch >/dev/null 2>/dev/null && echo '±' && return
   # local prompt_char='♿'
   # local prompt_char='❆'
   # local prompt_char='⑁'
@@ -114,7 +114,7 @@ battery_charge() {
 
 # local return_status="%{$fg[red]%}%(?.. ∙%?∙)%{$reset_color%}"
 # local return_status="%{$fg[red]%}%(?.. %?✘)%{$reset_color%}"
-local return_status="%{$fg[red]%}%(?.. %?⏎)%{$reset_color%}"
+local return_status="%{$fg[red]%}%(?..⏎ %? )%{$reset_color%}"
 # local return_status="%{$fg[red]%}%(?.. %?↵)%{$reset_color%}"
 # local return_status="%{$fg[red]%}%(?.. %?∠)%{$reset_color%}"
 # local return_status="%{$fg[red]%}%(?.. %?∢)%{$reset_color%}"
@@ -126,7 +126,7 @@ export PROMPT='
 at %{$fg[yellow]%}%m%{$reset_color%} \
 in %{$fg_bold[green]%}${PWD/#$HOME/~}%{$reset_color%} \
 $(git-radar --zsh --fetch)
-$(show_prompt)${return_status} '
+${return_status}$(show_prompt) '
 
 # Display the date and battery charge.
 export RPROMPT='$(battery_charge)  %{$fg_bold[grey]%}%D{%Y ∴ %m-%d ∴ %L:%M:%S %p}%{$reset_color%}'
@@ -266,9 +266,8 @@ alias cs='c ~/Sites'
 
 # Manually update things.
 u() {
-  # upgrade_oh_my_zsh
-  # zgen selfupdate
-  # zgen update
+  upgrade_oh_my_zsh
+  zplug update
   npm update -g
   gem update --system
   gem update
