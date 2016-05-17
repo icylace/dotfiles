@@ -6,6 +6,7 @@
 # Based on:
 # http://stevelosh.com/blog/2010/02/my-extravagant-zsh-prompt/#my-right-prompt-battery-capacity
 # https://gist.github.com/ascarter/1181082
+# http://stackoverflow.com/a/1025352/1935675
 #
 battery_indicator() {
   local slots_total=10
@@ -15,7 +16,7 @@ battery_indicator() {
   local threshold_medium=60
   local threshold_low=40
 
-  local battery_percent=$(echo $(pmset -g batt) | grep --only-matching --extended-regexp '[0-9]+%')
+  local battery_percent=$(echo $(pmset -g batt) | grep --only-matching '[0-9]\+%')
   local battery_number=${battery_percent: :-1}
   local scaled_battery=$((battery_number * slots_total / 100.0))
   local slots_filled=$(printf %.0f scaled_battery)

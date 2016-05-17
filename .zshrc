@@ -187,6 +187,7 @@ bz() {
 #     - `z`: https://github.com/rupa/z
 #
 # TODO
+# - use `cat` when `highlight` doesn't work
 # - use `cd` for arguments like "-1" and "+1"
 # - consider using `vim -R` for viewing text files
 #
