@@ -32,6 +32,7 @@ setup_with_zplug() {
 
   source "$ZPLUG_HOME/init.zsh"
 
+  zplug "lib/completion", from:oh-my-zsh
   zplug "lib/functions", from:oh-my-zsh
   zplug "lib/history", from:oh-my-zsh
   zplug "lib/key-bindings", from:oh-my-zsh
@@ -99,18 +100,8 @@ export GIT_RADAR_COLOR_BRANCH="%{$fg_bold[cyan]%}"
 
 # Our custom Git Radar prompt is a slight modification of the default one.
 # https://github.com/michaeldfallen/git-radar/blob/master/radar-base.sh#L99
-export GIT_RADAR_FORMAT="on %{$fg_bold[grey]%}git:(%{$reset_color%}%{remote: }%{branch}%{ :local}%{$fg_bold[grey]%})%{$reset_color%}%{ :stash}%{ :changes}"
-
-battery_charge() {
-  local battery_charge_code="$HOME/My/Shell/battery_charge.py"
-  # TODO
-  # local battery_charge_code="$HOME/My/Shell/battery_charge.sh"
-  if [ -f "$battery_charge_code" ] ; then
-    python "$battery_charge_code" --color
-    # TODO
-    # source "$battery_charge_code"
-  fi
-}
+export GIT_RADAR_FORMAT="on %{$fg_bold[grey]%}git:(%{$reset_color%}%{remote: }\
+%{branch}%{ :local}%{$fg_bold[grey]%})%{$reset_color%}%{ :stash}%{ :changes}"
 
 # local return_status="%{$fg[red]%}%(?.. ∙%?∙)%{$reset_color%}"
 # local return_status="%{$fg[red]%}%(?.. %?✘)%{$reset_color%}"
@@ -126,10 +117,12 @@ export PROMPT='
 at %{$fg[yellow]%}%m%{$reset_color%} \
 in %{$fg_bold[green]%}${PWD/#$HOME/~}%{$reset_color%} \
 $(git-radar --zsh --fetch)
-${return_status}$(show_prompt) '
+$return_status$(show_prompt) '
+
+source "$HOME/.my/battery.zsh"
 
 # Display the date and battery charge.
-export RPROMPT='$(battery_charge)  %{$fg_bold[grey]%}%D{%Y ∴ %m-%d ∴ %L:%M:%S %p}%{$reset_color%}'
+export RPROMPT='$(battery_indicator)  %{$fg_bold[grey]%}%D{%Y ∴ %m-%d ∴ %L:%M:%S %p}%{$reset_color%}'
 
 # # TODO
 # # - check if TMOUT will prematurely terminate scripts that wait for input
@@ -355,8 +348,8 @@ xr() {
 
 # ------------------------------------------------------------------------------
 
-# if [ -f "$HOME/My/Shell/laravel.sh" ] ; then
-#   source "$HOME/My/Shell/laravel.sh'
+# if [ -f "$HOME/.my/laravel.sh" ] ; then
+#   source "$HOME/.my/laravel.sh'
 # fi
 
 # Extra stuff that's too sensitive to be committed to a public repository.

@@ -85,15 +85,15 @@ alias gs='git show --pretty=format:"%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgre
 alias gsr='git symbolic-ref --short HEAD'
 alias glo='gl origin/$(gsr)..$(gsr)'
 gd() {
-  if [ -n "$1" ]; then
-    git diff --minimal --word-diff=color $1
+  if [ -n "$1" ] ; then
+    git diff --minimal --word-diff=color "$1"
   else
     git diff --minimal --word-diff=color HEAD
   fi
 }
 gds() {
-  if [ -n "$1" ]; then
-    git diff --minimal --staged --word-diff=color $1
+  if [ -n "$1" ] ; then
+    git diff --minimal --staged --word-diff=color "$1"
   else
     git diff --minimal --staged --word-diff=color HEAD
   fi
@@ -103,8 +103,8 @@ gds() {
 alias gbd='git checkout dev'
 alias gbm='git checkout master'
 gb() {
-  if [ -n "$1" ]; then
-    git checkout $1
+  if [ -n "$1" ] ; then
+    git checkout "$1"
   else
     git branch --all --verbose --verbose
   fi
@@ -126,15 +126,15 @@ alias gplr='git pull-request'
 alias gpo='git push --set-upstream origin'
 alias gre='git reset'
 gc() {
-  if [ -n "$1" ]; then
-    git commit --verbose -m $1
+  if [ -n "$1" ] ; then
+    git commit --verbose -m "$1"
   else
     git commit --verbose
   fi
 }
 gr() {
-  if [ -n "$1" ]; then
-    git rebase $1
+  if [ -n "$1" ] ; then
+    git rebase "$1"
   else
     git rebase master
   fi
@@ -242,9 +242,9 @@ cb() {
   if [[ -p /dev/stdin ]] ; then
     pbcopy
   else
-    local file=$1
-    if [[ -n $file ]] ; then
-      cat $file | pbcopy
+    local file="$1"
+    if [[ -n "$file" ]] ; then
+      cat "$file" | pbcopy
     else
       pbpaste
     fi
@@ -253,11 +253,11 @@ cb() {
 
 # Swift
 sw() {
-  if [ -f $1 ] ; then
+  if [ -f "$1" ] ; then
     # echo ${1//\\/\\\\}
-    swift $1
-  elif [ -f $1.swift ] ; then
-    swift $1.swift
+    swift "$1"
+  elif [ -f "$1".swift ] ; then
+    swift "$1".swift
   else
     echo 'Not a Swift file.'
   fi

@@ -34,8 +34,8 @@ alias a='php artisan'
 #        sudo chmod -R 777 app/storage/meta/services.json
 #
 laravel-setup() {
-  laravel new $1
-  cd $1
+  laravel new "$1"
+  cd "$1"
   chmod -R 777 app/storage
   sed -i '' "s/your-machine-name/$(hostname)/g" bootstrap/start.php
   cp app/config/database.php app/config/local/database.php
