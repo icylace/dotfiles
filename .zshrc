@@ -1,7 +1,7 @@
 # http://superuser.com/questions/187639/zsh-not-hitting-profile/187673#187673
-[ -r "$HOME/.profile" ] && emulate sh -c "source $HOME/.profile"
+[ -f "$HOME/.profile" ] && emulate sh -c "source $HOME/.profile"
 
-[ -r "$HOME/.my/aliases.sh" ] && source "$HOME/.my/aliases.sh"
+[ -f "$HOME/.my/aliases.sh" ] && source "$HOME/.my/aliases.sh"
 
 # Tell Z Shell to not try to autocorrect the following.
 # http://superuser.com/questions/251818/exceptions-to-zsh-correctall-feature/271897#271897
@@ -19,7 +19,7 @@ setopt RM_STAR_WAIT
 setup_with_zplug() {
   export ZPLUG_HOME=/usr/local/opt/zplug
 
-  if [ ! -r "$ZPLUG_HOME/init.zsh" ] ; then
+  if [ ! -f "$ZPLUG_HOME/init.zsh" ] ; then
     echo 'zplug is not installed.'
     return
   fi
@@ -181,13 +181,14 @@ bz() {
 #     - `z`: https://github.com/rupa/z
 #
 # TODO
+# - fix stuff like `c ~/Sites` not working
 # - use `cat` when `highlight` doesn't work
 # - use `cd` for arguments like "-1" and "+1"
 # - consider using `vim -R` for viewing text files
 #
 c() {
   # If we're given a readble file then view it.
-  if [ -r "$1" ] ; then
+  if [ -f "$1" ] ; then
     local it_is_an_image=$(file --brief $1 | grep --count --regexp=image)
     if [ "$it_is_an_image" -ne 0 ] ; then
       if type catimg >/dev/null 2>&1 ; then
@@ -266,7 +267,7 @@ u() {
 # ------------------------------------------------------------------------------
 
 # Xcode-related stuff.
-[ -r "$HOME/.my/xcode.sh" ] && source "$HOME/.my/xcode.sh"
+[ -f "$HOME/.my/xcode.sh" ] && source "$HOME/.my/xcode.sh"
 
 # Extra stuff that's too sensitive to be committed to a public repository.
-[ -r "$HOME/.not-public" ] && source "$HOME/.not-public"
+[ -f "$HOME/.not-public" ] && source "$HOME/.not-public"
