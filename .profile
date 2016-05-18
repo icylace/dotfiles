@@ -18,7 +18,7 @@ export CFLAGS="-I$(xcrun --show-sdk-path)/usr/include"
 export JAVA_HOME='/Library/Java/JavaVirtualMachines/jdk1.8.0_72.jdk/Contents/Home/'
 
 nvm_file="$(brew --prefix nvm)/nvm.sh"
-if [ -f $nvm_file ] ; then
+if [ -f "$nvm_file" ] ; then
   # Recommended by Homebrew.
   export NVM_DIR=~/.nvm
   source $nvm_file
