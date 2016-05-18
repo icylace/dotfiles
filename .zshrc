@@ -269,4 +269,4 @@ u() {
 [ -f "$HOME/.my/xcode.sh" ] && source "$HOME/.my/xcode.sh"
 
 # Extra stuff that's too sensitive to be committed to a public repository.
-[ -f "$HOME/.my/extra.sh" ] && source "$HOME/.my/extra.sh"
+[ -f "$HOME/.extra" ] && source "$HOME/.extra"

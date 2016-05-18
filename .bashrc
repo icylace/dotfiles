@@ -3,4 +3,4 @@
 export PS1="$PS1\$(git-radar --bash --fetch) "
 
 # Extra stuff that's too sensitive to be committed to a public repository.
-[ -d ~/.my/extra.sh ] && source ~/.my/extra.sh
+[ -d ~/.extra ] && source ~/.extra
