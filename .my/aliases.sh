@@ -238,11 +238,11 @@ alias yy='yau ; yc "WIP" ; ypu'
 # https://github.com/robbyrussell/oh-my-zsh/blob/master/lib/clipboard.zsh
 #
 cb() {
-  if [[ -p /dev/stdin ]] ; then
+  if [ -p /dev/stdin ] ; then
     pbcopy
   else
     local file="$1"
-    if [[ -n "$file" ]] ; then
+    if [ -n "$file" ] ; then
       cat "$file" | pbcopy
     else
       pbpaste
