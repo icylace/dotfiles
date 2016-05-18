@@ -4,8 +4,6 @@
 #  Laravel
 # ------------------------------------------------------------------------------
 
-alias a='php artisan'
-
 #
 # Simple setup for a new Laravel project. This will do most of the setup.
 #

@@ -11,9 +11,6 @@ alias bo='bower list'
 alias boi='bower install'
 alias bos='bower search'
 
-# Composer
-alias co='composer'
-
 # Drush
 alias dr='drush'
 alias drc='drush cache-clear all'
