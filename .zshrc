@@ -1,5 +1,3 @@
-#!/usr/local/bin/zsh
-
 # http://superuser.com/questions/187639/zsh-not-hitting-profile/187673#187673
 if [ -f "$HOME/.profile" ] ; then
   emulate sh -c "source $HOME/.profile"
