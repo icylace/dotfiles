@@ -1,11 +1,7 @@
 # http://superuser.com/questions/187639/zsh-not-hitting-profile/187673#187673
-if [ -f "$HOME/.profile" ] ; then
-  emulate sh -c "source $HOME/.profile"
-fi
+[ -f "$HOME/.profile" ] && emulate sh -c "source $HOME/.profile"
 
-if [ -f "$HOME/.aliases" ] ; then
-  source "$HOME/.aliases"
-fi
+[ -f "$HOME/.my/aliases.sh" ] && source "$HOME/.my/aliases.sh"
 
 # Tell Z Shell to not try to autocorrect the following.
 # http://superuser.com/questions/251818/exceptions-to-zsh-correctall-feature/271897#271897
@@ -269,89 +265,8 @@ u() {
 
 # ------------------------------------------------------------------------------
 
-x() {
-  xb
-
-  if [ $? -ne 0 ] ; then
-    return
-  fi
-
-  # If no scheme name is provided by the caller then
-  # get the scheme name from the current directory.
-  local scheme="$1"
-  if [ -z "$scheme" ] ; then
-    scheme=$(basename "$(pwd)")
-  fi
-
-  local config='Debug'        # May also be set to "Release".
-  local sdk='iphonesimulator'
-
-  local app="./output/Build/Products/$config-$sdk/$scheme.app"
-  local bundle_id="com.sleepytimebacon.$scheme"
-
-  xcrun simctl install booted "$app"
-  xcrun simctl launch booted "$bundle_id"
-}
-
-xb() {
-  # If no scheme name is provided by the caller then
-  # get the scheme name from the current directory.
-  local scheme="$1"
-  if [ -z "$scheme" ] ; then
-    scheme=$(basename "$(pwd)")
-  fi
-
-  local config='Debug'        # May also be set to "Release".
-  local sdk='iphonesimulator'
-
-  local data_path='./output'
-  local platform='iOS Simulator'
-  local device='iPhone 5s'
-  local os='9.2'
-  local dest="platform=$platform,name=$device,OS=$os"
-
-  xctool -configuration "$config"      \
-         -derivedDataPath "$data_path" \
-         -destination "$dest"          \
-         -reporter pretty              \
-         -scheme "$scheme"             \
-         -sdk "$sdk"                   \
-         build
-}
-
-# Load/reload the simulator.
-xl() {
-  local device='iPhone 5s'
-  local os='iOS 9.2'
-  local udid
-  udid=$(xcrun simctl list --json devices | jq ".devices.\"$os\" | .[] | select(.name==\"$device\") | .udid")
-  xq
-  open -a 'Simulator' --args -CurrentDeviceUDID "$udid"
-}
-
-# Quit the simulator.
-xq() {
-  local running
-  running=$(pgrep -x 'Simulator' | wc -l)
-  if [ "$running" -gt 0 ] ; then
-    osascript -e 'quit app "Simulator"'
-  fi
-}
-
-# Reset all the simulators.
-# http://stackoverflow.com/a/33818402
-xr() {
-  xq
-  xcrun simctl erase all
-}
-
-# ------------------------------------------------------------------------------
-
-# if [ -f "$HOME/.my/laravel.sh" ] ; then
-#   source "$HOME/.my/laravel.sh'
-# fi
+# Xcode-related stuff.
+[ -f "$HOME/.my/xcode.sh" ] && source "$HOME/.my/xcode.sh"
 
 # Extra stuff that's too sensitive to be committed to a public repository.
-if [ -f "$HOME/.extra" ] ; then
-  source "$HOME/.extra"
-fi
+[ -f "$HOME/.my/extra.sh" ] && source "$HOME/.my/extra.sh"
