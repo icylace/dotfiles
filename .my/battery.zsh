@@ -26,12 +26,12 @@ battery_indicator() {
 
   local color=''
   if [ $battery_number -gt $threshold_medium ] ; then
-    color="%{$fg[green]%}"
+    color='green'
   elif [ $battery_number -gt $threshold_low ] ; then
-    color="%{$fg[yellow]%}"
+    color='yellow'
   else
-    color="%{$fg[red]%}"
+    color='red'
   fi
 
-  echo "$color$indicator_filled$indicator_unfilled%{$reset_color%}"
+  echo "%{$fg[$color]%}$indicator_filled$indicator_unfilled%{$reset_color%}"
 }

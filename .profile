@@ -15,21 +15,21 @@ export CFLAGS="-I$(xcrun --show-sdk-path)/usr/include"
 # export PATH="${coreutils_dir}/libexec/gnubin:$PATH"
 # export MANPATH="${coreutils_dir}/libexec/gnuman:$MANPATH"
 
-export JAVA_HOME='/Library/Java/JavaVirtualMachines/jdk1.8.0_72.jdk/Contents/Home/'
+export JAVA_HOME='/Library/Java/JavaVirtualMachines/jdk1.8.0_92.jdk/Contents/Home/'
 
 nvm_file="$(brew --prefix nvm)/nvm.sh"
 if [ -f "$nvm_file" ] ; then
   # Recommended by Homebrew.
-  export NVM_DIR=~/.nvm
-  source $nvm_file
+  export NVM_DIR="$HOME/.nvm"
+  source "$nvm_file"
 fi
 
 # Suggested by the caveats section from `brew info rbenv`.
-if which rbenv > /dev/null ; then
+if which rbenv >/dev/null ; then
   eval "$(rbenv init -)"
 fi
 
 # Suggested by the caveats section from `brew info pyenv`.
-if which pyenv > /dev/null ; then
+if which pyenv >/dev/null ; then
   eval "$(pyenv init -)"
 fi

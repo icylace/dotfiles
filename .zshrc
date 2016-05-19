@@ -2,6 +2,7 @@
 [ -f "$HOME/.profile" ] && emulate sh -c "source $HOME/.profile"
 
 [ -f "$HOME/.my/aliases.sh" ] && source "$HOME/.my/aliases.sh"
+[ -f "$HOME/.my/git.sh" ] && source "$HOME/.my/git.sh"
 
 # Tell Z Shell to not try to autocorrect the following.
 # http://superuser.com/questions/251818/exceptions-to-zsh-correctall-feature/271897#271897
@@ -142,11 +143,11 @@ export RPROMPT='$(battery_indicator)  %{$fg_bold[grey]%}%D{%Y ∴ %m-%d ∴ %L:%
 # http://askubuntu.com/questions/360063/how-to-show-a-running-clock-in-terminal-before-the-command-prompt/360172#360172
 #
 bz() {
-  for f in "$@" ; do
-    # Check that the file exists and that it's not in fact a directory.
-    if [[ -e "$f" && ! (-d "$f") ]] ; then
-      zip --junk-paths -9 "${f%.*}.zip" "$f"
-      mv "$f" "$HOME/.Trash"
+  for file in "$@" ; do
+    # Check that the file exists and is a regular file.
+    if [ -f "$file" ] ; then
+      zip --junk-paths -9 "${file%.*}.zip" "$file"
+      mv "$file" "$HOME/.Trash"
     fi
   done
 }
@@ -181,7 +182,6 @@ bz() {
 #     - `z`: https://github.com/rupa/z
 #
 # TODO
-# - fix stuff like `c ~/Sites` not working
 # - use `cat` when `highlight` doesn't work
 # - use `cd` for arguments like "-1" and "+1"
 # - consider using `vim -R` for viewing text files
@@ -189,14 +189,14 @@ bz() {
 c() {
   # If we're given a readble file then view it.
   if [ -f "$1" ] ; then
-    local it_is_an_image=$(file --brief $1 | grep --count --regexp=image)
+    local it_is_an_image=$(file --brief "$1" | grep --count --regexp=image)
     if [ "$it_is_an_image" -ne 0 ] ; then
       if type catimg >/dev/null 2>&1 ; then
         catimg -l 0 "$@"
       fi
     elif type highlight >/dev/null 2>&1 ; then
       local color_text=$(highlight --style=andes --out-format=xterm256 "$@")
-      echo $color_text | less
+      echo "$color_text" | less
     else
       cat "$@" | less
     fi

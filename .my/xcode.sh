@@ -4,19 +4,29 @@
 #  Xcode-related
 # ------------------------------------------------------------------------------
 
-x() {
-  xb
-
-  if [ $? -ne 0 ] ; then
-    return
+# Swift
+sw() {
+  if [ -f "$1" ] ; then
+    # TODO
+    # - what is this again?
+    #   - `echo ${1//\\/\\\\}`
+    swift "$1"
+  elif [ -f "$1".swift ] ; then
+    swift "$1".swift
+  else
+    echo 'Not a Swift file.'
   fi
+}
+
+x() {
+  # Attempt to build the project and get out if there was an error.
+  xb
+  [ $? -ne 0 ] && return
 
   # If no scheme name is provided by the caller then
   # get the scheme name from the current directory.
   local scheme="$1"
-  if [ -z "$scheme" ] ; then
-    scheme=$(basename "$(pwd)")
-  fi
+  [ -z "$scheme" ] && scheme=$(basename "$(pwd)")
 
   local config='Debug'        # May also be set to "Release".
   local sdk='iphonesimulator'
@@ -32,9 +42,7 @@ xb() {
   # If no scheme name is provided by the caller then
   # get the scheme name from the current directory.
   local scheme="$1"
-  if [ -z "$scheme" ] ; then
-    scheme=$(basename "$(pwd)")
-  fi
+  [ -z "$scheme" ] && scheme=$(basename "$(pwd)")
 
   local config='Debug'        # May also be set to "Release".
   local sdk='iphonesimulator'
