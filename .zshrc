@@ -15,4 +15,4 @@ source "$HOME/.my/prompt.zsh"
 source "$HOME/.my/xcode.sh"
 
 # Extra stuff that's too sensitive to be committed to a public repository.
-source "$HOME/.not-public"
+[ -f "$HOME/.not-public" ] && source "$HOME/.not-public"
