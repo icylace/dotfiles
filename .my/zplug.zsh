@@ -24,8 +24,8 @@ zplug "djui/alias-tips"
 
 # k
 # Directory listings for zsh with git features.
-# https://github.com/rimraf/k
-zplug "rimraf/k"
+# https://github.com/supercrabtree/k
+zplug "supercrabtree/k"
 
 # z
 # Navigate your most used directories based on 'frecency'.
