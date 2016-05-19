@@ -6,4 +6,6 @@ source "$HOME/.my/xcode.sh"
 export PS1="$PS1\$(git-radar --bash --fetch) "
 
 # Extra stuff that's too sensitive to be committed to a public repository.
-[ -f "$HOME/.not-public" ] && source "$HOME/.not-public"
+if [ -f "$HOME/.not-public" ] ; then
+  source "$HOME/.not-public"
+fi
