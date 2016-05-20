@@ -4,9 +4,11 @@
 #  Defines aliases and functions common to both Bash and Z shell.
 # ------------------------------------------------------------------------------
 
-alias cp='cp -i'
 alias li='ls -lAG'
 alias o='open'
+
+# http://askubuntu.com/a/332322
+alias cp='cp -ip'
 
 # Bower
 alias bo='bower list'
