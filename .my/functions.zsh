@@ -50,6 +50,7 @@ bz() {
 #     - `z`: https://github.com/rupa/z
 #
 # TODO
+# - implement `cd -` behavior
 # - consider using `vim -R` for viewing text files
 #
 c() {
@@ -61,7 +62,7 @@ c() {
         catimg -l 0 "$@"
       fi
     elif type highlight >/dev/null 2>&1 ; then
-      highlight --failsafe --line-numbers --style=andes --out-format=xterm256 "$@" | less
+      highlight --failsafe --line-numbers --style=andes --out-format=xterm256 "$@" | less -FX
     else
       # http://unix.stackexchange.com/a/86324
       less -FX "$@"
