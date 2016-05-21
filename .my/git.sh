@@ -10,7 +10,7 @@
 # Setup
 alias git='hub'
 # TODO
-# - improve gcl so it switches into the repo directory after cloning
+# - improve gcl so it switches into the repo directory after successful cloning
 alias gcl='git clone --verbose'
 
 # Info

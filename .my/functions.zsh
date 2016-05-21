@@ -50,49 +50,64 @@ bz() {
 #     - `z`: https://github.com/rupa/z
 #
 # TODO
-# - implement `cd -` behavior
 # - consider using `vim -R` for viewing text files
+# - appropriately handle other non-regular files
+#   - symlink
+#   - socket
+#   - pipe
+#   - executable
+#   - block special
+#   - character special
 #
 c() {
-  # If we're given a readble file then view it.
-  if [ -f "$1" ] ; then
-    local it_is_an_image=$(file --brief "$1" | grep --count --regexp=image)
-    if [ "$it_is_an_image" -ne 0 ] ; then
-      if type catimg >/dev/null 2>&1 ; then
-        catimg -l 0 "$@"
-      fi
-    elif type highlight >/dev/null 2>&1 ; then
-      highlight --failsafe --line-numbers --style=andes --out-format=xterm256 "$@" | less -FX
-    else
-      # http://unix.stackexchange.com/a/86324
-      less -FX "$@"
-    fi
-    return
-  fi
+  # If we're given an argument then that probably means we're not interested
+  # in looking at the file list for the current directory.
+  if [ -n "$1" ] ; then
 
-  # If we're given only one argument and it's not a file then it must be a
-  # directory so try to switch to it.
-  if [[ -n "$1" && -z "$2" ]] ; then
-    # If the first argument is a directory or is a non-zero integer use `cd`.
-    if [[ -d "$1" || "$1" =~ ^[+-][0-9]+$ ]] ; then
-      cd "$@"
-      local exit_code="$?"
-      if [ "$exit_code" -ne 0 ] ; then
-        return "$exit_code"
+    # If we're given a regular file then view it.
+    if [ -f "$1" ] ; then
+      local it_is_an_image=$(file --brief "$1" | grep --count --regexp=image)
+      if [ "$it_is_an_image" -ne 0 ] ; then
+        if type catimg >/dev/null 2>&1 ; then
+          catimg -l 0 "$@"
+        fi
+      elif type highlight >/dev/null 2>&1 ; then
+        highlight --failsafe --line-numbers --style=andes --out-format=xterm256 "$@" | less -FX
+      else
+        # http://unix.stackexchange.com/a/86324
+        less -FX "$@"
       fi
-    elif type z >/dev/null 2>&1 ; then
-      z "$@"
-      local exit_code="$?"
-      if [ "$exit_code" -ne 0 ] ; then
-        echo "\"$1\" could not be found."
-        return "$exit_code"
-      fi
-      pwd
+      return
     fi
-  fi
 
-  if [ -n "$2" ] ; then
-    local directory="$1"
+    # At this point we know we're not dealing with a regular file.
+    # It's probably a directory.  If there's a second argument given
+    # then that means we don't want to try to switch to that directory.
+    # Otherwise, we try to switch to it.
+    if [ -z "$2" ] ; then
+      # If the first argument is a directory or a minus sign or
+      # a non-zero integer use `cd`.
+      if [[ -d "$1" || "$1" =~ '^(-|[+-][0-9]+)$' ]] ; then
+        cd "$@"
+        local exit_code="$?"
+        if [ "$exit_code" -ne 0 ] ; then
+          return "$exit_code"
+        fi
+      elif type z >/dev/null 2>&1 ; then
+        z "$@"
+        local exit_code="$?"
+        if [ "$exit_code" -ne 0 ] ; then
+          echo "\"$1\" could not be found."
+          return "$exit_code"
+        fi
+        pwd
+      fi
+    fi
+
+    if [ -n "$2" ] ; then
+      local directory="$1"
+    fi
+
   fi
 
   # Show the contents of the current directory.
