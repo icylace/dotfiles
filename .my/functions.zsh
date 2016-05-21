@@ -31,7 +31,8 @@ bz() {
 #
 # DESCRIPTION
 #     If no operand is given the contents of the current directory is shown.
-#     If a directory is given switch to it and show its contents.
+#     If a directory is given switch to it and show its contents.  However,
+#     if there is a second argument given then don't switch to it.
 #     If a file is given show its contents.  Otherwise try to switch to a
 #     "frecent" directory of a similar name to the given operand.
 #
@@ -49,7 +50,6 @@ bz() {
 #     - `z`: https://github.com/rupa/z
 #
 # TODO
-# - use `cat` when `highlight` doesn't work
 # - consider using `vim -R` for viewing text files
 #
 c() {
@@ -61,10 +61,10 @@ c() {
         catimg -l 0 "$@"
       fi
     elif type highlight >/dev/null 2>&1 ; then
-      local color_text=$(highlight --style=andes --out-format=xterm256 "$@")
-      echo "$color_text" | less
+      highlight --failsafe --line-numbers --style=andes --out-format=xterm256 "$@" | less
     else
-      cat "$@" | less
+      # http://unix.stackexchange.com/a/86324
+      less -FX "$@"
     fi
     return
   fi
@@ -77,14 +77,14 @@ c() {
       cd "$@"
       local exit_code="$?"
       if [ "$exit_code" -ne 0 ] ; then
-        return $exit_code
+        return "$exit_code"
       fi
     elif type z >/dev/null 2>&1 ; then
       z "$@"
       local exit_code="$?"
       if [ "$exit_code" -ne 0 ] ; then
         echo "\"$1\" could not be found."
-        return $exit_code
+        return "$exit_code"
       fi
       pwd
     fi
