@@ -77,7 +77,7 @@ c() {
       local -i it_is_an_image=$(file --brief "$1" | grep --count --regexp=image)
       if [ "$it_is_an_image" -ne 0 ] ; then
         # Try to show the image in its real form.
-        if type imgcat >/dev/null 2>&1 ; then
+        if [ "$TERM_PROGRAM" = 'iTerm.app' ] && type imgcat >/dev/null 2>&1 ; then
           imgcat "$@"
         # Otherwise, try to show the image in Unicode form.
         elif type catimg >/dev/null 2>&1 ; then
