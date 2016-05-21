@@ -8,11 +8,27 @@ unsetopt RM_STAR_SILENT
 setopt RM_STAR_WAIT
 
 source "$HOME/.my/aliases.sh"
-source "$HOME/.my/functions.zsh"
+source "$HOME/.my/functions.sh"
+source "$HOME/.my/c.zsh"
 source "$HOME/.my/git.sh"
 source "$HOME/.my/laravel.sh"
 source "$HOME/.my/prompt.zsh"
 source "$HOME/.my/xcode.sh"
+
+# ------------------------------------------------------------------------------
+
+# # https://github.com/joepvd/zsh-hints#the-basic-setup
+# fpath=(~/.zfun $fpath)
+# autoload ~/.zfun/*(:t)
+
+zle -N zsh-hints-param zsh-hints
+bindkey "^Xp" zsh-hints-param
+zle -N zsh-hints-paramflags zsh-hints
+bindkey "^Xf" zsh-hints-paramflags
+zle -N zsh-hints-glob zsh-hints
+bindkey "^Xg" zsh-hints-glob
+
+# ------------------------------------------------------------------------------
 
 source "$(brew --prefix)/etc/grc.bashrc"
 
