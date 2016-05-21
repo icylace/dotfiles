@@ -29,20 +29,10 @@ alias gs='git show --pretty=format:"%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgre
 alias gsr='git symbolic-ref --short HEAD'
 alias glo='gl origin/$(gsr)..$(gsr)'
 gd() {
-  if [ -n "$1" ] ; then
-    local commit="$1"
-  else
-    local commit='HEAD'
-  fi
-  git diff --minimal --word-diff=color "$commit"
+  git diff --minimal --word-diff=color "${1:-HEAD}"
 }
 gds() {
-  if [ -n "$1" ] ; then
-    local commit="$1"
-  else
-    local commit='HEAD'
-  fi
-  git diff --minimal --staged --word-diff=color "$commit"
+  git diff --minimal --staged --word-diff=color "${1:-HEAD}"
 }
 
 # Navigating
@@ -73,17 +63,15 @@ alias gpo='git push --set-upstream origin'
 alias gre='git reset'
 gc() {
   if [ -n "$1" ] ; then
-    git commit --verbose -m "$1"
-  else
-    git commit --verbose
+    local message="-m$1"
   fi
+  git commit --verbose $2 $message
+}
+gca() {
+  gc $1 --amend
 }
 gr() {
-  if [ -n "$1" ] ; then
-    git rebase "$1"
-  else
-    git rebase master
-  fi
+  git rebase "${1:-master}"
 }
 
 # Patching

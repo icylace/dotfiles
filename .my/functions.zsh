@@ -27,7 +27,7 @@ bz() {
 #     c - See the contents of a directory or file.
 #
 # SYNOPSIS
-#     c [file]
+#     c [file] [only-view]
 #
 # DESCRIPTION
 #     If no operand is given the contents of the current directory is shown.
@@ -70,9 +70,9 @@ c() {
     return
   fi
 
-  # If we're given something and it's not a file then it must be a
+  # If we're given only one argument and it's not a file then it must be a
   # directory so try to switch to it.
-  if [ -n "$1" ] ; then
+  if [ -n "$1" ] && [ -z "$2" ] ; then
 
     # TODO
     # - complete this
@@ -97,11 +97,15 @@ c() {
     fi
   fi
 
+  if [ -n "$2" ] ; then
+    local directory="$1"
+  fi
+
   # Show the contents of the current directory.
   if type k >/dev/null 2>&1 ; then
-    k --almost-all --human
+    k --almost-all --human "$directory"
   else
-    ls -AGp
+    ls -AGp "$directory"
   fi
 }
 
@@ -117,6 +121,31 @@ alias c-='c -1'
 alias c+='c +1'
 alias c.d='c ~/Downloads'
 alias cs='c ~/Sites'
+
+# See the contents of a directory without switching to it.
+C() {
+  c "$1" 1
+}
+
+# ------------------------------------------------------------------------------
+
+# Get info about a file or directory.
+i() {
+  mdls "$1"
+  echo
+  stat -x "$1"
+  echo
+  file "$1"
+  echo
+  xattr "$1"
+
+  # # http://www.sno.phy.queensu.ca/~phil/exiftool/
+  # brew install exiftool
+  # exiftool
+
+  # # http://osxdaily.com/2010/10/19/get-mp3-file-info-on-mac/
+  # afinfo "$1"
+}
 
 # ------------------------------------------------------------------------------
 
