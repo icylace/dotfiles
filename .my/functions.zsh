@@ -50,7 +50,6 @@ bz() {
 #
 # TODO
 # - use `cat` when `highlight` doesn't work
-# - use `cd` for arguments like "-1" and "+1"
 # - consider using `vim -R` for viewing text files
 #
 c() {
@@ -72,26 +71,20 @@ c() {
 
   # If we're given only one argument and it's not a file then it must be a
   # directory so try to switch to it.
-  if [ -n "$1" ] && [ -z "$2" ] ; then
-
-    # TODO
-    # - complete this
-    #
-    # # If the input begins with `-` or `+` followed by a number use `cd`.
-    # local first_character=${word::1}
-    # if [ $first_character = '-' ] ; then
-    #   if [ following token is an integer ] ; then
-    #     cd $@
-    #   fi
-    # fi
-
-    if [ -d "$1" ] ; then
+  if [[ -n "$1" && -z "$2" ]] ; then
+    # If the first argument is a directory or is a non-zero integer use `cd`.
+    if [[ -d "$1" || "$1" =~ ^[+-][0-9]+$ ]] ; then
       cd "$@"
+      local exit_code="$?"
+      if [ "$exit_code" -ne 0 ] ; then
+        return $exit_code
+      fi
     elif type z >/dev/null 2>&1 ; then
       z "$@"
-      if [ $? -ne 0 ] ; then
+      local exit_code="$?"
+      if [ "$exit_code" -ne 0 ] ; then
         echo "\"$1\" could not be found."
-        return
+        return $exit_code
       fi
       pwd
     fi

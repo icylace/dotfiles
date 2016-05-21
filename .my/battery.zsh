@@ -17,7 +17,7 @@ battery_indicator() {
   local threshold_low=40
 
   local battery_percent=$(echo $(pmset -g batt) | grep --only-matching '[0-9]\+%')
-  local battery_number=${battery_percent: :-1}
+  local battery_number=${battery_percent:0:-1}
   local scaled_battery=$((battery_number * slots_total / 100.0))
   local slots_filled=$(printf %.0f scaled_battery)
   local slots_empty=$((slots_total - slots_filled))
