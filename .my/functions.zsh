@@ -30,11 +30,11 @@ bz() {
 #     c [file] [only-view]
 #
 # DESCRIPTION
-#     If no operand is given the contents of the current directory is shown.
-#     If a directory is given switch to it and show its contents.  However,
-#     if there is a second argument given then don't switch to it.
-#     If a file is given show its contents.  Otherwise try to switch to a
-#     "frecent" directory of a similar name to the given operand.
+#     If no input is given then it will list the contents of current the
+#     directory.  Piped-in input and text file are are highlighted and
+#     displayed.  Directories will get their contents listed.  Depending
+#     upon the existence of a second argument the current directory is
+#     switched to the one being looked at.
 #
 # NOTES
 #     The original reason why I made this was because I usually want to see
@@ -50,19 +50,36 @@ bz() {
 #     - `z`: https://github.com/rupa/z
 #
 # TODO
-# - consider using `vim -R` for viewing text files
+# - use `hexdump -C` for binaries
 # - appropriately handle other non-regular files
-#   - symlink
 #   - socket
-#   - pipe
-#   - executable
 #   - block special
 #   - character special
 #
 c() {
+  local highlight_options=(
+    --failsafe
+    --line-numbers
+    --quiet
+    --style=andes
+    --out-format=xterm256
+  )
+
+  # Input that's piped-in is highlighted and displayed.
+  if [ -p /dev/stdin ] ; then
+    highlight $highlight_options
+    return
+  fi
+
   # If we're given an argument then that probably means we're not interested
   # in looking at the file list for the current directory.
   if [ -n "$1" ] ; then
+
+    # http://stackoverflow.com/a/567787/1935675
+    if [ -x "$1" ] && [ $(file --brief --mime "$1" | grep --count --regexp='^text/') -eq 0 ] ; then
+      echo "\"$1\" is a binary executable."
+      return
+    fi
 
     # If we're given a regular file then view it.
     if [ -f "$1" ] ; then
@@ -72,7 +89,7 @@ c() {
           catimg -l 0 "$@"
         fi
       elif type highlight >/dev/null 2>&1 ; then
-        highlight --failsafe --line-numbers --style=andes --out-format=xterm256 "$@" | less -FX
+        highlight $highlight_options "$@" | less -FX
       else
         # http://unix.stackexchange.com/a/86324
         less -FX "$@"
@@ -126,8 +143,7 @@ alias c.4='c .....'
 alias c.5='c ......'
 alias c/='c /'
 alias c~='c ~'
-alias c-='c -1'
-alias c+='c +1'
+alias c-='c -'
 alias c.d='c ~/Downloads'
 alias cs='c ~/Sites'
 
@@ -140,6 +156,8 @@ C() {
 
 # Get info about a file or directory.
 i() {
+  zstat -or "$1"
+  echo
   mdls "$1"
   echo
   stat -x "$1"
