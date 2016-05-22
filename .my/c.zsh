@@ -53,6 +53,8 @@ c() {
   )
 
   # Input that's piped-in is highlighted and displayed.
+  # TODO
+  # - make sure `cat` gets used if `highlight` doesn't work
   if [ -p /dev/stdin ] ; then
     highlight $highlight_options
     if [ "$?" -ne 0 ] ; then
@@ -74,8 +76,33 @@ c() {
 
     # If we're given a regular file then view it.
     if [ -f "$1" ] ; then
-      local -i it_is_an_image=$(file --brief "$1" | grep --count --regexp=image)
-      if [ "$it_is_an_image" -ne 0 ] ; then
+      local mime=$(file --brief --mime "$1")
+
+      local -i of_archive=$(echo $mime | grep --count --extended-regexp --regexp='\/(x-(gzip|rar|tar|zip)|zip);')
+      if [ "$of_archive" -ne 0 ] ; then
+        case "$1" in
+          # *.tar.bz2)   tar tvjf "$1"    ;;
+          *.tar.gz)    tar tvzf "$1"    ;;
+          # *.tar.xz)    tar tvJf "$1"    ;;
+          # *.lzma)      unlzma "$1"      ;;
+          # *.bz2)       bunzip2 "$1"     ;;
+          *.rar)       unrar v "$1"     ;;
+          # *.gz)        gunzip "$1"      ;;
+          *.tar)       tar tvf "$1"     ;;
+          # *.tbz2)      tar tvjf "$1"    ;;
+          # *.tgz)       tar tvzf "$1"    ;;
+          *.zip)       unzip -l "$1"    ;;
+          # *.Z)         uncompress "$1"  ;;
+          # *.7z)        7z x "$1"        ;;
+          # *.xz)        unxz "$1"        ;;
+          # *.exe)       cabextract "$1"  ;;
+          *)           echo "\"$1\" - unknown archive method" ;;
+        esac
+        return
+      fi
+
+      local -i of_image=$(echo $mime | grep --count --regexp='^image/')
+      if [ "$of_image" -ne 0 ] ; then
         # Try to show the image in its real form.
         if [ "$TERM_PROGRAM" = 'iTerm.app' ] && type imgcat >/dev/null 2>&1 ; then
           imgcat "$@"
@@ -89,7 +116,9 @@ c() {
         # http://unix.stackexchange.com/a/86324
         less -FX "$@"
       fi
+
       return
+
     fi
 
     # At this point we know we're not dealing with a regular file.
@@ -122,7 +151,7 @@ c() {
 
   # Show the contents of the current directory.
   if type k >/dev/null 2>&1 ; then
-    k --almost-all --human "$directory" | sort
+    k --almost-all --human "$directory"
   else
     ls -AGp "$directory"
   fi
