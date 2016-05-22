@@ -17,6 +17,9 @@ source "$HOME/.my/xcode.sh"
 
 # ------------------------------------------------------------------------------
 
+# TODO
+# - get zsh-hints working
+
 # # https://github.com/joepvd/zsh-hints#the-basic-setup
 # fpath=(~/.zfun $fpath)
 # autoload ~/.zfun/*(:t)
