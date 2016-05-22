@@ -30,16 +30,14 @@
 #     - `z`: https://github.com/rupa/z
 #
 # TODO
-# - use `hexdump -C` with `grc` to view general binaries and binary executables
 # - appropriately handle other non-regular files
 #   - socket
 #   - block special
 #   - character special
-# - list the contents of archive files
-# - command line switch instead of second argument
+# - make use of command line switches
 # - proper `man` page
+# - use `hexdump -C` with `grc` to view general binaries and binary executables
 # - make `highlight` options customizable
-# - make better use `local` and/or `typeset`
 # - break it off from my dotfiles and publicly open source it on my github
 # - add `ls -p` to `k`
 #
