@@ -25,6 +25,8 @@ bz() {
 i() {
   zstat -or "$1"
   echo
+  zstat -Lsn "$1"
+  echo
   mdls "$1"
   echo
   stat -x "$1"

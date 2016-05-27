@@ -36,7 +36,7 @@
 #   - character special
 # - make use of command line switches
 # - proper `man` page
-# - use `hexdump -C` with `grc` to view general binaries and binary executables
+# - use `hexdump` to view general binaries and binary executables
 # - make `highlight` options customizable
 # - break it off from my dotfiles and publicly open source it on my github
 # - add `ls -p` to `k`
@@ -155,8 +155,9 @@ c() {
   fi
 }
 
-# See the contents of a directory without switching to it.
+# `c` in alternate mode.
 C() {
+  # See the contents of a directory without switching to it.
   c "$1" 1
 }
 

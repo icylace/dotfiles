@@ -32,8 +32,14 @@ zle -N zsh-hints-glob zsh-hints
 bindkey "^Xg" zsh-hints-glob
 
 # ------------------------------------------------------------------------------
+#  Colorize the output for some commands.
+# ------------------------------------------------------------------------------
 
 source "$(brew --prefix)/etc/grc.bashrc"
+
+alias hexdump='colourify hexdump'
+
+# ------------------------------------------------------------------------------
 
 # Extra stuff that's too sensitive to be committed to a public repository.
 if [ -f "$HOME/.not-public" ] ; then
