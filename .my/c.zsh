@@ -35,8 +35,9 @@
 #   - block special
 #   - character special
 # - make use of command line switches
-# - proper `man` page
+# - create a proper `man` page
 # - use `hexdump` to view general binaries and binary executables
+# - make sure directory stack is properly managed when `z` and `cd` are used
 # - make `highlight` options customizable
 # - break it off from my dotfiles and publicly open source it on my github
 # - add `ls -p` to `k`
@@ -151,7 +152,11 @@ c() {
   if type k >/dev/null 2>&1 ; then
     k --almost-all --human "$directory"
   else
-    ls -AGp "$directory"
+    if [ -n "$directory" ] ; then
+      ls -AGlp "$directory"
+    else
+      ls -AGlp
+    fi
   fi
 }
 
