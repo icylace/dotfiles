@@ -17,7 +17,9 @@ source "$HOME/.my/xcode.sh"
 
 
 # ------------------------------------------------------------------------------
-#  Command line hints.
+#  zsh-hints
+#  Display non-completable trivia right under your editing buffer.
+#  https://github.com/joepvd/zsh-hints
 # ------------------------------------------------------------------------------
 
 export XDG_DATA_HOME="$HOME/.my/zsh-hints"

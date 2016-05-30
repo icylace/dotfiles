@@ -37,13 +37,6 @@ zplug "supercrabtree/k"
 # https://github.com/rupa/z
 zplug "rupa/z", use:"*.sh"
 
-# # TODO
-# # - try to get zsh-hints working with zplug
-# # zsh-hints
-# # Display non-completable trivia right under your editing buffer.
-# # https://github.com/joepvd/zsh-hints
-# zplug "joepvd/zsh-hints", lazy:true, use:"zsh-hints."
-
 # zsh-syntax-highlighting
 # Syntax highlighing for the command line.
 # https://github.com/zsh-users/zsh-syntax-highlighting
