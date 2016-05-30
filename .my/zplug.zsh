@@ -3,7 +3,7 @@
 export ZPLUG_HOME=/usr/local/opt/zplug
 
 if [ ! -f "$ZPLUG_HOME/init.zsh" ] ; then
-  echo 'zplug is not installed.'
+  echo 'Error: `zplug` is not installed.'
   return
 fi
 
