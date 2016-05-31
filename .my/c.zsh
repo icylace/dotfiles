@@ -30,6 +30,7 @@
 #     - `z`: https://github.com/rupa/z
 #
 # TODO
+# - view PDFs
 # - appropriately handle other non-regular files
 #   - socket
 #   - block special
@@ -80,22 +81,11 @@ c() {
       local -i of_archive=$(echo $mime | grep --count --extended-regexp --regexp='\/(x-(gzip|rar|tar|zip)|zip);')
       if [ "$of_archive" -ne 0 ] ; then
         case "$1" in
-          # *.tar.bz2)   tar tvjf "$1"    ;;
-          *.tar.gz)    tar tvzf "$1"    ;;
-          # *.tar.xz)    tar tvJf "$1"    ;;
-          # *.lzma)      unlzma "$1"      ;;
-          # *.bz2)       bunzip2 "$1"     ;;
-          *.rar)       unrar v "$1"     ;;
-          # *.gz)        gunzip "$1"      ;;
-          *.tar)       tar tvf "$1"     ;;
-          # *.tbz2)      tar tvjf "$1"    ;;
-          # *.tgz)       tar tvzf "$1"    ;;
-          *.zip)       unzip -l "$1"    ;;
-          # *.Z)         uncompress "$1"  ;;
-          # *.7z)        7z x "$1"        ;;
-          # *.xz)        unxz "$1"        ;;
-          # *.exe)       cabextract "$1"  ;;
-          *)           echo "\"$1\" - unknown archive method" ;;
+          *.tar.gz) tar tvzf "$1" ;;
+          *.rar)    unrar v "$1"  ;;
+          *.tar)    tar tvf "$1"  ;;
+          *.zip)    unzip -l "$1" ;;
+          *)        echo "\"$1\" - unknown archive method" ;;
         esac
         return
       fi
