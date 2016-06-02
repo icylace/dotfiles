@@ -80,7 +80,7 @@ alias bkun='brew cask uninstall'
 alias f='find . -name'
 
 # sift
-alias s='sift'
+alias s='sift --git'
 alias sn='sift --git --exclude-dirs=node_modules --exclude-dirs=.npm'
 
 # TODO
