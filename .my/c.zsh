@@ -141,12 +141,10 @@ c() {
   # Show the contents of the current directory.
   if type k >/dev/null 2>&1 ; then
     k --almost-all --human "$directory"
+  elif [ -n "$directory" ] ; then
+    ls -AGlp "$directory"
   else
-    if [ -n "$directory" ] ; then
-      ls -AGlp "$directory"
-    else
-      ls -AGlp
-    fi
+    ls -AGlp
   fi
 }
 

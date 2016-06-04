@@ -8,11 +8,13 @@ unsetopt RM_STAR_SILENT
 setopt RM_STAR_WAIT
 
 source "$HOME/.my/aliases.sh"
-source "$HOME/.my/functions.sh"
+source "$HOME/.my/bz.sh"
 source "$HOME/.my/c.zsh"
 source "$HOME/.my/git.sh"
+source "$HOME/.my/i.sh"
 source "$HOME/.my/laravel.sh"
 source "$HOME/.my/prompt.zsh"
+source "$HOME/.my/u.sh"
 source "$HOME/.my/xcode.sh"
 
 

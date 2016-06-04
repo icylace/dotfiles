@@ -17,30 +17,50 @@ alias gcl='git clone --verbose'
 alias g='git status --branch --short'
 alias gbc='git compare'
 alias gbl='git blame --minimal --show-number --show-stats'
-alias gd1='git diff --minimal --word-diff=color HEAD~1 HEAD'
-alias gd2='git diff --minimal --word-diff=color HEAD~2 HEAD'
 alias gg='git status --branch'
-alias ggs='git status --branch --untracked-files'
+alias ggs='gg --untracked-files'
 alias gl='git log --graph --pretty=format:"%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset"'
-alias gld='gl --patch-with-stat --minimal --word-diff=color'
+alias gld='gl --minimal --patch-with-stat --word-diff=color'
 alias gll='git log --decorate --graph --all'
-alias gll1='git log --decorate --graph --all --oneline'
+alias gll1='gll --oneline'
 alias gs='git show --pretty=format:"%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset"'
 alias gsr='git symbolic-ref --short HEAD'
 alias glo='gl origin/$(gsr)..$(gsr)'
+
+# Info - Comparing differences
 gd() {
-  git diff --minimal --word-diff=color "${1:-HEAD}"
+  local cur_commit
+  local prev_commit
+
+  # http://stackoverflow.com/a/19116862/1935675
+  if [ $1 -eq $1 ] 2>/dev/null ; then
+    cur_commit='HEAD'
+    prev_commit="HEAD~$1"
+  else
+    cur_commit=${1:-HEAD}
+  fi
+
+  git diff --minimal --word-diff=color $prev_commit $cur_commit
 }
 gds() {
-  git diff --minimal --staged --word-diff=color "${1:-HEAD}"
+  local cur_commit
+
+  # http://stackoverflow.com/a/19116862/1935675
+  if [ $1 -eq $1 ] 2>/dev/null ; then
+    cur_commit="HEAD~$1"
+  else
+    cur_commit=${1:-HEAD}
+  fi
+
+  git diff --minimal --staged --word-diff=color $cur_commit
 }
 
 # Navigating
 alias gbd='git checkout dev'
 alias gbm='git checkout master'
 gb() {
-  if [ -n "$1" ] ; then
-    git checkout "$1"
+  if [ -n $1 ] ; then
+    git checkout $1
   else
     git branch --all --verbose --verbose
   fi
@@ -57,22 +77,14 @@ alias gm='git merge --no-ff'
 alias gmf='git merge --ff-only'
 alias gpu='git push'
 alias gpl='git pull --rebase=preserve'
-alias gplo='git pull --rebase=preserve origin'
+alias gplo='gpl origin'
 alias gplr='git pull-request'
 alias gpo='git push --set-upstream origin'
 alias gre='git reset'
-gc() {
-  if [ -n "$1" ] ; then
-    local message="-m$1"
-  fi
-  git commit --verbose $2 $message
-}
-gca() {
-  gc $1 --amend
-}
-gr() {
-  git rebase "${1:-master}"
-}
+gc() { git commit --verbose $2 ${1:+--message=\"$1\"} }
+gc!() { gc $1 --amend }
+gca() { gc $1 --all }
+gr() { git rebase ${1:-master} }
 
 # Patching
 alias gdp='git diff --minimal HEAD'

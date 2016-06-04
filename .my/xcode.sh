@@ -21,12 +21,16 @@ sw() {
 x() {
   # Attempt to build the project and get out if there was an error.
   xb
-  [ $? -ne 0 ] && return
+  if [ $? -ne 0 ] ; then
+    return
+  fi
 
   # If no scheme name is provided by the caller then
   # get the scheme name from the current directory.
   local scheme="$1"
-  [ -z "$scheme" ] && scheme=$(basename "$(pwd)")
+  if [ -z "$scheme" ] ; then
+    scheme=$(basename "$(pwd)")
+  fi
 
   local config='Debug'        # May also be set to "Release".
   local sdk='iphonesimulator'
@@ -42,7 +46,9 @@ xb() {
   # If no scheme name is provided by the caller then
   # get the scheme name from the current directory.
   local scheme="$1"
-  [ -z "$scheme" ] && scheme=$(basename "$(pwd)")
+  if [ -z "$scheme" ] ; then
+    scheme=$(basename "$(pwd)")
+  fi
 
   local config='Debug'        # May also be set to "Release".
   local sdk='iphonesimulator'
@@ -53,21 +59,21 @@ xb() {
   local os='9.2'
   local dest="platform=$platform,name=$device,OS=$os"
 
-  xctool -configuration "$config"      \
-         -derivedDataPath "$data_path" \
-         -destination "$dest"          \
-         -reporter pretty              \
-         -scheme "$scheme"             \
-         -sdk "$sdk"                   \
-         build
+  xctool                          \
+    -configuration "$config"      \
+    -derivedDataPath "$data_path" \
+    -destination "$dest"          \
+    -reporter pretty              \
+    -scheme "$scheme"             \
+    -sdk "$sdk"                   \
+    build
 }
 
 # Load/reload the simulator.
 xl() {
   local device='iPhone 5s'
   local os='iOS 9.2'
-  local udid
-  udid=$(xcrun simctl list --json devices | jq ".devices.\"$os\" | .[] | select(.name==\"$device\") | .udid")
+  local udid=$(xcrun simctl list --json devices | jq ".devices.\"$os\" | .[] | select(.name==\"$device\") | .udid")
   xq
   open -a 'Simulator' --args -CurrentDeviceUDID "$udid"
 }
