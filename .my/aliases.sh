@@ -10,30 +10,17 @@ alias o='open'
 # http://askubuntu.com/a/332322
 alias cp='cp -ip'
 
-# Bower
-alias bo='bower list'
-alias boi='bower install'
-alias bos='bower search'
+# Use Preview to read manual pages.
+# https://discussions.apple.com/message/3541696#3541696
+manp() {
+  man -t $1 | open -f -a 'Preview'
+}
 
-# Drush
-alias dr='drush'
-alias drc='drush cache-clear all'
-alias drcfu='drush cache-clear all && drush features-revert-all --yes && drush updatedb --yes'
-alias drcr='drush cache-rebuild'
-alias drd='drush pm-disable'
-alias dre='drush pm-enable'
-alias drf='drush features-revert-all --yes'
-alias drff='drush features-revert-all --force --yes'
-alias drfu='drush features-revert-all --yes && drush updatedb --yes'
-alias drl='drush user-login'
-alias drli='drush user-login --browser'
-alias drlint='drush coder-review'
-alias dru='drush updatedb --yes'
-alias drun='drush pm-uninstall --yes'
-
-# Use Preview to read man pages.
-# http://brettterpstra.com/2014/08/05/shell-tricks-man-pages/
-alias manp="man -t ${1} | open -f -a Preview"
+# Convert manual pages to PDFs.
+# https://discussions.apple.com/message/3542050#3542050
+manpdf() {
+  man -t $1 | pstopdf -i -o $1.pdf
+}
 
 # https://github.com/yrammos/dotfiles/blob/master/.bashrc
 alias mv='mv -i'
@@ -86,19 +73,6 @@ alias sn='sift --git --exclude-dirs=node_modules --exclude-dirs=.npm'
 # TODO
 # - is this switch useful?
 #   - `--exclude-files=.gitignore`
-
-# Vagrant
-alias v='vagrant status'
-alias vbl='vagrant box list'
-alias vbr='vagrant box remove'
-alias vd='vagrant destroy'
-alias vd1='vagrant destroy --force $(vagrant global-status --prune | tail -n+3 | head -n1 | cut -c1-7)'
-alias vg='vagrant global-status --prune'
-alias vh='vagrant halt'
-alias vp='vagrant provision'
-alias vs='vagrant ssh'
-alias vu='vagrant up'
-alias vdu='vd1 && vu'
 
 # yadm
 # https://github.com/TheLocehiliosan/yadm

@@ -1,5 +1,40 @@
 #!/usr/bin/env bash
 
+# Bower
+alias bo='bower list'
+alias boi='bower install'
+alias bos='bower search'
+
+# Drush
+alias dr='drush'
+alias drc='drush cache-clear all'
+alias drcfu='drush cache-clear all && drush features-revert-all --yes && drush updatedb --yes'
+alias drcr='drush cache-rebuild'
+alias drd='drush pm-disable'
+alias dre='drush pm-enable'
+alias drf='drush features-revert-all --yes'
+alias drff='drush features-revert-all --force --yes'
+alias drfu='drush features-revert-all --yes && drush updatedb --yes'
+alias drl='drush user-login'
+alias drli='drush user-login --browser'
+alias drlint='drush coder-review'
+alias dru='drush updatedb --yes'
+alias drun='drush pm-uninstall --yes'
+
+# Vagrant
+alias v='vagrant status'
+alias vbl='vagrant box list'
+alias vbr='vagrant box remove'
+alias vd='vagrant destroy'
+alias vd1='vagrant destroy --force $(vagrant global-status --prune | tail -n+3 | head -n1 | cut -c1-7)'
+alias vg='vagrant global-status --prune'
+alias vh='vagrant halt'
+alias vp='vagrant provision'
+alias vs='vagrant ssh'
+alias vu='vagrant up'
+alias vdu='vd1 && vu'
+
+
 # ------------------------------------------------------------------------------
 #  Laravel
 # ------------------------------------------------------------------------------

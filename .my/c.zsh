@@ -44,7 +44,7 @@
 # - add `ls -p` to `k`
 #
 c() {
-  local -a highlight_options=(
+  local highlight_options=(
     --failsafe
     --line-numbers
     --quiet
