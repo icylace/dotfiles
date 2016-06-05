@@ -6,6 +6,10 @@
 #  https://medium.com/@porteneuve/getting-solid-at-git-rebase-vs-merge-4fa1a48c53aa
 # ------------------------------------------------------------------------------
 
+# TODO
+# - create alias for making annotated tags
+# - create alias for cherry picking
+
 # Setup.
 alias git='hub'
 
@@ -22,6 +26,7 @@ gcl() {
   repository=${repository##*/}
   repository=${repository%.*}
 
+  # Go to the repository directory.
   if type c >/dev/null 2>&1 ; then
     c $repository
   else
@@ -34,11 +39,11 @@ alias g='git status --branch --short'
 alias gbc='git compare'
 alias gbl='git blame --minimal --show-number --show-stats'
 alias gg='git status --branch'
+alias ggs='gg --untracked-files'
 alias gll='git log --all --decorate --graph'
 alias gll1='gll --oneline'
-alias ggs='gg --untracked-files'
-alias gsr='git symbolic-ref --short HEAD'
 alias glo='gl origin/$(gsr)..$(gsr)'
+alias gsr='git symbolic-ref --short HEAD'
 
 # Difference comparison.
 gd() {
@@ -66,7 +71,7 @@ alias gds='gd --staged'
 
 # Navigation.
 gb() {
-  if [ -n $1 ] ; then
+  if [ $1 ] ; then
     git checkout $1
   else
     git branch --all --verbose --verbose
@@ -78,21 +83,25 @@ alias gbm='git checkout master'
 # Adding and updating.
 gc() { git commit --verbose $2 ${1:+--message=\"$1\"} }
 gc!() { gc $1 --amend }
+gc-() {
+  # TODO
+  # git revert
+}
 gca() { gc $1 --all }
 gr() { git rebase ${1:-master} }
 alias ga='git add'
 alias gal='git add --all'
-alias gau='git add --update'
 alias gap='git add --patch'
+alias gau='git add --update'
 alias gba='git checkout -b'
-alias gf='git fetch --all'
+alias gf='git fetch --all --prune'
 alias gm='git merge --no-ff'
 alias gmf='git merge --ff-only'
 alias gpl='git pull --rebase=preserve'
-alias gpu='git push'
 alias gplo='gpl origin'
 alias gplr='git pull-request'
 alias gpo='git push --set-upstream origin'
+alias gpu='git push --follow-tags'
 alias gre='git reset'
 
 # Patching.
@@ -104,31 +113,35 @@ alias gsp='git stash pop --index'
 alias gss='git stash save --include-untracked'
 
 # Resetting and deleting.
-# alias g-='git reset --'
+# alias g-='git reset --'       # Unstage changes.
 # alias gb-='git checkout --'
-alias gtg='git reset --hard ; git clean --force -d'
-# alias gtfo='git reset --hard ; git clean --force -d'
-# http://stackoverflow.com/a/27415757
-alias gtg+='gtg ; git submodule deinit --force . ; git submodule update --init'
-# alias gtfo+='gtfo ; git submodule deinit --force . ; git submodule update --init'
-# http://stackoverflow.com/a/2003515
-# alias gb-= # delete local branch
-# alias gb--= # delete remote branch
-alias gtfo='git branch --delete --force'
-alias gtfo+='git push origin --delete'
-# alias gtfo='gb- ; gb--'
+alias gtg='git reset --hard && git clean --force -d'
+# http://stackoverflow.com/a/27415757/1935675
+alias gtg+='gtg && git submodule deinit --force . && git submodule update --init'
+# http://stackoverflow.com/a/2003515/1935675
+alias gtfo='git branch --delete --force'        # Delete local branch.
+alias gtfo+='git push origin --delete'          # Delete remote branch.
 
 setup_git_commands_that_pretty_print() {
-  # https://drupalize.me/videos/moving-through-git-history?p=1173
-  local pretty='--pretty=format:"%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset"'
-  # local pretty='--pretty=format:"%C(bold blue)%h%C(reset) - %C(bold green)(%ar)%C(reset) %C(white)%s%C(reset) %C(dim white)- %an%C(reset)%C(bold yellow)%d%C(reset)"'
-  # local pretty='--pretty=format:"%C(bold blue)%h%C(reset) - %C(bold cyan)%aD%C(reset) %C(bold green)(%ar)%C(reset)%C(bold yellow)%d%C(reset)%n''          %C(white)%s%C(reset) %C(dim white)- %an%C(reset)"'
+  local log='git log --graph'
+  local diff_log="$log --minimal --patch-with-stat --word-diff=color"
 
-  alias gl="git log --graph $pretty"
-  alias gla="git log --all --graph $pretty"
-  alias gld='git log --graph --minimal --patch-with-stat --word-diff=color $pretty'
-  alias glad="git log --all --graph --minimal --patch-with-stat --word-diff=color $pretty"
-  alias gs="git show $pretty"
-  alias gsl="git stash list $pretty"
+  # http://stackoverflow.com/a/9074343/1935675
+  local pretty_short='--pretty=format:"%C(bold blue)%h -%Creset %Cgreen%ar%Creset %C(dim green)-%Creset %C(white)%s%Creset %C(dim white)- %an%Creset%C(bold red)%d%Creset"'
+  alias gl="$log $pretty_short"
+  alias gla="$log $pretty_short --all"
+  alias glad="$diff_log $pretty_short --all"
+  alias gld="$diff_log $pretty_short"
+
+  # http://stackoverflow.com/a/9074343/1935675
+  local pretty_more='--pretty=format:"%C(bold blue)%h -%Creset %C(cyan)%aD%Creset %C(dim cyan)-%Creset %Cgreen%ar%Creset%C(bold red)%d%Creset%n          %C(white)%s%Creset %C(dim white)- %an%Creset%n"'
+  alias gl+="$log $pretty_more"
+  alias gla+="$log $pretty_more --all"
+  alias glad+="$diff_log $pretty_more --all"
+  alias gld+="$diff_log $pretty_more"
+
+  alias gs="git show $pretty_short"
+
+  alias gsl="git stash list $pretty_short"
 }
 setup_git_commands_that_pretty_print
