@@ -6,7 +6,7 @@ alias boi='bower install'
 alias bos='bower search'
 
 # Drush
-alias dr='drush'
+alias dr='drush status'
 alias drc='drush cache-clear all'
 alias drcfu='drush cache-clear all && drush features-revert-all --yes && drush updatedb --yes'
 alias drcr='drush cache-rebuild'

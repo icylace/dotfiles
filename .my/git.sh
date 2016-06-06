@@ -63,6 +63,9 @@ gd() {
     shift
   done
 
+  # TODO
+  # - consider using a different diff algorithm for general usage
+
   git diff --minimal --word-diff=color $@ ${commits[@]}
 }
 alias gd1='gd 1'
