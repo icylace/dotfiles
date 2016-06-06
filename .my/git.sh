@@ -127,21 +127,23 @@ setup_git_commands_that_pretty_print() {
   local diff_log="$log --minimal --patch-with-stat --word-diff=color"
 
   # http://stackoverflow.com/a/9074343/1935675
-  local pretty_short='--pretty=format:"%C(bold blue)%h -%Cgreen%d%Creset %C(white)%s %C(dim white)- %an %C(dim magenta)- %ar%Creset"'
+  local pretty_short='--pretty=format:"%C(bold blue)%h -%Cgreen%d%Creset %C(white)%s %C(dim white)- %an %C(magenta)- %ar%Creset"'
+
   alias gl="$log $pretty_short"
   alias gla="$log $pretty_short --all"
   alias glad="$diff_log $pretty_short --all"
   alias gld="$diff_log $pretty_short"
 
+  alias gs="git show $pretty_short"
+
+  alias gsl="git stash list $pretty_short"
+
   # http://stackoverflow.com/a/9074343/1935675
-  local pretty_more='--pretty=format:"%C(bold blue)%h -%Cgreen%d%Creset %C(dim cyan)%aD %C(magenta)- %ar%Creset%n          %C(white)%s%Creset %C(dim white)- %an%Creset%n"'
+  local pretty_more='--pretty=format:"%C(bold blue)%h -%Cgreen%d%Creset %C(dim cyan)%aD %C(magenta)- %ar%Creset%n          %C(white)%s %C(dim white)- %an%Creset%n"'
+
   alias gl+="$log $pretty_more"
   alias gla+="$log $pretty_more --all"
   alias glad+="$diff_log $pretty_more --all"
   alias gld+="$diff_log $pretty_more"
-
-  alias gs="git show $pretty_short"
-
-  alias gsl="git stash list $pretty_short"
 }
 setup_git_commands_that_pretty_print
