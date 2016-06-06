@@ -146,4 +146,5 @@ setup_git_commands_that_pretty_print() {
   alias glad+="$diff_log $pretty_more --all"
   alias gld+="$diff_log $pretty_more"
 }
+
 setup_git_commands_that_pretty_print
