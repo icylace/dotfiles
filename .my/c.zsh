@@ -100,10 +100,10 @@ c() {
           catimg -l 0 "$@"
         fi
       elif type highlight >/dev/null 2>&1 ; then
-        highlight $highlight_options "$@" | less -FX
+        highlight $highlight_options "$@" | less --no-init --quit-if-one-screen
       else
         # http://unix.stackexchange.com/a/86324
-        less -FX "$@"
+        less --no-init --quit-if-one-screen "$@"
       fi
 
       return
