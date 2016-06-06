@@ -39,7 +39,7 @@ export GIT_RADAR_COLOR_BRANCH="%{$fg_bold[cyan]%}"
 
 # Our custom Git Radar prompt is a slight modification of the default one.
 # https://github.com/michaeldfallen/git-radar/blob/master/radar-base.sh#L99
-export GIT_RADAR_FORMAT="on %{$fg_bold[grey]%}git:(%{$reset_color%}%{remote: }\
+export GIT_RADAR_FORMAT="%{$fg_bold[grey]%}on git:(%{$reset_color%}%{remote: }\
 %{branch}%{ :local}%{$fg_bold[grey]%})%{$reset_color%}%{ :stash}%{ :changes}"
 
 # local return_status="%{$fg[red]%}%(?.. ∙%?∙)%{$reset_color%}"
@@ -52,9 +52,8 @@ local return_status="%{$fg[red]%}%(?..⏎ %? )%{$reset_color%}"
 # Our prompt consists of the username, machine name,
 # current directory, and any Git info.
 export PROMPT='
-%{$fg[magenta]%}%n%{$reset_color%} \
-at %{$fg[yellow]%}%m%{$reset_color%} \
-in %{$fg_bold[green]%}${PWD/#$HOME/~}%{$reset_color%} \
+%{$fg[magenta]%}%n %{$fg_bold[grey]%}at%{$reset_color%} %{$fg[yellow]%}%m \
+%{$fg_bold[grey]%}in %{$fg_bold[green]%}${PWD/#$HOME/~}%{$reset_color%} \
 $(git-radar --zsh --fetch)
 $return_status$(show_prompt) '
 
