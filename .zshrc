@@ -48,6 +48,18 @@ alias hexdump='colourify hexdump'
 
 # ------------------------------------------------------------------------------
 
+# Colorize manual pages.
+# http://www.matrix44.net/blog/?p=870
+export LESS_TERMCAP_mb=$'\e[1;35m'        # begin blinking
+export LESS_TERMCAP_md=$'\e[1;35m'        # begin bold
+export LESS_TERMCAP_me=$'\e[0m'           # end mode
+export LESS_TERMCAP_se=$'\e[0m'           # end standout-mode
+export LESS_TERMCAP_so=$'\e[33m'          # begin standout-mode - info box
+export LESS_TERMCAP_ue=$'\e[0m'           # end underline
+export LESS_TERMCAP_us=$'\e[36m'          # begin underline
+
+# ------------------------------------------------------------------------------
+
 # Extra stuff that's too sensitive to be committed to a public repository.
 if [ -f "$HOME/.not-public/extra.sh" ] ; then
   source "$HOME/.not-public/extra.sh"
