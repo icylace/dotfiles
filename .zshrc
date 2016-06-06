@@ -56,7 +56,7 @@ export LESS_TERMCAP_me=$'\e[0m'           # end mode
 export LESS_TERMCAP_se=$'\e[0m'           # end standout-mode
 export LESS_TERMCAP_so=$'\e[33m'          # begin standout-mode - info box
 export LESS_TERMCAP_ue=$'\e[0m'           # end underline
-export LESS_TERMCAP_us=$'\e[36m'          # begin underline
+export LESS_TERMCAP_us=$'\e[1;36m'        # begin underline
 
 # ------------------------------------------------------------------------------
 
