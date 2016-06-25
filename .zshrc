@@ -14,6 +14,7 @@ source "$HOME/.my/git.sh"
 source "$HOME/.my/i.zsh"
 source "$HOME/.my/prompt.zsh"
 source "$HOME/.my/u.sh"
+source "$HOME/.my/url-directories.sh"
 source "$HOME/.my/webdev.sh"
 source "$HOME/.my/xcode.sh"
 
