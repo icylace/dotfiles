@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 
 # ------------------------------------------------------------------------------
-#  Xcode-related
+#  Swift-related
 # ------------------------------------------------------------------------------
 
 # Swift
@@ -17,6 +17,16 @@ sw() {
     echo 'Not a Swift file.'
   fi
 }
+
+# https://swiftenv.fuller.li/en/latest/installation.html#via-homebrew
+if which swiftenv > /dev/null ; then
+  eval "$(swiftenv init -)"
+fi
+
+
+# ------------------------------------------------------------------------------
+#  Xcode-related
+# ------------------------------------------------------------------------------
 
 x() {
   # Attempt to build the project and get out if there was an error.

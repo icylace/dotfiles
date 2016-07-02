@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 
-# Manually update things.
+# Updates multiple things.
 u() {
   upgrade_oh_my_zsh
   zplug update

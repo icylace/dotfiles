@@ -1,7 +1,7 @@
 source "$HOME/.my/aliases.sh"
+source "$HOME/.my/appledev.sh"
 source "$HOME/.my/git.sh"
 source "$HOME/.my/laravel.sh"
-source "$HOME/.my/xcode.sh"
 
 export PS1="$PS1\$(git-radar --bash --fetch) "
 
