@@ -6,13 +6,12 @@
 
 # Swift
 sw() {
-  if [ -f "$1" ] ; then
-    # TODO
-    # - what is this again?
-    #   - `echo ${1//\\/\\\\}`
-    swift "$1"
+  if [ -z "$1" ] ; then
+    swift
   elif [ -f "$1".swift ] ; then
     swift "$1".swift
+  elif [ -f "$1" ] ; then
+    swift "$1"
   else
     echo 'Not a Swift file.'
   fi
