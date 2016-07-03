@@ -1,12 +1,12 @@
 #!/usr/bin/env bash
 
-source "./appledev.sh"
-source "./brew.sh"
-source "./bz.sh"
-source "./git.sh"
-source "./u.sh"
-source "./url-directories.sh"
-source "./webdev.sh"
+source "$HOME/.my/appledev.sh"
+source "$HOME/.my/brew.sh"
+source "$HOME/.my/bz.sh"
+source "$HOME/.my/git.sh"
+source "$HOME/.my/u.sh"
+source "$HOME/.my/url-directories.sh"
+source "$HOME/.my/webdev.sh"
 
 
 # ------------------------------------------------------------------------------
