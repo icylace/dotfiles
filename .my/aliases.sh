@@ -52,7 +52,7 @@ alias bi='brew info'
 alias bin='brew install'
 alias bs='brew search'
 alias bu='brew update && brew upgrade --all && brew cleanup && brew cask cleanup'
-alias bun='brew install'
+alias bun='brew uninstall'
 
 # Homebrew Cask
 alias bk='brew cask list'
