@@ -1,5 +1,14 @@
 #!/usr/bin/env bash
 
+source "./appledev.sh"
+source "./brew.sh"
+source "./bz.sh"
+source "./git.sh"
+source "./u.sh"
+source "./url-directories.sh"
+source "./webdev.sh"
+
+
 # ------------------------------------------------------------------------------
 #  Defines aliases and functions common to both Bash and Z shell.
 # ------------------------------------------------------------------------------
@@ -42,25 +51,6 @@ alias wtf='tail -f /var/log/{dmesg,messages,*{,/*}{log,err}}'
 # alias stx='subl . ; subl *.xiki'
 # # Create Xiki buffer from terminal.
 # alias xiki='pwd > tree.xiki'
-
-# ------------------------------------------------------------------------------
-
-# Homebrew
-alias b='brew info ; brew list'
-alias bd='brew doctor'
-alias bi='brew info'
-alias bin='brew install'
-alias bs='brew search'
-alias bu='brew update && brew upgrade --all && brew cleanup && brew cask cleanup'
-alias bun='brew uninstall'
-
-# Homebrew Cask
-alias bk='brew cask list'
-alias bkd='brew cask doctor'
-alias bki='brew cask info'
-alias bkin='brew cask install'
-alias bks='brew cask search'
-alias bkun='brew cask uninstall'
 
 # Find files
 # http://stackoverflow.com/a/4034907

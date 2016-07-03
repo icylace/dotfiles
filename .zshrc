@@ -7,16 +7,10 @@ source "$HOME/.my/zplug.zsh"
 unsetopt RM_STAR_SILENT
 setopt RM_STAR_WAIT
 
-source "$HOME/.my/aliases.sh"
-source "$HOME/.my/appledev.sh"
-source "$HOME/.my/bz.sh"
+source "$HOME/.my/common.sh"
 source "$HOME/.my/c.zsh"
-source "$HOME/.my/git.sh"
 source "$HOME/.my/i.zsh"
 source "$HOME/.my/prompt.zsh"
-source "$HOME/.my/u.sh"
-source "$HOME/.my/url-directories.sh"
-source "$HOME/.my/webdev.sh"
 
 
 # ------------------------------------------------------------------------------
