@@ -56,7 +56,13 @@ alias wtf='tail -f /var/log/{dmesg,messages,*{,/*}{log,err}}'
 # http://stackoverflow.com/a/4034907
 alias f='find . -name'
 
+# exa
+# https://the.exa.website/
+alias l='exa --all --binary --blocks --created --extended --git --group --group-directories-first --header --inode --links --long --modified'
+
+
 # sift
+# https://sift-tool.org/
 alias s='sift --git'
 alias sn='sift --git --exclude-dirs=node_modules --exclude-dirs=.npm'
 
