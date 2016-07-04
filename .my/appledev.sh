@@ -22,6 +22,9 @@ if which swiftenv > /dev/null ; then
   eval "$(swiftenv init -)"
 fi
 
+# https://github.com/apple/swift-package-manager#installing
+export TOOLCHAINS=swift
+
 
 # ------------------------------------------------------------------------------
 #  Xcode-related
