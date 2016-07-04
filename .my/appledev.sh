@@ -9,8 +9,8 @@ if which swiftenv > /dev/null ; then
   eval "$(swiftenv init -)"
 fi
 
-# https://github.com/apple/swift-package-manager#installing
-export TOOLCHAINS=swift
+# # https://github.com/apple/swift-package-manager#installing
+# export TOOLCHAINS=swift
 
 alias swb='swift build'
 
