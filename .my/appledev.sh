@@ -4,6 +4,16 @@
 #  Swift-related
 # ------------------------------------------------------------------------------
 
+# https://swiftenv.fuller.li/en/latest/installation.html#via-homebrew
+if which swiftenv > /dev/null ; then
+  eval "$(swiftenv init -)"
+fi
+
+# https://github.com/apple/swift-package-manager#installing
+export TOOLCHAINS=swift
+
+alias swb='swift build'
+
 # Swift
 sw() {
   if [ -z "$1" ] ; then
@@ -16,14 +26,6 @@ sw() {
     echo 'Not a Swift file.'
   fi
 }
-
-# https://swiftenv.fuller.li/en/latest/installation.html#via-homebrew
-if which swiftenv > /dev/null ; then
-  eval "$(swiftenv init -)"
-fi
-
-# https://github.com/apple/swift-package-manager#installing
-export TOOLCHAINS=swift
 
 
 # ------------------------------------------------------------------------------

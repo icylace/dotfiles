@@ -60,7 +60,6 @@ alias f='find . -name'
 # https://the.exa.website/
 alias l='exa --all --binary --blocks --created --extended --git --group --group-directories-first --header --inode --links --long --modified'
 
-
 # sift
 # https://sift-tool.org/
 alias s='sift --git'
