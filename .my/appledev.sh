@@ -29,10 +29,6 @@ sw() {
   fi
 }
 
-swe() {
-
-}
-
 # Initiates a new Swift project in the current directory.
 swi() {
   if [ -z "$1" ] ; then
