@@ -9,12 +9,13 @@ if which swiftenv > /dev/null ; then
   eval "$(swiftenv init -)"
 fi
 
-# # https://github.com/apple/swift-package-manager#installing
-# export TOOLCHAINS=swift
+# https://github.com/apple/swift-package-manager#installing
+export TOOLCHAINS=swift
 
 alias swb='swift build'
+alias swe='swiftenv'
 
-# Swift
+# Starts the Swift REPL or runs a given Swift file.
 sw() {
   if [ -z "$1" ] ; then
     swift
@@ -23,8 +24,28 @@ sw() {
   elif [ -f "$1" ] ; then
     swift "$1"
   else
-    echo 'Not a Swift file.'
+    echo 'Error: Not a Swift file.'
+    return 1
   fi
+}
+
+swe() {
+
+}
+
+# Initiates a new Swift project in the current directory.
+swi() {
+  if [ -z "$1" ] ; then
+    echo 'Initiates a new Swift project in the current directory.'
+    echo
+    echo 'Usage: swi <project name>'
+    return
+  fi
+  mkdir "$1"
+  cd "$1"
+  swiftenv local DEVELOPMENT-SNAPSHOT-2016-06-20-a
+  swift package init --type executable
+  swift package generate-xcodeproj
 }
 
 
