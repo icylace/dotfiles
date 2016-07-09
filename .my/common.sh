@@ -58,7 +58,7 @@ alias f='find . -name'
 
 # exa
 # https://the.exa.website/
-alias l='exa --all --binary --blocks --created --extended --git --group --group-directories-first --header --inode --links --long --modified'
+alias l='exa --all --binary --blocks --created --extended --git --group --group-directories-first --header --inode --level=2 --links --long --modified --tree'
 
 # sift
 # https://sift-tool.org/
