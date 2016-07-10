@@ -9,6 +9,10 @@ if which swiftenv > /dev/null ; then
   eval "$(swiftenv init -)"
 fi
 
+# sudo xcode-select --switch /Applications/Xcode.app
+
+# export PATH=/Library/Developer/Toolchains/swift-latest.xctoolchain/usr/bin:"${PATH}"
+
 # https://github.com/apple/swift-package-manager#installing
 export TOOLCHAINS=swift
 
