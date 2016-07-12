@@ -85,7 +85,7 @@ alias gbm='git checkout master'
 
 # Adding and updating.
 gc() { git commit --verbose $2 ${1:+--message="$1"} }
-gc!() { gc $1 --amend }
+gc!() { git commit --amend }
 gc-() {
   # TODO
   # git revert
