@@ -104,7 +104,12 @@ alias gpl='git pull --rebase=preserve'
 alias gplo='gpl origin'
 alias gplr='git pull-request'
 alias gpo='git push --set-upstream origin'
+
+# TODO
+# see the following is a better way of handling tags
+# - `git push origin --tags`
 alias gpu='git push --follow-tags'
+
 alias gre='git reset'
 
 # Patching.
