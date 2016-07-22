@@ -130,8 +130,16 @@ alias gtg='git reset --hard && git clean --force -d'
 # http://stackoverflow.com/a/27415757/1935675
 alias gtg+='gtg && git submodule deinit --force . && git submodule update --init'
 # http://stackoverflow.com/a/2003515/1935675
-alias gtfo='git branch --delete --force'        # Delete local branch.
-alias gtfo+='git push origin --delete'          # Delete remote branch.
+# http://blogs.perl.org/users/mr_muskrat/2010/10/remove-a-git-tag-from-github-when-there-is-also-a-branch-of-the-same-name.html#comments
+# http://www.markhneedham.com/blog/2013/06/13/git-having-a-branchtag-with-the-same-name-error-dst-refspec-matches-more-than-one/#comment-1178860178
+gtfo() {
+  # Delete local branch.
+  git branch --delete --force "refs/heads/$1"
+}
+gtfo+() {
+  # Delete remote branch.
+  git push origin --delete "refs/heads/$1"
+}
 
 setup_git_commands_that_pretty_print() {
   local log='git log --graph'
