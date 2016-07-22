@@ -72,18 +72,47 @@ alias gd1='gd 1'
 alias gd2='gd 2'
 alias gds='gd --staged'
 
-# Navigation.
+# Branching.
 gb() {
-  if [ $1 ] ; then
+  if [ -n "$1" ] ; then
     git checkout $1
   else
     git branch --all --verbose --verbose
   fi
 }
+# http://stackoverflow.com/a/2003515/1935675
+# http://blogs.perl.org/users/mr_muskrat/2010/10/remove-a-git-tag-from-github-when-there-is-also-a-branch-of-the-same-name.html#comments
+# http://www.markhneedham.com/blog/2013/06/13/git-having-a-branchtag-with-the-same-name-error-dst-refspec-matches-more-than-one/#comment-1178860178
+# Deletes local branch.
+gb-() {
+  if [ -z "$1" ] ; then
+    echo "Branch name required."
+    return 1
+  fi
+  git branch --delete --force "refs/heads/$1"
+}
+# Deletes remote branch.
+gb--() {
+  if [ -z "$1" ] ; then
+    echo "Branch name required."
+    return 1
+  fi
+  git push origin --delete "refs/heads/$1"
+}
+alias gb+='git checkout -b'
+alias gba='gb+'
 alias gbd='git checkout dev'
 alias gbm='git checkout master'
+alias gtfo='gb-'
+alias gtfo+='gb--'
 
-# Adding and updating.
+# Adding.
+alias ga='git add'
+alias gal='git add --all'
+alias gap='git add --patch'
+alias gau='git add --update'
+
+# Committing.
 gc() { git commit --verbose $2 ${1:+--message="$1"} }
 gc!() { git commit --amend }
 gc-() {
@@ -91,12 +120,9 @@ gc-() {
   # git revert
 }
 gca() { gc $1 --all }
+
 gr() { git rebase ${1:-master} }
-alias ga='git add'
-alias gal='git add --all'
-alias gap='git add --patch'
-alias gau='git add --update'
-alias gba='git checkout -b'
+
 alias gf='git fetch --all --prune'
 alias gm='git merge --no-ff'
 alias gmf='git merge --ff-only'
@@ -120,8 +146,10 @@ alias gy='git apply --verbose'
 alias gsp='git stash pop --index'
 alias gss='git stash save --include-untracked'
 
-# Tags.
+# Tagging.
 alias gt='git tag'
+# TODO
+# - create `gta` alias (or function) which does annotated tags
 
 # Resetting and deleting.
 # alias g-='git reset --'       # Unstage changes.
@@ -129,17 +157,6 @@ alias gt='git tag'
 alias gtg='git reset --hard && git clean --force -d'
 # http://stackoverflow.com/a/27415757/1935675
 alias gtg+='gtg && git submodule deinit --force . && git submodule update --init'
-# http://stackoverflow.com/a/2003515/1935675
-# http://blogs.perl.org/users/mr_muskrat/2010/10/remove-a-git-tag-from-github-when-there-is-also-a-branch-of-the-same-name.html#comments
-# http://www.markhneedham.com/blog/2013/06/13/git-having-a-branchtag-with-the-same-name-error-dst-refspec-matches-more-than-one/#comment-1178860178
-gtfo() {
-  # Delete local branch.
-  git branch --delete --force "refs/heads/$1"
-}
-gtfo+() {
-  # Delete remote branch.
-  git push origin --delete "refs/heads/$1"
-}
 
 setup_git_commands_that_pretty_print() {
   local log='git log --graph'
