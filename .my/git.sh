@@ -120,6 +120,9 @@ alias gy='git apply --verbose'
 alias gsp='git stash pop --index'
 alias gss='git stash save --include-untracked'
 
+# Tags.
+alias gt='git tag'
+
 # Resetting and deleting.
 # alias g-='git reset --'       # Unstage changes.
 # alias gb-='git checkout --'
