@@ -148,6 +148,7 @@ alias gss='git stash save --include-untracked'
 
 # Tagging.
 alias gt='git tag'
+alias gtpu='git push origin --tags'
 # TODO
 # - create `gta` alias (or function) which does annotated tags
 
