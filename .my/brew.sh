@@ -4,6 +4,8 @@
 #  Homebrew
 # ------------------------------------------------------------------------------
 
+export HOMEBREW_NO_ANALYTICS=1
+
 alias b='brew info ; brew list'
 alias bd='brew doctor'
 alias bi='brew info'
