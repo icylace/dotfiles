@@ -139,7 +139,7 @@ alias gpu='git push --follow-tags'
 alias gre='git reset'
 
 # Patching.
-alias gdp='git diff --minimal HEAD'
+alias gdp='git diff --minimal --no-color HEAD'
 alias gy='git apply --verbose'
 
 # Stashing.
