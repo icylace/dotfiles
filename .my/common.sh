@@ -62,8 +62,8 @@ alias l='exa --all --binary --blocks --created --extended --git --group --group-
 
 # sift
 # https://sift-tool.org/
-alias s='sift --git'
-alias sn='sift --git --exclude-dirs=node_modules --exclude-dirs=.npm'
+alias s='sift --git --exclude-ext=pdf'
+alias sn='sift --git --exclude-ext=pdf --exclude-dirs=node_modules --exclude-dirs=.npm'
 
 # TODO
 # - is this switch useful?
