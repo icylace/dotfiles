@@ -7,6 +7,24 @@ export PATH="$HOME/.node/bin:$PATH"
 export PATH="$HOME/.rbenv/bin:$PATH"
 export PATH="./node_modules/.bin:$PATH"
 
+# ------------------------------------------------------------------------------
+
+# Postgres.app Command Line Tools
+# http://postgresapp.com/documentation/cli-tools.html
+
+export PATH="$HOME/Applications/Postgres.app/Contents/Versions/latest/bin:$PATH"
+
+# ------------------------------------------------------------------------------
+
+# swiftenv: Swift Version Manager
+# https://swiftenv.fuller.li/en/latest/installation.html#via-a-git-clone
+
+export SWIFTENV_ROOT="$HOME/.swiftenv"
+export PATH="$SWIFTENV_ROOT/bin:$PATH"
+eval "$(swiftenv init -)"
+
+# ------------------------------------------------------------------------------
+
 # https://github.com/yyuu/pyenv/wiki/Common-build-problems#build-failed-error-the-python-zlib-extension-was-not-compiled-missing-the-zlib
 export CFLAGS="-I$(xcrun --show-sdk-path)/usr/include"
 
