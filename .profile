@@ -9,13 +9,6 @@ export PATH="./node_modules/.bin:$PATH"
 
 # ------------------------------------------------------------------------------
 
-# Postgres.app Command Line Tools
-# http://postgresapp.com/documentation/cli-tools.html
-
-export PATH="$HOME/Applications/Postgres.app/Contents/Versions/latest/bin:$PATH"
-
-# ------------------------------------------------------------------------------
-
 # swiftenv: Swift Version Manager
 # https://swiftenv.fuller.li/en/latest/installation.html#via-a-git-clone
 
