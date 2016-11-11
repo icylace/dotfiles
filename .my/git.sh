@@ -49,12 +49,12 @@ alias gsr='git symbolic-ref --short HEAD'
 gd() {
   local commits=()
 
-  for _ in "$1" "$2" ; do
+  for _ in $1 $2 ; do
     # http://stackoverflow.com/a/19116862/1935675
-    if [ "$1" -eq "$1" ] 2>/dev/null && \
+    if [ $1 -eq $1 ] 2>/dev/null && \
       # Handle the rare occurrence of a branch's
       # short SHA-1 hash containing only numbers.
-      [ "$1" -lt 1000 ]
+      [ $1 -lt 1000 ]
     then
       commits+=("HEAD~$1")
     else
@@ -66,7 +66,7 @@ gd() {
   # TODO
   # - consider using a different diff algorithm for general usage
 
-  git diff --minimal --word-diff=color "$@" ${commits[@]}
+  git diff --minimal --word-diff=color $@ ${commits[@]}
 }
 alias gd1='gd 1'
 alias gd2='gd 2'
@@ -75,7 +75,7 @@ alias gds='gd --staged'
 # Branching.
 gb() {
   if [ -n "$1" ] ; then
-    git checkout "$1"
+    git checkout $1
   else
     git branch --all --verbose --verbose
   fi
