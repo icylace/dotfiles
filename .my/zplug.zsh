@@ -43,7 +43,7 @@ zplug 'rupa/z', use:'*.sh'
 zplug 'zsh-users/zsh-syntax-highlighting', nice:19
 
 # Ensure plugins are installed.
-if ! zplug check --verbose ; then
+if ! zplug check ; then
   zplug install
 fi
 

@@ -17,7 +17,7 @@ gcl() {
   local repository=$1
 
   # Attempt to clone the repository and get it if it can't be done.
-  git clone --verbose $repository
+  git clone --verbose "$repository"
   if [ $? -ne 0 ] ; then
     return
   fi
@@ -28,9 +28,9 @@ gcl() {
 
   # Go to the repository directory.
   if type c >/dev/null 2>&1 ; then
-    c $repository
+    c "$repository"
   else
-    cd $repository
+    cd "$repository"
   fi
 }
 
@@ -49,16 +49,16 @@ alias gsr='git symbolic-ref --short HEAD'
 gd() {
   local commits=()
 
-  for _ in $1 $2 ; do
+  for _ in "$1" "$2" ; do
     # http://stackoverflow.com/a/19116862/1935675
-    if [ $1 -eq $1 ] 2>/dev/null && \
+    if [ "$1" -eq "$1" ] 2>/dev/null && \
       # Handle the rare occurrence of a branch's
       # short SHA-1 hash containing only numbers.
-      [ $1 -lt 1000 ]
+      [ "$1" -lt 1000 ]
     then
-      commits+="HEAD~$1"
+      commits+=("HEAD~$1")
     else
-      commits+=${1:-HEAD}
+      commits+=(${1:-HEAD})
     fi
     shift
   done
@@ -66,7 +66,7 @@ gd() {
   # TODO
   # - consider using a different diff algorithm for general usage
 
-  git diff --minimal --word-diff=color $@ ${commits[@]}
+  git diff --minimal --word-diff=color "$@" ${commits[@]}
 }
 alias gd1='gd 1'
 alias gd2='gd 2'
@@ -75,7 +75,7 @@ alias gds='gd --staged'
 # Branching.
 gb() {
   if [ -n "$1" ] ; then
-    git checkout $1
+    git checkout "$1"
   else
     git branch --all --verbose --verbose
   fi
@@ -113,15 +113,23 @@ alias gap='git add --patch'
 alias gau='git add --update'
 
 # Committing.
-gc() { git commit --verbose $2 ${1:+--message="$1"} }
-gc!() { git commit --amend }
-gc-() {
-  # TODO
-  # git revert
+gc() {
+  git commit --verbose $2 ${1:+--message="$1"}
 }
-gca() { gc $1 --all }
+gcn() {
+  git commit --amend
+}
+# gc-() {
+#   # TODO
+#   # git revert
+# }
+gca() {
+  gc $1 --all
+}
 
-gr() { git rebase ${1:-master} }
+gr() {
+  git rebase ${1:-master}
+}
 
 alias gf='git fetch --all --prune'
 alias gm='git merge --no-ff'
