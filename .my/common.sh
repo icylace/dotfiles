@@ -31,9 +31,6 @@ manpdf() {
   man -t $1 | pstopdf -i -o $1.pdf
 }
 
-# This uses mpv with its GUI.
-alias m='mpv --player-operation-mode=pseudo-gui'
-
 # https://github.com/yrammos/dotfiles/blob/master/.bashrc
 alias mv='mv -i'
 
