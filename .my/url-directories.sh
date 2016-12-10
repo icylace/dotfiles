@@ -46,5 +46,3 @@ move_into_url_directories() {
     fi
   done
 }
-
-alias m='move_into_url_directories'
