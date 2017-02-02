@@ -45,3 +45,8 @@ fi
 if which pyenv >/dev/null ; then
   eval "$(pyenv init -)"
 fi
+
+# ------------------------------------------------------------------------------
+
+# Alternative to `postgres -D /usr/local/var/postgres`.
+export PGDATA="/usr/local/var/postgres"

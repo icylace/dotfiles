@@ -40,7 +40,7 @@ zplug 'rupa/z', use:'*.sh'
 # zsh-syntax-highlighting
 # Syntax highlighing for the command line.
 # https://github.com/zsh-users/zsh-syntax-highlighting
-zplug 'zsh-users/zsh-syntax-highlighting', nice:19
+zplug 'zsh-users/zsh-syntax-highlighting', defer:3
 
 # Ensure plugins are installed.
 if ! zplug check ; then
@@ -48,4 +48,5 @@ if ! zplug check ; then
 fi
 
 # Source plugins and add commands to `$PATH`.
-zplug load --verbose
+# zplug load --verbose
+zplug load

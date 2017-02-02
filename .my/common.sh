@@ -60,6 +60,11 @@ alias f='find . -name'
 # https://the.exa.website/
 alias l='exa --all --binary --blocks --created --extended --git --group --group-directories-first --header --inode --level=2 --links --long --modified --tree'
 
+# PostgreSQL
+# https://www.postgresql.org/
+# alias pg='postgres -D /usr/local/var/postgres'
+alias pg='postgres'
+
 # sift
 # https://sift-tool.org/
 alias s='sift --binary-skip --git --exclude-ext=dmg,pdf'
