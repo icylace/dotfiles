@@ -8,31 +8,18 @@
 #
 
 show_prompt() {
-  # local prompt_char='♿'
-  # local prompt_char='❆'
-  # local prompt_char='⑁'
-  # local prompt_char='২'
-  # local prompt_char='⁘'
-  # local prompt_char='৶'
-  # local prompt_char='९'
-  # local prompt_char='⚕'
-  # local prompt_char='⌖'
-  # local prompt_char='﷽'
-  # local prompt_char='ઑ'
-  # local prompt_char='☙'
-  # local prompt_char='♞'
-  # local prompt_char='★'
-  # local prompt_char='→'
-  # local prompt_char='λ'
-  # local prompt_char='⸚'
-  # local prompt_char='➫'
-  # local prompt_char='➠'
-  # local prompt_char='✜'
-  # local prompt_char='☾'
-  # local prompt_char='త'
-  # local prompt_char='✰'
-  local prompt_char='♘'
-  echo "%{$fg_bold[magenta]%}$prompt_char %{$reset_color%}"
+  setopt local_options ksh_arrays
+
+  local prompt_chars=(
+    '❆' '⑁' '২' '⁘' '৶' '९' '⌖' 'ઑ'
+    '☙' '★' '→' '⸚' '➫' '➠' '✜' '☾'
+    'త' '✰' 'λ' '𝝺' '𝛌' '♞' '♘'
+  )
+
+  # Select a random prompt character.
+  local prompt_char="${prompt_chars[$((RANDOM % ${#prompt_chars[@]}))]}"
+
+  echo "%{${fg_bold[magenta]}%}$prompt_char %{$reset_color%}"
 }
 
 export GIT_RADAR_COLOR_BRANCH="%{$fg_bold[cyan]%}"

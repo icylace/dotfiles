@@ -1,7 +1,5 @@
 #!/usr/bin/env bash
 
-source "$HOME/.my/webdev-icylace.sh"
-
 # Drush
 # A CLI tool and scripting interface for Drupal.
 # http://www.drush.org/en/master/
