@@ -153,10 +153,10 @@ select_prompt_char() {
 }
 
 
-select_return_status_char() {
+select_exit_status_char() {
   setopt local_options KSH_ARRAYS
 
-  local return_status_chars=(
+  local exit_status_chars=(
     '↵'    # U+21B5: downwards arrow with corner leftwards
     '∠'    # U+2220: angle
     '∢'    # U+2222: spherical angle
@@ -165,7 +165,7 @@ select_return_status_char() {
   )
 
   # Select a random return status character.
-  echo "${return_status_chars[$((RANDOM % ${#return_status_chars[@]}))]}"
+  echo "${exit_status_chars[$((RANDOM % ${#exit_status_chars[@]}))]}"
 }
 
 
@@ -177,11 +177,11 @@ export N=$'\n'
 precmd() {
   # Force our prompt characters to update...
   export PROMPT_CHAR="$RANDOM"
-  export RETURN_STATUS_CHAR="$RANDOM"
+  export EXIT_STATUS_CHAR="$RANDOM"
 
   # ...so they can be different characters after every command.
   export PROMPT_CHAR="$(select_prompt_char)"
-  export RETURN_STATUS_CHAR="$(select_return_status_char)"
+  export EXIT_STATUS_CHAR="$(select_exit_status_char)"
 
   # The first part of our prompt consists of the username, machine name,
   # current directory, any Git info, and battery charge.
@@ -211,7 +211,7 @@ export GIT_RADAR_FORMAT="%B%F{black}on git:(%b%f%{remote: }%{branch}%{ :local}%B
 
 # The second part of our prompt contains the exit status code,
 # user input marker, and the date and time.
-export PROMPT='%(?..%F{red}$RETURN_STATUS_CHAR %B%?$N%b%f)%B%F{magenta}$PROMPT_CHAR%b%f  '
+export PROMPT='%(?..%F{red}$EXIT_STATUS_CHAR %B%?$N%b%f)%B%F{magenta}$PROMPT_CHAR%b%f  '
 export RPROMPT='%B%F{black}%D{%L:%M:%S %p %Z ∴ %m-%d ∴ %Y}%b%f'
 
 
