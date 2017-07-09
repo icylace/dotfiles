@@ -37,5 +37,5 @@ battery_indicator() {
     color='yellow'
   fi
 
-  echo "%{$fg[$color]%}$indicator_filled$indicator_unfilled%{$reset_color%}"
+  echo "%F{$color}$indicator_filled$indicator_unfilled%f"
 }
