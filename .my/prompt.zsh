@@ -1,6 +1,8 @@
 #!/usr/bin/env zsh
 
-setopt prompt_subst
+source "$HOME/.my/battery.zsh"
+
+setopt PROMPT_SUBST
 
 
 #
@@ -11,7 +13,7 @@ setopt prompt_subst
 #
 
 select_prompt_char() {
-  setopt local_options ksh_arrays
+  setopt local_options KSH_ARRAYS
 
   local prompt_chars=(
     'λ'    # U+03BB: greek small letter lamda
@@ -152,7 +154,7 @@ select_prompt_char() {
 
 
 select_return_status_char() {
-  setopt local_options ksh_arrays
+  setopt local_options KSH_ARRAYS
 
   local return_status_chars=(
     '↵'    # U+21B5: downwards arrow with corner leftwards
@@ -167,6 +169,11 @@ select_return_status_char() {
 }
 
 
+# https://unix.stackexchange.com/a/126316
+# https://unix.stackexchange.com/questions/53789/whats-the-newline-symbol-in-zshs-ps1#comment428362_126316
+export N=$'\n'
+
+
 precmd() {
   # Force our prompt characters to update...
   export PROMPT_CHAR="$RANDOM"
@@ -175,6 +182,21 @@ precmd() {
   # ...so they can be different characters after every command.
   export PROMPT_CHAR="$(select_prompt_char)"
   export RETURN_STATUS_CHAR="$(select_return_status_char)"
+
+  # The first part of our prompt consists of the username, machine name,
+  # current directory, any Git info, and battery charge.
+  # https://stackoverflow.com/a/33839913/1935675
+  local preprompt_left="$N%F{magenta}%n %B%F{black}at%b %F{yellow}%m %B%F{black}in %b%F{green}${PWD/#$HOME/~}%f $(git-radar --zsh --fetch)"
+  local preprompt_right="$(battery_indicator)"
+  local preprompt_left_length=${#${(S%%)preprompt_left//(\%([KF1]|)\{*\}|\%[Bbkf])}}
+  local preprompt_right_length=${#${(S%%)preprompt_right//(\%([KF1]|)\{*\}|\%[Bbkf])}}
+  local num_filler_spaces=$((COLUMNS - preprompt_left_length - preprompt_right_length))
+  print -Pr "$preprompt_left${(l:$num_filler_spaces:)}$preprompt_right"
+}
+
+
+preexec() {
+  echo "$(date +%r)$N"
 }
 
 
@@ -184,20 +206,17 @@ export GIT_RADAR_COLOR_BRANCH="%B%F{cyan}"
 # https://github.com/michaeldfallen/git-radar/blob/master/radar-base.sh#L99
 export GIT_RADAR_FORMAT="%B%F{black}on git:(%b%f%{remote: }%{branch}%{ :local}%B%F{black})%b%f%{ :stash}%{ :changes}"
 
-# https://unix.stackexchange.com/a/126316
-# https://unix.stackexchange.com/questions/53789/whats-the-newline-symbol-in-zshs-ps1#comment428362_126316
-local new_line=$'\n'
+# The second part of our prompt contains the exit status code,
+# user input marker, and the date and time.
+export PROMPT='%(?..%F{red}$RETURN_STATUS_CHAR %B%?$N%b%f)%B%F{magenta}$PROMPT_CHAR%b%f  '
+export RPROMPT='%B%F{black}%D{%L:%M:%S %p %Z ∴ %m-%d ∴ %Y}%b%f'
 
-# Our prompt consists of the username, machine name,
-# current directory, and any Git info.
-export PROMPT='$new_line%F{magenta}%n %B%F{black}at%b %F{yellow}%m \
-%B%F{black}in %b%F{green}${PWD/#$HOME/~}%f $(git-radar --zsh --fetch)$new_line\
-%(?..%F{red}$RETURN_STATUS_CHAR %B%?$new_line%b%f)\
-%B%F{magenta}$PROMPT_CHAR%b%f  '
 
-# Display the date and battery charge.
-source "$HOME/.my/battery.zsh"
-export RPROMPT='$(battery_indicator)  %B%F{black}%D{%Y ∴ %m-%d ∴ %L:%M:%S %p %Z}%b%f'
+
+
+
+
+
 
 # # TODO
 # # - check if TMOUT will prematurely terminate scripts that wait for input
@@ -206,7 +225,11 @@ export RPROMPT='$(battery_indicator)  %B%F{black}%D{%Y ∴ %m-%d ∴ %L:%M:%S %p
 # #   - http://h30499.www3.hp.com/t5/Languages-and-Scripting/TMOUT-cause-scripts-end/m-p/5249732#M40885
 # TMOUT=1
 
+# # https://askubuntu.com/a/360172
+# # https://github.com/robbyrussell/oh-my-zsh/issues/5910
+# # https://github.com/robbyrussell/oh-my-zsh/issues/5910#issuecomment-294509017
 # TRAPALRM() {
-#   # This seems to prevent accessing command line history after the prompt resets.
-#   zle reset-prompt
+#   if [[ $WIDGET != *"complete"* && $WIDGET != *"beginning-search" ]] ; then
+#     zle reset-prompt
+#   fi
 # }
