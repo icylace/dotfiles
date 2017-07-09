@@ -196,7 +196,10 @@ precmd() {
 
 
 preexec() {
-  echo "$(date +%r)$N"
+  # Show when a command is executed.  Normally, this will be almost completely
+  # hidden visually because I generally don't need it but in the event where I
+  # do it can be revealed through text selection.
+  echo "$fg[black]$(date +%r)$reset_color"
 }
 
 
@@ -210,12 +213,6 @@ export GIT_RADAR_FORMAT="%B%F{black}on git:(%b%f%{remote: }%{branch}%{ :local}%B
 # user input marker, and the date and time.
 export PROMPT='%(?..%F{red}$RETURN_STATUS_CHAR %B%?$N%b%f)%B%F{magenta}$PROMPT_CHAR%b%f  '
 export RPROMPT='%B%F{black}%D{%L:%M:%S %p %Z ∴ %m-%d ∴ %Y}%b%f'
-
-
-
-
-
-
 
 
 # # TODO
