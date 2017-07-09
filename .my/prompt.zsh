@@ -199,6 +199,9 @@ preexec() {
   # Show when a command is executed.  Normally, this will be almost completely
   # hidden visually because I generally don't need it but in the event where I
   # do it can be revealed through text selection.
+  #
+  # TODO
+  # - use the same time format as `RPROMPT`.
   echo "$fg[black]$(date +%r)$reset_color"
 }
 
