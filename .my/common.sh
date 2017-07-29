@@ -83,8 +83,8 @@ alias sn='sift --binary-skip --git --exclude-ext=dmg,pdf --exclude-dirs=node_mod
 # https://github.com/TheLocehiliosan/yadm
 alias ya='yadm status --untracked-files=no'
 alias yaa='yadm add'
-alias yad='yadm diff --minimal --word-diff=color HEAD'
-alias yad1='yadm diff --minimal --word-diff=color HEAD~1 HEAD'
+alias yad='yadm diff --histogram --word-diff=color HEAD'
+alias yad1='yadm diff --histogram --word-diff=color HEAD~1 HEAD'
 alias yal='yadm log --graph --pretty=format:"%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset"'
 alias yap='yadm pull --rebase=preserve origin master'
 alias yas='yadm list -a'
