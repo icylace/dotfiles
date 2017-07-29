@@ -100,10 +100,12 @@ c() {
           catimg -l 0 "$@"
         fi
       elif type highlight >/dev/null 2>&1 ; then
-        highlight $highlight_options "$@" | less --no-init --quit-if-one-screen
+        highlight $highlight_options "$@" | less --no-init --quit-if-one-screen --RAW-CONTROL-CHARS --tabs=4
       else
+        # Based on:
         # http://unix.stackexchange.com/a/86324
-        less --no-init --quit-if-one-screen "$@"
+        # https://github.com/so-fancy/diff-so-fancy#usage
+        less --no-init --quit-if-one-screen --RAW-CONTROL-CHARS --tabs=4 "$@"
       fi
 
       return

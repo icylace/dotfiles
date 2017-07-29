@@ -215,7 +215,7 @@ export GIT_RADAR_FORMAT="%B%F{black}on git:(%b%f%{remote: }%{branch}%{ :local}%B
 # The second part of our prompt contains the exit status code,
 # user input marker, and the date and time.
 export PROMPT='%(?..%F{red}$EXIT_STATUS_CHAR %B%?$N%b%f)%B%F{magenta}$PROMPT_CHAR%b%f  '
-export RPROMPT='%B%F{black}%D{%L:%M:%S %p ∴ %a ∴ %b%e}%b%f'
+export RPROMPT='%B%F{black}%D{%L:%M:%S %p ∴ %a ∴ %b %e}%b%f'
 
 
 # # TODO

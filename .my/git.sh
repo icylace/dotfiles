@@ -63,10 +63,7 @@ gd() {
     shift
   done
 
-  # TODO
-  # - consider using a different diff algorithm for general usage
-
-  git diff --minimal --word-diff=color $@ ${commits[@]}
+  git diff --histogram --word-diff=color $@ ${commits[@]}
 }
 alias gd1='gd 1'
 alias gd2='gd 2'
@@ -147,7 +144,7 @@ alias gpu='git push --follow-tags'
 alias gre='git reset'
 
 # Patching.
-alias gdp='git diff --minimal --no-color HEAD'
+alias gdp='git diff --minimal --no-color --no-pager HEAD'
 alias gy='git apply --verbose'
 
 # Stashing.

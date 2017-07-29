@@ -13,6 +13,15 @@ source "$HOME/.my/webdev.sh"
 #  Defines aliases and functions common to both Bash and Z shell.
 # ------------------------------------------------------------------------------
 
+# Be able to compare files with diff-so-fancy regardless
+# of whether they're in a Git repository or not.
+# Based on:
+# https://superuser.com/a/1182284
+dsf() { git diff --histogram --no-index --word-diff=color "$@" | diff-so-fancy | less --no-init --quit-if-one-screen --RAW-CONTROL-CHARS --tabs=4 }
+
+# This `dwdiff` is good for diffing files with long lines.
+alias dwd='dwdiff --aggregate-changes --algorithm=best --color --line-numbers=2 --no-common'
+
 alias li='ls -lAG'
 alias o='open'
 
@@ -21,15 +30,11 @@ alias cp='cp -ip'
 
 # Use Preview to read manual pages.
 # https://discussions.apple.com/message/3541696#3541696
-manp() {
-  man -t $1 | open -f -a 'Preview'
-}
+manp() { man -t $1 | open -f -a 'Preview' }
 
 # Convert manual pages to PDFs.
 # https://discussions.apple.com/message/3542050#3542050
-manpdf() {
-  man -t $1 | pstopdf -i -o $1.pdf
-}
+manpdf() { man -t $1 | pstopdf -i -o $1.pdf }
 
 # https://github.com/yrammos/dotfiles/blob/master/.bashrc
 alias mv='mv -i'
