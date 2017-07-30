@@ -17,10 +17,13 @@ source "$HOME/.my/webdev.sh"
 # of whether they're in a Git repository or not.
 # Based on:
 # https://superuser.com/a/1182284
-dsf() { git diff --histogram --no-index --word-diff=color "$@" | diff-so-fancy | less --no-init --quit-if-one-screen --RAW-CONTROL-CHARS --tabs=4 }
+d() { git diff --histogram --no-index --word-diff=color "$@" | diff-so-fancy | less --no-init --quit-if-one-screen --RAW-CONTROL-CHARS --tabs=4 }
 
-# This `dwdiff` is good for diffing files with long lines.
-alias dwd='dwdiff --aggregate-changes --algorithm=best --color --line-numbers=2 --no-common'
+# `icdiff` is good for comparing files side-by-side.
+alias ds='icdiff --line-numbers --tabsize=4'
+
+# `dwdiff` is good for comparing files with long lines.
+alias dw='dwdiff --aggregate-changes --algorithm=best --color --line-numbers=2 --no-common'
 
 alias li='ls -lAG'
 alias o='open'
