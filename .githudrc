@@ -36,7 +36,7 @@
 # --
 # show_part_repo_indicator=True
 # git_repo_indicator=ᚴ
-git_repo_indicator=
+git_repo_indicator=%B%F{black}%f%b
 #
 # --
 # show_part_merge_branch_commits_diff=True
@@ -108,6 +108,7 @@ change_renamed_suffix=𝑅 
 # change_local_add_suffix=A
 change_local_add_suffix=𝐴 
 # change_local_add_suffix_color=White
+change_local_add_suffix_color=Yellow
 # change_local_add_suffix_intensity=Vivid
 # change_local_mod_suffix=M
 change_local_mod_suffix=𝑀 
