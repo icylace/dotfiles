@@ -186,7 +186,7 @@ precmd() {
   # The first part of our prompt consists of the username, machine name,
   # current directory, any Git info, and battery charge.
   # https://stackoverflow.com/a/33839913/1935675
-  local preprompt_left="$N%F{magenta}%n %B%F{black}at%b %F{yellow}%m %B%F{black}in %b%F{green}${PWD/#$HOME/~}%f $(git-radar --zsh --fetch)"
+  local preprompt_left="$N%F{magenta}%n %B%F{black}at%b %F{yellow}%m %B%F{black}in %b%F{green}${PWD/#$HOME/~}%f $(gitHUD zsh)"
   local preprompt_right="$(battery_indicator)"
   local preprompt_left_length=${#${(S%%)preprompt_left//(\%([KF1]|)\{*\}|\%[Bbkf])}}
   local preprompt_right_length=${#${(S%%)preprompt_right//(\%([KF1]|)\{*\}|\%[Bbkf])}}
