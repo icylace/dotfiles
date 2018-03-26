@@ -1,16 +1,16 @@
 # http://superuser.com/questions/187639/zsh-not-hitting-profile/187673#187673
 emulate sh -c "source $HOME/.profile"
 
-source "$HOME/.my/zplug.zsh"
+source "$HOME/.my/zsh/zplug.zsh"
 
 # https://github.com/sindresorhus/guides/blob/master/how-not-to-rm-yourself.md
 unsetopt RM_STAR_SILENT
 setopt RM_STAR_WAIT
 
 source "$HOME/.my/common.sh"
-source "$HOME/.my/c.zsh"
-source "$HOME/.my/i.zsh"
-source "$HOME/.my/prompt.zsh"
+source "$HOME/.my/zsh/c.zsh"
+source "$HOME/.my/zsh/i.zsh"
+source "$HOME/.my/zsh/prompt.zsh"
 
 
 # ------------------------------------------------------------------------------
@@ -24,6 +24,8 @@ export XDG_DATA_HOME="$HOME/.my/zsh-hints"
 # https://github.com/joepvd/zsh-hints#the-basic-setup
 fpath=("$HOME"/.my/autoload $fpath)
 autoload "$HOME"/.my/autoload/*(:t)
+
+fpath=(/usr/local/share/zsh-completions $fpath)
 
 zle -N zsh-hints-param zsh-hints
 bindkey "^Xp" zsh-hints-param
@@ -55,6 +57,13 @@ export LESS_TERMCAP_se=$'\e[0m'           # end standout-mode
 export LESS_TERMCAP_so=$'\e[1;30m'        # begin standout-mode - info box
 export LESS_TERMCAP_ue=$'\e[0m'           # end underline
 export LESS_TERMCAP_us=$'\e[1;36m'        # begin underline
+
+# ------------------------------------------------------------------------------
+
+# https://www.iterm2.com/documentation-shell-integration.html
+if [ -f "$HOME/.iterm2_shell_integration.zsh" ] ; then
+  source "$HOME/.iterm2_shell_integration.zsh"
+fi
 
 # ------------------------------------------------------------------------------
 

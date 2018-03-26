@@ -1,4 +1,4 @@
-# http://stackoverflow.com/questions/5545715/how-do-i-add-usr-local-git-bin-to-the-path-on-mac-osx/5545748#5545748
+# https://stackoverflow.com/a/5545748
 
 export PATH="/usr/local/bin:$PATH"
 export PATH="/usr/local/sbin:$PATH"
@@ -21,6 +21,7 @@ eval "$(swiftenv init -)"
 # https://github.com/yyuu/pyenv/wiki/Common-build-problems#build-failed-error-the-python-zlib-extension-was-not-compiled-missing-the-zlib
 export CFLAGS="-I$(xcrun --show-sdk-path)/usr/include"
 
+# TODO: remove this?
 # # Use the GNU Core Utilities with their normal names.
 # # http://lapwinglabs.com/blog/hacker-guide-to-setting-up-your-mac
 # coreutils_dir="$(brew --prefix coreutils)"
@@ -36,13 +37,12 @@ if [ -f "$nvm_file" ] ; then
   source "$nvm_file"
 fi
 
-# Suggested by the caveats section from `brew info rbenv`.
-if which rbenv >/dev/null ; then
+if which rbenv > /dev/null ; then
   eval "$(rbenv init -)"
 fi
 
 # Suggested by the caveats section from `brew info pyenv`.
-if which pyenv >/dev/null ; then
+if which pyenv > /dev/null ; then
   eval "$(pyenv init -)"
 fi
 
@@ -50,3 +50,5 @@ fi
 
 # Alternative to `postgres -D /usr/local/var/postgres`.
 export PGDATA="/usr/local/var/postgres"
+
+export PATH="$PATH:/Applications/DevDesktop/tools"
