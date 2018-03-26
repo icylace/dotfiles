@@ -86,11 +86,11 @@ export GIT_RADAR_FORMAT="%B%F{black}on git:(%b%f%{remote: }%{branch}%{ :local}%B
 export PROMPT='%(?..%F{red}$EXIT_STATUS_CHAR %B%?$N%b%f)%B%F{magenta}$PROMPT_CHAR%b%f  '
 export RPROMPT='%B%F{black}%D{%L:%M:%S %p ∴ %a ∴ %b %e}%b%f'
 
-# # TODO
+# # TODO:
 # # - check if TMOUT will prematurely terminate scripts that wait for input
-# #   - http://www.thegeekstuff.com/2010/05/tmout-exit-bash-shell-when-no-activity/#comment-46144
-# #   - http://h30499.www3.hp.com/t5/Languages-and-Scripting/TMOUT-cause-scripts-end/m-p/5249728#M40881
-# #   - http://h30499.www3.hp.com/t5/Languages-and-Scripting/TMOUT-cause-scripts-end/m-p/5249732#M40885
+# #   - https://www.thegeekstuff.com/2010/05/tmout-exit-bash-shell-when-no-activity/#comment-46144
+# #   - https://community.hpe.com/t5/Languages-and-Scripting/TMOUT-cause-scripts-end/m-p/5249728#M40881
+# #   - https://community.hpe.com/t5/Languages-and-Scripting/TMOUT-cause-scripts-end/m-p/5249732#M40885
 # TMOUT=1
 
 # # https://askubuntu.com/a/360172

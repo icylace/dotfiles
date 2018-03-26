@@ -1,39 +1,13 @@
-# http://superuser.com/questions/187639/zsh-not-hitting-profile/187673#187673
-emulate sh -c "source $HOME/.profile"
-
-source "$HOME/.my/zsh/zplug.zsh"
-
-# https://github.com/sindresorhus/guides/blob/master/how-not-to-rm-yourself.md
+# https://github.com/sindresorhus/guides/blob/master/how-not-to-rm-yourself.md#safeguard-rm
 unsetopt RM_STAR_SILENT
 setopt RM_STAR_WAIT
 
+source "$HOME/.my/zsh/zplug.zsh"
 source "$HOME/.my/common.sh"
 source "$HOME/.my/zsh/c.zsh"
+source "$HOME/.my/zsh/hints.zsh"
 source "$HOME/.my/zsh/i.zsh"
 source "$HOME/.my/zsh/prompt.zsh"
-
-
-# ------------------------------------------------------------------------------
-#  zsh-hints
-#  Display non-completable trivia right under your editing buffer.
-#  https://github.com/joepvd/zsh-hints
-# ------------------------------------------------------------------------------
-
-export XDG_DATA_HOME="$HOME/.my/zsh-hints"
-
-# https://github.com/joepvd/zsh-hints#the-basic-setup
-fpath=("$HOME"/.my/autoload $fpath)
-autoload "$HOME"/.my/autoload/*(:t)
-
-fpath=(/usr/local/share/zsh-completions $fpath)
-
-zle -N zsh-hints-param zsh-hints
-bindkey "^Xp" zsh-hints-param
-zle -N zsh-hints-paramflags zsh-hints
-bindkey "^Xf" zsh-hints-paramflags
-zle -N zsh-hints-glob zsh-hints
-bindkey "^Xg" zsh-hints-glob
-
 
 # ------------------------------------------------------------------------------
 #  Colorize the output for some commands.
@@ -64,8 +38,6 @@ export LESS_TERMCAP_us=$'\e[1;36m'        # begin underline
 if [ -f "$HOME/.iterm2_shell_integration.zsh" ] ; then
   source "$HOME/.iterm2_shell_integration.zsh"
 fi
-
-# ------------------------------------------------------------------------------
 
 # Extra stuff that's too sensitive to be committed to a public repository.
 if [ -f "$HOME/.not-public/extra.sh" ] ; then

@@ -15,11 +15,11 @@ move_into_url_directories() {
             url="${origin#\"}"
             url="${url%\"}"
             url="${url%\",}"
-            # http://stackoverflow.com/a/20048220/1935675
+            # https://stackoverflow.com/a/20048220
             url="$(echo $url | grep -iIohE 'https?://[^[:space:]]+')"
             url="${url#http://}"
             url="${url#https://}"
-            # http://stackoverflow.com/a/13298479/1935675
+            # https://stackoverflow.com/a/13298479
             url="${url//:/::}"        # Handle URLs that use colons.
             url="${url//\//:}"
             if [ -n "$url" ] ; then
@@ -28,7 +28,7 @@ move_into_url_directories() {
           fi
         done
 
-        # http://stackoverflow.com/a/17758600/1935675
+        # https://stackoverflow.com/a/17758600
         path_parts=($(printf "%q\n" "${path_parts[@]}" | sort --unique))
 
         dir_path=''

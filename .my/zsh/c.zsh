@@ -53,7 +53,7 @@ c() {
   )
 
   # Input that's piped-in is highlighted and displayed.
-  # TODO
+  # TODO:
   # - make sure `cat` gets used if `highlight` doesn't work
   if [ -p /dev/stdin ] ; then
     highlight $highlight_options
@@ -68,7 +68,7 @@ c() {
   # in looking at the file list for the current directory.
   if [ -n "$1" ] ; then
 
-    # # http://stackoverflow.com/a/567787/1935675
+    # # https://stackoverflow.com/a/567787
     # if [ -x "$1" ] && [ $(file --brief --mime "$1" | grep --count --regexp='^text/') -eq 0 ] ; then
     #   echo "\"$1\" is a binary executable."
     #   return
@@ -93,7 +93,7 @@ c() {
       local -i of_image=$(echo $mime | grep --count --regexp='^image/')
       if [ "$of_image" -ne 0 ] ; then
         # Try to show the image in its real form.
-        if [ "$TERM_PROGRAM" = 'iTerm.app' ] && type imgcat >/dev/null 2>&1 ; then
+        if [ "$TERM_PROGRAM" = 'iTerm.app' ] && type imgcat > /dev/null 2>&1 ; then
           imgcat "$@"
         # Otherwise, try to show the image in Unicode form.
         elif type catimg >/dev/null 2>&1 ; then
@@ -103,7 +103,7 @@ c() {
         highlight $highlight_options "$@" | less --no-init --quit-if-one-screen --RAW-CONTROL-CHARS --tabs=4
       else
         # Based on:
-        # http://unix.stackexchange.com/a/86324
+        # https://unix.stackexchange.com/a/86324
         # https://github.com/so-fancy/diff-so-fancy#usage
         less --no-init --quit-if-one-screen --RAW-CONTROL-CHARS --tabs=4 "$@"
       fi
@@ -141,7 +141,7 @@ c() {
   fi
 
   # Show the contents of the current directory.
-  if type k >/dev/null 2>&1 ; then
+  if type k > /dev/null 2>&1 ; then
     k --almost-all --human "$directory"
   elif [ -n "$directory" ] ; then
     ls -AGlp "$directory"

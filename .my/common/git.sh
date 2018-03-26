@@ -17,7 +17,7 @@ alias git='hub'
 gcl() {
   local repository=$1
 
-  # Attempt to clone the repository and get it if it can't be done.
+  # Attempt to clone the repository.
   git clone --verbose "$repository"
   if [ $? -ne 0 ] ; then
     return
@@ -28,7 +28,7 @@ gcl() {
   repository=${repository%.*}
 
   # Go to the repository directory.
-  if type c >/dev/null 2>&1 ; then
+  if type c > /dev/null 2>&1 ; then
     c "$repository"
   else
     cd "$repository"

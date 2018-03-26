@@ -9,17 +9,30 @@ export PATH="./node_modules/.bin:$PATH"
 
 # ------------------------------------------------------------------------------
 
-# swiftenv: Swift Version Manager
-# https://swiftenv.fuller.li/en/latest/installation.html#via-a-git-clone
 
-export SWIFTENV_ROOT="$HOME/.swiftenv"
-export PATH="$SWIFTENV_ROOT/bin:$PATH"
-eval "$(swiftenv init -)"
+# ~/.bashrc: executed by bash(1) for non-login shells.
 
-# ------------------------------------------------------------------------------
 
-# https://github.com/yyuu/pyenv/wiki/Common-build-problems#build-failed-error-the-python-zlib-extension-was-not-compiled-missing-the-zlib
-export CFLAGS="-I$(xcrun --show-sdk-path)/usr/include"
+# You may uncomment the following lines if you want `ls' to be colorized:
+# export LS_OPTIONS='--color=auto'
+# eval "`dircolors`"
+# alias ls='ls $LS_OPTIONS'
+# alias ll='ls $LS_OPTIONS -l'
+# alias l='ls $LS_OPTIONS -lA'
+#
+# Some more alias to avoid making mistakes:
+# alias rm='rm -i'
+# alias cp='cp -i'
+# alias mv='mv -i'
+
+
+
+
+
+
+
+
+
 
 # TODO: remove this?
 # # Use the GNU Core Utilities with their normal names.
