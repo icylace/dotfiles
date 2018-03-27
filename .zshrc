@@ -13,7 +13,9 @@ source "$HOME/.my/zsh/prompt.zsh"
 #  Colorize the output for some commands.
 # ------------------------------------------------------------------------------
 
-source "$(brew --prefix)/etc/grc.bashrc"
+if type brew > /dev/null 2>&1 ; then
+  source "$(brew --prefix)/etc/grc.bashrc"
+fi
 
 alias hexdump='colourify hexdump'
 
