@@ -22,11 +22,6 @@ zplug 'lib/theme-and-appearance', from:oh-my-zsh
 # https://github.com/djui/alias-tips
 zplug 'djui/alias-tips'
 
-# extract
-# Extracts a wide variety of archive formats.
-# https://github.com/xvoland/Extract
-zplug 'xvoland/Extract', use:'*.sh'
-
 # k
 # Directory listings for zsh with git features.
 # https://github.com/supercrabtree/k
