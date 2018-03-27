@@ -8,7 +8,7 @@ setopt PROMPT_SUBST
 # Based on:
 # http://stevelosh.com/blog/2010/02/my-extravagant-zsh-prompt/
 # https://blog.munge.net/post/fun-with-zsh-themes/
-# http://justin.jetfive.com/2012/12/01/my-new-zsh-theme.html
+# https://justin.jetfive.com/2012/12/01/my-new-zsh-theme.html
 #
 
 select_prompt_char() {
@@ -55,9 +55,12 @@ precmd() {
   export EXIT_STATUS_CHAR="$(select_exit_status_char)"
 
   # The first part of our prompt consists of the username, machine name,
-  # current directory, any Git info, and battery charge.
-  # https://stackoverflow.com/a/33839913/1935675
-  local preprompt_left="$N%F{magenta}%n %B%F{black}at%b %F{yellow}%m %B%F{black}in %b%F{green}${PWD/#$HOME/~}%f $(gitHUD zsh)"
+  # current directory, any available Git info, and battery charge.
+  # https://stackoverflow.com/a/33839913
+  if type gitHUD > /dev/null 2>&1 ; then
+    local repository_status="$(gitHUD zsh)"
+  fi
+  local preprompt_left="$N%F{magenta}%n %B%F{black}at%b %F{yellow}%m %B%F{black}in %b%F{green}${PWD/#$HOME/~}%f $repository_status"
   local preprompt_right="$(battery_indicator)"
   local preprompt_left_length=${#${(S%%)preprompt_left//(\%([KF1]|)\{*\}|\%[Bbkf])}}
   local preprompt_right_length=${#${(S%%)preprompt_right//(\%([KF1]|)\{*\}|\%[Bbkf])}}
@@ -75,11 +78,11 @@ preexec() {
   echo "$fg[black]$(date +%r)$reset_color"
 }
 
-export GIT_RADAR_COLOR_BRANCH="%B%F{cyan}"
+# export GIT_RADAR_COLOR_BRANCH="%B%F{cyan}"
 
-# Our custom Git Radar prompt is a slight modification of the default one.
-# https://github.com/michaeldfallen/git-radar/blob/master/radar-base.sh#L99
-export GIT_RADAR_FORMAT="%B%F{black}on git:(%b%f%{remote: }%{branch}%{ :local}%B%F{black})%b%f%{ :stash}%{ :changes}"
+# # Our custom Git Radar prompt is a slight modification of the default one.
+# # https://github.com/michaeldfallen/git-radar/blob/master/radar-base.sh#L99
+# export GIT_RADAR_FORMAT="%B%F{black}on git:(%b%f%{remote: }%{branch}%{ :local}%B%F{black})%b%f%{ :stash}%{ :changes}"
 
 # The second part of our prompt contains the exit status code,
 # user input marker, and the date and time.
