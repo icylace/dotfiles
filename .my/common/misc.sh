@@ -43,6 +43,9 @@ alias wtf='tail -f /var/log/{dmesg,messages,*{,/*}{log,err}}'
 # https://stackoverflow.com/a/4034907
 alias f='find . -name'
 
+# https://perlgeek.de/en/article/set-up-a-clean-utf8-environment
+alias screen='screen -U'
+
 # exa
 # https://the.exa.website/
 alias l='exa --all --binary --blocks --created --extended --git --group --group-directories-first --header --inode --level=2 --links --long --modified --tree'

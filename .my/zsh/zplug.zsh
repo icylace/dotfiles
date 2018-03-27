@@ -5,7 +5,7 @@ if [ -f /usr/local/opt/zplug/init.zsh ] ; then
 elif [ -f /usr/share/zplug/init.zsh ] ; then
   source /usr/share/zplug/init.zsh
 else
-  echo 'Error: `zplug` is not installed.'
+  echo '`zplug` is not installed.'
   return
 fi
 
