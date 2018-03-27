@@ -4,12 +4,10 @@ source "$HOME/.my/zsh/battery.zsh"
 
 setopt PROMPT_SUBST
 
-#
 # Based on:
 # http://stevelosh.com/blog/2010/02/my-extravagant-zsh-prompt/
 # https://blog.munge.net/post/fun-with-zsh-themes/
 # https://justin.jetfive.com/2012/12/01/my-new-zsh-theme.html
-#
 
 select_prompt_char() {
   setopt local_options KSH_ARRAYS
