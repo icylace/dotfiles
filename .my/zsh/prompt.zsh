@@ -52,13 +52,19 @@ precmd() {
   export PROMPT_CHAR="$(select_prompt_char)"
   export EXIT_STATUS_CHAR="$(select_exit_status_char)"
 
-  # The first part of our prompt consists of the username, machine name,
-  # current directory, any available Git info, and battery charge.
-  # https://stackoverflow.com/a/33839913
+  # The first part of our prompt consists of an indication of whether we are
+  # inside a Docker container, the username, machine name, current directory,
+  # any available Git info, and battery charge level.
+
   if type gitHUD > /dev/null 2>&1 ; then
     local repository_status="$(gitHUD zsh)"
   fi
-  local preprompt_left="$N%F{magenta}%n %B%F{black}at%b %F{yellow}%m %B%F{black}in %b%F{green}${PWD/#$HOME/~}%f $repository_status"
+  if running_in_docker ; then
+# cat /proc/self/cgroup | grep -o  -e "docker-.*.scope" | head -n 1 | sed "s/docker-\(.*\).scope/\\1/"
+    local $docker_indicator='(Docker container) by '
+  fi
+  # https://stackoverflow.com/a/33839913
+  local preprompt_left="$N$docker_indicator%F{magenta}%n %B%F{black}at%b %F{yellow}%m %B%F{black}in %b%F{green}${PWD/#$HOME/~}%f $repository_status"
   local preprompt_right="$(battery_indicator)"
   local preprompt_left_length=${#${(S%%)preprompt_left//(\%([KF1]|)\{*\}|\%[Bbkf])}}
   local preprompt_right_length=${#${(S%%)preprompt_right//(\%([KF1]|)\{*\}|\%[Bbkf])}}
