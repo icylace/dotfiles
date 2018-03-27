@@ -1,3 +1,5 @@
+source "$HOME/.zprofile"
+
 # https://github.com/sindresorhus/guides/blob/master/how-not-to-rm-yourself.md#safeguard-rm
 unsetopt RM_STAR_SILENT
 setopt RM_STAR_WAIT

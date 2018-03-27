@@ -1,19 +1,19 @@
 # https://perlgeek.de/en/article/set-up-a-clean-utf8-environment
-export LANG="en_US.UTF-8"
-export LANGUAGE="en_US.UTF-8"
-export LC_CTYPE="en_US.UTF-8"
-export LC_NUMERIC="en_US.UTF-8"
-export LC_TIME="en_US.UTF-8"
-export LC_COLLATE="en_US.UTF-8"
-export LC_MONETARY="en_US.UTF-8"
-export LC_MESSAGES="en_US.UTF-8"
-export LC_PAPER="en_US.UTF-8"
-export LC_NAME="en_US.UTF-8"
-export LC_ADDRESS="en_US.UTF-8"
-export LC_TELEPHONE="en_US.UTF-8"
-export LC_MEASUREMENT="en_US.UTF-8"
-export LC_IDENTIFICATION="en_US.UTF-8"
-export LC_ALL="en_US.UTF-8"
+export LANG=en_US.UTF-8
+export LANGUAGE=en_US.UTF-8
+export LC_CTYPE=en_US.UTF-8
+export LC_NUMERIC=en_US.UTF-8
+export LC_TIME=en_US.UTF-8
+export LC_COLLATE=en_US.UTF-8
+export LC_MONETARY=en_US.UTF-8
+export LC_MESSAGES=en_US.UTF-8
+export LC_PAPER=en_US.UTF-8
+export LC_NAME=en_US.UTF-8
+export LC_ADDRESS=en_US.UTF-8
+export LC_TELEPHONE=en_US.UTF-8
+export LC_MEASUREMENT=en_US.UTF-8
+export LC_IDENTIFICATION=en_US.UTF-8
+export LC_ALL=en_US.UTF-8
 
 # https://stackoverflow.com/a/5545748
 export PATH="/usr/local/bin:$PATH"
@@ -35,15 +35,6 @@ export PGDATA="/usr/local/var/postgres"
 # export MANPATH="${coreutils_dir}/libexec/gnuman:$MANPATH"
 
 export JAVA_HOME='/Library/Java/JavaVirtualMachines/jdk1.8.0_92.jdk/Contents/Home/'
-
-if type brew > /dev/null 2>&1 ; then
-  nvm_file="$(brew --prefix nvm)/nvm.sh"
-  if [ -f "$nvm_file" ] ; then
-    # Recommended by Homebrew.
-    export NVM_DIR="$HOME/.nvm"
-    source "$nvm_file"
-  fi
-fi
 
 if which rbenv > /dev/null ; then
   eval "$(rbenv init -)"
