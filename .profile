@@ -3,36 +3,12 @@
 export PATH="/usr/local/bin:$PATH"
 export PATH="/usr/local/sbin:$PATH"
 export PATH="$HOME/.my/iTerm2:$PATH"
-export PATH="$HOME/.node/bin:$PATH"
 export PATH="$HOME/.rbenv/bin:$PATH"
+export PATH="$HOME/.node/bin:$PATH"
+export PATH="$HOME/.local/bin:$PATH"
 export PATH="./node_modules/.bin:$PATH"
 
 # ------------------------------------------------------------------------------
-
-
-# ~/.bashrc: executed by bash(1) for non-login shells.
-
-
-# You may uncomment the following lines if you want `ls' to be colorized:
-# export LS_OPTIONS='--color=auto'
-# eval "`dircolors`"
-# alias ls='ls $LS_OPTIONS'
-# alias ll='ls $LS_OPTIONS -l'
-# alias l='ls $LS_OPTIONS -lA'
-#
-# Some more alias to avoid making mistakes:
-# alias rm='rm -i'
-# alias cp='cp -i'
-# alias mv='mv -i'
-
-
-
-
-
-
-
-
-
 
 # TODO: remove this?
 # # Use the GNU Core Utilities with their normal names.
@@ -43,11 +19,13 @@ export PATH="./node_modules/.bin:$PATH"
 
 export JAVA_HOME='/Library/Java/JavaVirtualMachines/jdk1.8.0_92.jdk/Contents/Home/'
 
-nvm_file="$(brew --prefix nvm)/nvm.sh"
-if [ -f "$nvm_file" ] ; then
-  # Recommended by Homebrew.
-  export NVM_DIR="$HOME/.nvm"
-  source "$nvm_file"
+if type brew > /dev/null 2>&1 ; then
+  nvm_file="$(brew --prefix nvm)/nvm.sh"
+  if [ -f "$nvm_file" ] ; then
+    # Recommended by Homebrew.
+    export NVM_DIR="$HOME/.nvm"
+    source "$nvm_file"
+  fi
 fi
 
 if which rbenv > /dev/null ; then

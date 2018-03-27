@@ -96,10 +96,10 @@ c() {
         if [ "$TERM_PROGRAM" = 'iTerm.app' ] && type imgcat > /dev/null 2>&1 ; then
           imgcat "$@"
         # Otherwise, try to show the image in Unicode form.
-        elif type catimg >/dev/null 2>&1 ; then
+        elif type catimg > /dev/null 2>&1 ; then
           catimg -l 0 "$@"
         fi
-      elif type highlight >/dev/null 2>&1 ; then
+      elif type highlight > /dev/null 2>&1 ; then
         highlight $highlight_options "$@" | less --no-init --quit-if-one-screen --RAW-CONTROL-CHARS --tabs=4
       else
         # Based on:

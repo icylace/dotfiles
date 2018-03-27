@@ -9,6 +9,11 @@
 # http://stackoverflow.com/a/1025352/1935675
 #
 battery_indicator() {
+  type pmset > /dev/null 2>&1
+  if [ "$?" -ne 0 ] ; then
+    return
+  fi
+
   local slots_total=10
   local symbol_filled='✿'
   local symbol_unfilled='❀'
