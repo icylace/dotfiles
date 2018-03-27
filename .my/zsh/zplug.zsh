@@ -1,13 +1,13 @@
 #!/usr/bin/env zsh
 
-export ZPLUG_HOME='/usr/local/opt/zplug'
-
-if [ ! -f "$ZPLUG_HOME/init.zsh" ] ; then
+if [ -f /usr/local/opt/zplug/init.zsh ] ; then
+  source /usr/local/opt/zplug/init.zsh
+elif [ -f /usr/share/zplug/init.zsh ] ; then
+  source /usr/share/zplug/init.zsh
+else
   echo 'Error: `zplug` is not installed.'
   return
 fi
-
-source "$ZPLUG_HOME/init.zsh"
 
 zplug 'lib/completion', from:oh-my-zsh
 zplug 'lib/functions', from:oh-my-zsh
