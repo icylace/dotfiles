@@ -60,8 +60,7 @@ precmd() {
     local repository_status="$(gitHUD zsh)"
   fi
   if running_in_docker ; then
-# cat /proc/self/cgroup | grep -o  -e "docker-.*.scope" | head -n 1 | sed "s/docker-\(.*\).scope/\\1/"
-    local docker_indicator='(Docker container) by '
+    local docker_indicator='🐳  '
   fi
   # https://stackoverflow.com/a/33839913
   local preprompt_left="$N$docker_indicator%F{magenta}%n %B%F{black}at%b %F{yellow}%m %B%F{black}in %b%F{green}${PWD/#$HOME/~}%f $repository_status"
