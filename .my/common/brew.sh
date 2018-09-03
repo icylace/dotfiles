@@ -18,7 +18,6 @@ alias bcl='brew cask list'
 alias bcd='brew cask doctor'
 alias bci='brew cask info'
 alias bcin='brew cask install'
-alias bcs='brew cask search'
 alias bcun='brew cask uninstall'
 
 alias bu='brew update && brew upgrade && brew cleanup && brew cask cleanup'

@@ -64,12 +64,3 @@ alias dcost='docker-compose stop'
 alias dcot='docker-compose top'
 alias dcou='docker-compose up'
 alias dcox='docker-compose exec'
-
-# Based on:
-# https://tuhrig.de/how-to-know-you-are-inside-a-docker-container/
-running_in_docker() {
-  if [ ! -e /proc/self/cgroup ] ; then
-    return 1
-  fi
-  (( $(grep docker /proc/self/cgroup | wc -l) != 0 ))
-}

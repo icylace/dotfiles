@@ -39,6 +39,15 @@ select_exit_status_char() {
   echo "${exit_status_chars[$((RANDOM % ${#exit_status_chars[@]}))]}"
 }
 
+# Based on:
+# https://tuhrig.de/how-to-know-you-are-inside-a-docker-container/
+running_in_docker() {
+  if [ ! -e /proc/self/cgroup ] ; then
+    return 1
+  fi
+  (( $(grep docker /proc/self/cgroup | wc -l) != 0 ))
+}
+
 # https://unix.stackexchange.com/a/126316
 # https://unix.stackexchange.com/questions/53789/whats-the-newline-symbol-in-zshs-ps1#comment428362_126316
 export N=$'\n'

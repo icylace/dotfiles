@@ -7,6 +7,16 @@ u() {
   if we_have npm ; then
     npm update -g
   fi
+  if we_have nix-channel ; then
+    nix-channel --update
+  fi
+  if we_have nix-env ; then
+    nix-env --upgrade
+  fi
+  if we_have nix-collect-garbage ; then
+    nix-collect-garbage
+    # nix-collect-garbage --delete-old
+  fi
   # if we_have gem ; then
   #   gem update --system
   #   gem update
