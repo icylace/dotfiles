@@ -2,7 +2,7 @@
 
 # Drush
 # A CLI tool and scripting interface for Drupal.
-# http://www.drush.org/en/master/
+# https://www.drush.org/
 alias dr='drush status'
 alias drc='drush cache-clear all'
 alias drcfu='drush cache-clear all && drush features-revert-all --yes && drush updatedb --yes'

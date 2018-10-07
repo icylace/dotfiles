@@ -6,7 +6,7 @@
 # Based on:
 # http://stevelosh.com/blog/2010/02/my-extravagant-zsh-prompt/#my-right-prompt-battery-capacity
 # https://gist.github.com/ascarter/1181082
-# http://stackoverflow.com/a/1025352/1935675
+# https://stackoverflow.com/a/1025352
 #
 battery_indicator() {
   type pmset > /dev/null 2>&1

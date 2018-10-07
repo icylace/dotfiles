@@ -10,3 +10,6 @@ alias yal='yadm log --graph --pretty=format:"%Cred%h%Creset -%C(yellow)%d%Creset
 alias yap='yadm pull --rebase=preserve origin master'
 alias yas='yadm list -a'
 alias yay='yadm add --update ; yadm commit -m "WIP" ; yadm push --set-upstream origin master'
+
+# I use `yadm` to manage my dotfiles:
+# https://github.com/icylace/dotfiles

@@ -91,7 +91,7 @@ setup_cakephp_homestead() {
   perl -0 -i -pe "s/.*\K(?=\ndatabases)/    - map: $1.dev\n      to: \/home\/vagrant\/Code\/$1\/webroot\n/s;s/.*\K(?=\n# blackfire)/    - $db\n/s" "$HOME/My/Homestead/Homestead.yaml"
 
   # Add our dev domain to the hosts file if it doesn't exist there already.
-  # http://stackoverflow.com/a/3557165/1935675
+  # https://stackoverflow.com/a/3557165
   local ip="${2:-'192.168.10.10'}"
   local text="\n$ip    $1.dev"
   local filepath='/etc/hosts'

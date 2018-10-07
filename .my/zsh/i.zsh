@@ -14,7 +14,7 @@ i() {
   echo
   xattr "$1"
 
-  # # http://www.sno.phy.queensu.ca/~phil/exiftool/
+  # # https://sno.phy.queensu.ca/~phil/exiftool/
   # brew install exiftool
   # exiftool
 

@@ -24,10 +24,11 @@
 #
 # SEE ALSO
 #     The following are used if they are installed:
-#     - `catimg`: https://github.com/posva/catimg
-#     - `highlight`: http://andre-simon.de/doku/highlight/en/highlight.php
-#     - `k`: https://github.com/rimraf/k
-#     - `z`: https://github.com/rupa/z
+#       - `bat`: https://github.com/sharkdp/bat
+#       - `catimg`: https://github.com/posva/catimg
+#       - `highlight`: http://andre-simon.de/doku/highlight/en/highlight.php
+#       - `k`: https://github.com/rimraf/k
+#       - `z`: https://github.com/rupa/z
 #
 # TODO:
 # - view PDFs
@@ -99,6 +100,8 @@ c() {
         elif type catimg > /dev/null 2>&1 ; then
           catimg -l 0 "$@"
         fi
+      elif type bat > /dev/null 2>&1 ; then
+        bat "$@"
       elif type highlight > /dev/null 2>&1 ; then
         highlight $highlight_options "$@" | less --no-init --quit-if-one-screen --RAW-CONTROL-CHARS --tabs=4
       else

@@ -1,4 +1,4 @@
-# https://stackoverflow.com/a/902955/1935675
+# https://stackoverflow.com/a/902955
 
 # https://superuser.com/a/789465
 source "$HOME/.profile"

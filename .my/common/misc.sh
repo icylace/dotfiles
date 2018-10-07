@@ -55,5 +55,5 @@ alias l='exa --all --binary --blocks --created --extended --git --group --group-
 alias s='sift --binary-skip --git --exclude-ext=dmg,pdf'
 alias sn='sift --binary-skip --git --exclude-ext=dmg,pdf --exclude-dirs=node_modules --exclude-dirs=.npm'
 # TODO:
-# - is this switch useful?
-#   - `--exclude-files=.gitignore`
+# - useful?
+#   - `--exclude-files=.gitattributes,.gitignore`

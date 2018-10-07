@@ -29,7 +29,6 @@ export PGDATA="/usr/local/var/postgres"
 
 # TODO: remove this?
 # # Use the GNU Core Utilities with their normal names.
-# # http://lapwinglabs.com/blog/hacker-guide-to-setting-up-your-mac
 # coreutils_dir="$(brew --prefix coreutils)"
 # export PATH="${coreutils_dir}/libexec/gnubin:$PATH"
 # export MANPATH="${coreutils_dir}/libexec/gnuman:$MANPATH"
