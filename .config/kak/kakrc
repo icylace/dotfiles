@@ -1,0 +1,54 @@
+evaluate-commands %sh{ echo "source $HOME/.config/kak/plugins/plug.kak/rc/plug.kak" }
+
+# kakoune-auto-percent
+# Enhance some primitives with bigger selections.
+# https://github.com/Delapouite/kakoune-auto-percent
+plug "Delapouite/kakoune-auto-percent"
+
+# kakoune-auto-star
+# kakoune plugin to auto-fill search register if empty.
+# https://github.com/Delapouite/kakoune-auto-star
+plug "Delapouite/kakoune-auto-star"
+
+# kakoune-buffers
+# Ease navigation between opened buffers
+# https://github.com/Delapouite/kakoune-buffers
+plug "Delapouite/kakoune-buffers"
+
+# kakoune-palette
+# Preview face colors in kakoune
+# https://github.com/Delapouite/kakoune-palette
+plug "Delapouite/kakoune-palette"
+
+# kakoune-text-objects
+# kakoune plugin providing extra text-objects
+# https://github.com/Delapouite/kakoune-text-objects
+plug "Delapouite/kakoune-text-objects"
+
+# Hide assistant ASCII art in info boxes.
+set-option -add global ui_options ncurses_assistant=none
+
+# Enable mouse support.
+set-option -add global ui_options ncurses_enable_mouse=1
+
+# Number of spaces used for indentation.
+set-option global indentwidth 2
+
+# Number of lines, columns to keep visible around the cursor when scrolling.
+set-option global scrolloff 2,3
+
+# Show relative line numbers.
+add-highlighter global/ number-lines -relative -separator " ║ "
+
+# Show line numbers.
+add-highlighter global/ number-lines -hlcursor -separator " "
+
+# Highlight special columns.
+add-highlighter global/ column 80 LineNumbers
+add-highlighter global/ column 120 LineNumbers
+
+# Highlight matching characters for the character at the cursor's position.
+add-highlighter global/ show-matching
+
+# Use the Solarized Dark theme.
+colorscheme solarized-dark
