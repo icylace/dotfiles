@@ -100,9 +100,9 @@ c() {
         elif type catimg > /dev/null 2>&1 ; then
           catimg -l 0 "$@"
         fi
-      elif type bat > /dev/null 2>&1 ; then
+      elif (( ${+commands[bat]} )) ; then
         bat "$@"
-      elif type highlight > /dev/null 2>&1 ; then
+      elif (( ${+commands[highlight]} )) ; then
         highlight $highlight_options "$@" | less --no-init --quit-if-one-screen --RAW-CONTROL-CHARS --tabs=4
       else
         # Based on:

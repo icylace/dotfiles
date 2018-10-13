@@ -11,6 +11,9 @@
 #     # foo doesn't exist
 #   if
 #
+# TODO:
+# - doesn't detect `bat` for some reason...
+#
 we_have() {
   return $(type "$@" > /dev/null 2>&1)
 }

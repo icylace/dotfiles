@@ -38,6 +38,32 @@ export LESS_TERMCAP_us=$'\e[1;36m'        # begin underline
 
 # ------------------------------------------------------------------------------
 
+# Set Kakoune as the default editor.
+export EDITOR=kak
+export VISUAL=kak
+
+# ------------------------------------------------------------------------------
+
+# https://dougblack.io/words/zsh-vi-mode.html
+
+# Use vi emulation mode.
+bindkey -v
+
+function zle-line-init zle-keymap-select {
+  VIM_PROMPT="%{$fg_bold[yellow]%} [% NORMAL]% %{$reset_color%}"
+  # RPS1="${${KEYMAP/vicmd/$VIM_PROMPT}/(main|viins)/} $(git_custom_status) $EPS1"
+  RPS1="${${KEYMAP/vicmd/$VIM_PROMPT}/(main|viins)/} $EPS1"
+  zle reset-prompt
+}
+
+zle -N zle-line-init
+zle -N zle-keymap-select
+
+# Make the terminal respond faster to the escape key.
+export KEYTIMEOUT=1
+
+# ------------------------------------------------------------------------------
+
 # https://www.iterm2.com/documentation-shell-integration.html
 if [ -f "$HOME/.iterm2_shell_integration.zsh" ] ; then
   source "$HOME/.iterm2_shell_integration.zsh"

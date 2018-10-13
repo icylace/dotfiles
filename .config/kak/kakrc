@@ -1,29 +1,80 @@
-evaluate-commands %sh{ echo "source $HOME/.config/kak/plugins/plug.kak/rc/plug.kak" }
+evaluate-commands %sh{
+  echo "source $HOME/.config/kak/plugins/plug.kak/rc/plug.kak"
+}
+
+# fzf.kak
+# Kakoune plugin that brings integration with fzf
+# https://github.com/andreyorst/fzf.kak
+plug andreyorst/fzf.kak
 
 # kakoune-auto-percent
 # Enhance some primitives with bigger selections.
 # https://github.com/Delapouite/kakoune-auto-percent
-plug "Delapouite/kakoune-auto-percent"
+plug Delapouite/kakoune-auto-percent
 
 # kakoune-auto-star
 # kakoune plugin to auto-fill search register if empty.
 # https://github.com/Delapouite/kakoune-auto-star
-plug "Delapouite/kakoune-auto-star"
+plug Delapouite/kakoune-auto-star
 
 # kakoune-buffers
 # Ease navigation between opened buffers
 # https://github.com/Delapouite/kakoune-buffers
-plug "Delapouite/kakoune-buffers"
+plug Delapouite/kakoune-buffers
+
+# # kakoune-easymotion
+# # kakoune plugin for navigating like the easymotion vim mode
+# # https://github.com/danr/kakoune-easymotion
+# plug danr/kakoune-easymotion
 
 # kakoune-palette
 # Preview face colors in kakoune
 # https://github.com/Delapouite/kakoune-palette
-plug "Delapouite/kakoune-palette"
+plug Delapouite/kakoune-palette
+
+# # kakoune-phantom-selection
+# # Work on multiple selections, one at a time
+# # https://github.com/occivink/kakoune-phantom-selection
+# plug occivink/kakoune-phantom-selection
+
+# # kakoune-registers
+# # List the current content of registers
+# # https://github.com/Delapouite/kakoune-registers
+# plug Delapouite/kakoune-registers
+
+# Kakoune Edit or Dir
+# File browser for Kakoune
+# https://github.com/TeddyDD/kakoune-edit-or-dir
+plug TeddyDD/kakoune-edit-or-dir
 
 # kakoune-text-objects
 # kakoune plugin providing extra text-objects
 # https://github.com/Delapouite/kakoune-text-objects
-plug "Delapouite/kakoune-text-objects"
+plug Delapouite/kakoune-text-objects
+
+# ------------------------------------------------------------------------------
+
+# Search highlighting
+# Kakoune extension for search highlighting
+# https://github.com/alexherbo2/search-highlighting.kak
+plug alexherbo2/search-highlighting.kak
+
+hook global WinCreate .* %{
+  search-highlighting-enable
+}
+
+# ------------------------------------------------------------------------------
+
+# Volatile highlighting
+# Kakoune extension for volatile highlighting
+# https://github.com/alexherbo2/volatile-highlighting.kak
+plug alexherbo2/volatile-highlighting.kak
+
+hook global WinCreate .* %{
+  volatile-highlighting-enable
+}
+
+# ------------------------------------------------------------------------------
 
 # Hide assistant ASCII art in info boxes.
 set-option -add global ui_options ncurses_assistant=none

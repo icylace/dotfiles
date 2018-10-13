@@ -50,6 +50,10 @@ alias screen='screen -U'
 # https://the.exa.website/
 alias l='exa --all --binary --blocks --created --extended --git --group --group-directories-first --header --inode --level=2 --links --long --modified --tree'
 
+# ranger
+# https://ranger.github.io
+alias rr='ranger --choosefiles=/tmp/ranger-files'
+
 # sift
 # https://sift-tool.org/
 alias s='sift --binary-skip --git --exclude-ext=dmg,pdf'
