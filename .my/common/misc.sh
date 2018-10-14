@@ -51,7 +51,7 @@ alias screen='screen -U'
 alias l='exa --all --binary --blocks --created --extended --git --group --group-directories-first --header --inode --level=2 --links --long --modified --tree'
 
 # ranger
-# https://ranger.github.io
+# https://ranger.github.io/
 alias rr='ranger --choosefiles=/tmp/ranger-files'
 
 # sift

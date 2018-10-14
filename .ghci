@@ -1,0 +1,10 @@
+-- https://typeclasses.com/ghci/config
+-- https://downloads.haskell.org/~ghc/latest/docs/html/users_guide/ghci.html#setting-options-for-interactive-evaluation-only
+
+-- Set the prompt text and colors.
+:set prompt "\n\ESC[38;2;255;105;180m\x03BB  \ESC[m"
+:set prompt-cont "\ESC[38;2;183;104;192m\x22EE  \ESC[m"
+
+-- Use the `OverloadedStrings` language extension.
+-- https://downloads.haskell.org/~ghc/latest/docs/html/users_guide/glasgow_exts.html#extension-OverloadedStrings
+:seti -XOverloadedStrings
