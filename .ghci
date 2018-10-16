@@ -1,10 +1,151 @@
 -- https://typeclasses.com/ghci/config
--- https://downloads.haskell.org/~ghc/latest/docs/html/users_guide/ghci.html#setting-options-for-interactive-evaluation-only
+-- https://downloads.haskell.org/~ghc/master/users-guide/using-warnings.html
+-- https://medium.com/mercury-bank/enable-all-the-warnings-a0517bc081c3
+-- https://gist.github.com/Pitometsu/0b0d04706e671172ed3b78309b14b43d
 
 -- Set the prompt text and colors.
 :set prompt "\n\ESC[38;2;255;105;180m\x03BB  \ESC[m"
 :set prompt-cont "\ESC[38;2;183;104;192m\x22EE  \ESC[m"
 
+-- Enable all warnings so we can disable the ones we don't want.
+-- https://downloads.haskell.org/~ghc/latest/docs/html/users_guide/using-warnings.html#ghc-flag--Weverything
+:set -Weverything
+
+-- `missing-exported-signatures` turns off the stricter `-Wmissing-signatures`.
+-- https://ghc.haskell.org/trac/ghc/ticket/14794#ticket
+:set -Wno-missing-exported-signatures
+
+-- Explicit imports for every function (e.g. `$`) is too strict.
+:set -Wno-missing-import-lists
+
+-- When GHC can't specialize a polymorphic function.  No big deal and requires
+-- fixing underlying libraries to solve.  Though, perhaps useful when
+-- developing a performance critical library.
+:set -Wno-all-missed-specialisations
+:set -Wno-missed-specialisations
+
+-- These are only useful if using Safe Haskell.
+:set -Wno-trustworthy-safe
+:set -Wno-safe
+:set -Wno-unsafe
+
+-- Polymorphic local bindings are harmless.
+:set -Wno-missing-local-signatures
+
+-- The monomorphism restriction adds confusion without being that impactful.
+:set -Wno-monomorphism-restriction
+
+-- Having the standard Prelude library implicitly available is convenient.
+:set -Wno-implicit-prelude
+
+-- `-Wtype-defaults` will complain about normal expressions like `5 + 5`.
+:set -Wno-type-defaults
+
+-- :set -Wno-unused-matches
+-- :set -Wno-unused-top-binds
+
+-- -- Treat all warnings like fatal errors.
+-- :set -Werror
+
+-- -- Show Unicode characters in compiler messages.
+-- -- https://downloads.haskell.org/~ghc/latest/docs/html/users_guide/using.html#ghc-flag--fprint-unicode-syntax
+-- :set -fprint-unicode-syntax
+
+-- Show character ranges for errors.
+-- https://downloads.haskell.org/~ghc/latest/docs/html/users_guide/flags.html#ghc-flag--ferror-spans
+:set -ferror-spans
+
 -- Use the `OverloadedStrings` language extension.
 -- https://downloads.haskell.org/~ghc/latest/docs/html/users_guide/glasgow_exts.html#extension-OverloadedStrings
 :seti -XOverloadedStrings
+
+-- Show the types of evaluated expressions.
+:set +t
+
+
+
+
+
+
+
+
+
+
+-- -- OverloadedStrings is often useful.
+-- :set -XOverloadedStrings
+
+-- -- Scoped type variables is often useful so we can specify the types
+-- -- of variables (for example, in lambda expressions).
+-- :set -XScopedTypeVariables
+
+-- -- useful for import from specified package
+-- :set -XPackageImports
+
+-- -- Force load dependencies
+
+-- :set -package funnyprint
+
+-- -- :set -package hscolour
+-- -- :set -package ipprint
+-- -- :set -package hlint
+-- -- :set -package hi
+
+-- -- :set -package hoogle
+-- -- :set -package haskell-docs
+
+-- -- Import Prelude.  Some projects don't import the Prelude by default, but
+-- -- we are using types and functions from the Prelude in the following hoogle
+-- -- function definition, so we need to make sure that Prelude is imported.
+-- import Prelude
+
+-- -- give us a `hoogle` function to if the hoogle binary is available.
+-- -- :def hoogle \s -> return $ ":! hoogle --count=15 \"" ++ s ++ "\""
+-- let escape arg = "'" ++ ((\c -> if c == '\'' then "'\"'\"'" else [c]) =<< arg) ++"'"
+-- :def! search return . (":!hoogle --count=50 --color " ++) . escape
+-- :def! doc return . (":!hoogle --count=50 --color --info " ++) . escape
+
+-- -- Show the types of evaluated expressions
+-- :set +t
+
+-- -- And stats
+-- :set +s
+
+-- -- Enable multi-line expressions with :{ and :}
+-- :set +m
+
+-- -- ghci-ng support
+-- -- :set +c
+
+-- -- Make the prompt a little more colorful.
+-- -- And pretty-printing values
+
+-- :def color (\_ -> return (":set -interactive-print=FunnyPrint.funnyPrint\n:set prompt \"" ++ FunnyPrint.prompt "λ " "%s" " ¬\\nλ > " ++ "\"" ++ "\n:set prompt2 \"" ++ FunnyPrint.prompt2 "λ" "" " | " ++ "\""))
+-- :def nocolor (\_ -> return ":set -interactive-print=print\n:set prompt \"%s> \"\n:set prompt2 \"%s| \"")
+
+-- :color
+
+-- --
+-- --
+
+-- -- New current minimal config:
+
+-- :set -XPackageImports
+-- :set +m
+-- :def hoogle \x -> return $ ":! hoogle \"" ++ x ++ "\""
+-- :def hoogle-info \x -> return $ ":! hoogle --info \"" ++ x ++ "\""
+
+-- -- update tags
+-- :def tags \_ -> return ":! haskdogs -- --ignore-close-implementation --etags"
+
+-- -- update docs
+-- :def docs \_ -> return ":! stack exec hoogle generate && stack hoogle --rebuild"
+
+-- :def doc \input -> return $ ":! haskell-docs " ++ input
+
+-- :set -ddump-deriv
+
+-- :set -XOverloadedStrings
+-- :set -XOverloadedLists
+-- :set -XScopedTypeVariables
+-- :set -XPackageImports
+-- :set -XStandaloneDeriving

@@ -1,11 +1,5 @@
 #!/usr/bin/env bash
 
-# `icdiff` is good for comparing files side-by-side.
-alias icdiff='icdiff --line-numbers --tabsize=4'
-
-# `dwdiff` is good for comparing files with long lines.
-alias dwdiff='dwdiff --aggregate-changes --algorithm=best --color --line-numbers=2 --no-common'
-
 alias li='ls -lAG'
 alias o='open'
 
@@ -33,9 +27,6 @@ alias df='df -h'
 # https://github.com/sindresorhus/guides/blob/master/how-not-to-rm-yourself.md#safeguard-rm
 alias rm='rm -i'
 
-# Get current IP address.
-alias myip='curl icanhazip.com'
-
 # http://kvz.io/blog/2012/10/03/quick-server-debugging-with-wtf/
 alias wtf='tail -f /var/log/{dmesg,messages,*{,/*}{log,err}}'
 
@@ -45,6 +36,14 @@ alias f='find . -name'
 
 # https://perlgeek.de/en/article/set-up-a-clean-utf8-environment
 alias screen='screen -U'
+
+# ------------------------------------------------------------------------------
+
+# `icdiff` is good for comparing files side-by-side.
+alias icdiff='icdiff --line-numbers --tabsize=4'
+
+# `dwdiff` is good for comparing files with long lines.
+alias dwdiff='dwdiff --aggregate-changes --algorithm=best --color --line-numbers=2 --no-common'
 
 # exa
 # https://the.exa.website/
@@ -61,3 +60,8 @@ alias sn='sift --binary-skip --git --exclude-ext=dmg,pdf --exclude-dirs=node_mod
 # TODO:
 # - useful?
 #   - `--exclude-files=.gitattributes,.gitignore`
+
+# ------------------------------------------------------------------------------
+
+# Get current IP address.
+alias myip='curl icanhazip.com'
