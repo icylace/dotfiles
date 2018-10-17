@@ -7,6 +7,39 @@
 :set prompt "\n\ESC[38;2;255;105;180m\x03BB  \ESC[m"
 :set prompt-cont "\ESC[38;2;183;104;192m\x22EE  \ESC[m"
 
+
+
+
+-- ## From the Latin Extended-B block:
+
+-- * U+019B: `ƛ` - latin small letter lambda with stroke
+
+-- ## From the Greek and Coptic block:
+
+-- * U+039B: `Λ` - greek capital letter lamda
+-- * U+03BB: `λ` - greek small letter lamda
+
+-- ## From the Phonetic Extensions block:
+
+-- * U+1D27: `ᴧ` - greek letter small capital lamda
+
+-- ## From the Mathematical Alphanumeric Symbols block:
+
+-- * U+1D6B2: `𝚲` - mathematical bold capital lamda
+-- * U+1D6CC: `𝛌` - mathematical bold small lamda
+-- * U+1D6EC: `𝛬` - mathematical italic capital lamda
+-- * U+1D706: `𝜆` - mathematical italic small lamda
+-- * U+1D726: `𝜦` - mathematical bold italic capital lamda
+-- * U+1D740: `𝝀` - mathematical bold italic small lamda
+-- * U+1D760: `𝝠` - mathematical sans-serif bold capital lamda
+-- * U+1D77A: `𝝺` - mathematical sans-serif bold small lamda
+-- * U+1D79A: `𝞚` - mathematical sans-serif bold italic capital lamda
+-- * U+1D7B4: `𝞴` - mathematical sans-serif bold italic small lamda
+
+
+
+
+
 -- Enable all warnings so we can disable the ones we don't want.
 -- https://downloads.haskell.org/~ghc/latest/docs/html/users_guide/using-warnings.html#ghc-flag--Weverything
 :set -Weverything
@@ -40,6 +73,8 @@
 
 -- `-Wtype-defaults` will complain about normal expressions like `5 + 5`.
 :set -Wno-type-defaults
+
+:set -Wno-name-shadowing
 
 -- :set -Wno-unused-matches
 -- :set -Wno-unused-top-binds
