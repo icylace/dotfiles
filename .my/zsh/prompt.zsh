@@ -13,6 +13,7 @@ select_prompt_char() {
   setopt local_options KSH_ARRAYS
 
   local prompt_chars=(
+    '¤' '§' '¶'
     'ƛ'
     'Λ' 'λ'
     '९'

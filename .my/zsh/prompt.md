@@ -2,6 +2,12 @@
 
 # Characters used in rotation in my Z Shell prompt.
 
+## From the Latin-1 Supplement block:
+
+* U+00A4: `¤` - currency sign
+* U+00A7: `§` - section sign
+* U+00B6: `¶` - pilcrow sign
+
 ## From the Latin Extended-B block:
 
 * U+019B: `ƛ` - latin small letter lambda with stroke
