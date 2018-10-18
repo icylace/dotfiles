@@ -3,46 +3,20 @@
 -- https://medium.com/mercury-bank/enable-all-the-warnings-a0517bc081c3
 -- https://gist.github.com/Pitometsu/0b0d04706e671172ed3b78309b14b43d
 
+-- A project's stack.yaml settings will get processed before the following
+-- settings get processed.
+
 -- Set the prompt text and colors.
-:set prompt "\n\ESC[38;2;255;105;180m\x03BB  \ESC[m"
-:set prompt-cont "\ESC[38;2;183;104;192m\x22EE  \ESC[m"
 
+:set prompt-function (\_ n -> return $ "\n\ESC[38;2;255;105;180m" ++ ["λ𝞴ᴧ𝚲𝛌𝛬Λ𝜆𝜦𝝀𝝠𝝺ƛ𝞚" !! mod n 14] ++ "  \ESC[m")
 
-
-
--- ## From the Latin Extended-B block:
-
--- * U+019B: `ƛ` - latin small letter lambda with stroke
-
--- ## From the Greek and Coptic block:
-
--- * U+039B: `Λ` - greek capital letter lamda
--- * U+03BB: `λ` - greek small letter lamda
-
--- ## From the Phonetic Extensions block:
-
--- * U+1D27: `ᴧ` - greek letter small capital lamda
-
--- ## From the Mathematical Alphanumeric Symbols block:
-
--- * U+1D6B2: `𝚲` - mathematical bold capital lamda
--- * U+1D6CC: `𝛌` - mathematical bold small lamda
--- * U+1D6EC: `𝛬` - mathematical italic capital lamda
--- * U+1D706: `𝜆` - mathematical italic small lamda
--- * U+1D726: `𝜦` - mathematical bold italic capital lamda
--- * U+1D740: `𝝀` - mathematical bold italic small lamda
--- * U+1D760: `𝝠` - mathematical sans-serif bold capital lamda
--- * U+1D77A: `𝝺` - mathematical sans-serif bold small lamda
--- * U+1D79A: `𝞚` - mathematical sans-serif bold italic capital lamda
--- * U+1D7B4: `𝞴` - mathematical sans-serif bold italic small lamda
-
-
-
-
+:set prompt-cont-function (\_ n -> return $ "\ESC[38;2;183;104;192m" ++ ["⋮︙⁞︰︓┆┇┋┊" !! mod n 9] ++ "  \ESC[m")
 
 -- Enable all warnings so we can disable the ones we don't want.
 -- https://downloads.haskell.org/~ghc/latest/docs/html/users_guide/using-warnings.html#ghc-flag--Weverything
-:set -Weverything
+-- :set -Weverything
+-- It's commented out here to avoid "resetting" a project's stack.yaml
+-- warning settings.
 
 -- `missing-exported-signatures` turns off the stricter `-Wmissing-signatures`.
 -- https://ghc.haskell.org/trac/ghc/ticket/14794#ticket
@@ -74,40 +48,38 @@
 -- `-Wtype-defaults` will complain about normal expressions like `5 + 5`.
 :set -Wno-type-defaults
 
-:set -Wno-name-shadowing
-
--- :set -Wno-unused-matches
--- :set -Wno-unused-top-binds
-
 -- -- Treat all warnings like fatal errors.
 -- :set -Werror
-
--- -- Show Unicode characters in compiler messages.
--- -- https://downloads.haskell.org/~ghc/latest/docs/html/users_guide/using.html#ghc-flag--fprint-unicode-syntax
--- :set -fprint-unicode-syntax
 
 -- Show character ranges for errors.
 -- https://downloads.haskell.org/~ghc/latest/docs/html/users_guide/flags.html#ghc-flag--ferror-spans
 :set -ferror-spans
 
--- Use the `OverloadedStrings` language extension.
--- https://downloads.haskell.org/~ghc/latest/docs/html/users_guide/glasgow_exts.html#extension-OverloadedStrings
-:seti -XOverloadedStrings
+-- Show type synonym expansions in error messages.
+-- https://downloads.haskell.org/~ghc/latest/docs/html/users_guide/using.html#ghc-flag--fprint-expanded-synonyms
+:set -fprint-expanded-synonyms
 
--- Show the types of evaluated expressions.
+-- Collect type and location information after loading modules.
+-- https://downloads.haskell.org/~ghc/latest/docs/html/users_guide/ghci.html#ghci-cmd-:set%20+c
+:set +c
+
+-- Enable detection and handling of multiline expressions.
+-- https://downloads.haskell.org/~ghc/latest/docs/html/users_guide/ghci.html#ghci-cmd-:set%20+m
+:set +m
+
+-- Show types of evaluated expressions.
+-- https://downloads.haskell.org/~ghc/latest/docs/html/users_guide/ghci.html#ghci-cmd-:set%20+t
 :set +t
 
+-- -- Use the `OverloadedStrings` language extension.
+-- -- https://downloads.haskell.org/~ghc/latest/docs/html/users_guide/glasgow_exts.html#extension-OverloadedStrings
+-- :seti -XOverloadedStrings
 
 
 
 
 
 
-
-
-
--- -- OverloadedStrings is often useful.
--- :set -XOverloadedStrings
 
 -- -- Scoped type variables is often useful so we can specify the types
 -- -- of variables (for example, in lambda expressions).
@@ -115,10 +87,6 @@
 
 -- -- useful for import from specified package
 -- :set -XPackageImports
-
--- -- Force load dependencies
-
--- :set -package funnyprint
 
 -- -- :set -package hscolour
 -- -- :set -package ipprint
@@ -128,44 +96,17 @@
 -- -- :set -package hoogle
 -- -- :set -package haskell-docs
 
--- -- Import Prelude.  Some projects don't import the Prelude by default, but
--- -- we are using types and functions from the Prelude in the following hoogle
--- -- function definition, so we need to make sure that Prelude is imported.
--- import Prelude
-
 -- -- give us a `hoogle` function to if the hoogle binary is available.
 -- -- :def hoogle \s -> return $ ":! hoogle --count=15 \"" ++ s ++ "\""
 -- let escape arg = "'" ++ ((\c -> if c == '\'' then "'\"'\"'" else [c]) =<< arg) ++"'"
 -- :def! search return . (":!hoogle --count=50 --color " ++) . escape
 -- :def! doc return . (":!hoogle --count=50 --color --info " ++) . escape
 
--- -- Show the types of evaluated expressions
--- :set +t
 
--- -- And stats
--- :set +s
-
--- -- Enable multi-line expressions with :{ and :}
--- :set +m
-
--- -- ghci-ng support
--- -- :set +c
-
--- -- Make the prompt a little more colorful.
--- -- And pretty-printing values
-
--- :def color (\_ -> return (":set -interactive-print=FunnyPrint.funnyPrint\n:set prompt \"" ++ FunnyPrint.prompt "λ " "%s" " ¬\\nλ > " ++ "\"" ++ "\n:set prompt2 \"" ++ FunnyPrint.prompt2 "λ" "" " | " ++ "\""))
--- :def nocolor (\_ -> return ":set -interactive-print=print\n:set prompt \"%s> \"\n:set prompt2 \"%s| \"")
-
--- :color
-
--- --
--- --
 
 -- -- New current minimal config:
 
 -- :set -XPackageImports
--- :set +m
 -- :def hoogle \x -> return $ ":! hoogle \"" ++ x ++ "\""
 -- :def hoogle-info \x -> return $ ":! hoogle --info \"" ++ x ++ "\""
 
@@ -177,7 +118,6 @@
 
 -- :def doc \input -> return $ ":! haskell-docs " ++ input
 
--- :set -ddump-deriv
 
 -- :set -XOverloadedStrings
 -- :set -XOverloadedLists

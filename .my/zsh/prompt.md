@@ -275,3 +275,22 @@
 ## From the Dingbats block:
 
 * U+2718: `✘` - heavy ballot x
+
+
+
+
+
+
+-- -----------------------------------------------------------------------------
+
+
+##  TODO:  incorporate these
+
+-- `⁞` - vertical four dots (U+205E)
+-- http://graphemica.com/%EF%B8%99
+-- http://graphemica.com/%EF%B8%B0
+-- http://graphemica.com/%EF%B8%93
+-- http://graphemica.com/%E2%94%8B
+-- http://graphemica.com/%E2%94%8A
+-- http://graphemica.com/%E2%94%87
+-- http://graphemica.com/%E2%94%86
