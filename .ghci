@@ -3,8 +3,12 @@
 -- https://medium.com/mercury-bank/enable-all-the-warnings-a0517bc081c3
 -- https://gist.github.com/Pitometsu/0b0d04706e671172ed3b78309b14b43d
 
--- A project's stack.yaml settings will get processed before the following
--- settings get processed.
+-- Options apparently get processed in this order:
+--   1. A project's stack.yaml.
+--   2. `--ghc-options` when running`stack ghci` on the command line.
+--   3. `.ghci` settings (this file).
+
+-- -----------------------------------------------------------------------------
 
 -- Set the prompt text and colors.
 
@@ -48,12 +52,13 @@
 -- `-Wtype-defaults` will complain about normal expressions like `5 + 5`.
 :set -Wno-type-defaults
 
--- -- Treat all warnings like fatal errors.
--- :set -Werror
-
 -- Show character ranges for errors.
 -- https://downloads.haskell.org/~ghc/latest/docs/html/users_guide/flags.html#ghc-flag--ferror-spans
 :set -ferror-spans
+
+-- Full file paths are usually too much clutter.
+-- https://downloads.haskell.org/~ghc/latest/docs/html/users_guide/using.html#ghc-flag--fhide-source-paths
+:set -fhide-source-paths
 
 -- Show type synonym expansions in error messages.
 -- https://downloads.haskell.org/~ghc/latest/docs/html/users_guide/using.html#ghc-flag--fprint-expanded-synonyms
@@ -75,7 +80,12 @@
 -- -- https://downloads.haskell.org/~ghc/latest/docs/html/users_guide/glasgow_exts.html#extension-OverloadedStrings
 -- :seti -XOverloadedStrings
 
+-- -----------------------------------------------------------------------------
 
+
+-- -- Treat all warnings like fatal errors.
+-- -- https://downloads.haskell.org/~ghc/latest/docs/html/users_guide/using-warnings.html#ghc-flag--Werror
+-- :set -Werror
 
 
 

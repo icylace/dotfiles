@@ -1,6 +1,6 @@
-# https://graphemica.com/
-
 # Characters used in rotation in my Z Shell prompt.
+
+Note: A good place to explore Unicode characters is https://graphemica.com/
 
 ## From the Latin-1 Supplement block:
 
@@ -117,6 +117,13 @@
 * U+2448: `⑈` - ocr dash
 * U+2449: `⑉` - ocr customer account number
 * U+244A: `⑊` - ocr double backslash
+
+## From the Box Drawing block
+
+* U+2506: `┆` - box drawings light triple dash vertical
+* U+2507: `┇` - box drawings heavy triple dash vertical
+* U+250A: `┊` - box drawings light quadruple dash vertical
+* U+250B: `┋` - box drawings heavy quadruple dash vertical
 
 ## From the Miscellaneous Symbols block:
 
@@ -239,7 +246,12 @@
 
 ## From the Vertical Forms block:
 
+* U+FE13: `︓` - presentation form for vertical colon ()
 * U+FE19: `︙` - presentation form for vertical horizontal ellipsis
+
+## From the CJK Compatibility Forms block:
+
+* U+FE30: `︰` - presentation form for vertical two dot leader
 
 ## From the Mathematical Alphanumeric Symbols block:
 
@@ -275,22 +287,3 @@
 ## From the Dingbats block:
 
 * U+2718: `✘` - heavy ballot x
-
-
-
-
-
-
--- -----------------------------------------------------------------------------
-
-
-##  TODO:  incorporate these
-
--- `⁞` - vertical four dots (U+205E)
--- http://graphemica.com/%EF%B8%99
--- http://graphemica.com/%EF%B8%B0
--- http://graphemica.com/%EF%B8%93
--- http://graphemica.com/%E2%94%8B
--- http://graphemica.com/%E2%94%8A
--- http://graphemica.com/%E2%94%87
--- http://graphemica.com/%E2%94%86

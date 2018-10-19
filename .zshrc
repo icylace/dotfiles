@@ -46,18 +46,21 @@ export VISUAL=kak
 
 # https://dougblack.io/words/zsh-vi-mode.html
 
-# Use vi emulation mode.
-bindkey -v
+# # Use vi mode.
+# bindkey -v
 
-function zle-line-init zle-keymap-select {
-  VIM_PROMPT="%{$fg_bold[yellow]%} [% NORMAL]% %{$reset_color%}"
-  # RPS1="${${KEYMAP/vicmd/$VIM_PROMPT}/(main|viins)/} $(git_custom_status) $EPS1"
-  RPS1="${${KEYMAP/vicmd/$VIM_PROMPT}/(main|viins)/} $EPS1"
-  zle reset-prompt
-}
+# Use Emacs mode.
+bindkey -e
 
-zle -N zle-line-init
-zle -N zle-keymap-select
+# function zle-line-init zle-keymap-select {
+#   VIM_PROMPT="%{$fg_bold[yellow]%} [% NORMAL]% %{$reset_color%}"
+#   # RPS1="${${KEYMAP/vicmd/$VIM_PROMPT}/(main|viins)/} $(git_custom_status) $EPS1"
+#   RPS1="${${KEYMAP/vicmd/$VIM_PROMPT}/(main|viins)/} $EPS1"
+#   zle reset-prompt
+# }
+
+# zle -N zle-line-init
+# zle -N zle-keymap-select
 
 # Make the terminal respond faster to the escape key.
 export KEYTIMEOUT=1

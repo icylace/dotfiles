@@ -1,0 +1,65 @@
+# This file contains default non-project-specific settings for 'stack', used
+# in all projects.  For more information about stack's configuration, see
+# http://docs.haskellstack.org/en/stable/yaml_configuration/
+
+# The following parameters are used by "stack new" to automatically fill fields
+# in the cabal config. We recommend uncommenting them and filling them out if
+# you intend to use 'stack new'.
+# See https://docs.haskellstack.org/en/stable/yaml_configuration/#templates
+# templates:
+#   params:
+#    author-name:
+#    author-email:
+#    copyright:
+#    github-username:
+
+# Ignore version bounds.
+# https://docs.haskellstack.org/en/stable/yaml_configuration/#allow-newer
+allow-newer: true
+
+# # Set colors.
+# # https://docs.haskellstack.org/en/stable/yaml_configuration/#stack-colors
+# stack-colors: error=31:good=32:shell=35:dir=34:recommendation=32:target=95:module=35:package-component=95
+
+# https://downloads.haskell.org/~ghc/master/users-guide/using-warnings.html
+# https://medium.com/mercury-bank/enable-all-the-warnings-a0517bc081c3
+
+ghc-options:
+  # Enable all warnings so we can disable the ones we don't want.
+  "$locals": -Weverything
+
+  # `missing-exported-signatures` turns off the stricter `-Wmissing-signatures`.
+  # https://ghc.haskell.org/trac/ghc/ticket/14794#ticket
+  "$locals": -Wno-missing-exported-signatures
+
+  # Explicit imports for every function (e.g. `$`) is too strict.
+  "$locals": -Wno-missing-import-lists
+
+  # When GHC can't specialize a polymorphic function.  No big deal and requires
+  # fixing underlying libraries to solve.  Though, perhaps useful under certain
+  # performance optimization scenarios.
+  "$locals": -Wno-all-missed-specialisations
+  "$locals": -Wno-missed-specialisations
+
+  # These are only useful if using Safe Haskell.
+  "$locals": -Wno-trustworthy-safe
+  "$locals": -Wno-safe
+  "$locals": -Wno-unsafe
+
+  # Warning for polymorphic local bindings; nothing wrong with those.
+  "$locals": -Wno-missing-local-signatures
+
+  # The monomorphism restriction adds confusion without being that impactful.
+  "$locals": -Wno-monomorphism-restriction
+
+  # Having the standard Prelude library implicitly available is convenient.
+  "$locals": -Wno-implicit-prelude
+
+  # `-Wtype-defaults` will complain about normal expressions like `5 + 5`.
+  "$locals": -Wno-type-defaults
+
+  # "$locals": -Wno-unused-matches
+  # "$locals": -Wno-unused-top-binds
+
+  # # Treat all warnings like fatal errors.
+  # "$locals": -Werror
