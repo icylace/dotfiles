@@ -22,47 +22,47 @@
 -- It's commented out here to avoid "resetting" a project's stack.yaml
 -- warning settings.
 
--- `missing-exported-signatures` turns off the stricter `-Wmissing-signatures`.
--- https://ghc.haskell.org/trac/ghc/ticket/14794#ticket
-:set -Wno-missing-exported-signatures
+-- -- `missing-exported-signatures` turns off the stricter `-Wmissing-signatures`.
+-- -- https://ghc.haskell.org/trac/ghc/ticket/14794#ticket
+-- :set -Wno-missing-exported-signatures
 
--- Explicit imports for every function (e.g. `$`) is too strict.
-:set -Wno-missing-import-lists
+-- -- Explicit imports for every function (e.g. `$`) is too strict.
+-- :set -Wno-missing-import-lists
 
--- When GHC can't specialize a polymorphic function.  No big deal and requires
--- fixing underlying libraries to solve.  Though, perhaps useful when
--- developing a performance critical library.
-:set -Wno-all-missed-specialisations
-:set -Wno-missed-specialisations
+-- -- When GHC can't specialize a polymorphic function.  No big deal and requires
+-- -- fixing underlying libraries to solve.  Though, perhaps useful when
+-- -- developing a performance critical library.
+-- :set -Wno-all-missed-specialisations
+-- :set -Wno-missed-specialisations
 
--- These are only useful if using Safe Haskell.
-:set -Wno-trustworthy-safe
-:set -Wno-safe
-:set -Wno-unsafe
+-- -- These are only useful if using Safe Haskell.
+-- :set -Wno-trustworthy-safe
+-- :set -Wno-safe
+-- :set -Wno-unsafe
 
--- Polymorphic local bindings are harmless.
-:set -Wno-missing-local-signatures
+-- -- Polymorphic local bindings are harmless.
+-- :set -Wno-missing-local-signatures
 
--- The monomorphism restriction adds confusion without being that impactful.
-:set -Wno-monomorphism-restriction
+-- -- The monomorphism restriction adds confusion without being that impactful.
+-- :set -Wno-monomorphism-restriction
 
--- Having the standard Prelude library implicitly available is convenient.
-:set -Wno-implicit-prelude
+-- -- Having the standard Prelude library implicitly available is convenient.
+-- :set -Wno-implicit-prelude
 
--- `-Wtype-defaults` will complain about normal expressions like `5 + 5`.
-:set -Wno-type-defaults
+-- -- `-Wtype-defaults` will complain about normal expressions like `5 + 5`.
+-- :set -Wno-type-defaults
 
--- Show character ranges for errors.
--- https://downloads.haskell.org/~ghc/latest/docs/html/users_guide/flags.html#ghc-flag--ferror-spans
-:set -ferror-spans
+-- -- Show character ranges for errors.
+-- -- https://downloads.haskell.org/~ghc/latest/docs/html/users_guide/flags.html#ghc-flag--ferror-spans
+-- :set -ferror-spans
 
--- Full file paths are usually too much clutter.
--- https://downloads.haskell.org/~ghc/latest/docs/html/users_guide/using.html#ghc-flag--fhide-source-paths
-:set -fhide-source-paths
+-- -- Full file paths are usually too much clutter.
+-- -- https://downloads.haskell.org/~ghc/latest/docs/html/users_guide/using.html#ghc-flag--fhide-source-paths
+-- :set -fhide-source-paths
 
--- Show type synonym expansions in error messages.
--- https://downloads.haskell.org/~ghc/latest/docs/html/users_guide/using.html#ghc-flag--fprint-expanded-synonyms
-:set -fprint-expanded-synonyms
+-- -- Show type synonym expansions in error messages.
+-- -- https://downloads.haskell.org/~ghc/latest/docs/html/users_guide/using.html#ghc-flag--fprint-expanded-synonyms
+-- :set -fprint-expanded-synonyms
 
 -- Collect type and location information after loading modules.
 -- https://downloads.haskell.org/~ghc/latest/docs/html/users_guide/ghci.html#ghci-cmd-:set%20+c
@@ -78,7 +78,7 @@
 
 -- -- Use the `OverloadedStrings` language extension.
 -- -- https://downloads.haskell.org/~ghc/latest/docs/html/users_guide/glasgow_exts.html#extension-OverloadedStrings
--- :seti -XOverloadedStrings
+-- :set -XOverloadedStrings
 
 -- -----------------------------------------------------------------------------
 
