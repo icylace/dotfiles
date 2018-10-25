@@ -12,9 +12,19 @@
 
 -- Set the prompt text and colors.
 
-:set prompt-function (\_ n -> return $ "\n\ESC[38;2;255;105;180m" ++ ["λ𝞴ᴧ𝚲𝛌𝛬Λ𝜆𝜦𝝀𝝠𝝺ƛ𝞚" !! mod n 14] ++ "  \ESC[m")
+:set prompt-function (\_ n -> return $ "\n\ESC[38;2;255;105;180m" ++ "λ𝞴ᴧ𝚲𝛌𝛬Λ𝜆𝜦𝝀𝝠𝝺ƛ𝞚" !! mod n 14 : "  \ESC[m")
 
-:set prompt-cont-function (\_ n -> return $ "\ESC[38;2;183;104;192m" ++ ["⋮︙⁞︰︓┆┇┋┊" !! mod n 9] ++ "  \ESC[m")
+:set prompt-cont-function (\_ n -> return $ "\ESC[38;2;160;80;200m" ++ "⋮⁞┆┇┋┊" !! mod n 6 : "  \ESC[m")
+
+-- -----------------------------------------------------------------------------
+
+:def hoogle return . (++) ":! stack hoogle -- "
+:def hoogle-info return . (++) ":! stack hoogle -- --info "
+
+:def ho return . (++) ":hoogle "
+:def hoi return . (++) ":hoogle-info "
+
+-- -----------------------------------------------------------------------------
 
 -- Enable all warnings so we can disable the ones we don't want.
 -- https://downloads.haskell.org/~ghc/latest/docs/html/users_guide/using-warnings.html#ghc-flag--Weverything
@@ -52,17 +62,17 @@
 -- -- `-Wtype-defaults` will complain about normal expressions like `5 + 5`.
 -- :set -Wno-type-defaults
 
--- -- Show character ranges for errors.
--- -- https://downloads.haskell.org/~ghc/latest/docs/html/users_guide/flags.html#ghc-flag--ferror-spans
--- :set -ferror-spans
+-- Show character ranges for errors.
+-- https://downloads.haskell.org/~ghc/latest/docs/html/users_guide/flags.html#ghc-flag--ferror-spans
+:set -ferror-spans
 
--- -- Full file paths are usually too much clutter.
--- -- https://downloads.haskell.org/~ghc/latest/docs/html/users_guide/using.html#ghc-flag--fhide-source-paths
--- :set -fhide-source-paths
+-- Full file paths are usually too much clutter.
+-- https://downloads.haskell.org/~ghc/latest/docs/html/users_guide/using.html#ghc-flag--fhide-source-paths
+:set -fhide-source-paths
 
--- -- Show type synonym expansions in error messages.
--- -- https://downloads.haskell.org/~ghc/latest/docs/html/users_guide/using.html#ghc-flag--fprint-expanded-synonyms
--- :set -fprint-expanded-synonyms
+-- Show type synonym expansions in error messages.
+-- https://downloads.haskell.org/~ghc/latest/docs/html/users_guide/using.html#ghc-flag--fprint-expanded-synonyms
+:set -fprint-expanded-synonyms
 
 -- Collect type and location information after loading modules.
 -- https://downloads.haskell.org/~ghc/latest/docs/html/users_guide/ghci.html#ghci-cmd-:set%20+c
@@ -82,14 +92,9 @@
 
 -- -----------------------------------------------------------------------------
 
-
 -- -- Treat all warnings like fatal errors.
 -- -- https://downloads.haskell.org/~ghc/latest/docs/html/users_guide/using-warnings.html#ghc-flag--Werror
 -- :set -Werror
-
-
-
-
 
 -- -- Scoped type variables is often useful so we can specify the types
 -- -- of variables (for example, in lambda expressions).
@@ -98,39 +103,19 @@
 -- -- useful for import from specified package
 -- :set -XPackageImports
 
+-- :set -XOverloadedStrings
+-- :set -XOverloadedLists
+-- :set -XPackageImports
+-- :set -XStandaloneDeriving
+
 -- -- :set -package hscolour
 -- -- :set -package ipprint
 -- -- :set -package hlint
 -- -- :set -package hi
 
--- -- :set -package hoogle
 -- -- :set -package haskell-docs
-
--- -- give us a `hoogle` function to if the hoogle binary is available.
--- -- :def hoogle \s -> return $ ":! hoogle --count=15 \"" ++ s ++ "\""
--- let escape arg = "'" ++ ((\c -> if c == '\'' then "'\"'\"'" else [c]) =<< arg) ++"'"
--- :def! search return . (":!hoogle --count=50 --color " ++) . escape
--- :def! doc return . (":!hoogle --count=50 --color --info " ++) . escape
-
-
-
--- -- New current minimal config:
-
--- :set -XPackageImports
--- :def hoogle \x -> return $ ":! hoogle \"" ++ x ++ "\""
--- :def hoogle-info \x -> return $ ":! hoogle --info \"" ++ x ++ "\""
 
 -- -- update tags
 -- :def tags \_ -> return ":! haskdogs -- --ignore-close-implementation --etags"
 
--- -- update docs
--- :def docs \_ -> return ":! stack exec hoogle generate && stack hoogle --rebuild"
-
 -- :def doc \input -> return $ ":! haskell-docs " ++ input
-
-
--- :set -XOverloadedStrings
--- :set -XOverloadedLists
--- :set -XScopedTypeVariables
--- :set -XPackageImports
--- :set -XStandaloneDeriving

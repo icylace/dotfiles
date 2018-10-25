@@ -53,14 +53,6 @@ alias l='exa --all --binary --blocks --created --extended --git --group --group-
 # https://ranger.github.io/
 alias rr='ranger --choosefiles=/tmp/ranger-files'
 
-# sift
-# https://sift-tool.org/
-alias s='sift --binary-skip --git --exclude-ext=dmg,pdf'
-alias sn='sift --binary-skip --git --exclude-ext=dmg,pdf --exclude-dirs=node_modules --exclude-dirs=.npm'
-# TODO:
-# - useful?
-#   - `--exclude-files=.gitattributes,.gitignore`
-
 # ------------------------------------------------------------------------------
 
 # Get current IP address.
