@@ -19,7 +19,7 @@ export LC_ALL=en_US.UTF-8
 export PATH="/usr/local/bin:$PATH"
 export PATH="/usr/local/sbin:$PATH"
 export PATH="$HOME/.my/iTerm2:$PATH"
-export PATH="$HOME/.rbenv/bin:$PATH"
+# export PATH="$HOME/.rbenv/bin:$PATH"
 export PATH="$HOME/.node/bin:$PATH"
 export PATH="$HOME/.local/bin:$PATH"
 export PATH="./node_modules/.bin:$PATH"
@@ -39,10 +39,10 @@ export JAVA_HOME='/Library/Java/JavaVirtualMachines/jdk1.8.0_92.jdk/Contents/Hom
 #   eval "$(rbenv init -)"
 # fi
 
-# Suggested by the caveats section from `brew info pyenv`.
-if which pyenv > /dev/null ; then
-  eval "$(pyenv init -)"
-fi
+# # Suggested by the caveats section from `brew info pyenv`.
+# if which pyenv > /dev/null ; then
+#   eval "$(pyenv init -)"
+# fi
 
 if [ -e "$HOME/.nix-profile/etc/profile.d/nix.sh" ] ; then
   source "$HOME/.nix-profile/etc/profile.d/nix.sh"
