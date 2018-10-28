@@ -5,6 +5,7 @@ if [ -f "$HOME/.not-public/extra.sh" ] ; then
   source "$HOME/.not-public/extra.sh"
 fi
 
+# TODO: try this ?
 # From debian:experimental docker image:
 #
 # Note: PS1 and umask are already set in /etc/profile. You should not
