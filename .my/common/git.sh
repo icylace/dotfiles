@@ -10,7 +10,7 @@
 # - create alias for making annotated tags
 # - create alias for cherry picking
 
-# Use `hub` (https://hub.github.com) if available.
+# Use `hub` (https://hub.github.com/) if available.
 if type hub > /dev/null 2>&1 ; then
   alias git='hub'
 fi

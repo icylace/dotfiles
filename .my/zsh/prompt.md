@@ -4,6 +4,7 @@ Note: A good place to explore Unicode characters is https://graphemica.com/
 
 ## From the Latin-1 Supplement block:
 
+* U+00A1: `¡` - inverted exclamation mark
 * U+00A4: `¤` - currency sign
 * U+00A7: `§` - section sign
 * U+00B6: `¶` - pilcrow sign
@@ -33,6 +34,10 @@ Note: A good place to explore Unicode characters is https://graphemica.com/
 ## From the Telugu block:
 
 * U+0C24: `త` - telugu letter ta
+
+# From the Thai block:
+
+* U+0E5B: `๛` - thai character khomut
 
 ## From the Lao block:
 
@@ -90,6 +95,7 @@ Note: A good place to explore Unicode characters is https://graphemica.com/
 
 ## From the Mathematical Operators block:
 
+* U+2218: `∘` - ring operator
 * U+22EE: `⋮` - vertical ellipsis
 * U+22EF: `⋯` - midline horizontal ellipsis
 * U+22F0: `⋰` - up right diagonal ellipsis

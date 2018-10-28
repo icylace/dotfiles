@@ -9,6 +9,7 @@ export HOMEBREW_NO_ANALYTICS=1
 
 alias bl='brew list'
 alias bd='brew doctor'
+alias bdi='brew deps --installed'
 alias bi='brew info'
 alias bin='brew install'
 alias bs='brew search'

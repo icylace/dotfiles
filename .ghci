@@ -12,9 +12,9 @@
 
 -- Set the prompt text and colors.
 
-:set prompt-function (\_ n -> return $ "\n\ESC[38;2;255;105;180m" ++ "λ𝞴ᴧ𝚲𝛌𝛬Λ𝜆𝜦𝝀𝝠𝝺ƛ𝞚" !! mod n 14 : "  \ESC[m")
+:set prompt-function (\modules lineNumber -> return $ "\n\ESC[38;2;150;150;100m" ++ show lineNumber ++ " \ESC[38;2;100;100;100m" ++ foldr (++) " " modules ++ "\n\ESC[38;2;255;105;180m" ++ "λ𝞴ᴧ𝚲𝛌𝛬Λ𝜆𝜦𝝀𝝠𝝺ƛ𝞚" !! mod lineNumber 14 : "  \ESC[m")
 
-:set prompt-cont-function (\_ n -> return $ "\ESC[38;2;160;80;200m" ++ "⋮⁞┆┇┋┊" !! mod n 6 : "  \ESC[m")
+:set prompt-cont-function (\xs lineNumber -> return $ "\ESC[38;2;160;80;200m" ++ "⋮⁞┆┇┋┊" !! mod lineNumber 6 : "  \ESC[m")
 
 -- -----------------------------------------------------------------------------
 

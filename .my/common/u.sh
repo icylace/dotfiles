@@ -11,7 +11,7 @@ u() {
     nix-channel --update
   fi
   if we_have nix-env ; then
-    sudo nix upgrade-nix
+    nix upgrade-nix
     nix-env --upgrade
   fi
   if we_have nix-collect-garbage ; then
