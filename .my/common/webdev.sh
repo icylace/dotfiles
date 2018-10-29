@@ -60,7 +60,7 @@ alias vdu='vd1 && vu'
 # https://yarnpkg.com/en/
 alias y='yarn'
 
-alias dev='autoreload-server ./ 3000'
+# alias dev='autoreload-server ./ 3000'
 
 # ------------------------------------------------------------------------------
 #  CakePHP
