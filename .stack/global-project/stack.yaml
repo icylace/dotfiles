@@ -7,4 +7,8 @@
 # http://docs.haskellstack.org/en/stable/yaml_configuration/
 #
 packages: []
-resolver: ghc-8.6.1
+resolver: nightly-2018-10-29
+
+extra-deps:
+  # `stack hoogle` dependency.
+  - storable-tuple-0.0.3.3@sha256:1096df92bed234a5dbd3d5b9632131c1b839787b20031c3e179e44493f5939d5
