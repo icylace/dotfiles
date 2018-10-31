@@ -20,8 +20,12 @@ export PATH="/usr/local/bin:$PATH"
 export PATH="/usr/local/sbin:$PATH"
 export PATH="$HOME/.my/iTerm2:$PATH"
 # export PATH="$HOME/.rbenv/bin:$PATH"
-export PATH="$HOME/.node/bin:$PATH"
+
+# For Haskell Stack.
 export PATH="$HOME/.local/bin:$PATH"
+
+# For Node.js.
+export PATH="$HOME/.node/bin:$PATH"
 export PATH="./node_modules/.bin:$PATH"
 
 # Alternative to `postgres -D /usr/local/var/postgres`.

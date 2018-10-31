@@ -21,4 +21,14 @@ alias bci='brew cask info'
 alias bcin='brew cask install'
 alias bcun='brew cask uninstall'
 
+# https://blog.jpalardy.com/posts/untangling-your-homebrew-dependencies/
+# https://github.com/martido/brew-graph
+alias bdg='brew graph --installed --highlight-leaves | fdp -Tpng -o/tmp/brew-graph.png ; open /tmp/brew-graph.png'
+alias bdg2='brew graph --installed --highlight-leaves | dot -Tpng -o/tmp/brew-graph.png ; open /tmp/brew-graph.png'
+
+# homebrew-rmtree
+# Remove a formula and its unused dependencies
+# https://github.com/beeftornado/homebrew-rmtree
+alias brm='brew rmtree'
+
 alias bu='brew update && brew upgrade && brew cleanup && brew cask cleanup'

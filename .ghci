@@ -14,7 +14,12 @@
 
 :set prompt-function (\modules lineNumber -> return $ "\n\ESC[38;2;150;150;100m" ++ show lineNumber ++ " \ESC[38;2;100;100;100m" ++ foldr (++) " " modules ++ "\n\ESC[38;2;255;105;180m" ++ "λ𝞴ᴧ𝚲𝛌𝛬Λ𝜆𝜦𝝀𝝠𝝺ƛ𝞚" !! mod lineNumber 14 : "  \ESC[m")
 
-:set prompt-cont-function (\xs lineNumber -> return $ "\ESC[38;2;160;80;200m" ++ "⋮⁞┆┇┋┊" !! mod lineNumber 6 : "  \ESC[m")
+:set prompt-cont-function (\_ lineNumber -> return $ "\ESC[38;2;160;80;200m" ++ "⋮⁞┆┇┋┊" !! mod lineNumber 6 : "  \ESC[m")
+
+-- -----------------------------------------------------------------------------
+
+--
+-- https://downloads.haskell.org/~ghc/latest/docs/html/users_guide/ghci.html?highlight=interactive-print#ghc-flag--interactive-print%20⟨expr⟩
 
 -- -----------------------------------------------------------------------------
 
@@ -107,6 +112,10 @@
 -- :set -XOverloadedLists
 -- :set -XPackageImports
 -- :set -XStandaloneDeriving
+
+-- :set -package pretty-show
+
+-- :m +Text.Show.Pretty
 
 -- -- :set -package hscolour
 -- -- :set -package ipprint

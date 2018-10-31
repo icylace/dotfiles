@@ -110,12 +110,6 @@ preexec() {
   echo "$fg[black]$(date +%r)$reset_color"
 }
 
-# export GIT_RADAR_COLOR_BRANCH="%B%F{cyan}"
-
-# # Our custom Git Radar prompt is a slight modification of the default one.
-# # https://github.com/michaeldfallen/git-radar/blob/master/radar-base.sh#L99
-# export GIT_RADAR_FORMAT="%B%F{black}on git:(%b%f%{remote: }%{branch}%{ :local}%B%F{black})%b%f%{ :stash}%{ :changes}"
-
 # The second part of our prompt contains the exit status code,
 # user input marker, and the date and time.
 export PROMPT='%(?..%F{red}$EXIT_STATUS_CHAR %B%?$N%b%f)%B%F{magenta}$PROMPT_CHAR%b%f  '

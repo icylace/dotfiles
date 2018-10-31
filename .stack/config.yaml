@@ -24,6 +24,10 @@
 # https://downloads.haskell.org/~ghc/master/users-guide/using-warnings.html
 # https://medium.com/mercury-bank/enable-all-the-warnings-a0517bc081c3
 
+# extra-deps:
+#   # `stack hoogle` dependency.
+#   - storable-tuple-0.0.3.3@sha256:1096df92bed234a5dbd3d5b9632131c1b839787b20031c3e179e44493f5939d5
+
 ghc-options:
   # Enable all warnings so we can disable the ones we don't want.
   "$locals": -Weverything

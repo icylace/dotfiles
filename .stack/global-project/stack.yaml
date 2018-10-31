@@ -7,7 +7,7 @@
 # http://docs.haskellstack.org/en/stable/yaml_configuration/
 #
 packages: []
-resolver: nightly-2018-10-29
+resolver: nightly-2018-10-31
 
 extra-deps:
   # `stack hoogle` dependency.
