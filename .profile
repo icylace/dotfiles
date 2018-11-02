@@ -21,15 +21,9 @@ export PATH="/usr/local/sbin:$PATH"
 export PATH="$HOME/.my/iTerm2:$PATH"
 # export PATH="$HOME/.rbenv/bin:$PATH"
 
-# For Haskell Stack.
-export PATH="$HOME/.local/bin:$PATH"
-
 # For Node.js.
 export PATH="$HOME/.node/bin:$PATH"
 export PATH="./node_modules/.bin:$PATH"
-
-# Alternative to `postgres -D /usr/local/var/postgres`.
-export PGDATA="/usr/local/var/postgres"
 
 # TODO: remove this?
 # # Use the GNU Core Utilities with their normal names.
@@ -47,7 +41,3 @@ export JAVA_HOME='/Library/Java/JavaVirtualMachines/jdk1.8.0_92.jdk/Contents/Hom
 # if which pyenv > /dev/null ; then
 #   eval "$(pyenv init -)"
 # fi
-
-if [ -e "$HOME/.nix-profile/etc/profile.d/nix.sh" ] ; then
-  source "$HOME/.nix-profile/etc/profile.d/nix.sh"
-fi

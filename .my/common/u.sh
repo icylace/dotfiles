@@ -15,8 +15,7 @@ u() {
     nix-env --upgrade
   fi
   if we_have nix-collect-garbage ; then
-    nix-collect-garbage
-    # nix-collect-garbage --delete-old
+    nix-collect-garbage --delete-old
   fi
   # if we_have gem ; then
   #   gem update --system

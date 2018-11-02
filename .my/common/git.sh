@@ -11,9 +11,7 @@
 # - create alias for cherry picking
 
 # Use `hub` (https://hub.github.com/) if available.
-if type hub > /dev/null 2>&1 ; then
-  alias git='hub'
-fi
+alias git='hub'
 
 # Clones a Git repository.
 gcl() {
