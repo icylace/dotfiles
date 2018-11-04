@@ -59,6 +59,9 @@ printWithColor = putStrLn . H.hscolour (H.TTYg HO.XTerm256Compatible) myColourPr
 
 :pretty
 
+:module - Text.Show.Pretty Language.Haskell.HsColour
+:module - Language.Haskell.HsColour.Colourise Language.Haskell.HsColour.Output
+
 -- -----------------------------------------------------------------------------
 
 -- Set the prompt text and colors.
@@ -199,8 +202,6 @@ hoogleInfo = return . (++) ":! stack hoogle -- --info "
 -- :set -XPackageImports
 -- :set -XStandaloneDeriving
 
--- -- :set -package hscolour
--- -- :set -package ipprint
 -- -- :set -package hlint
 -- -- :set -package hi
 
