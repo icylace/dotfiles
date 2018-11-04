@@ -11,6 +11,8 @@
 --   4. `.ghci` settings (this file).
 
 -- -----------------------------------------------------------------------------
+--  Setup pretty-printing of `Show` instances.
+-- -----------------------------------------------------------------------------
 
 -- https://downloads.haskell.org/~ghc/latest/docs/html/users_guide/ghci.html?highlight=interactive-print#ghc-flag--interactive-print%20⟨expr⟩
 -- https://teh.id.au/posts/2017/02/13/interactive-print/
@@ -50,21 +52,22 @@ myColourPrefs = HC.defaultColourPrefs
   , HC.varop            = [HC.Foreground colorNewYorkPink]      -- Operator or inlined function.
   }
 
-printWithColor :: Show a => a -> IO ()
-printWithColor = putStrLn . H.hscolour (H.TTYg HO.XTerm256Compatible) myColourPrefs False False "" False . ppShow
+prettyPrint :: Show a => a -> IO ()
+prettyPrint = putStrLn . H.hscolour (H.TTYg HO.XTerm256Compatible) myColourPrefs False False "" False . ppShow
 :}
 
+-- Once we make use of the pretty-printing-related modules we can remove from
+-- them from the scope of the prompt without losing their effect.
+:m - Text.Show.Pretty Language.Haskell.HsColour Language.Haskell.HsColour.Colourise Language.Haskell.HsColour.Output
+
 :def no-pretty \_ -> return $ ":set -interactive-print System.IO.print"
-:def pretty \_ -> return $ ":set -interactive-print printWithColor"
+:def pretty \_ -> return $ ":set -interactive-print prettyPrint"
 
 :pretty
 
-:module - Text.Show.Pretty Language.Haskell.HsColour
-:module - Language.Haskell.HsColour.Colourise Language.Haskell.HsColour.Output
-
 -- -----------------------------------------------------------------------------
-
--- Set the prompt text and colors.
+--  Setup a custom prompt.
+-- -----------------------------------------------------------------------------
 
 :{
 colorAvocado  = "\ESC[38;2;150;150;100m"
@@ -98,6 +101,8 @@ continuationPrompt _ n = showOneOf colorAmethyst "⋮⁞┆┇┋┊" n
 :set prompt-cont-function return .: continuationPrompt
 
 -- -----------------------------------------------------------------------------
+--  Setup the ability to search Hoogle.
+-- -----------------------------------------------------------------------------
 
 hoogle = return . (++) ":! stack hoogle -- "
 hoogleInfo = return . (++) ":! stack hoogle -- --info "
@@ -109,52 +114,6 @@ hoogleInfo = return . (++) ":! stack hoogle -- --info "
 :def hoi hoogleInfo
 
 -- -----------------------------------------------------------------------------
-
--- TODO: consider these
--- https://github.com/thumphries/dotfiles/blob/b4011c8305409e3b1f8aab547895f3a22c8f7ec2/ghc/.ghc/ghci.conf
--- :set -XOverloadedStrings
--- :set -XAllowAmbiguousTypes
--- :set -fdefer-type-errors
--- :def rr \_ -> return ":set -fforce-recomp\n:reload\n:set -fno-force-recomp"
--- :def no-caret \_ -> return ":set -fno-diagnostics-show-caret"
-
--- -----------------------------------------------------------------------------
-
--- Enable all warnings so we can disable the ones we don't want.
--- https://downloads.haskell.org/~ghc/latest/docs/html/users_guide/using-warnings.html#ghc-flag--Weverything
--- :set -Weverything
--- It's commented out here to avoid "resetting" a project's stack.yaml
--- warning settings.
-
--- -- `missing-exported-signatures` turns off the stricter `-Wmissing-signatures`.
--- -- https://ghc.haskell.org/trac/ghc/ticket/14794#ticket
--- :set -Wno-missing-exported-signatures
-
--- -- Explicit imports for every function (e.g. `$`) is too strict.
--- :set -Wno-missing-import-lists
-
--- -- When GHC can't specialize a polymorphic function.  No big deal and requires
--- -- fixing underlying libraries to solve.  Though, perhaps useful when
--- -- developing a performance critical library.
--- :set -Wno-all-missed-specialisations
--- :set -Wno-missed-specialisations
-
--- -- These are only useful if using Safe Haskell.
--- :set -Wno-trustworthy-safe
--- :set -Wno-safe
--- :set -Wno-unsafe
-
--- -- Polymorphic local bindings are harmless.
--- :set -Wno-missing-local-signatures
-
--- -- The monomorphism restriction adds confusion without being that impactful.
--- :set -Wno-monomorphism-restriction
-
--- -- Having the standard Prelude library implicitly available is convenient.
--- :set -Wno-implicit-prelude
-
--- -- `-Wtype-defaults` will complain about normal expressions like `5 + 5`.
--- :set -Wno-type-defaults
 
 -- Show character ranges for errors.
 -- https://downloads.haskell.org/~ghc/latest/docs/html/users_guide/flags.html#ghc-flag--ferror-spans
@@ -180,15 +139,19 @@ hoogleInfo = return . (++) ":! stack hoogle -- --info "
 -- https://downloads.haskell.org/~ghc/latest/docs/html/users_guide/ghci.html#ghci-cmd-:set%20+t
 :set +t
 
+-- -----------------------------------------------------------------------------
+
+-- TODO: consider using these...
+
+-- https://github.com/thumphries/dotfiles/blob/b4011c8305409e3b1f8aab547895f3a22c8f7ec2/ghc/.ghc/ghci.conf
+-- :set -XAllowAmbiguousTypes
+-- :set -fdefer-type-errors
+-- :def rr \_ -> return ":set -fforce-recomp\n:reload\n:set -fno-force-recomp"
+-- :def no-caret \_ -> return ":set -fno-diagnostics-show-caret"
+
 -- -- Use the `OverloadedStrings` language extension.
 -- -- https://downloads.haskell.org/~ghc/latest/docs/html/users_guide/glasgow_exts.html#extension-OverloadedStrings
 -- :set -XOverloadedStrings
-
--- -----------------------------------------------------------------------------
-
--- -- Treat all warnings like fatal errors.
--- -- https://downloads.haskell.org/~ghc/latest/docs/html/users_guide/using-warnings.html#ghc-flag--Werror
--- :set -Werror
 
 -- -- Scoped type variables is often useful so we can specify the types
 -- -- of variables (for example, in lambda expressions).
@@ -197,9 +160,7 @@ hoogleInfo = return . (++) ":! stack hoogle -- --info "
 -- -- useful for import from specified package
 -- :set -XPackageImports
 
--- :set -XOverloadedStrings
 -- :set -XOverloadedLists
--- :set -XPackageImports
 -- :set -XStandaloneDeriving
 
 -- -- :set -package hlint

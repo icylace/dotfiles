@@ -25,45 +25,70 @@ templates:
 # https://medium.com/mercury-bank/enable-all-the-warnings-a0517bc081c3
 
 ghc-options:
-  # Enable all warnings so we can disable the ones we don't want.
-  "$locals": -Weverything
+  # -Weverything:  Enable all warnings so we can disable the ones we don't want.
+  # https://downloads.haskell.org/~ghc/latest/docs/html/users_guide/using-warnings.html#ghc-flag--Weverything
 
-  # `missing-exported-signatures` turns off the stricter `-Wmissing-signatures`.
+  # -Wno-missing-local-signatures:  Warning for polymorphic local bindings;
+  # nothing wrong with those.
+
+  # -Wno-missing-import-lists:  Explicit imports for every function (e.g. `$`)
+  # is too strict.
+
+  # -Wno-missing-exported-signatures:  `missing-exported-signatures` turns off
+  # the stricter `-Wmissing-signatures`.
   # https://ghc.haskell.org/trac/ghc/ticket/14794#ticket
-  "$locals": -Wno-missing-exported-signatures
 
-  # Explicit imports for every function (e.g. `$`) is too strict.
-  "$locals": -Wno-missing-import-lists
+  # -Wno-all-missed-specialisations, -Wno-missed-specialisations:  When GHC
+  # can't specialize a polymorphic function.  No big deal and requires
+  # fixing underlying libraries to solve.  Though, perhaps useful
+  # under certain performance optimization scenarios.
 
-  # When GHC can't specialize a polymorphic function.  No big deal and requires
-  # fixing underlying libraries to solve.  Though, perhaps useful under certain
-  # performance optimization scenarios.
-  "$locals": -Wno-all-missed-specialisations
-  "$locals": -Wno-missed-specialisations
+  # -Wno-monomorphism-restriction: The monomorphism restriction adds confusion
+  # without being that impactful.
 
-  # These are only useful if using Safe Haskell.
-  "$locals": -Wno-trustworthy-safe
-  "$locals": -Wno-safe
-  "$locals": -Wno-unsafe
+  # -Wno-implicit-prelude:  Having the standard Prelude library implicitly
+  # available is convenient.
 
-  # Warning for polymorphic local bindings; nothing wrong with those.
-  "$locals": -Wno-missing-local-signatures
+  # -Wno-type-defaults:  `-Wtype-defaults` will complain about normal
+  # expressions like `5 + 5`.
 
-  # The monomorphism restriction adds confusion without being that impactful.
-  "$locals": -Wno-monomorphism-restriction
+  # -Wno-trustworthy-safe, -Wno-safe, -Wno-unsafe:  These are only useful if
+  # using Safe Haskell.
 
-  # Having the standard Prelude library implicitly available is convenient.
-  "$locals": -Wno-implicit-prelude
+  # TODO: incorporate he following...
 
-  # `-Wtype-defaults` will complain about normal expressions like `5 + 5`.
-  "$locals": -Wno-type-defaults
+  # -- -- `missing-exported-signatures` turns off the stricter `-Wmissing-signatures`.
+  # -- -- https://ghc.haskell.org/trac/ghc/ticket/14794#ticket
+  # -- :set -Wno-missing-exported-signatures
 
-  # # Treat all warnings like fatal errors.
-  # "$locals": -Werror
+  # -- -- Explicit imports for every function (e.g. `$`) is too strict.
+  # -- :set -Wno-missing-import-lists
 
-  # "$locals": -Wno-unused-matches
-  # "$locals": -Wno-unused-top-binds
+  # -- -- When GHC can't specialize a polymorphic function.  No big deal and requires
+  # -- -- fixing underlying libraries to solve.  Though, perhaps useful when
+  # -- -- developing a performance critical library.
+  # -- :set -Wno-all-missed-specialisations
+  # -- :set -Wno-missed-specialisations
 
-  # "$locals": -Wno-missing-fields
-  # "$locals": -Wno-overflowed-literals
-  # "$locals": -Wno-overlapping-patterns
+  # -- -- These are only useful if using Safe Haskell.
+  # -- :set -Wno-trustworthy-safe
+  # -- :set -Wno-safe
+  # -- :set -Wno-unsafe
+
+  # -- -- Polymorphic local bindings are harmless.
+  # -- :set -Wno-missing-local-signatures
+
+  # -- -- The monomorphism restriction adds confusion without being that impactful.
+  # -- :set -Wno-monomorphism-restriction
+
+  # -- -- Having the standard Prelude library implicitly available is convenient.
+  # -- :set -Wno-implicit-prelude
+
+  # -- -- `-Wtype-defaults` will complain about normal expressions like `5 + 5`.
+  # -- :set -Wno-type-defaults
+
+  # -- -- Treat all warnings like fatal errors.
+  # -- -- https://downloads.haskell.org/~ghc/latest/docs/html/users_guide/using-warnings.html#ghc-flag--Werror
+  # -- :set -Werror
+
+  "$targets": -Weverything -Wno-missing-exported-signatures -Wno-missing-local-signatures -Wno-missing-import-lists -Wno-all-missed-specialisations -Wno-missed-specialisations -Wno-monomorphism-restriction -Wno-implicit-prelude -Wno-type-defaults -Wno-trustworthy-safe -Wno-safe -Wno-unsafe
