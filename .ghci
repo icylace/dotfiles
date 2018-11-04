@@ -2,37 +2,118 @@
 -- https://downloads.haskell.org/~ghc/master/users-guide/using-warnings.html
 -- https://medium.com/mercury-bank/enable-all-the-warnings-a0517bc081c3
 -- https://gist.github.com/Pitometsu/0b0d04706e671172ed3b78309b14b43d
+-- https://gist.github.com/ChShersh/9111d97578413323ba1b191299c54235
 
 -- Options apparently get processed in this order:
---   1. A project's stack.yaml.
---   2. `--ghc-options` when running`stack ghci` on the command line.
---   3. `.ghci` settings (this file).
-
--- -----------------------------------------------------------------------------
-
--- Set the prompt text and colors.
-
-:set prompt-function \modules lineNumber -> return $ "\n\ESC[38;2;150;150;100m" ++ show lineNumber ++ " \ESC[38;2;100;100;100m" ++ foldr (++) " " modules ++ "\n\ESC[38;2;255;105;180m" ++ "λ𝞴ᴧ𝚲𝛌𝛬Λ𝜆𝜦𝝀𝝠𝝺ƛ𝞚" !! mod lineNumber 14 : "  \ESC[m"
-
-:set prompt-cont-function \_ lineNumber -> return $ "\ESC[38;2;160;80;200m" ++ "⋮⁞┆┇┋┊" !! mod lineNumber 6 : "  \ESC[m"
+--   1. A config.yaml.
+--   2. A project's stack.yaml.
+--   3. `--ghc-options` when running`stack ghci` on the command line.
+--   4. `.ghci` settings (this file).
 
 -- -----------------------------------------------------------------------------
 
 -- https://downloads.haskell.org/~ghc/latest/docs/html/users_guide/ghci.html?highlight=interactive-print#ghc-flag--interactive-print%20⟨expr⟩
 -- https://teh.id.au/posts/2017/02/13/interactive-print/
+-- https://github.com/thumphries/dotfiles/blob/b4011c8305409e3b1f8aab547895f3a22c8f7ec2/ghc/.ghc/ghci.conf
 
--- :def pretty \_ -> return $ "import Text.Show.Pretty (pPrint, ppShow)\n:set -interactive-print pPrint"
--- :def no-pretty \_ -> return $ ":set -interactive-print System.IO.print"
+import           Text.Show.Pretty (ppShow)
+import qualified Language.Haskell.HsColour           as H
+import qualified Language.Haskell.HsColour.Colourise as HC
+import qualified Language.Haskell.HsColour.Output    as HO
 
--- :pretty
+:{
+colorAnakiwa        = HC.Rgb 163 255 235
+colorHavelockBlue   = HC.Rgb 71 150 215
+colorMariner        = HC.Rgb 39 115 178
+colorMariner2       = HC.Rgb 44 130 201
+colorMulledWine     = HC.Rgb 70 70 104
+colorNewYorkPink    = HC.Rgb 214 126 130
+colorWildStrawberry = HC.Rgb 255 56 165
+colorViking         = HC.Rgb 86 216 188
+
+-- http://hackage.haskell.org/package/hscolour-1.24.4/docs/src/Language-Haskell-HsColour-Classify.html
+myColourPrefs = HC.defaultColourPrefs
+  { HC.char             = [HC.Foreground colorAnakiwa]          -- Character.
+  , HC.comment          = [HC.Foreground colorMulledWine]       -- Comment.
+  , HC.conid            = [HC.Foreground colorHavelockBlue]     -- Constructor.
+  , HC.conop            = [HC.Foreground colorHavelockBlue]     -- Cons operator.
+  , HC.cpp              = [HC.Foreground colorHavelockBlue]     -- Leading hash tag.
+  , HC.definition       = [HC.Foreground HC.White]              -- ???
+  , HC.keyglyph         = [HC.Foreground colorMariner]          -- Built-in symbol.
+  , HC.keyword          = [HC.Foreground colorMariner]          -- Built-in keyword.
+  , HC.layout           = [HC.Foreground colorMariner2]         -- Grouping character.
+  , HC.number           = [HC.Foreground colorWildStrawberry]   -- Number.
+  , HC.selection        = [HC.Foreground HC.White]              -- ???
+  , HC.string           = [HC.Foreground colorViking]           -- String.
+  , HC.variantselection = [HC.Foreground HC.White]              -- ???
+  , HC.varid            = [HC.Foreground colorNewYorkPink]      -- Variable or function.
+  , HC.varop            = [HC.Foreground colorNewYorkPink]      -- Operator or inlined function.
+  }
+
+printWithColor :: Show a => a -> IO ()
+printWithColor = putStrLn . H.hscolour (H.TTYg HO.XTerm256Compatible) myColourPrefs False False "" False . ppShow
+:}
+
+:def no-pretty \_ -> return $ ":set -interactive-print System.IO.print"
+:def pretty \_ -> return $ ":set -interactive-print printWithColor"
+
+:pretty
 
 -- -----------------------------------------------------------------------------
 
-:def hoogle return . (++) ":! stack hoogle -- "
-:def hoogle-info return . (++) ":! stack hoogle -- --info "
+-- Set the prompt text and colors.
 
-:def ho return . (++) ":hoogle "
-:def hoi return . (++) ":hoogle-info "
+:{
+colorAvocado  = "\ESC[38;2;150;150;100m"
+colorDoveGray = "\ESC[38;2;100;100;100m"
+colorHotPink  = "\ESC[38;2;255;105;180m"
+colorAmethyst = "\ESC[38;2;160;80;200m"
+reset         = "\ESC[m"
+
+showThe :: Show a => String -> a -> String
+showThe color x = color ++ show x ++ reset
+
+showThem :: String -> [String] -> String
+showThem color xs = color ++ foldr1 ((++) . (++ " ")) xs ++ reset
+
+showOneOf :: String -> String -> Int -> String
+showOneOf color xs n = color ++ [xs !! mod n (length xs)] ++ "  " ++ reset
+
+prompt :: [String] -> Int -> String
+prompt xs n = "\n"
+  ++ showThe colorAvocado n ++ " " ++ showThem colorDoveGray xs ++ "\n"
+  ++ showOneOf colorHotPink "λ𝞴ᴧ𝚲𝛌𝛬Λ𝜆𝜦𝝀𝝠𝝺ƛ𝞚" n
+
+continuationPrompt :: [String] -> Int -> String
+continuationPrompt _ n = showOneOf colorAmethyst "⋮⁞┆┇┋┊" n
+
+(.:) :: (a -> b) -> (c -> d -> a) -> c -> d -> b
+(.:) = (.) . (.)
+:}
+
+:set prompt-function return .: prompt
+:set prompt-cont-function return .: continuationPrompt
+
+-- -----------------------------------------------------------------------------
+
+hoogle = return . (++) ":! stack hoogle -- "
+hoogleInfo = return . (++) ":! stack hoogle -- --info "
+
+:def hoogle hoogle
+:def hoogle-info hoogleInfo
+
+:def ho hoogle
+:def hoi hoogleInfo
+
+-- -----------------------------------------------------------------------------
+
+-- TODO: consider these
+-- https://github.com/thumphries/dotfiles/blob/b4011c8305409e3b1f8aab547895f3a22c8f7ec2/ghc/.ghc/ghci.conf
+-- :set -XOverloadedStrings
+-- :set -XAllowAmbiguousTypes
+-- :set -fdefer-type-errors
+-- :def rr \_ -> return ":set -fforce-recomp\n:reload\n:set -fno-force-recomp"
+-- :def no-caret \_ -> return ":set -fno-diagnostics-show-caret"
 
 -- -----------------------------------------------------------------------------
 
@@ -117,10 +198,6 @@
 -- :set -XOverloadedLists
 -- :set -XPackageImports
 -- :set -XStandaloneDeriving
-
--- :set -package pretty-show
-
--- :m +Text.Show.Pretty
 
 -- -- :set -package hscolour
 -- -- :set -package ipprint

@@ -7,7 +7,7 @@
 # you intend to use 'stack new'.
 # See https://docs.haskellstack.org/en/stable/yaml_configuration/#templates
 templates:
-  params:
+  ? params
 #    author-name:
 #    author-email:
 #    copyright:
@@ -60,3 +60,10 @@ ghc-options:
 
   # # Treat all warnings like fatal errors.
   # "$locals": -Werror
+
+  # "$locals": -Wno-unused-matches
+  # "$locals": -Wno-unused-top-binds
+
+  # "$locals": -Wno-missing-fields
+  # "$locals": -Wno-overflowed-literals
+  # "$locals": -Wno-overlapping-patterns
