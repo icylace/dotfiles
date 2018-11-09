@@ -60,8 +60,8 @@ prettyPrint = putStrLn . H.hscolour (H.TTYg HO.XTerm256Compatible) myColourPrefs
 -- them from the scope of the prompt without losing their effect.
 :m - Text.Show.Pretty Language.Haskell.HsColour Language.Haskell.HsColour.Colourise Language.Haskell.HsColour.Output
 
-:def no-pretty \_ -> return $ ":set -interactive-print System.IO.print"
-:def pretty \_ -> return $ ":set -interactive-print prettyPrint"
+:def pretty \_ -> return ":set -interactive-print prettyPrint"
+:def no-pretty \_ -> return ":set -interactive-print System.IO.print"
 
 :pretty
 
@@ -70,6 +70,9 @@ prettyPrint = putStrLn . H.hscolour (H.TTYg HO.XTerm256Compatible) myColourPrefs
 -- -----------------------------------------------------------------------------
 
 :{
+(.:) :: (a -> b) -> (c -> d -> a) -> c -> d -> b
+(.:) = (.) . (.)
+
 colorAvocado  = "\ESC[38;2;150;150;100m"
 colorDoveGray = "\ESC[38;2;100;100;100m"
 colorHotPink  = "\ESC[38;2;255;105;180m"
@@ -92,9 +95,6 @@ prompt xs n = "\n"
 
 continuationPrompt :: [String] -> Int -> String
 continuationPrompt _ n = showOneOf colorAmethyst "⋮⁞┆┇┋┊" n
-
-(.:) :: (a -> b) -> (c -> d -> a) -> c -> d -> b
-(.:) = (.) . (.)
 :}
 
 :set prompt-function return .: prompt
@@ -112,6 +112,23 @@ hoogleInfo = return . (++) ":! stack hoogle -- --info "
 
 :def ho hoogle
 :def hoi hoogleInfo
+
+-- -----------------------------------------------------------------------------
+
+-- `-fforce-recomp`: Ensures everything gets recomplied.
+-- https://downloads.haskell.org/~ghc/latest/docs/html/users_guide/separate_compilation.html?highlight=force-recomp#ghc-flag--fforce-recomp
+
+-- `:reload`: Reloads the current set of modules.
+-- https://downloads.haskell.org/~ghc/latest/docs/html/users_guide/ghci.html?highlight=reload#ghci-cmd-:reload
+
+:def rr \_ -> return ":set -fforce-recomp\n:reload\n:set -fno-force-recomp"
+
+-- -----------------------------------------------------------------------------
+
+-- `-fdiagnostics-show-caret`: Shows the line of code of a detected error.
+-- https://downloads.haskell.org/~ghc/latest/docs/html/users_guide/using.html?highlight=diagnostics-show-caret#ghc-flag--fdiagnostics-show-caret
+:def caret \_ -> return ":set -fdiagnostics-show-caret"
+:def no-caret \_ -> return ":set -fno-diagnostics-show-caret"
 
 -- -----------------------------------------------------------------------------
 
@@ -138,37 +155,3 @@ hoogleInfo = return . (++) ":! stack hoogle -- --info "
 -- Show types of evaluated expressions.
 -- https://downloads.haskell.org/~ghc/latest/docs/html/users_guide/ghci.html#ghci-cmd-:set%20+t
 :set +t
-
--- -----------------------------------------------------------------------------
-
--- TODO: consider using these...
-
--- https://github.com/thumphries/dotfiles/blob/b4011c8305409e3b1f8aab547895f3a22c8f7ec2/ghc/.ghc/ghci.conf
--- :set -XAllowAmbiguousTypes
--- :set -fdefer-type-errors
--- :def rr \_ -> return ":set -fforce-recomp\n:reload\n:set -fno-force-recomp"
--- :def no-caret \_ -> return ":set -fno-diagnostics-show-caret"
-
--- -- Use the `OverloadedStrings` language extension.
--- -- https://downloads.haskell.org/~ghc/latest/docs/html/users_guide/glasgow_exts.html#extension-OverloadedStrings
--- :set -XOverloadedStrings
-
--- -- Scoped type variables is often useful so we can specify the types
--- -- of variables (for example, in lambda expressions).
--- :set -XScopedTypeVariables
-
--- -- useful for import from specified package
--- :set -XPackageImports
-
--- :set -XOverloadedLists
--- :set -XStandaloneDeriving
-
--- -- :set -package hlint
--- -- :set -package hi
-
--- -- :set -package haskell-docs
-
--- -- update tags
--- :def tags \_ -> return ":! haskdogs -- --ignore-close-implementation --etags"
-
--- :def doc \input -> return $ ":! haskell-docs " ++ input
