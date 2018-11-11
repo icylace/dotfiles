@@ -18,6 +18,24 @@
 -- https://teh.id.au/posts/2017/02/13/interactive-print/
 -- https://github.com/thumphries/dotfiles/blob/b4011c8305409e3b1f8aab547895f3a22c8f7ec2/ghc/.ghc/ghci.conf
 
+-- -----------------------------------------------------------------------------
+
+-- Expose some packages so we can use them here without requiring them be listed
+-- as dependencies in the "package.yaml" file for every project.
+
+-- hscolour
+-- hscolour is a small Haskell script to colourise Haskell code.
+-- http://hackage.haskell.org/package/hscolour
+:set -package hscolour
+
+-- pretty-show
+-- Tools for working with derived `Show` instances and generic
+-- inspection of values.
+-- http://hackage.haskell.org/package/pretty-show
+:set -package pretty-show
+
+-- -----------------------------------------------------------------------------
+
 import           Text.Show.Pretty (ppShow)
 import qualified Language.Haskell.HsColour           as H
 import qualified Language.Haskell.HsColour.Colourise as HC
@@ -34,7 +52,7 @@ colorWildStrawberry = HC.Rgb 255 56 165
 colorViking         = HC.Rgb 86 216 188
 
 -- http://hackage.haskell.org/package/hscolour-1.24.4/docs/src/Language-Haskell-HsColour-Classify.html
-myColourPrefs = HC.defaultColourPrefs
+palette = HC.defaultColourPrefs
   { HC.char             = [HC.Foreground colorAnakiwa]          -- Character.
   , HC.comment          = [HC.Foreground colorMulledWine]       -- Comment.
   , HC.conid            = [HC.Foreground colorHavelockBlue]     -- Constructor.
@@ -53,12 +71,13 @@ myColourPrefs = HC.defaultColourPrefs
   }
 
 prettyPrint :: Show a => a -> IO ()
-prettyPrint = putStrLn . H.hscolour (H.TTYg HO.XTerm256Compatible) myColourPrefs False False "" False . ppShow
+prettyPrint = putStrLn . H.hscolour (H.TTYg HO.XTerm256Compatible) palette False False "" False . ppShow
 :}
 
 -- Once we make use of the pretty-printing-related modules we can remove from
 -- them from the scope of the prompt without losing their effect.
-:m - Text.Show.Pretty Language.Haskell.HsColour Language.Haskell.HsColour.Colourise Language.Haskell.HsColour.Output
+:m - Text.Show.Pretty Language.Haskell.HsColour
+:m - Language.Haskell.HsColour.Colourise Language.Haskell.HsColour.Output
 
 :def pretty \_ -> return ":set -interactive-print prettyPrint"
 :def no-pretty \_ -> return ":set -interactive-print System.IO.print"

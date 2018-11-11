@@ -7,16 +7,13 @@
 # you intend to use 'stack new'.
 # See https://docs.haskellstack.org/en/stable/yaml_configuration/#templates
 templates:
-  ? params
+  params:
 #    author-name:
 #    author-email:
 #    copyright:
 #    github-username:
 
-# # Ignore version bounds.
-# # https://docs.haskellstack.org/en/stable/yaml_configuration/#allow-newer
-# allow-newer: true
-
+# TODO: will this work?
 # # Set colors.
 # # https://docs.haskellstack.org/en/stable/yaml_configuration/#stack-colors
 # stack-colors: error=31:good=32:shell=35:dir=34:recommendation=32:target=95:module=35:package-component=95
@@ -25,70 +22,49 @@ templates:
 # https://medium.com/mercury-bank/enable-all-the-warnings-a0517bc081c3
 
 ghc-options:
-  # -Weverything:  Enable all warnings so we can disable the ones we don't want.
+  # `-Weverything`:  Enable all warnings so we can disable the ones we don't want.
   # https://downloads.haskell.org/~ghc/latest/docs/html/users_guide/using-warnings.html#ghc-flag--Weverything
 
-  # -Wno-missing-local-signatures:  Warning for polymorphic local bindings;
-  # nothing wrong with those.
+  # `-Wno-missing-local-signatures`:  Polymorphic local bindings are harmless.
+  # https://downloads.haskell.org/~ghc/latest/docs/html/users_guide/using-warnings.html#ghc-flag--Wmissing-local-signatures
 
-  # -Wno-missing-import-lists:  Explicit imports for every function (e.g. `$`)
+  # `-Wno-missing-import-lists`:  Explicit imports for every function (e.g. `$`)
   # is too strict.
+  # https://downloads.haskell.org/~ghc/latest/docs/html/users_guide/using-warnings.html#ghc-flag--Wmissing-import-lists
 
-  # -Wno-missing-exported-signatures:  `missing-exported-signatures` turns off
+  # `-Wno-missing-exported-signatures`:  `missing-exported-signatures` turns off
   # the stricter `-Wmissing-signatures`.
   # https://ghc.haskell.org/trac/ghc/ticket/14794#ticket
+  # https://downloads.haskell.org/~ghc/latest/docs/html/users_guide/using-warnings.html#ghc-flag--Wmissing-exported-signatures
 
-  # -Wno-all-missed-specialisations, -Wno-missed-specialisations:  When GHC
-  # can't specialize a polymorphic function.  No big deal and requires
-  # fixing underlying libraries to solve.  Though, perhaps useful
-  # under certain performance optimization scenarios.
+  # `-Wno-all-missed-specialisations`, `-Wno-missed-specialisations`:  When GHC
+  # can't specialize a polymorphic function.  No big deal and requires fixing
+  # underlying libraries to solve.  Though, perhaps useful under certain
+  # performance optimization scenarios.
+  # https://downloads.haskell.org/~ghc/latest/docs/html/users_guide/using-warnings.html#ghc-flag--Wall-missed-specialisations
+  # https://downloads.haskell.org/~ghc/latest/docs/html/users_guide/using-warnings.html#ghc-flag--Wmissed-specialisations
 
-  # -Wno-monomorphism-restriction: The monomorphism restriction adds confusion
+  # `-Wno-monomorphism-restriction`: The monomorphism restriction adds confusion
   # without being that impactful.
+  # https://downloads.haskell.org/~ghc/latest/docs/html/users_guide/using-warnings.html#ghc-flag--Wmonomorphism-restriction
 
-  # -Wno-implicit-prelude:  Having the standard Prelude library implicitly
+  # `-Wno-implicit-prelude`:  Having the standard Prelude library implicitly
   # available is convenient.
+  # https://downloads.haskell.org/~ghc/latest/docs/html/users_guide/using-warnings.html#ghc-flag--Wimplicit-prelude
 
-  # -Wno-type-defaults:  `-Wtype-defaults` will complain about normal
+  # `-Wno-type-defaults`:  `-Wtype-defaults` will complain about normal
   # expressions like `5 + 5`.
+  # https://downloads.haskell.org/~ghc/latest/docs/html/users_guide/using-warnings.html#ghc-flag--Wtype-defaults
 
-  # -Wno-trustworthy-safe, -Wno-safe, -Wno-unsafe:  These are only useful if
-  # using Safe Haskell.
+  # `-Wno-trustworthy-safe`, `-Wno-safe`, `-Wno-unsafe`:  These are only useful
+  # if using Safe Haskell.
+  # https://wiki.haskell.org/Safe_Haskell
+  # https://downloads.haskell.org/~ghc/latest/docs/html/users_guide/safe_haskell.html
+  # https://downloads.haskell.org/~ghc/latest/docs/html/users_guide/safe_haskell.html?highlight=trustworthy-safe#ghc-flag--Wtrustworthy-safe
+  # https://downloads.haskell.org/~ghc/latest/docs/html/users_guide/safe_haskell.html?highlight=trustworthy-safe#ghc-flag--Wsafe
+  # https://downloads.haskell.org/~ghc/latest/docs/html/users_guide/safe_haskell.html?highlight=trustworthy-safe#ghc-flag--Wunsafe
 
-  # TODO: incorporate he following...
+  #  `-Werror`: Treat all warnings like fatal errors.
+  #  https://downloads.haskell.org/~ghc/latest/docs/html/users_guide/using-warnings.html#ghc-flag--Werror
 
-  # -- -- `missing-exported-signatures` turns off the stricter `-Wmissing-signatures`.
-  # -- -- https://ghc.haskell.org/trac/ghc/ticket/14794#ticket
-  # -- :set -Wno-missing-exported-signatures
-
-  # -- -- Explicit imports for every function (e.g. `$`) is too strict.
-  # -- :set -Wno-missing-import-lists
-
-  # -- -- When GHC can't specialize a polymorphic function.  No big deal and requires
-  # -- -- fixing underlying libraries to solve.  Though, perhaps useful when
-  # -- -- developing a performance critical library.
-  # -- :set -Wno-all-missed-specialisations
-  # -- :set -Wno-missed-specialisations
-
-  # -- -- These are only useful if using Safe Haskell.
-  # -- :set -Wno-trustworthy-safe
-  # -- :set -Wno-safe
-  # -- :set -Wno-unsafe
-
-  # -- -- Polymorphic local bindings are harmless.
-  # -- :set -Wno-missing-local-signatures
-
-  # -- -- The monomorphism restriction adds confusion without being that impactful.
-  # -- :set -Wno-monomorphism-restriction
-
-  # -- -- Having the standard Prelude library implicitly available is convenient.
-  # -- :set -Wno-implicit-prelude
-
-  # -- -- `-Wtype-defaults` will complain about normal expressions like `5 + 5`.
-  # -- :set -Wno-type-defaults
-
-  # -- -- Treat all warnings like fatal errors.
-  # -- -- https://downloads.haskell.org/~ghc/latest/docs/html/users_guide/using-warnings.html#ghc-flag--Werror
-  # -- :set -Werror
-
-  "$targets": -Weverything -Wno-missing-exported-signatures -Wno-missing-local-signatures -Wno-missing-import-lists -Wno-all-missed-specialisations -Wno-missed-specialisations -Wno-monomorphism-restriction -Wno-implicit-prelude -Wno-type-defaults -Wno-trustworthy-safe -Wno-safe -Wno-unsafe
+  "$targets": -Weverything -Wno-missing-exported-signatures -Wno-missing-local-signatures -Wno-missing-import-lists -Wno-all-missed-specialisations -Wno-missed-specialisations -Wno-monomorphism-restriction -Wno-implicit-prelude -Wno-type-defaults -Wno-trustworthy-safe -Wno-safe -Wno-unsafe -Werror
