@@ -26,6 +26,7 @@
 #     The following are used if they are installed:
 #       - `bat`: https://github.com/sharkdp/bat
 #       - `catimg`: https://github.com/posva/catimg
+#       - `exa`: https://the.exa.website/
 #       - `highlight`: http://andre-simon.de/doku/highlight/en/highlight.php
 #       - `k`: https://github.com/rimraf/k
 #       - `z`: https://github.com/rupa/z
@@ -100,6 +101,8 @@ c() {
         elif type catimg > /dev/null 2>&1 ; then
           catimg -l 0 "$@"
         fi
+      # http://zsh.sourceforge.net/Doc/Release/Zsh-Modules.html#index-commands
+      # https://www.topbug.net/blog/2016/10/11/speed-test-check-the-existence-of-a-command-in-bash-and-zsh/
       elif (( ${+commands[bat]} )) ; then
         bat "$@"
       elif (( ${+commands[highlight]} )) ; then
@@ -144,7 +147,16 @@ c() {
   fi
 
   # Show the contents of the current directory.
-  if type k > /dev/null 2>&1 ; then
+
+  # https://stackoverflow.com/a/3931779
+  if (( ${+commands[exa]} )) ; then
+    local l='exa --all --bytes --classify --color-scale --git --grid --group-directories-first --header --level=1 --long --modified --sort=name'
+    if [ -n "$directory" ] ; then
+      l "$directory"
+    else
+      l
+    fi
+  elif type k > /dev/null 2>&1 ; then
     k --almost-all --human "$directory"
   elif [ -n "$directory" ] ; then
     ls -AGlp "$directory"
