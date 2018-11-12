@@ -47,6 +47,13 @@ alias dwdiff='dwdiff --aggregate-changes --algorithm=best --color --line-numbers
 
 # ------------------------------------------------------------------------------
 
+# k
+# Directory listings for zsh with git features.
+# https://github.com/supercrabtree/k
+alias kk='k --almost-all --human'
+
+# ------------------------------------------------------------------------------
+
 # ranger
 # https://ranger.github.io/
 alias rr='ranger --choosefiles=/tmp/ranger-files'
