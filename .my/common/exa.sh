@@ -26,19 +26,6 @@ setup_exa_colors() {
   local gu='gu=38;5;240'
   local ownersAndGroups="$uu:$gu"
 
-  # local ur='ur=38;5;99'
-  # local uw='uw=38;5;100'
-  # local ux='ux=38;5;101'
-  # local ue='ue=38;5;102'
-  # local gr='gr=38;5;103'
-  # local gw='gw=38;5;104'
-  # local gx='gx=38;5;105'
-  # local tr='tr=38;5;106'
-  # local tw='tw=38;5;107'
-  # local tx='tx=38;5;108'
-  # local su='su=38;5;109'
-  # local sf='sf=38;5;110'
-  # local xa='xa=38;5;111'
   local ur='ur=38;5;95'
   local uw='uw=38;5;95'
   local ux='ux=38;5;95'
@@ -51,9 +38,7 @@ setup_exa_colors() {
   local tx='tx=38;5;95'
   local su='su=38;5;95'
   local sf='sf=38;5;95'
-  # local xa='xa=38;5;108'
   local xa='xa=38;5;23'
-  # local xa='xa=38;5;30'
   local permissions="$ur:$uw:$ux:$ue:$gr:$gw:$gx:$tr:$tw:$tx:$su:$sf:$xa"
 
   export EXA_COLORS="$fileClasses:$detailsAndMetadata:$ownersAndGroups:$permissions"
