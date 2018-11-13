@@ -27,5 +27,5 @@ u() {
   # if we_have pip ; then
   #   pip install --upgrade pip setuptools
   # fi
-  brew update && brew upgrade && brew cleanup && brew cask cleanup
+  brew update && brew upgrade && brew cleanup
 }

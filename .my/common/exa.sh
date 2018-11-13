@@ -6,11 +6,8 @@
 #  https://the.exa.website/
 # ------------------------------------------------------------------------------
 
-alias l0='exa --all --bytes --classify --color-scale --git --group-directories-first --header --level=1 --long --modified --sort=name'
-alias l='l0 --grid'
-alias l1='l0 --level=2'
-alias ll='l0 --accessed --blocks --created --extended --group --inode --links --tree'
-alias ll1='ll --level=2'
+# https://the.exa.website/docs/environment-variables
+export EXA_GRID_ROWS=20
 
 # https://the.exa.website/docs/colour-themes
 setup_exa_colors() {
@@ -49,3 +46,9 @@ setup_exa_colors
 # TODO: include installation steps in mac setup script...
 # https://github.com/trapd00r/LS_COLORS
 eval $(gdircolors --bourne-shell "$HOME/.my/LS_COLORS")
+
+alias l0='exa --all --bytes --classify --color-scale --git --group-directories-first --header --level=1 --long --modified --sort=name'
+alias l='l0 --grid'
+alias l1='l0 --level=2'
+alias ll='l0 --accessed --blocks --created --extended --group --inode --links --tree'
+alias ll1='ll --level=2'

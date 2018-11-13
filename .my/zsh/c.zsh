@@ -172,13 +172,11 @@ C() {
 }
 
 alias c.='c ..'
-alias c..='c ..'
 alias c.2='c ...'
 alias c.3='c ....'
 alias c.4='c .....'
 alias c.5='c ......'
-alias c/='c /'
 alias c~='c ~'
 alias c-='c -'
-alias c.d='c ~/Downloads'
-alias cs='c ~/Sites'
+alias c.d="c $HOME/Downloads"
+alias cs="c $HOME/Sites"
