@@ -6,7 +6,7 @@ elif [ -f /usr/share/zplug/init.zsh ] ; then
   source /usr/share/zplug/init.zsh
 else
   echo '`zplug` is not installed.'
-  return
+  return 1
 fi
 
 zplug 'lib/completion', from:oh-my-zsh

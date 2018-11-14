@@ -24,8 +24,6 @@ alias hexdump='grc --colour=auto hexdump'
 # Set defaults for the `less` command.
 export LESS='--chop-long-lines --LONG-PROMPT --RAW-CONTROL-CHARS --shift .2 --status-column'
 
-# Colorize manual pages.
-# http://www.matrix44.net/blog/?p=870
 export LESS_TERMCAP_mb=$'\e[1;35m'        # begin blinking
 export LESS_TERMCAP_md=$'\e[1;35m'        # begin bold
 export LESS_TERMCAP_me=$'\e[0m'           # end mode
@@ -70,7 +68,7 @@ if [ -f "$HOME/.iterm2_shell_integration.zsh" ] ; then
   source "$HOME/.iterm2_shell_integration.zsh"
 fi
 
-# Extra stuff that's too sensitive to be committed to a public repository.
+# Extra stuff that doesn't makes sense to include in a public repository.
 if [ -f "$HOME/.not-public/extra.sh" ] ; then
   source "$HOME/.not-public/extra.sh"
 fi
