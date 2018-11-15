@@ -1,7 +1,6 @@
 #!/usr/bin/env bash
 
 export PATH="$HOME/.local/bin:$PATH"
-export PATH="./.stack-work/install/x86_64-osx/lts-12.14/8.4.3/bin:$PATH"
 
 # ------------------------------------------------------------------------------
 

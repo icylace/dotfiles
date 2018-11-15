@@ -3,8 +3,8 @@
 # Check if a potential a name for a new alias/function is taken already.
 # TODO: Possible to make it less overkill?
 name() {
-  local error='\033[1;31m'
-  local reset='\033[0m'
+  local error='\e[1;31m'
+  local reset='\e[0m'
 
   type $1 > /dev/null 2>&1
   if [ $? -eq 0 ] ; then

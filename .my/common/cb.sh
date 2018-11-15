@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 
 #
-# Pipes in/out of the OS X clipboard.
+# Pipes in/out of the macOS clipboard.
 #
 # Usage: <command> | cb     # Copy stdin.
 #        cb <file>          # Copy a file's contents.
@@ -14,13 +14,19 @@
 #
 cb() {
   if [ -p /dev/stdin ] ; then
+    # Copy from stdin.
     pbcopy
-  else
-    local file="$1"
-    if [ -n "$file" ] ; then
-      cat "$file" | pbcopy
-    else
-      pbpaste
-    fi
+  fi
+
+  if [ -z "$1" ] ; then
+    # Paste to stdout.
+    pbpaste
+    return
+  fi
+
+  if [ -f "$1" ] ; then
+    # Copy a file's contents.
+    pbcopy < "$1"
+    return
   fi
 }
