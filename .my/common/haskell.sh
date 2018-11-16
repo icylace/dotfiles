@@ -23,6 +23,7 @@ eval "$(stack --bash-completion-script stack)"
 #  `-Weverything`:  Utilize every warning.
 # https://downloads.haskell.org/~ghc/latest/docs/html/users_guide/using-warnings.html#ghc-flag--Weverything
 
+alias hb='stack build --ghc-options=-Werror'
 alias hc='stack ghc -- -Werror -outputdir=output'
 alias hct='stack ghc -- -Werror -fno-code'
 alias hi='stack ghci'
