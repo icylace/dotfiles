@@ -29,4 +29,7 @@ cb() {
     pbcopy < "$1"
     return
   fi
+
+  echo "\e[0;31mERROR: $1 is not a file and there's nothing piped in from stdin.\e[0m"
+  return 1
 }
