@@ -16,6 +16,7 @@ cb() {
   if [ -p /dev/stdin ] ; then
     # Copy from stdin.
     pbcopy
+    return
   fi
 
   if [ -z "$1" ] ; then

@@ -8,8 +8,8 @@ setup_node() {
       export NVM_DIR="$HOME/.nvm"
       source "$nvm_file"
 
-      # Recommended by Node Version Manager.
-      nvm use --delete-prefix v9.9.0 --silent
+      # # Recommended by Node Version Manager.
+      # nvm use --delete-prefix v9.9.0 --silent
     fi
   fi
 }
