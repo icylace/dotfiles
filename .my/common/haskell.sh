@@ -14,10 +14,20 @@ eval "$(stack --bash-completion-script stack)"
 
 # ------------------------------------------------------------------------------
 
-alias hc='stack ghc'
+# `-fno-code`:  Don't generate code.  Useful for type checking.
+# https://downloads.haskell.org/~ghc/latest/docs/html/users_guide/phases.html#ghc-flag--fno-code
+
+#  `-Werror`:  Treat all warnings like fatal errors.
+#  https://downloads.haskell.org/~ghc/latest/docs/html/users_guide/using-warnings.html#ghc-flag--Werror
+
+#  `-Weverything`:  Utilize every warning.
+# https://downloads.haskell.org/~ghc/latest/docs/html/users_guide/using-warnings.html#ghc-flag--Weverything
+
+alias hc='stack ghc -- -Werror -outputdir=output'
+alias hct='stack ghc -- -Werror -fno-code'
 alias hi='stack ghci'
 alias hie='stack ghci --ghc-options=-Weverything'
-alias hrun='stack runghc'
+alias hrun='stack runghc -- -Werror'
 
 # Update to the latest LTS Haskell snapshot.
 # https://docs.haskellstack.org/en/stable/faq/#what-version-of-ghc-is-used-when-i-run-something-like-stack-ghci

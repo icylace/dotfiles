@@ -64,7 +64,4 @@ ghc-options:
   # https://downloads.haskell.org/~ghc/latest/docs/html/users_guide/safe_haskell.html?highlight=trustworthy-safe#ghc-flag--Wsafe
   # https://downloads.haskell.org/~ghc/latest/docs/html/users_guide/safe_haskell.html?highlight=trustworthy-safe#ghc-flag--Wunsafe
 
-  #  `-Werror`: Treat all warnings like fatal errors.
-  #  https://downloads.haskell.org/~ghc/latest/docs/html/users_guide/using-warnings.html#ghc-flag--Werror
-
-  "$targets": -Weverything -Wno-missing-exported-signatures -Wno-missing-local-signatures -Wno-missing-import-lists -Wno-all-missed-specialisations -Wno-missed-specialisations -Wno-monomorphism-restriction -Wno-implicit-prelude -Wno-type-defaults -Wno-trustworthy-safe -Wno-safe -Wno-unsafe -Werror
+  "$targets": -Weverything -Wno-missing-exported-signatures -Wno-missing-local-signatures -Wno-missing-import-lists -Wno-all-missed-specialisations -Wno-missed-specialisations -Wno-monomorphism-restriction -Wno-implicit-prelude -Wno-type-defaults -Wno-trustworthy-safe -Wno-safe -Wno-unsafe
