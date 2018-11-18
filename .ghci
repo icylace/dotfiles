@@ -28,14 +28,22 @@
 -- http://hackage.haskell.org/package/hscolour
 :set -package hscolour
 
+-- prettyprinter
+-- A modern, extensible and well-documented prettyprinter.
+-- https://github.com/quchen/prettyprinter
+-- http://hackage.haskell.org/package/prettyprinter
+:set -package prettyprinter
+
 -- pretty-show
 -- Tools for working with derived `Show` instances and generic
 -- inspection of values.
+-- https://github.com/yav/pretty-show
 -- http://hackage.haskell.org/package/pretty-show
 :set -package pretty-show
 
 -- -----------------------------------------------------------------------------
 
+-- import           Data.Text.Prettyprint.Doc
 import           Text.Show.Pretty (ppShow)
 import qualified Language.Haskell.HsColour           as H
 import qualified Language.Haskell.HsColour.Colourise as HC

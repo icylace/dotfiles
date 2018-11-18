@@ -29,6 +29,7 @@ alias hct='stack ghc -- -Werror -fno-code'
 alias hi='stack ghci'
 alias hie='stack ghci --ghc-options=-Weverything'
 alias hrun='stack runghc -- -Werror'
+alias hx='stack exec'
 
 # Update to the latest LTS Haskell snapshot.
 # https://docs.haskellstack.org/en/stable/faq/#what-version-of-ghc-is-used-when-i-run-something-like-stack-ghci
