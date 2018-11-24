@@ -2,7 +2,7 @@
 
 # sift
 # https://sift-tool.org/
-alias s='sift --binary-skip --git --exclude-ext=dmg,pdf --exclude-dirs=.stack-work'
+alias s='sift --binary-skip --git --exclude-ext=dmg,pdf,lock --exclude-dirs=.stack-work'
 alias sn='s --exclude-dirs=node_modules --exclude-dirs=.npm'
 # TODO:
 # - useful?

@@ -42,6 +42,7 @@ alias nr='nix-store --verify --repair --check-contents'
 # Search for packages.
 alias ns='nix-env --query --available --description --status --attr-path'
 
+# TODO: find out if the `-e` option is undocumented and/or superceded by another option
 # Uninstall packages.
 alias nun='nix-env -e'
 

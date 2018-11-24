@@ -4,6 +4,7 @@
 #
 # Parameters:
 # $1 = Code for project type.
+# $2 = Name for project directory.
 #
 gimme() {
   local error='\e[1;31m'
