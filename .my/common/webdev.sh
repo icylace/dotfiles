@@ -1,45 +1,6 @@
 #!/usr/bin/env bash
 
-# Sets up a new web project.
-#
-# Parameters:
-# $1 = Code for project type.
-# $2 = Name for project directory.
-#
-gimme() {
-  local error='\e[1;31m'
-  local reset='\e[0m'
-
-  case "$1" in
-    purs) ;;
-    ts) ;;
-    *)
-      echo "${error}You need to use a proper project code!${reset}"
-      return 1
-      ;;
-  esac
-
-  if [[ -z "$2" ]] ; then
-    echo "${error}You need to name your new project!${reset}"
-    return 1
-  fi
-
-  local scaffoldFile="$HOME/My/Code/webdev-scaffolding/scaffold/$1.sh"
-  if [[ -f "$scaffoldFile" ]] ; then
-    "$scaffoldFile" "$2"
-  fi
-
-  if [[ "$?" -ne 0 ]] ; then
-    echo "${error}Errors happened!${reset}"
-    return 1
-  fi
-
-  echo "\n\n🔥  🎉  ✨  --------[ Project setup done ! ]-------- ✨  🎉  🔥"
-
-  cd "./$2"
-}
-
-# ------------------------------------------------------------------------------
+source "$HOME/My/Code/webdev-scaffolding/init.sh"
 
 # # Vagrant
 # # Creates and configures portable development environments.
