@@ -1,4 +1,0 @@
-:? 
-:l <nixpkgs> 
-haskell.packages.lts-3_13.ghc 
-haskell.packages 
