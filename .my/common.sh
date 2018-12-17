@@ -27,6 +27,7 @@ source "$HOME/.my/common/u.sh"
 # source "$HOME/.my/common/vagrant.sh"
 source "$HOME/.my/common/we_have.sh"
 source "$HOME/.my/common/yadm.sh"
+source "$HOME/.my/common/yarn.sh"
 
 source "$HOME/My/Code/webdev-scaffolding/init.sh"
 source "$HOME/My/Code/webdev-scaffolding/scaffold/purs.sh"

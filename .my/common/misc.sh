@@ -6,13 +6,13 @@ alias o='open'
 # https://askubuntu.com/a/332322
 alias cp='cp -ip'
 
-# Use Preview to read manual pages.
+# Uses Preview to read manual pages.
 # https://discussions.apple.com/message/3541696#3541696
 manp() {
   man -t $1 | open -f -a 'Preview'
 }
 
-# Convert manual pages to PDFs.
+# Converts manual pages to PDFs.
 # https://discussions.apple.com/message/3542050#3542050
 manpdf() {
   man -t $1 | pstopdf -i -o $1.pdf
@@ -30,12 +30,16 @@ alias rm='rm -i'
 # http://kvz.io/blog/2012/10/03/quick-server-debugging-with-wtf/
 alias wtf='tail -f /var/log/{dmesg,messages,*{,/*}{log,err}}'
 
-# Find files
+# Finds files.
 # https://stackoverflow.com/a/4034907
 alias f='find . -name'
 
 # https://perlgeek.de/en/article/set-up-a-clean-utf8-environment
 alias screen='screen -U'
+
+# Finds out what's preventing macOS from sleeping.
+# https://stuff-things.net/2017/05/10/sleepless-mac/
+alias sleepless="pmset -g assertions | egrep '(PreventUserIdleSystemSleep|PreventUserIdleDisplaySleep)'"
 
 # ------------------------------------------------------------------------------
 
@@ -60,5 +64,5 @@ alias rr='ranger --choosefiles=/tmp/ranger-files'
 
 # ------------------------------------------------------------------------------
 
-# Get current IP address.
+# Gets current IP address.
 alias myip='curl icanhazip.com'
