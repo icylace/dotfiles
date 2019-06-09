@@ -25,6 +25,9 @@ export PATH="$HOME/.my/iTerm2:$PATH"
 export PATH="$HOME/.node/bin:$PATH"
 export PATH="./node_modules/.bin:$PATH"
 
+# For Rust.
+export PATH="$HOME/.cargo/bin:$PATH"
+
 # TODO: remove this?
 # # Use the GNU Core Utilities with their normal names.
 # coreutils_dir="$(brew --prefix coreutils)"

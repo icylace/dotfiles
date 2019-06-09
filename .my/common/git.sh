@@ -13,6 +13,9 @@
 # Use `hub` (https://hub.github.com/) if available.
 alias git='hub'
 
+# # https://github.com/mroth/scmpuff#setup
+# eval "$(scmpuff init -s)"
+
 # Clones a Git repository.
 gcl() {
   local repository=$1
@@ -34,6 +37,9 @@ gcl() {
     cd "$repository"
   fi
 }
+
+# https://mroth.github.io/scmpuff/
+alias gpuff='scmpuff_status'
 
 # Info.
 alias g='git status --branch --short'
@@ -150,7 +156,7 @@ alias gplo='gpl origin'
 alias gplr='git pull-request'
 alias gpo='git push --set-upstream origin'
 alias gpu='git push --follow-tags'
-alias gre='git reset'
+alias grs='git reset'
 
 # Patching.
 alias gdp='git diff --minimal --no-color --no-pager HEAD'

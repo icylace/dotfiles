@@ -1,8 +1,5 @@
 #!/usr/bin/env bash
 
-# https://github.com/ThomasCrevoisier/psvm-js#installation
-export PATH="$HOME/.psvm/current/bin:$PATH"
-
 # Builds a PureScript project.
 alias pb='pulp --psc-package build'
 
