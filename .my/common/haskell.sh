@@ -58,6 +58,79 @@ ht() {
 
 # ------------------------------------------------------------------------------
 
+# Run this after upgrading to a new Stackage (https://www.stackage.org/) release.
+haskell_rebuild_tools() {
+  # stack build --copy-compiler-tool brittany
+  # stack build --copy-compiler-tool floskell
+  # stack build --copy-compiler-tool stylish-haskell
+
+  # http://hackage.haskell.org/package/haskell-formatter
+  # https://github.com/danstiner/hfmt
+
+  # TODO: keep an eye on:
+  # Ormulu
+  # https://github.com/tweag/ormolu
+
+  # ghcid
+  # GHCi based bare bones IDE
+  # https://github.com/ndmitchell/ghcid
+  # https://www.parsonsmatt.org/2018/05/19/ghcid_for_the_win
+  # http://hackage.haskell.org/package/ghcid
+  stack build --copy-compiler-tool ghcid
+
+  # hindent
+  # Haskell pretty printer
+  # https://chrisdone.com/posts/hindent/
+  # https://github.com/chrisdone/hindent
+  # https://hackage.haskell.org/package/hindent
+  stack build --copy-compiler-tool hindent
+
+  # HLint
+  # Haskell source code suggestions
+  # https://github.com/ndmitchell/hlint
+  # http://community.haskell.org/~ndm/darcs/hlint/hlint.htm
+  # http://hackage.haskell.org/package/hlint
+  stack build --copy-compiler-tool hlint
+
+  # Hoogle
+  # Haskell API search engine
+  # https://github.com/ndmitchell/hoogle
+  # https://hoogle.haskell.org/
+  # http://hackage.haskell.org/package/hoogle
+  stack build --copy-compiler-tool hoogle
+
+  # hscolour
+  # Colourise Haskell code.
+  # https://hackage.haskell.org/package/hscolour
+  stack build --copy-compiler-tool hscolour
+
+  # # intero
+  # # Complete interactive development program for Haskell
+  # # https://github.com/commercialhaskell/intero
+  # # https://github.com/commercialhaskell/intero/blob/master/TOOLING.md#installing
+  # # https://hackage.haskell.org/package/intero
+  # stack build --copy-compiler-tool intero
+
+  # pretty-show
+  # Tools for working with derived `Show` instances and generic inspection of values.
+  # https://github.com/yav/pretty-show
+  # https://hackage.haskell.org/package/pretty-show
+  stack build --copy-compiler-tool pretty-show
+
+  # prettyprinter
+  # A modern, easy to use, well-documented, extensible pretty-printer.
+  # https://github.com/quchen/prettyprinter
+  # https://hackage.haskell.org/package/prettyprinter
+  stack build --copy-compiler-tool prettyprinter
+
+  # Weeder
+  # Detect dead code
+  # http://hackage.haskell.org/package/weeder
+  stack build --copy-compiler-tool weeder
+}
+
+# ------------------------------------------------------------------------------
+
 # Customizes the colors the GHC compiler and GHCi REPL environment use when they
 # display compiler messages.
 ghc_message_colors() {

@@ -43,53 +43,58 @@
 
 -- -----------------------------------------------------------------------------
 
--- import           Data.Text.Prettyprint.Doc
-import           Text.Show.Pretty (ppShow)
-import qualified Language.Haskell.HsColour           as H
+import           Language.Haskell.HsColour           (Output(TTYg), hscolour)
+import           Language.Haskell.HsColour.Colourise (Colour(Rgb, White), Highlight(Foreground))
 import qualified Language.Haskell.HsColour.Colourise as HC
-import qualified Language.Haskell.HsColour.Output    as HO
+import           Language.Haskell.HsColour.Output    (TerminalType(XTerm256Compatible))
+import           Text.Show.Pretty                    (ppShow)
 
 :{
-colorAnakiwa        = HC.Rgb 163 255 235
-colorHavelockBlue   = HC.Rgb 71 150 215
-colorMariner        = HC.Rgb 39 115 178
-colorMariner2       = HC.Rgb 44 130 201
-colorMulledWine     = HC.Rgb 70 70 104
-colorNewYorkPink    = HC.Rgb 214 126 130
-colorWildStrawberry = HC.Rgb 255 56 165
-colorViking         = HC.Rgb 86 216 188
+
+colorAnakiwa        = Rgb 163 255 235
+colorHavelockBlue   = Rgb 71 150 215
+colorMariner        = Rgb 39 115 178
+colorMariner2       = Rgb 44 130 201
+colorMulledWine     = Rgb 70 70 104
+colorNewYorkPink    = Rgb 214 126 130
+colorWildStrawberry = Rgb 255 56 165
+colorViking         = Rgb 86 216 188
 
 -- http://hackage.haskell.org/package/hscolour-1.24.4/docs/src/Language-Haskell-HsColour-Classify.html
 palette = HC.defaultColourPrefs
-  { HC.char             = [HC.Foreground colorAnakiwa]          -- Character.
-  , HC.comment          = [HC.Foreground colorMulledWine]       -- Comment.
-  , HC.conid            = [HC.Foreground colorHavelockBlue]     -- Constructor.
-  , HC.conop            = [HC.Foreground colorHavelockBlue]     -- Cons operator.
-  , HC.cpp              = [HC.Foreground colorHavelockBlue]     -- Leading hash tag.
-  , HC.definition       = [HC.Foreground HC.White]              -- ???
-  , HC.keyglyph         = [HC.Foreground colorMariner]          -- Built-in symbol.
-  , HC.keyword          = [HC.Foreground colorMariner]          -- Built-in keyword.
-  , HC.layout           = [HC.Foreground colorMariner2]         -- Grouping character.
-  , HC.number           = [HC.Foreground colorWildStrawberry]   -- Number.
-  , HC.selection        = [HC.Foreground HC.White]              -- ???
-  , HC.string           = [HC.Foreground colorViking]           -- String.
-  , HC.variantselection = [HC.Foreground HC.White]              -- ???
-  , HC.varid            = [HC.Foreground colorNewYorkPink]      -- Variable or function.
-  , HC.varop            = [HC.Foreground colorNewYorkPink]      -- Operator or inlined function.
+  { HC.char             = [Foreground colorAnakiwa]           -- Character.
+  , HC.comment          = [Foreground colorMulledWine]        -- Comment.
+  , HC.conid            = [Foreground colorHavelockBlue]      -- Constructor.
+  , HC.conop            = [Foreground colorHavelockBlue]      -- Cons operator.
+  , HC.cpp              = [Foreground colorHavelockBlue]      -- Leading hash tag.
+  , HC.definition       = [Foreground White]                  -- ???
+  , HC.keyglyph         = [Foreground colorMariner]           -- Built-in symbol.
+  , HC.keyword          = [Foreground colorMariner]           -- Built-in keyword.
+  , HC.layout           = [Foreground colorMariner2]          -- Grouping character.
+  , HC.number           = [Foreground colorWildStrawberry]    -- Number.
+  , HC.selection        = [Foreground White]                  -- ???
+  , HC.string           = [Foreground colorViking]            -- String.
+  , HC.variantselection = [Foreground White]                  -- ???
+  , HC.varid            = [Foreground colorNewYorkPink]       -- Variable or function.
+  , HC.varop            = [Foreground colorNewYorkPink]       -- Operator or inlined function.
   }
 
 prettyPrint :: Show a => a -> IO ()
-prettyPrint = putStrLn . H.hscolour (H.TTYg HO.XTerm256Compatible) palette False False "" False . ppShow
+prettyPrint = putStrLn . hscolour (TTYg XTerm256Compatible) palette False False "" False . ppShow
+
 :}
 
 -- Once we make use of the pretty-printing-related modules we can remove from
 -- them from the scope of the prompt without losing their effect.
-:m - Text.Show.Pretty Language.Haskell.HsColour
-:m - Language.Haskell.HsColour.Colourise Language.Haskell.HsColour.Output
+:m -Language.Haskell.HsColour
+:m -Language.Haskell.HsColour.Colourise
+:m -Language.Haskell.HsColour.Output
+:m -Text.Show.Pretty
 
-:def pretty \_ -> return ":set -interactive-print prettyPrint"
-:def no-pretty \_ -> return ":set -interactive-print System.IO.print"
+:def pretty const pure ":set -interactive-print prettyPrint"
+:def no-pretty const pure ":set -interactive-print System.IO.print"
 
+-- Show pretty printed output by default.
 :pretty
 
 -- -----------------------------------------------------------------------------
@@ -97,6 +102,7 @@ prettyPrint = putStrLn . H.hscolour (H.TTYg HO.XTerm256Compatible) palette False
 -- -----------------------------------------------------------------------------
 
 :{
+
 (.:) :: (a -> b) -> (c -> d -> a) -> c -> d -> b
 (.:) = (.) . (.)
 
@@ -106,33 +112,39 @@ colorHotPink  = "\ESC[38;2;255;105;180m"
 colorAmethyst = "\ESC[38;2;160;80;200m"
 reset         = "\ESC[m"
 
-showThe :: Show a => String -> a -> String
-showThe color x = color ++ show x ++ reset
+type Color = String
 
-showThem :: String -> [String] -> String
-showThem color xs = color ++ foldr1 ((++) . (++ " ")) xs ++ reset
+etch :: Color -> String -> String
+etch color x = color <> x <> reset
 
-showOneOf :: String -> String -> Int -> String
-showOneOf color xs n = color ++ [xs !! mod n (length xs)] ++ "  " ++ reset
+showThe :: Show x => Color -> x -> String
+showThe color x = etch color $ show x
+
+showThem :: Color -> [String] -> String
+showThem color xs = etch color $ foldr1 (\x acc -> x <> " " <> acc) xs
+
+showOneOf :: Color -> String -> Int -> String
+showOneOf color xs n = etch color $ [xs !! mod n (length xs)] <> "  "
 
 prompt :: [String] -> Int -> String
 prompt xs n = "\n"
-  ++ showThe colorAvocado n ++ " " ++ showThem colorDoveGray xs ++ "\n"
-  ++ showOneOf colorHotPink "λ𝞴ᴧ𝚲𝛌𝛬Λ𝜆𝜦𝝀𝝠𝝺ƛ𝞚" n
+  <> showThe colorAvocado n <> " " <> showThem colorDoveGray xs <> "\n"
+  <> showOneOf colorHotPink "λ𝞴ᴧ𝚲𝛌𝛬Λ𝜆𝜦𝝀𝝠𝝺ƛ𝞚" n
 
 continuationPrompt :: [String] -> Int -> String
 continuationPrompt _ n = showOneOf colorAmethyst "⋮⁞┆┇┋┊" n
+
 :}
 
-:set prompt-function return .: prompt
-:set prompt-cont-function return .: continuationPrompt
+:set prompt-function pure .: prompt
+:set prompt-cont-function pure .: continuationPrompt
 
 -- -----------------------------------------------------------------------------
 --  Setup the ability to search Hoogle.
 -- -----------------------------------------------------------------------------
 
-hoogle = return . (++) ":! stack hoogle -- "
-hoogleInfo = return . (++) ":! stack hoogle -- --info "
+hoogle = pure . (<>) ":! stack hoogle -- "
+hoogleInfo = pure . (<>) ":! stack hoogle -- --info "
 
 :def hoogle hoogle
 :def hoogle-info hoogleInfo
@@ -148,14 +160,14 @@ hoogleInfo = return . (++) ":! stack hoogle -- --info "
 -- `:reload`: Reloads the current set of modules.
 -- https://downloads.haskell.org/~ghc/latest/docs/html/users_guide/ghci.html?highlight=reload#ghci-cmd-:reload
 
-:def rr \_ -> return ":set -fforce-recomp\n:reload\n:set -fno-force-recomp"
+:def rr const pure ":set -fforce-recomp\n:reload\n:set -fno-force-recomp"
 
 -- -----------------------------------------------------------------------------
 
 -- `-fdiagnostics-show-caret`: Shows the line of code of a detected error.
 -- https://downloads.haskell.org/~ghc/latest/docs/html/users_guide/using.html?highlight=diagnostics-show-caret#ghc-flag--fdiagnostics-show-caret
-:def caret \_ -> return ":set -fdiagnostics-show-caret"
-:def no-caret \_ -> return ":set -fno-diagnostics-show-caret"
+:def caret const pure ":set -fdiagnostics-show-caret"
+:def no-caret const pure ":set -fno-diagnostics-show-caret"
 
 -- -----------------------------------------------------------------------------
 

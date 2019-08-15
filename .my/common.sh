@@ -15,10 +15,7 @@ source "$COMMON/cb.sh"
 # source "$COMMON/drupal.sh"
 source "$COMMON/exa.sh"
 source "$COMMON/extract.sh"
-
 source "$COMMON/git.sh"
-source "$COMMON/scmpuff.sh"
-
 source "$COMMON/haskell.sh"
 # source "$COMMON/laravel.sh"
 source "$COMMON/misc.sh"

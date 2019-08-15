@@ -33,18 +33,21 @@ alias nh='nix-env --help'
 # Get detailed information for particular packages.
 alias ni='nix-env --query --available --description --status --json'
 
-# Install packages.
+# Installs a package by its attribute path.
 alias nin='nix-env --install --attr'
 
-# Try to fix any issues with installed packages.
+# Tries to fix any issues with installed packages.
 alias nr='nix-store --verify --repair --check-contents'
 
-# Search for packages.
+# Searches for packages.
 alias ns='nix-env --query --available --description --status --attr-path'
 
 # TODO: find out if the `-e` option is undocumented and/or superceded by another option
 # Uninstall packages.
 alias nun='nix-env -e'
 
-# Update Nix expressions from subscribed channels.
-alias nup='nix-channel --update'
+# Updates a package.
+alias nup='nix-env -u'
+
+# Updates Nix expressions from subscribed channels.
+alias nu='nix-channel --update'

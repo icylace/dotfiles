@@ -13,9 +13,6 @@
 # Use `hub` (https://hub.github.com/) if available.
 alias git='hub'
 
-# # https://github.com/mroth/scmpuff#setup
-# eval "$(scmpuff init -s)"
-
 # Clones a Git repository.
 gcl() {
   local repository=$1
@@ -37,9 +34,6 @@ gcl() {
     cd "$repository"
   fi
 }
-
-# https://mroth.github.io/scmpuff/
-alias gpuff='scmpuff_status'
 
 # Info.
 alias g='git status --branch --short'
@@ -193,7 +187,7 @@ setup_git_commands_that_pretty_print() {
   alias glad="$diff_log $pretty_short --all"
   alias gld="$diff_log $pretty_short"
 
-  alias gs="git show $pretty_short"
+  alias gsh="git show $pretty_short"
 
   alias gsl="git stash list $pretty_short"
 
@@ -236,3 +230,14 @@ git-commit-size() {
     echo "The commit does not add any files."
   fi
 }
+
+
+# ------------------------------------------------------------------------------
+
+
+# https://mroth.github.io/scmpuff/
+# https://github.com/mroth/scmpuff#setup
+# https://github.com/mroth/scmpuff#can-i-disable-or-change-the-default-git-shortcut-aliases
+eval "$(scmpuff init -s --aliases=false)"
+
+alias gs='scmpuff_status'
