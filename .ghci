@@ -7,7 +7,7 @@
 -- Options apparently get processed in this order:
 --   1. A config.yaml.
 --   2. A project's stack.yaml.
---   3. `--ghc-options` when running`stack ghci` on the command line.
+--   3. `--ghc-options` when running `stack ghci` on the command line.
 --   4. `.ghci` settings (this file).
 
 -- -----------------------------------------------------------------------------
@@ -28,11 +28,11 @@
 -- http://hackage.haskell.org/package/hscolour
 :set -package hscolour
 
--- prettyprinter
--- A modern, extensible and well-documented prettyprinter.
--- https://github.com/quchen/prettyprinter
--- http://hackage.haskell.org/package/prettyprinter
-:set -package prettyprinter
+-- -- prettyprinter
+-- -- A modern, extensible and well-documented prettyprinter.
+-- -- https://github.com/quchen/prettyprinter
+-- -- http://hackage.haskell.org/package/prettyprinter
+-- :set -package prettyprinter
 
 -- pretty-show
 -- Tools for working with derived `Show` instances and generic
@@ -44,39 +44,40 @@
 -- -----------------------------------------------------------------------------
 
 import           Language.Haskell.HsColour           (Output(TTYg), hscolour)
-import           Language.Haskell.HsColour.Colourise (Colour(Rgb, White), Highlight(Foreground))
+import           Language.Haskell.HsColour.Colourise (Colour(Rgb, White), ColourPrefs, Highlight(Foreground))
 import qualified Language.Haskell.HsColour.Colourise as HC
 import           Language.Haskell.HsColour.Output    (TerminalType(XTerm256Compatible))
 import           Text.Show.Pretty                    (ppShow)
 
 :{
 
-colorAnakiwa        = Rgb 163 255 235
-colorHavelockBlue   = Rgb 71 150 215
-colorMariner        = Rgb 39 115 178
-colorMariner2       = Rgb 44 130 201
-colorMulledWine     = Rgb 70 70 104
-colorNewYorkPink    = Rgb 214 126 130
-colorWildStrawberry = Rgb 255 56 165
-colorViking         = Rgb 86 216 188
+colorBrightTurquoise82 = Rgb 163 255 235
+colorCuriousBlue43     = Rgb 39 115 178
+colorCuriousBlue48     = Rgb 44 130 201
+colorCuriousBlue56     = Rgb 71 150 215
+colorKimberly34        = Rgb 70 70 104
+colorMojo67            = Rgb 214 126 130
+colorRose61            = Rgb 255 56 165
+colorShamrock59        = Rgb 86 216 188
 
 -- http://hackage.haskell.org/package/hscolour-1.24.4/docs/src/Language-Haskell-HsColour-Classify.html
+palette :: ColourPrefs
 palette = HC.defaultColourPrefs
-  { HC.char             = [Foreground colorAnakiwa]           -- Character.
-  , HC.comment          = [Foreground colorMulledWine]        -- Comment.
-  , HC.conid            = [Foreground colorHavelockBlue]      -- Constructor.
-  , HC.conop            = [Foreground colorHavelockBlue]      -- Cons operator.
-  , HC.cpp              = [Foreground colorHavelockBlue]      -- Leading hash tag.
-  , HC.definition       = [Foreground White]                  -- ???
-  , HC.keyglyph         = [Foreground colorMariner]           -- Built-in symbol.
-  , HC.keyword          = [Foreground colorMariner]           -- Built-in keyword.
-  , HC.layout           = [Foreground colorMariner2]          -- Grouping character.
-  , HC.number           = [Foreground colorWildStrawberry]    -- Number.
-  , HC.selection        = [Foreground White]                  -- ???
-  , HC.string           = [Foreground colorViking]            -- String.
-  , HC.variantselection = [Foreground White]                  -- ???
-  , HC.varid            = [Foreground colorNewYorkPink]       -- Variable or function.
-  , HC.varop            = [Foreground colorNewYorkPink]       -- Operator or inlined function.
+  { HC.char             = [Foreground colorBrightTurquoise82]    -- Character.
+  , HC.comment          = [Foreground colorKimberly34]           -- Comment.
+  , HC.conid            = [Foreground colorCuriousBlue56]        -- Constructor.
+  , HC.conop            = [Foreground colorCuriousBlue56]        -- Cons operator.
+  , HC.cpp              = [Foreground colorCuriousBlue56]        -- Leading hash tag.
+  , HC.definition       = [Foreground White]                     -- ???
+  , HC.keyglyph         = [Foreground colorCuriousBlue43]        -- Built-in symbol.
+  , HC.keyword          = [Foreground colorCuriousBlue43]        -- Built-in keyword.
+  , HC.layout           = [Foreground colorCuriousBlue48]        -- Grouping character.
+  , HC.number           = [Foreground colorRose61]               -- Number.
+  , HC.selection        = [Foreground White]                     -- ???
+  , HC.string           = [Foreground colorShamrock59]           -- String.
+  , HC.variantselection = [Foreground White]                     -- ???
+  , HC.varid            = [Foreground colorMojo67]               -- Variable or function.
+  , HC.varop            = [Foreground colorMojo67]               -- Operator or inlined function.
   }
 
 prettyPrint :: Show a => a -> IO ()
@@ -84,15 +85,15 @@ prettyPrint = putStrLn . hscolour (TTYg XTerm256Compatible) palette False False 
 
 :}
 
--- Once we make use of the pretty-printing-related modules we can remove from
--- them from the scope of the prompt without losing their effect.
-:m -Language.Haskell.HsColour
-:m -Language.Haskell.HsColour.Colourise
-:m -Language.Haskell.HsColour.Output
-:m -Text.Show.Pretty
+-- -- Once we make use of the pretty-printing-related modules we can remove from
+-- -- them from the scope of the prompt without losing their effect.
+-- :m -Language.Haskell.HsColour
+-- :m -Language.Haskell.HsColour.Colourise
+-- :m -Language.Haskell.HsColour.Output
+-- :m -Text.Show.Pretty
 
-:def pretty const pure ":set -interactive-print prettyPrint"
-:def no-pretty const pure ":set -interactive-print System.IO.print"
+:def pretty \_ -> pure ":set -interactive-print prettyPrint"
+:def no-pretty \_ -> pure ":set -interactive-print System.IO.print"
 
 -- Show pretty printed output by default.
 :pretty
@@ -103,36 +104,41 @@ prettyPrint = putStrLn . hscolour (TTYg XTerm256Compatible) palette False False 
 
 :{
 
-(.:) :: (a -> b) -> (c -> d -> a) -> c -> d -> b
-(.:) = (.) . (.)
+ansi :: String -> String
+ansi code = "\ESC[" <> code <> "m"
 
-colorAvocado  = "\ESC[38;2;150;150;100m"
-colorDoveGray = "\ESC[38;2;100;100;100m"
-colorHotPink  = "\ESC[38;2;255;105;180m"
-colorAmethyst = "\ESC[38;2;160;80;200m"
-reset         = "\ESC[m"
+sgrFG24Bit :: String
+sgrFG24Bit = "38;2"
 
-type Color = String
+fgColor :: Int -> Int -> Int -> String
+fgColor r g b = ansi $ concat $ Data.List.intersperse ";" [sgrFG24Bit, show r, show g, show b]
 
-etch :: Color -> String -> String
+colorAvocado49     = fgColor 150 150 100
+colorGray39        = fgColor 100 100 100
+colorRose71        = fgColor 255 105 180
+colorFuchsiaBlue55 = fgColor 160 80 200
+reset              = ansi ""
+
+etch :: String -> String -> String
 etch color x = color <> x <> reset
 
-showThe :: Show x => Color -> x -> String
-showThe color x = etch color $ show x
+showThem :: [String] -> String
+showThem = foldr1 $ \x acc -> x <> " " <> acc
 
-showThem :: Color -> [String] -> String
-showThem color xs = etch color $ foldr1 (\x acc -> x <> " " <> acc) xs
-
-showOneOf :: Color -> String -> Int -> String
-showOneOf color xs n = etch color $ [xs !! mod n (length xs)] <> "  "
+showOneOf :: [Char] -> Int -> [Char]
+showOneOf xs n = [xs !! mod n (length xs)] <> "  "
 
 prompt :: [String] -> Int -> String
 prompt xs n = "\n"
-  <> showThe colorAvocado n <> " " <> showThem colorDoveGray xs <> "\n"
-  <> showOneOf colorHotPink "λ𝞴ᴧ𝚲𝛌𝛬Λ𝜆𝜦𝝀𝝠𝝺ƛ𝞚" n
+  <> etch colorAvocado49 (show n) <> " "
+  <> etch colorGray39 (showThem xs) <> "\n"
+  <> etch colorRose71 (showOneOf "λ𝞴ᴧ𝚲𝛌𝛬Λ𝜆𝜦𝝀𝝠𝝺ƛ𝞚" n)
 
 continuationPrompt :: [String] -> Int -> String
-continuationPrompt _ n = showOneOf colorAmethyst "⋮⁞┆┇┋┊" n
+continuationPrompt _ n = etch colorFuchsiaBlue55 $ showOneOf "⋮⁞┆┇┋┊" n
+
+(.:) :: (a -> b) -> (c -> d -> a) -> c -> d -> b
+(.:) = (.) . (.)
 
 :}
 
@@ -160,14 +166,14 @@ hoogleInfo = pure . (<>) ":! stack hoogle -- --info "
 -- `:reload`: Reloads the current set of modules.
 -- https://downloads.haskell.org/~ghc/latest/docs/html/users_guide/ghci.html?highlight=reload#ghci-cmd-:reload
 
-:def rr const pure ":set -fforce-recomp\n:reload\n:set -fno-force-recomp"
+:def rr \_ -> pure ":set -fforce-recomp\n:reload\n:set -fno-force-recomp"
 
 -- -----------------------------------------------------------------------------
 
 -- `-fdiagnostics-show-caret`: Shows the line of code of a detected error.
 -- https://downloads.haskell.org/~ghc/latest/docs/html/users_guide/using.html?highlight=diagnostics-show-caret#ghc-flag--fdiagnostics-show-caret
-:def caret const pure ":set -fdiagnostics-show-caret"
-:def no-caret const pure ":set -fno-diagnostics-show-caret"
+:def caret \_ -> pure ":set -fdiagnostics-show-caret"
+:def no-caret \_ -> pure ":set -fno-diagnostics-show-caret"
 
 -- -----------------------------------------------------------------------------
 

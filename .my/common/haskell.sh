@@ -117,11 +117,11 @@ haskell_rebuild_tools() {
   # https://hackage.haskell.org/package/pretty-show
   stack build --copy-compiler-tool pretty-show
 
-  # prettyprinter
-  # A modern, easy to use, well-documented, extensible pretty-printer.
-  # https://github.com/quchen/prettyprinter
-  # https://hackage.haskell.org/package/prettyprinter
-  stack build --copy-compiler-tool prettyprinter
+  # # prettyprinter
+  # # A modern, easy to use, well-documented, extensible pretty-printer.
+  # # https://github.com/quchen/prettyprinter
+  # # https://hackage.haskell.org/package/prettyprinter
+  # stack build --copy-compiler-tool prettyprinter
 
   # Weeder
   # Detect dead code
