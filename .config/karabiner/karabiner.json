@@ -13,7 +13,7 @@
         "basic.to_if_held_down_threshold_milliseconds" : 500
       },
       "rules" : [ {
-        "description" : "Caps lock key alone becomes Cmd+Tab, and when in combination becomes the Hyper key.",
+        "description" : "Caps lock key emits Cmd+Tab when pressed alone, and emits Hyper key when combined with other keys.",
         "manipulators" : [ {
           "to_if_alone" : [ {
             "key_code" : "tab",
@@ -47,7 +47,49 @@
           "type" : "basic"
         } ]
       }, {
-        "description" : "Shift keys alone become parentheses, and when in combination act normal.",
+        "description" : "Cycle among the active applications' windows.",
+        "manipulators" : [ {
+          "from" : {
+            "key_code" : "grave_accent_and_tilde",
+            "modifiers" : {
+              "mandatory" : [ "left_command", "left_control", "left_option", "left_shift" ]
+            }
+          },
+          "to" : [ {
+            "key_code" : "grave_accent_and_tilde",
+            "modifiers" : [ "left_command" ]
+          } ],
+          "type" : "basic"
+        } ]
+      }, {
+        "description" : "Cycle among the active applications' tabs.",
+        "manipulators" : [ {
+          "from" : {
+            "key_code" : "left_arrow",
+            "modifiers" : {
+              "mandatory" : [ "left_command", "left_control", "left_option", "left_shift" ]
+            }
+          },
+          "to" : [ {
+            "key_code" : "left_arrow",
+            "modifiers" : [ "left_command", "left_option" ]
+          } ],
+          "type" : "basic"
+        }, {
+          "from" : {
+            "key_code" : "right_arrow",
+            "modifiers" : {
+              "mandatory" : [ "left_command", "left_control", "left_option", "left_shift" ]
+            }
+          },
+          "to" : [ {
+            "key_code" : "right_arrow",
+            "modifiers" : [ "left_command", "left_option" ]
+          } ],
+          "type" : "basic"
+        } ]
+      }, {
+        "description" : "Shift keys emit parentheses when pressed alone.",
         "manipulators" : [ {
           "to_if_alone" : [ {
             "key_code" : "9",
@@ -74,7 +116,7 @@
           "type" : "basic"
         } ]
       }, {
-        "description" : "Option keys alone become braces, and when in combination act normal.",
+        "description" : "Option keys emit braces when pressed alone.",
         "manipulators" : [ {
           "to_if_alone" : [ {
             "key_code" : "open_bracket",
@@ -101,7 +143,34 @@
           "type" : "basic"
         } ]
       }, {
-        "description" : "Space bar alone acts normal, and when in combination acts like a shift key.  A shifted space bar acts like the standard space bar.",
+        "description" : "Control keys emit underscores when pressed alone.",
+        "manipulators" : [ {
+          "to_if_alone" : [ {
+            "key_code" : "hyphen",
+            "modifiers" : [ "left_shift" ]
+          } ],
+          "from" : {
+            "key_code" : "left_control"
+          },
+          "to" : [ {
+            "key_code" : "left_control"
+          } ],
+          "type" : "basic"
+        }, {
+          "to_if_alone" : [ {
+            "key_code" : "hyphen",
+            "modifiers" : [ "left_shift" ]
+          } ],
+          "from" : {
+            "key_code" : "right_control"
+          },
+          "to" : [ {
+            "key_code" : "right_control"
+          } ],
+          "type" : "basic"
+        } ]
+      }, {
+        "description" : "Space bar can be used as a shift key.",
         "manipulators" : [ {
           "to_if_alone" : [ {
             "key_code" : "spacebar"
@@ -111,17 +180,6 @@
           },
           "to" : [ {
             "key_code" : "left_shift"
-          } ],
-          "type" : "basic"
-        }, {
-          "from" : {
-            "key_code" : "spacebar",
-            "modifiers" : {
-              "mandatory" : [ "left_shift" ]
-            }
-          },
-          "to" : [ {
-            "key_code" : "spacebar"
           } ],
           "type" : "basic"
         } ]
@@ -212,6 +270,96 @@
           },
           "to" : [ {
             "key_code" : "quote"
+          } ],
+          "type" : "basic"
+        } ]
+      }, {
+        "description" : "Shift+Delete will do a forward delete.",
+        "manipulators" : [ {
+          "from" : {
+            "key_code" : "delete_or_backspace",
+            "modifiers" : {
+              "mandatory" : [ "left_shift" ]
+            }
+          },
+          "to" : [ {
+            "key_code" : "delete_or_backspace",
+            "modifiers" : [ "fn" ]
+          } ],
+          "type" : "basic"
+        }, {
+          "from" : {
+            "key_code" : "delete_or_backspace",
+            "modifiers" : {
+              "mandatory" : [ "right_shift" ]
+            }
+          },
+          "to" : [ {
+            "key_code" : "delete_or_backspace",
+            "modifiers" : [ "fn" ]
+          } ],
+          "type" : "basic"
+        } ]
+      }, {
+        "description" : "Fn Mode",
+        "manipulators" : [ {
+          "from" : {
+            "key_code" : "fn"
+          },
+          "to" : [ {
+            "set_variable" : {
+              "name" : "fn-mode",
+              "value" : 1
+            }
+          } ],
+          "conditions" : [ {
+            "name" : "fn-mode",
+            "value" : 1,
+            "type" : "variable_unless"
+          } ],
+          "type" : "basic"
+        }, {
+          "from" : {
+            "key_code" : "fn"
+          },
+          "to" : [ {
+            "set_variable" : {
+              "name" : "fn-mode",
+              "value" : 0
+            }
+          } ],
+          "conditions" : [ {
+            "name" : "fn-mode",
+            "value" : 1,
+            "type" : "variable_if"
+          } ],
+          "type" : "basic"
+        }, {
+          "from" : {
+            "key_code" : "hyphen"
+          },
+          "to" : [ {
+            "key_code" : "hyphen",
+            "modifiers" : [ "left_shift" ]
+          } ],
+          "conditions" : [ {
+            "name" : "fn-mode",
+            "value" : 1,
+            "type" : "variable_if"
+          } ],
+          "type" : "basic"
+        }, {
+          "from" : {
+            "key_code" : "equal_sign"
+          },
+          "to" : [ {
+            "key_code" : "equal_sign",
+            "modifiers" : [ "left_shift" ]
+          } ],
+          "conditions" : [ {
+            "name" : "fn-mode",
+            "value" : 1,
+            "type" : "variable_if"
           } ],
           "type" : "basic"
         } ]

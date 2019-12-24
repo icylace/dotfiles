@@ -12,23 +12,33 @@
 ; !! = mandatory command + control + optional + shift (hyper)
 ; ## = optional any
 
-{:main [{:des "Caps lock key alone becomes Cmd+Tab, and when in combination becomes the Hyper key."
+{:main [{:des "Caps lock key emits Cmd+Tab when pressed alone, and emits Hyper key when combined with other keys."
          :rules [[:caps_lock :!CTOleft_shift nil {:alone :!Ctab}]]}
 
         {:des "Cycle among the 3 most recent applications."
          :rules [[:!!tab [:!Ctab :!Ctab]]]}
 
-        {:des "Shift keys alone become parentheses, and when in combination act normal."
+        {:des "Cycle among the active applications' windows."
+         :rules [[:!!grave_accent_and_tilde :!Cgrave_accent_and_tilde]]}
+
+        {:des "Cycle among the active applications' tabs."
+         :rules [[:!!left_arrow :!COleft_arrow]
+                 [:!!right_arrow :!COright_arrow]]}
+
+        {:des "Shift keys emit parentheses when pressed alone."
          :rules [[:left_shift :left_shift nil {:alone :!S9}]
                  [:right_shift :right_shift nil {:alone :!S0}]]}
 
-        {:des "Option keys alone become braces, and when in combination act normal."
+        {:des "Option keys emit braces when pressed alone."
          :rules [[:left_option :left_option nil {:alone :!Sopen_bracket}]
                  [:right_option :right_option nil {:alone :!Sclose_bracket}]]}
 
-        {:des "Space bar alone acts normal, and when in combination acts like a shift key.  A shifted space bar acts like the standard space bar."
-         :rules [[:spacebar :left_shift nil {:alone :spacebar}]
-                 [:!Sspacebar :spacebar]]}
+        {:des "Control keys emit underscores when pressed alone."
+         :rules [[:left_control :left_control nil {:alone :!Shyphen}]
+                 [:right_control :right_control nil {:alone :!Shyphen}]]}
+
+        {:des "Space bar can be used as a shift key."
+         :rules [[:spacebar :left_shift nil {:alone :spacebar}]]}
 
         {:des "Swap colon and semicolon."
          :rules [[:semicolon :!Ssemicolon]
@@ -40,4 +50,17 @@
          :rules [[:quote :!Squote]
                  [:!Squote :quote]
                  [:!Rquote :quote]
-                 [:!SRquote :quote]]}]}
+                 [:!SRquote :quote]]}
+
+        {:des "Shift+Delete will do a forward delete."
+         :rules [[:!Sdelete_or_backspace :!Fdelete_or_backspace]
+                 [:!Rdelete_or_backspace :!Fdelete_or_backspace]]}
+
+        {:des "Fn Mode"
+         :rules [[:fn ["fn-mode" 1] :!fn-mode]
+                 [:fn ["fn-mode" 0] :fn-mode]
+                 [:hyphen :!Shyphen :fn-mode]
+                 [:equal_sign :!Sequal_sign :fn-mode]
+                ; TODO: consider putting function keys here
+                ; TODO: consider more Fn mode key mappings
+                 ]}]}
