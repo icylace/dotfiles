@@ -12,7 +12,7 @@
 ; !! = mandatory command + control + optional + shift (hyper)
 ; ## = optional any
 
-{:main [{:des "Caps lock key emits Cmd+Tab when pressed alone, and emits Hyper key when combined with other keys."
+{:main [{:des "Caps lock key emits Cmd+Tab when pressed alone, and emits Hyper key when combined with other keys. Any modifier + Caps lock key emits standard CapsLock."
          :rules [[:caps_lock :!CTOleft_shift nil {:alone :!Ctab}]]}
 
         {:des "Cycle among the 3 most recent applications."
@@ -25,6 +25,7 @@
          :rules [[:!!left_arrow :!COleft_arrow]
                  [:!!right_arrow :!COright_arrow]]}
 
+        ; TODO: moving parentheses from shift keys to command keys
         {:des "Shift keys emit parentheses when pressed alone."
          :rules [[:left_shift :left_shift nil {:alone :!S9}]
                  [:right_shift :right_shift nil {:alone :!S0}]]}
@@ -37,7 +38,7 @@
          :rules [[:left_control :left_control nil {:alone :!Shyphen}]
                  [:right_control :right_control nil {:alone :!Shyphen}]]}
 
-        {:des "Space bar can be used as a shift key."
+        {:des "Space bar may be used as a shift key."
          :rules [[:spacebar :left_shift nil {:alone :spacebar}]]}
 
         {:des "Swap colon and semicolon."
@@ -56,13 +57,28 @@
          :rules [[:!Sdelete_or_backspace :!Fdelete_or_backspace]
                  [:!Rdelete_or_backspace :!Fdelete_or_backspace]]}
 
-        {:des "Fn Mode"
-         :rules [[:fn ["fn-mode" 1] :!fn-mode]
-                 [:fn ["fn-mode" 0] :fn-mode]
-                 [:hyphen :!Shyphen :fn-mode]
-                 [:equal_sign :!Sequal_sign :fn-mode]
-                ; TODO: consider putting function keys here
-                ; TODO: consider more Fn mode key mappings
-                 ]}]}
+        {:des "Certain function keys doing their apple key counterparts by default."
+         :rules [[:f1 :display_brightness_decrement]
+                 [:f2 :display_brightness_increment]
+                 [:f5 :illumination_decrement]
+                 [:f6 :illumination_increment]
+                 [:f10 :mute]
+                 [:f11 :volume_decrement]
+                 [:f12 :volume_increment]
+                 [:!Ff1 :f1]
+                 [:!Ff2 :f2]
+                 [:!Ff5 :f5]
+                 [:!Ff6 :f6]
+                 [:!Ff10 :f10]
+                 [:!Ff11 :f11]
+                 [:!Ff12 :f12]]}
 
-; TODO: consider remapping the apple keys like mission control and launchpad
+        ; TODO: probably don't do this due to function key stuff
+        ; {:des "Fn key toggles Fn Mode when pressed alone."
+        ;  :rules [[:##fn ["fn-mode" 1] :!fn-mode]
+        ;          [:##fn ["fn-mode" 0] :fn-mode]
+        ;          [:hyphen :!Shyphen :fn-mode]
+        ;          [:equal_sign :!Sequal_sign :fn-mode]
+        ;          ; TODO: consider more Fn mode key mappings
+        ;          ]}
+        ]}

@@ -1,5 +1,8 @@
 source "$HOME/.my/common.sh"
 
+# From installation notes for `brew install bash-completion@2`.
+[[ -r "/usr/local/etc/profile.d/bash_completion.sh" ]] && . "/usr/local/etc/profile.d/bash_completion.sh"
+
 # Extra stuff that's too sensitive to be committed to a public repository.
 if [ -f "$HOME/.not-public/extra.sh" ] ; then
   source "$HOME/.not-public/extra.sh"

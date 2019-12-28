@@ -15,6 +15,7 @@ source "$HOME/.my/zsh/prompt.zsh"
 #  Colorize the output for some commands.
 # ------------------------------------------------------------------------------
 
+# TODO: fix this
 source "$HOME/.nix-profile/etc/grc.zsh"
 
 alias hexdump='grc --colour=auto hexdump'
