@@ -41,7 +41,7 @@ swi() {
     echo 'Usage: swi <project name>'
     return
   fi
-  mkdir "$1"
+  mkdir -pv "$1"
   cd "$1"
   swiftenv local DEVELOPMENT-SNAPSHOT-2016-06-20-a
   swift package init --type executable

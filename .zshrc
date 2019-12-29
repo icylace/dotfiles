@@ -15,9 +15,6 @@ source "$HOME/.my/zsh/prompt.zsh"
 #  Colorize the output for some commands.
 # ------------------------------------------------------------------------------
 
-# TODO: fix this
-source "$HOME/.nix-profile/etc/grc.zsh"
-
 alias hexdump='grc --colour=auto hexdump'
 
 # ------------------------------------------------------------------------------
@@ -59,7 +56,7 @@ bindkey -e
 # zle -N zle-line-init
 # zle -N zle-keymap-select
 
-# Make the terminal respond faster to the escape key.
+# Set the key delay in hundredths of a second.
 export KEYTIMEOUT=1
 
 # ------------------------------------------------------------------------------
@@ -67,6 +64,12 @@ export KEYTIMEOUT=1
 # https://www.iterm2.com/documentation-shell-integration.html
 if [ -f "$HOME/.iterm2_shell_integration.zsh" ] ; then
   source "$HOME/.iterm2_shell_integration.zsh"
+fi
+
+# Based on:
+# https://github.com/phpbrew/phpbrew#installation
+if [[ -e "$HOME/.phpbrew/bashrc" ]] ; then
+  source "$HOME/.phpbrew/bashrc"
 fi
 
 # Extra stuff that doesn't makes sense to include in a public repository.

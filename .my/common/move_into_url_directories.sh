@@ -38,7 +38,7 @@ move_into_url_directories() {
         done
 
         if [ -n "$dir_path" ] ; then
-          mkdir -p "$dir_path"
+          mkdir -pv "$dir_path"
           mv "$file_entry" "$dir_path"
         fi
 
@@ -72,12 +72,11 @@ folder_name_from_url() {
   fi
 
 
-
+  local origin="#1"
 
   path_parts=()
 
   for origin in "${origins[@]}" ; do
-
     if [ -n "$origin" ] && [[ $origin =~ '[^()"]' ]] ; then
       url="${origin#\"}"
       url="${url%\"}"
@@ -93,7 +92,6 @@ folder_name_from_url() {
         path_parts+=("$url")
       fi
     fi
-
   done
 
   # https://stackoverflow.com/a/17758600
@@ -109,7 +107,7 @@ folder_name_from_url() {
     # TODO:
     echo "$dir_path"
     echo "$1"
-    # mkdir -p "$dir_path"
+    # mkdir -pv "$dir_path"
     # mv "$1" "$dir_path"
   fi
 

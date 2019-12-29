@@ -16,14 +16,16 @@ export LC_IDENTIFICATION=en_US.UTF-8
 export LC_ALL=en_US.UTF-8
 
 # https://stackoverflow.com/a/5545748
-export PATH="/usr/local/bin:$PATH"
 export PATH="/usr/local/sbin:$PATH"
+export PATH="/usr/local/bin:$PATH"
+export PATH="$HOME/cli/twa:$PATH"
+export PATH="$HOME/cli/phpbrew:$PATH"
+export PATH="$HOME/.rbenv/shims:$PATH"
 export PATH="$HOME/.my/iTerm2:$PATH"
-# export PATH="$HOME/.rbenv/bin:$PATH"
 
-# For Node.js.
-export PATH="$HOME/.node/bin:$PATH"
-export PATH="./node_modules/.bin:$PATH"
+# # For Node.js.
+# export PATH="$HOME/.node/bin:$PATH"
+# export PATH="./node_modules/.bin:$PATH"
 
 # For Rust.
 export PATH="$HOME/.cargo/bin:$PATH"

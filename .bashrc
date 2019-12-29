@@ -1,7 +1,16 @@
 source "$HOME/.my/common.sh"
 
+# Based on:
 # From installation notes for `brew install bash-completion@2`.
-[[ -r "/usr/local/etc/profile.d/bash_completion.sh" ]] && . "/usr/local/etc/profile.d/bash_completion.sh"
+if [[ -r "/usr/local/etc/profile.d/bash_completion.sh" ]] ; then
+  source "/usr/local/etc/profile.d/bash_completion.sh"
+fi
+
+# Based on:
+# https://github.com/phpbrew/phpbrew#installation
+if [[ -e "$HOME/.phpbrew/bashrc" ]] ; then
+  source "$HOME/.phpbrew/bashrc"
+fi
 
 # Extra stuff that's too sensitive to be committed to a public repository.
 if [ -f "$HOME/.not-public/extra.sh" ] ; then

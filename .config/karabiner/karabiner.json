@@ -89,17 +89,17 @@
           "type" : "basic"
         } ]
       }, {
-        "description" : "Shift keys emit parentheses when pressed alone.",
+        "description" : "Option keys emit parentheses when pressed alone.",
         "manipulators" : [ {
           "to_if_alone" : [ {
             "key_code" : "9",
             "modifiers" : [ "left_shift" ]
           } ],
           "from" : {
-            "key_code" : "left_shift"
+            "key_code" : "left_option"
           },
           "to" : [ {
-            "key_code" : "left_shift"
+            "key_code" : "left_option"
           } ],
           "type" : "basic"
         }, {
@@ -108,64 +108,10 @@
             "modifiers" : [ "left_shift" ]
           } ],
           "from" : {
-            "key_code" : "right_shift"
-          },
-          "to" : [ {
-            "key_code" : "right_shift"
-          } ],
-          "type" : "basic"
-        } ]
-      }, {
-        "description" : "Option keys emit braces when pressed alone.",
-        "manipulators" : [ {
-          "to_if_alone" : [ {
-            "key_code" : "open_bracket",
-            "modifiers" : [ "left_shift" ]
-          } ],
-          "from" : {
-            "key_code" : "left_option"
-          },
-          "to" : [ {
-            "key_code" : "left_option"
-          } ],
-          "type" : "basic"
-        }, {
-          "to_if_alone" : [ {
-            "key_code" : "close_bracket",
-            "modifiers" : [ "left_shift" ]
-          } ],
-          "from" : {
             "key_code" : "right_option"
           },
           "to" : [ {
             "key_code" : "right_option"
-          } ],
-          "type" : "basic"
-        } ]
-      }, {
-        "description" : "Control keys emit underscores when pressed alone.",
-        "manipulators" : [ {
-          "to_if_alone" : [ {
-            "key_code" : "hyphen",
-            "modifiers" : [ "left_shift" ]
-          } ],
-          "from" : {
-            "key_code" : "left_control"
-          },
-          "to" : [ {
-            "key_code" : "left_control"
-          } ],
-          "type" : "basic"
-        }, {
-          "to_if_alone" : [ {
-            "key_code" : "hyphen",
-            "modifiers" : [ "left_shift" ]
-          } ],
-          "from" : {
-            "key_code" : "right_control"
-          },
-          "to" : [ {
-            "key_code" : "right_control"
           } ],
           "type" : "basic"
         } ]

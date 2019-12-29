@@ -25,18 +25,13 @@
          :rules [[:!!left_arrow :!COleft_arrow]
                  [:!!right_arrow :!COright_arrow]]}
 
-        ; TODO: moving parentheses from shift keys to command keys
-        {:des "Shift keys emit parentheses when pressed alone."
-         :rules [[:left_shift :left_shift nil {:alone :!S9}]
-                 [:right_shift :right_shift nil {:alone :!S0}]]}
+        {:des "Option keys emit parentheses when pressed alone."
+         :rules [[:left_option :left_option nil {:alone :!S9}]
+                 [:right_option :right_option nil {:alone :!S0}]]}
 
-        {:des "Option keys emit braces when pressed alone."
-         :rules [[:left_option :left_option nil {:alone :!Sopen_bracket}]
-                 [:right_option :right_option nil {:alone :!Sclose_bracket}]]}
-
-        {:des "Control keys emit underscores when pressed alone."
-         :rules [[:left_control :left_control nil {:alone :!Shyphen}]
-                 [:right_control :right_control nil {:alone :!Shyphen}]]}
+        ; {:des "Control keys emit underscores when pressed alone."
+        ;  :rules [[:left_control :left_control nil {:alone :!Shyphen}]
+        ;          [:right_control :right_control nil {:alone :!Shyphen}]]}
 
         {:des "Space bar may be used as a shift key."
          :rules [[:spacebar :left_shift nil {:alone :spacebar}]]}
