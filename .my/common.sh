@@ -33,6 +33,6 @@ source "$COMMON/yarn.sh"
 
 # ------------------------------------------------------------------------------
 
-WEBDEV_SCAFFOLDING="$HOME/My/Code/webdev-scaffolding"
+WEBDEV_SCAFFOLDING="$HOME/My/Repositories/webdev-scaffolding"
 
 source "$WEBDEV_SCAFFOLDING/init.sh"
