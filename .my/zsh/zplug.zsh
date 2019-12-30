@@ -1,13 +1,8 @@
 #!/usr/bin/env zsh
 
-if [ -f /usr/local/opt/zplug/init.zsh ] ; then
-  source /usr/local/opt/zplug/init.zsh
-elif [ -f /usr/share/zplug/init.zsh ] ; then
-  source /usr/share/zplug/init.zsh
-else
-  echo '`zplug` is not installed.'
-  return 1
-fi
+# From the installation notes for zplug.
+export ZPLUG_HOME=/usr/local/opt/zplug
+source $ZPLUG_HOME/init.zsh
 
 zplug 'lib/completion', from:oh-my-zsh
 zplug 'lib/functions', from:oh-my-zsh
@@ -27,15 +22,10 @@ zplug 'djui/alias-tips'
 # https://github.com/supercrabtree/k
 zplug 'supercrabtree/k'
 
-# z
-# Navigate your most used directories based on 'frecency'.
-# https://github.com/rupa/z
-zplug 'rupa/z', use:'*.sh'
-
 # zsh-syntax-highlighting
-# Syntax highlighing for the command line.
+# Fish shell like syntax highlighting for Zsh.
 # https://github.com/zsh-users/zsh-syntax-highlighting
-zplug 'zsh-users/zsh-syntax-highlighting', defer:3
+zplug 'zsh-users/zsh-syntax-highlighting', defer:2
 
 # Ensure plugins are installed.
 if ! zplug check ; then

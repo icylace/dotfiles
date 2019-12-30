@@ -12,7 +12,11 @@ export XDG_DATA_HOME="$HOME/.my/zsh-hints"
 fpath=("$HOME"/.my/autoload $fpath)
 autoload "$HOME"/.my/autoload/*(:t)
 
+# From installation notes for zsh-completions.
 fpath=(/usr/local/share/zsh-completions $fpath)
+
+# From installation notes for zsh-syntax-highlighting.
+source /usr/local/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
 
 zle -N zsh-hints-param zsh-hints
 bindkey "^Xp" zsh-hints-param

@@ -37,12 +37,3 @@ export PATH="$HOME/.cargo/bin:$PATH"
 # export MANPATH="${coreutils_dir}/libexec/gnuman:$MANPATH"
 
 export JAVA_HOME='/Library/Java/JavaVirtualMachines/jdk1.8.0_92.jdk/Contents/Home/'
-
-# if which rbenv > /dev/null ; then
-#   eval "$(rbenv init -)"
-# fi
-
-# # Suggested by the caveats section from `brew info pyenv`.
-# if which pyenv > /dev/null ; then
-#   eval "$(pyenv init -)"
-# fi

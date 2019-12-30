@@ -59,6 +59,10 @@ bindkey -e
 # Set the key delay in hundredths of a second.
 export KEYTIMEOUT=1
 
+# Based on:
+# From the installation notes for z.
+source /usr/local/etc/profile.d/z.sh
+
 # ------------------------------------------------------------------------------
 
 # https://www.iterm2.com/documentation-shell-integration.html
