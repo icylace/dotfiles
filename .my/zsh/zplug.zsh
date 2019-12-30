@@ -22,11 +22,6 @@ zplug 'djui/alias-tips'
 # https://github.com/supercrabtree/k
 zplug 'supercrabtree/k'
 
-# zsh-syntax-highlighting
-# Fish shell like syntax highlighting for Zsh.
-# https://github.com/zsh-users/zsh-syntax-highlighting
-zplug 'zsh-users/zsh-syntax-highlighting', defer:2
-
 # Ensure plugins are installed.
 if ! zplug check ; then
   zplug install
