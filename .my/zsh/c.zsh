@@ -30,7 +30,7 @@
 #       - `exa`: https://the.exa.website/
 #       - `highlight`: http://andre-simon.de/doku/highlight/en/highlight.php
 #       - `k`: https://github.com/rimraf/k
-#       - `z`: https://github.com/rupa/z
+#       - `ZSH-z`: https://github.com/agkozak/zsh-z
 #
 # TODO:
 # - view PDFs
@@ -179,4 +179,4 @@ alias c.5='c ......'
 alias c~='c ~'
 alias c-='c -'
 alias c.d="c $HOME/Downloads"
-alias cs="c $HOME/Sites"
+alias cr="c $HOME/My/Repositories"
