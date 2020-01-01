@@ -25,9 +25,9 @@
          :rules [[:!!left_arrow :!COleft_arrow]
                  [:!!right_arrow :!COright_arrow]]}
 
-        {:des "Option keys emit parentheses when pressed alone."
-         :rules [[:left_option :left_option nil {:alone :!S9}]
-                 [:right_option :right_option nil {:alone :!S0}]]}
+        ; {:des "Option keys emit parentheses when pressed alone."
+        ;  :rules [[:left_option :left_option nil {:alone :!S9}]
+        ;          [:right_option :right_option nil {:alone :!S0}]]}
 
         ; {:des "Control keys emit underscores when pressed alone."
         ;  :rules [[:left_control :left_control nil {:alone :!Shyphen}]

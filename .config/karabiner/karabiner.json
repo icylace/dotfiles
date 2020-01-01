@@ -89,33 +89,6 @@
           "type" : "basic"
         } ]
       }, {
-        "description" : "Option keys emit parentheses when pressed alone.",
-        "manipulators" : [ {
-          "to_if_alone" : [ {
-            "key_code" : "9",
-            "modifiers" : [ "left_shift" ]
-          } ],
-          "from" : {
-            "key_code" : "left_option"
-          },
-          "to" : [ {
-            "key_code" : "left_option"
-          } ],
-          "type" : "basic"
-        }, {
-          "to_if_alone" : [ {
-            "key_code" : "0",
-            "modifiers" : [ "left_shift" ]
-          } ],
-          "from" : {
-            "key_code" : "right_option"
-          },
-          "to" : [ {
-            "key_code" : "right_option"
-          } ],
-          "type" : "basic"
-        } ]
-      }, {
         "description" : "Swap colon and semicolon.",
         "manipulators" : [ {
           "from" : {
