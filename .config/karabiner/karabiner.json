@@ -116,20 +116,6 @@
           "type" : "basic"
         } ]
       }, {
-        "description" : "Space bar may be used as a shift key.",
-        "manipulators" : [ {
-          "to_if_alone" : [ {
-            "key_code" : "spacebar"
-          } ],
-          "from" : {
-            "key_code" : "spacebar"
-          },
-          "to" : [ {
-            "key_code" : "left_shift"
-          } ],
-          "type" : "basic"
-        } ]
-      }, {
         "description" : "Swap colon and semicolon.",
         "manipulators" : [ {
           "from" : {

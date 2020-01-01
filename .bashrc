@@ -1,10 +1,6 @@
 source "$HOME/.my/common.sh"
 
 # Based on:
-# From the installation notes for z.
-source /usr/local/etc/profile.d/z.sh
-
-# Based on:
 # From installation notes for `brew install bash-completion@2`.
 if [[ -r "/usr/local/etc/profile.d/bash_completion.sh" ]] ; then
   source "/usr/local/etc/profile.d/bash_completion.sh"

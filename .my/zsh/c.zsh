@@ -17,13 +17,14 @@
 # OPTIONS
 #
 # BUGS
+#     Yeah, probably.
 #
 # AUTHOR
 #
 #     Ron Martinez - ramartin.net@gmail.com
 #
 # SEE ALSO
-#     The following are used if they are installed:
+#     The following are used if they are available:
 #       - `bat`: https://github.com/sharkdp/bat
 #       - `catimg`: https://github.com/posva/catimg
 #       - `exa`: https://the.exa.website/
@@ -39,10 +40,10 @@
 #   - character special
 # - make use of command line switches
 # - create a proper `man` page
-# - use `hexdump` to view general binaries and binary executables
+# - use `hexyl` (with `hexdump` as fallback) to view general binaries and binary executables
 # - make sure directory stack is properly managed when `z` and `cd` are used
 # - make `highlight` options customizable
-# - break it off from my dotfiles and publicly open source it on my github
+# - break it off from my dotfiles and open source it
 # - add `ls -p` to `k`
 #
 c() {
@@ -66,8 +67,8 @@ c() {
     return
   fi
 
-  # If we're given an argument then that probably means we're not interested
-  # in looking at the file list for the current directory.
+  # If we're given an argument then we're probably not interested in looking at
+  # the list for the current directory.
   if [ -n "$1" ] ; then
 
     # # https://stackoverflow.com/a/567787
@@ -165,9 +166,8 @@ c() {
   fi
 }
 
-# `c` in alternate mode.
+# Similar to `c` but doesn't change directory.
 C() {
-  # See the contents of a directory without switching to it.
   c "$1" 1
 }
 

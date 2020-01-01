@@ -33,8 +33,8 @@
         ;  :rules [[:left_control :left_control nil {:alone :!Shyphen}]
         ;          [:right_control :right_control nil {:alone :!Shyphen}]]}
 
-        {:des "Space bar may be used as a shift key."
-         :rules [[:spacebar :left_shift nil {:alone :spacebar}]]}
+        ; {:des "Space bar may be used as a shift key."
+        ;  :rules [[:spacebar :left_shift nil {:alone :spacebar}]]}
 
         {:des "Swap colon and semicolon."
          :rules [[:semicolon :!Ssemicolon]
