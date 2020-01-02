@@ -145,7 +145,7 @@ gr() {
 alias gf='git fetch --all --prune'
 alias gm='git merge --no-ff'
 alias gmf='git merge --ff-only'
-alias gpl='git pull --rebase=preserve'
+alias gpl='git pull --rebase=merges'
 alias gplo='gpl origin'
 alias gplr='git pull-request'
 alias gpo='git push --set-upstream origin'
