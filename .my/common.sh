@@ -6,7 +6,6 @@
 
 COMMON="$HOME/.my/common"
 
-source "$COMMON/nix.sh"
 # source "$COMMON/appledev.sh"
 source "$COMMON/brew.sh"
 # source "$COMMON/bz.sh"
@@ -21,6 +20,7 @@ source "$COMMON/haskell.sh"
 source "$COMMON/misc.sh"
 source "$COMMON/move_into_url_directories.sh"
 source "$COMMON/name.sh"
+source "$COMMON/nix.sh"
 source "$COMMON/node.sh"
 source "$COMMON/postgresql.sh"
 source "$COMMON/purescript.sh"

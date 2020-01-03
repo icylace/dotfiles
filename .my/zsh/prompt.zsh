@@ -88,9 +88,11 @@ precmd() {
   if type gitHUD > /dev/null 2>&1 ; then
     local repository_status="$(gitHUD zsh)"
   fi
+
   if running_in_docker ; then
     local docker_indicator='🐳  '
   fi
+
   # https://stackoverflow.com/a/33839913
   local preprompt_left="$N$docker_indicator%F{magenta}%n %B%F{black}at%b %F{yellow}%m %B%F{black}in %b%F{green}${PWD/#$HOME/~}%f $repository_status"
   local preprompt_right="$(battery_indicator)"

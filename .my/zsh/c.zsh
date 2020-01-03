@@ -1,5 +1,10 @@
 #!/usr/bin/env zsh
 
+# TODO: try using this to enable use of z.lua instead of z
+# # Use aliases in non-interactive shells.
+# # https://stackoverflow.com/a/1615973
+# shopt -s expand_aliases
+
 #
 # NAME
 #     c - See the contents of a directory or file.
@@ -30,7 +35,12 @@
 #       - `exa`: https://the.exa.website/
 #       - `highlight`: http://andre-simon.de/doku/highlight/en/highlight.php
 #       - `k`: https://github.com/rimraf/k
+#
+#       TODO: switch to `z.lua`
+#       - `z`: https://github.com/rupa/z
 #       - `ZSH-z`: https://github.com/agkozak/zsh-z
+#       - `z.lua`: https://github.com/skywind3000/z.lua
+#
 #
 # TODO:
 # - view PDFs
