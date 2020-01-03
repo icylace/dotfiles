@@ -60,7 +60,7 @@ bindkey -e
 export KEYTIMEOUT=1
 
 # https://www.iterm2.com/documentation-shell-integration.html
-if [ -f "$HOME/.iterm2_shell_integration.zsh" ] ; then
+if [[ -e "$HOME/.iterm2_shell_integration.zsh" ]] ; then
   source "$HOME/.iterm2_shell_integration.zsh"
 fi
 
@@ -71,6 +71,6 @@ if [[ -e "$HOME/.phpbrew/bashrc" ]] ; then
 fi
 
 # Extra stuff that doesn't makes sense to include in a public repository.
-if [ -f "$HOME/.not-public/extra.sh" ] ; then
+if [[ -e "$HOME/.not-public/extra.sh" ]] ; then
   source "$HOME/.not-public/extra.sh"
 fi
