@@ -70,8 +70,7 @@ alias gd2='gd 2'
 # Views staged changes ready to commit.
 alias gds='gd --staged'
 
-# Views changes between the working tree and what's staged in the index
-# using `diff-so-fancy`.
+# Views changes between the working tree and what's staged in the index.
 gdd() {
   git diff --color $1 | diff-so-fancy
 }
@@ -126,10 +125,11 @@ alias gau='git add --update'
 gc() {
   git commit --verbose $2 ${1:+--message="$1"}
 }
-# TODO: Why is `gcn` a function and not an alias?  Any reason?
-gcn() {
-  git commit --amend
-}
+# # TODO: Why is `gcn` a function and not an alias?  Any reason?
+# gcn() {
+#   git commit --amend
+# }
+alias gcn='git commit --amend'
 # gc-() {
 #   # TODO:
 #   # git revert
@@ -143,6 +143,12 @@ gr() {
 }
 
 alias gf='git fetch --all --prune'
+
+# https://coderwall.com/p/0kxphg/merging-branches-without-checkout
+# Example: git fetch . develop:master
+# or, using alias: gff develop:master
+alias gff='git fetch .'
+
 alias gm='git merge --no-ff'
 alias gmf='git merge --ff-only'
 alias gpl='git pull --rebase=merges'
@@ -151,6 +157,10 @@ alias gplr='git pull-request'
 alias gpo='git push --set-upstream origin'
 alias gpu='git push --follow-tags'
 alias grs='git reset'
+
+# https://blog.frankel.ch/dont-git-push/
+# http://weiqingtoh.github.io/force-with-lease/
+alias gpuf='git push --force-with-lease'
 
 # Patching.
 alias gdp='git diff --minimal --no-color --no-pager HEAD'
