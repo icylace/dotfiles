@@ -167,6 +167,7 @@ alias gdp='git diff --minimal --no-color --no-pager HEAD'
 alias gy='git apply --verbose'
 
 # Stashing.
+alias gsd='git stash drop'
 alias gsp='git stash pop --index'
 alias gss='git stash save --include-untracked'
 
