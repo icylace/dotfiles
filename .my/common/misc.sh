@@ -60,7 +60,8 @@ alias kk='k --almost-all --human'
 
 # ranger
 # https://ranger.github.io/
-alias rr='ranger --choosefiles=/tmp/ranger-files'
+# TODO:
+alias rr='ranger --choosefiles=~/tmp/ranger-files'
 
 # ------------------------------------------------------------------------------
 
