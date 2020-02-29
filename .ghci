@@ -34,12 +34,12 @@
 -- -- http://hackage.haskell.org/package/prettyprinter
 -- :set -package prettyprinter
 
--- pretty-show
--- Tools for working with derived `Show` instances and generic
--- inspection of values.
--- https://github.com/yav/pretty-show
--- http://hackage.haskell.org/package/pretty-show
-:set -package pretty-show
+-- -- pretty-show
+-- -- Tools for working with derived `Show` instances and generic
+-- -- inspection of values.
+-- -- https://github.com/yav/pretty-show
+-- -- http://hackage.haskell.org/package/pretty-show
+-- :set -package pretty-show
 
 -- -----------------------------------------------------------------------------
 

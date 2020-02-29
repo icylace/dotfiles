@@ -99,6 +99,12 @@ haskell_rebuild_tools() {
   # http://hackage.haskell.org/package/hoogle
   stack build --copy-compiler-tool hoogle
 
+  # TODO:
+  # - necessary to run this every time ?
+  #
+  # # https://github.com/ndmitchell/hoogle/blob/master/docs/Install.md#index-all-of-stackage
+  # stack hoogle generate
+
   # hscolour
   # Colourise Haskell code.
   # https://hackage.haskell.org/package/hscolour
