@@ -130,7 +130,8 @@ gc() {
 #   git commit --amend
 # }
 alias gcn='git commit --amend'
-alias gw="gal && gc 'wip'"
+alias gw='gal && gc "wip"'
+alias gwu='gal && gc "wip" && gpu'
 # gc-() {
 #   # TODO:
 #   # git revert
