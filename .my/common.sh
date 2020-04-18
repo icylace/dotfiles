@@ -23,13 +23,13 @@ source "$COMMON/name.sh"
 source "$COMMON/nix.sh"
 source "$COMMON/node.sh"
 source "$COMMON/postgresql.sh"
-source "$COMMON/purescript.sh"
+# source "$COMMON/purescript.sh"
 source "$COMMON/sift.sh"
 source "$COMMON/u.sh"
 # source "$COMMON/vagrant.sh"
 source "$COMMON/we_have.sh"
 source "$COMMON/yadm.sh"
-source "$COMMON/yarn.sh"
+# source "$COMMON/yarn.sh"
 
 # ------------------------------------------------------------------------------
 

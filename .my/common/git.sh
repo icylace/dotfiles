@@ -144,6 +144,8 @@ gr() {
   git rebase ${1:-master}
 }
 
+alias gri='git rebase --interactive'
+
 alias gf='git fetch --all --prune'
 
 # https://coderwall.com/p/0kxphg/merging-branches-without-checkout
@@ -215,9 +217,7 @@ setup_git_commands_that_pretty_print() {
 
 setup_git_commands_that_pretty_print
 
-
 # ------------------------------------------------------------------------------
-
 
 # https://stackoverflow.com/questions/1286183/git-find-fat-commit#comment19133031_1557398
 # https://github.com/sschuberth/dev-scripts/blob/master/git/git-commit-size.sh
@@ -244,9 +244,7 @@ git-commit-size() {
   fi
 }
 
-
 # ------------------------------------------------------------------------------
-
 
 # https://mroth.github.io/scmpuff/
 # https://github.com/mroth/scmpuff#setup
