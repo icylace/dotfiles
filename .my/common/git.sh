@@ -71,9 +71,7 @@ alias gd2='gd 2'
 alias gds='gd --staged'
 
 # Views changes between the working tree and what's staged in the index.
-gdd() {
-  git diff --color $1 | diff-so-fancy
-}
+gdd() { git diff --color $1 | diff-so-fancy }
 
 # Compares files whether or not they're in a Git repository.
 # Based on: https://superuser.com/a/1182284
@@ -122,32 +120,27 @@ alias gap='git add --patch'
 alias gau='git add --update'
 
 # Committing.
-gc() {
-  git commit --verbose $2 ${1:+--message="$1"}
-}
-# # TODO: Why is `gcn` a function and not an alias?  Any reason?
-# gcn() {
-#   git commit --amend
-# }
+gc() { git commit --verbose $2 ${1:+--message="$1"} }
+
+# Amends the last commit's timestamp to right now.
+# https://github.com/maxjacobson/dotfiles/blob/dc66398f6f4a2a7d64a03bb59c360b2bd8c20ee9/bin/git-fib#L41
+alias gcd='git commit --no-edit --amend --date="$(date -R)"'
+
 alias gcn='git commit --amend'
+
 alias gw='gal && gc "wip"'
 alias gwu='gal && gc "wip" && gpu'
+
 # gc-() {
 #   # TODO:
 #   # git revert
 # }
-gca() {
-  gc $1 --all
-}
+gca() { gc $1 --all }
 
-gr() {
-  git rebase ${1:-master}
-}
+gr() { git rebase ${1:-master} }
 
-# Reapples commits on top of another commit based on user choices per commit.
+# Reapplies commits on top of another commit based on user choices per commit.
 alias gri='git rebase --interactive'
-
-alias grd='git rebase --committer-date-is-author-date'
 
 alias gf='git fetch --all --prune'
 
