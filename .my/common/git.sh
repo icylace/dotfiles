@@ -147,7 +147,7 @@ gr() {
 # Reapples commits on top of another commit based on user choices per commit.
 alias gri='git rebase --interactive'
 
-alias gric='git rebase --interactive --committer-date-is-author-date'
+alias gric='git rebase --committer-date-is-author-date  --interactive'
 
 alias gf='git fetch --all --prune'
 
