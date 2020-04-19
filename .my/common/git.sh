@@ -144,7 +144,10 @@ gr() {
   git rebase ${1:-master}
 }
 
+# Reapples commits on top of another commit based on user choices per commit.
 alias gri='git rebase --interactive'
+
+alias gric='git rebase --interactive --committer-date-is-author-date'
 
 alias gf='git fetch --all --prune'
 
@@ -175,13 +178,19 @@ alias gsd='git stash drop'
 alias gsp='git stash pop --index'
 alias gss='git stash save --include-untracked'
 
+# ------------------------------------------------------------------------------
+
 # Tagging.
 alias gt='git tag'
 alias gta='git tag --annotate'
 alias gtd='git tag --delete'
+
 # https://stackoverflow.com/a/26366791
 alias gtl='git tag -n99'
+
 alias gtpu='git push origin --tags'
+
+# ------------------------------------------------------------------------------
 
 # Resetting and deleting.
 # alias g-='git reset --'       # Unstage changes.

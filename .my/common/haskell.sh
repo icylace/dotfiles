@@ -110,6 +110,7 @@ haskell_rebuild_tools() {
   # https://hackage.haskell.org/package/hscolour
   stack build --copy-compiler-tool hscolour
 
+  # TODO:
   # # intero
   # # Complete interactive development program for Haskell
   # # https://github.com/commercialhaskell/intero
