@@ -18,6 +18,12 @@ manpdf() {
   man -t $1 | pstopdf -i -o $1.pdf
 }
 
+# Creates and changes into a directory.
+# https://github.com/maxjacobson/dotfiles/blob/dc66398f6f4a2a7d64a03bb59c360b2bd8c20ee9/handy_functions#L4
+mk() {
+  mkdir -p "$@" && cd "$@"
+}
+
 # https://github.com/yrammos/dotfiles/blob/master/.bashrc
 alias mv='mv -i'
 
