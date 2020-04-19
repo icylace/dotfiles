@@ -29,7 +29,6 @@ source "$COMMON/u.sh"
 # source "$COMMON/vagrant.sh"
 source "$COMMON/we_have.sh"
 source "$COMMON/yadm.sh"
-# source "$COMMON/yarn.sh"
 
 # ------------------------------------------------------------------------------
 
