@@ -120,7 +120,9 @@ alias gap='git add --patch'
 alias gau='git add --update'
 
 # Committing.
-gc() { git commit --verbose $2 ${1:+--message="$1"} }
+gc() {
+  git commit --verbose $2 ${1:+--message="$1"}
+}
 
 # Amends the last commit's timestamp to right now.
 # https://github.com/maxjacobson/dotfiles/blob/dc66398f6f4a2a7d64a03bb59c360b2bd8c20ee9/bin/git-fib#L41
@@ -135,9 +137,13 @@ alias gwu='gal && gc "wip" && gpu'
 #   # TODO:
 #   # git revert
 # }
-gca() { gc $1 --all }
+gca() {
+  gc $1 --all
+}
 
-gr() { git rebase ${1:-master} }
+gr() {
+  git rebase ${1:-master}
+}
 
 # Reapplies commits on top of another commit based on user choices per commit.
 alias gri='git rebase --interactive'

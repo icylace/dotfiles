@@ -8,15 +8,21 @@ alias cp='cp -ip'
 
 # Uses Preview to read manual pages.
 # https://discussions.apple.com/message/3541696#3541696
-manp() { man -t $1 | open -f -a 'Preview' }
+manp() {
+  man -t $1 | open -f -a 'Preview'
+}
 
 # Converts manual pages to PDFs.
 # https://discussions.apple.com/message/3542050#3542050
-manpdf() { man -t $1 | pstopdf -i -o $1.pdf }
+manpdf() {
+  man -t $1 | pstopdf -i -o $1.pdf
+}
 
 # Creates and changes into a directory.
 # https://github.com/maxjacobson/dotfiles/blob/dc66398f6f4a2a7d64a03bb59c360b2bd8c20ee9/handy_functions#L4
-mk() { mkdir -p "$@" && cd "$@" }
+mk() {
+  mkdir -p "$@" && cd "$@"
+}
 
 # https://github.com/yrammos/dotfiles/blob/master/.bashrc
 alias mv='mv -i'
