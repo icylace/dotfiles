@@ -1,10 +1,5 @@
 #!/usr/bin/env zsh
 
-# TODO: try using this to enable use of z.lua instead of z
-# # Use aliases in non-interactive shells.
-# # https://stackoverflow.com/a/1615973
-# shopt -s expand_aliases
-
 # https://github.com/ajeetdsouza/zoxide#zsh
 eval "$(zoxide init zsh)"
 
@@ -38,11 +33,6 @@ eval "$(zoxide init zsh)"
 #       - `exa`: https://the.exa.website/
 #       - `highlight`: http://andre-simon.de/doku/highlight/en/highlight.php
 #       - `k`: https://github.com/rimraf/k
-#
-#       TODO: switch to `zoxide`
-#       - `z`: https://github.com/rupa/z
-#       - `ZSH-z`: https://github.com/agkozak/zsh-z
-#       - `z.lua`: https://github.com/skywind3000/z.lua
 #       - `zoxide`: https://github.com/ajeetdsouza/zoxide#zsh
 #
 #
