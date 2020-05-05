@@ -22,10 +22,10 @@ zplug 'djui/alias-tips'
 # https://github.com/supercrabtree/k
 zplug 'supercrabtree/k'
 
-# ZSH-z
-# Jump quickly to directories that you have visited "frecently." A native ZSH port of z.sh.
-# https://github.com/agkozak/zsh-z
-zplug 'agkozak/zsh-z'
+# # ZSH-z
+# # Jump quickly to directories that you have visited "frecently." A native ZSH port of z.sh.
+# # https://github.com/agkozak/zsh-z
+# zplug 'agkozak/zsh-z'
 
 # Ensure plugins are installed.
 if ! zplug check ; then

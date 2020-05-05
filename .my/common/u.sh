@@ -31,6 +31,10 @@ u() {
     nix-collect-garbage --delete-old
   fi
 
+  if we_have rustup ; then
+    rustup check
+  fi
+
   if we_have stack ; then
     stack update
   fi
