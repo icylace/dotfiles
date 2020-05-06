@@ -46,38 +46,52 @@ alias gll1='gll --oneline'
 alias glo='gl origin/$(gsr)..$(gsr)'
 alias gsr='git symbolic-ref --short HEAD'
 
-gd() {
-  local commits=()
-  for _ in $1 $2 ; do
-    # https://stackoverflow.com/a/19116862
-    if [ $1 -eq $1 ] 2>/dev/null && \
-      # Handle the rare occurrence of a branch's
-      # short SHA-1 hash containing only numbers.
-      [ $1 -lt 1000 ]
-    then
-      # Views changes between the working and the latest commit.
-      commits+=("HEAD~$1")
-    else
-      commits+=(${1:-HEAD})
-    fi
-    shift
-  done
-  git diff --histogram --word-diff=color $@ ${commits[@]}
-}
-alias gd1='gd 1'
-alias gd2='gd 2'
+# gd() {
+#   local commits=()
+#   for _ in $1 $2 ; do
+#     # https://stackoverflow.com/a/19116862
+#     if [ $1 -eq $1 ] 2>/dev/null && \
+#       # Handle the rare occurrence of a branch's
+#       # short SHA-1 hash containing only numbers.
+#       [ $1 -lt 1000 ]
+#     then
+#       # Views changes between the working tree and the latest commit.
+#       commits+=("HEAD~$1")
+#     else
+#       commits+=(${1:-HEAD})
+#     fi
+#     shift
+#   done
+#   git diff $@ ${commits[@]}
+#   # git diff --histogram --word-diff=color $@ ${commits[@]}
+# }
+# alias gd1='gd 1'
+# alias gd2='gd 2'
 
-# Views staged changes ready to commit.
-alias gds='gd --staged'
 
-# Views changes between the working tree and what's staged in the index.
-gdd() { git diff --color $1 | diff-so-fancy }
+# This form is to view the changes you made relative to the index (staging area
+# for the next commit). In other words, the differences are what you could tell Git to further add to the index but you still haven't. You
+#             can stage these changes by using git-add(1).
 
-# Compares files whether or not they're in a Git repository.
-# Based on: https://superuser.com/a/1182284
-gdf() {
-  git diff --histogram --no-index --word-diff=color "$@" | diff-so-fancy | less --no-init --quit-if-one-screen --RAW-CONTROL-CHARS --tabs=4
-}
+# View changes between the latest commit and the working tree.
+alias gd='git diff HEAD'
+
+# View changes between the latest commit and the staging area.
+alias gds='git diff --staged'
+
+# View changes between the staging area and the working tree.
+alias gdsw='git diff'
+
+# # Views changes between the working tree and what's staged in the index.
+# gdd() {
+#   git diff --color $1 | diff-so-fancy
+# }
+
+# # Compares files whether or not they're in a Git repository.
+# # Based on: https://superuser.com/a/1182284
+# gdf() {
+#   git diff --histogram --no-index --word-diff=color "$@" | diff-so-fancy | less --no-init --quit-if-one-screen --RAW-CONTROL-CHARS --tabs=4
+# }
 
 gb() {
   if [ -n "$1" ] ; then
@@ -163,6 +177,9 @@ alias gplr='git pull-request'
 alias gpo='git push --set-upstream origin'
 alias gpu='git push --follow-tags'
 alias grs='git reset'
+
+# "git unstage"
+alias gu='git reset HARD --'
 
 # https://blog.frankel.ch/dont-git-push/
 # http://weiqingtoh.github.io/force-with-lease/
