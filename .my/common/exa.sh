@@ -43,9 +43,9 @@ setup_exa_colors() {
 
 setup_exa_colors
 
-# TODO: include installation steps in mac setup script...
-# https://github.com/trapd00r/LS_COLORS
-eval $(gdircolors --bourne-shell "$HOME/.my/LS_COLORS")
+# # TODO: include installation steps in mac setup script...
+# # https://github.com/trapd00r/LS_COLORS
+# eval $(gdircolors --bourne-shell "$HOME/.my/LS_COLORS")
 
 alias l0='exa --all --bytes --classify --color-scale --git --group-directories-first --header --level=1 --long --modified --sort=name'
 alias l='l0 --grid'
