@@ -62,7 +62,6 @@ name() {
   cargo search $1 > /dev/null 2>&1
   if [ $? -eq 0 ] ; then
     echo $taken
-    echo cargo search $1
     echo "${blue}cargo search $1${reset}"
     echo $(cargo search $1)
     return 1
