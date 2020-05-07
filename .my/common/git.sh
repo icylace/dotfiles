@@ -176,10 +176,12 @@ alias gplo='gpl origin'
 alias gplr='git pull-request'
 alias gpo='git push --set-upstream origin'
 alias gpu='git push --follow-tags'
-alias grs='git reset'
 
-# "git unstage"
-alias gu='git reset --hard'
+# Unstage changes.
+alias gu='git reset'
+
+# Clear changes made in the working tree.
+alias grs='git reset --hard'
 
 # https://blog.frankel.ch/dont-git-push/
 # http://weiqingtoh.github.io/force-with-lease/
