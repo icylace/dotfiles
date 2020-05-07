@@ -77,7 +77,7 @@ alias myip='curl icanhazip.com'
 # ------------------------------------------------------------------------------
 
 # https://github.com/sharkdp/vivid#usage
-export LS_COLORS="$(vivid generate molokai)"
+export LS_COLORS="$(vivid generate solarized-dark)"
 
 # # https://github.com/trapd00r/LS_COLORS
 # eval $(gdircolors --bourne-shell "$HOME/.my/LS_COLORS")
