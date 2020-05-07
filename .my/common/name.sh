@@ -95,6 +95,6 @@ name() {
   echo "${blue}cargo search $1${reset}"
   cargo search $1
   echo
-  echo "${blue}gem search $1${reset}"
-  gem search $1
+  echo "${blue}gem search --exact --no-versions $1${reset}"
+  gem search --exact --no-versions $1
 }
