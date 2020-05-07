@@ -10,7 +10,7 @@
 # - create alias for making annotated tags
 # - create alias for cherry picking
 
-# Use `hub` (https://hub.github.com/) if available.
+# https://hub.github.com/
 alias git='hub'
 
 # Clones a Git repository.
@@ -68,18 +68,13 @@ alias gsr='git symbolic-ref --short HEAD'
 # alias gd1='gd 1'
 # alias gd2='gd 2'
 
-
-# This form is to view the changes you made relative to the index (staging area
-# for the next commit). In other words, the differences are what you could tell Git to further add to the index but you still haven't. You
-#             can stage these changes by using git-add(1).
-
-# View changes between the latest commit and the working tree.
+# Views changes between the latest commit and the working tree.
 alias gd='git diff HEAD'
 
-# View changes between the latest commit and the staging area.
+# Views changes between the latest commit and the staging area.
 alias gds='git diff --staged'
 
-# View changes between the staging area and the working tree.
+# Views changes between the staging area and the working tree.
 alias gdsw='git diff'
 
 # # Views changes between the working tree and what's staged in the index.
@@ -87,7 +82,7 @@ alias gdsw='git diff'
 #   git diff --color $1 | diff-so-fancy
 # }
 
-# # Compares files whether or not they're in a Git repository.
+# # Compares files not a Git repository.
 # # Based on: https://superuser.com/a/1182284
 # gdf() {
 #   git diff --histogram --no-index --word-diff=color "$@" | diff-so-fancy | less --no-init --quit-if-one-screen --RAW-CONTROL-CHARS --tabs=4
@@ -133,7 +128,7 @@ alias gal='git add --all'
 alias gap='git add --patch'
 alias gau='git add --update'
 
-# Committing.
+# Commits staged changes.
 gc() {
   git commit --verbose $2 ${1:+--message="$1"}
 }
