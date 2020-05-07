@@ -67,5 +67,13 @@ name() {
     return 1
   fi
 
+  gem search $1 > /dev/null 2>&1
+  if [ $? -eq 0 ] ; then
+    echo $taken
+    echo "${blue}gem search $1${reset}"
+    echo $(gem search $1)
+    return 1
+  fi
+
   echo Name is not taken.
 }
