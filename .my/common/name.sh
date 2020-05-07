@@ -5,14 +5,16 @@
 
 # Checks if a potential a name for a new alias/function is taken already.
 name() {
-  local error='\e[1;31m'
+  local brightRed='\e[1;31m'
+  local blue='\e[0;34m'
   local reset='\e[0m'
-  local taken="${error}Name is taken!${reset}"
+
+  local taken="${brightRed}Name is taken!${reset}"
 
   type $1 > /dev/null 2>&1
   if [ $? -eq 0 ] ; then
     echo $taken
-    echo type $1
+    echo "${blue}type $1${reset}"
     echo $(type $1)
     return 1
   fi
@@ -20,7 +22,7 @@ name() {
   whence $1 > /dev/null 2>&1
   if [ $? -eq 0 ] ; then
     echo $taken
-    echo whence $1
+    echo "${blue}whence $1${reset}"
     echo $(whence $1)
     return 1
   fi
@@ -28,7 +30,7 @@ name() {
   where $1 > /dev/null 2>&1
   if [ $? -eq 0 ] ; then
     echo $taken
-    echo where $1
+    echo "${blue}where $1${reset}"
     echo $(where $1)
     return 1
   fi
@@ -36,7 +38,7 @@ name() {
   which $1 > /dev/null 2>&1
   if [ $? -eq 0 ] ; then
     echo $taken
-    echo which $1
+    echo "${blue}which $1${reset}"
     echo $(which $1)
     return 1
   fi
@@ -44,7 +46,7 @@ name() {
   brew info $1 > /dev/null 2>&1
   if [ $? -eq 0 ] ; then
     echo $taken
-    echo brew info $1
+    echo "${blue}brew info $1${reset}"
     echo $(brew info $1)
     return 1
   fi
@@ -52,7 +54,7 @@ name() {
   brew cask info $1 > /dev/null 2>&1
   if [ $? -eq 0 ] ; then
     echo $taken
-    echo brew cask info $1
+    echo "${blue}brew cask info $1${reset}"
     echo $(brew cask info $1)
     return 1
   fi
@@ -61,6 +63,7 @@ name() {
   if [ $? -eq 0 ] ; then
     echo $taken
     echo cargo search $1
+    echo "${blue}cargo search $1${reset}"
     echo $(cargo search $1)
     return 1
   fi
