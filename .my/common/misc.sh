@@ -81,3 +81,7 @@ export LS_COLORS="$(vivid generate molokai)"
 
 # # https://github.com/trapd00r/LS_COLORS
 # eval $(gdircolors --bourne-shell "$HOME/.my/LS_COLORS")
+
+# ------------------------------------------------------------------------------
+
+alias t='./task.sh'
