@@ -172,9 +172,6 @@ alias gplr='git pull-request'
 alias gpo='git push --set-upstream origin'
 alias gpu='git push --follow-tags'
 
-# Unstage changes.
-alias gu='git reset'
-
 # Clear changes made in the working tree.
 alias grs='git reset --hard'
 
@@ -191,6 +188,10 @@ alias gsd='git stash drop'
 alias gsp='git stash pop --index'
 alias gss='git stash save --include-untracked'
 
+# TODO:
+# - show diff what's stashed without applying it
+# alias gsv=???
+
 # ------------------------------------------------------------------------------
 
 # Tagging.
@@ -206,8 +207,13 @@ alias gtpu='git push origin --tags'
 # ------------------------------------------------------------------------------
 
 # Resetting and deleting.
-# alias g-='git reset --'       # Unstage changes.
-# alias gb-='git checkout --'
+
+# Unstage changes.
+alias gu='git restore --staged'
+
+# Discard changes from working tree.
+alias gun='git restore'
+
 alias gtg='git reset --hard && git clean --force -d'
 # https://stackoverflow.com/a/27415757
 alias gtg+='gtg && git submodule deinit --force . && git submodule update --init'
