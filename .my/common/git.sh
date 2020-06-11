@@ -183,10 +183,24 @@ alias gpuf='git push --force-with-lease'
 alias gdp='git diff --minimal --no-color --no-pager HEAD'
 alias gy='git apply --verbose'
 
+# ------------------------------------------------------------------------------
+
 # Stashing.
+
 alias gsd='git stash drop'
 alias gsp='git stash pop --index'
 alias gss='git stash save --include-untracked'
+
+# Only stash changes not currently staged.
+alias gsk='git stash save --keep-index'
+
+# ------------------------------------------------------------------------------
+
+# TODO:
+# Run a command for each commit while rebasing. Useful for verifying that commits don't break a project.
+# git rebase --exec 'cli command'
+
+
 
 # TODO:
 # - show diff what's stashed without applying it
