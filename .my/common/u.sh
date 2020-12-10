@@ -32,10 +32,11 @@ u() {
   fi
 
   if we_have rustup ; then
-    rustup check
+    rustup update
   fi
 
   if we_have stack ; then
+    stack upgrade
     stack update
   fi
 

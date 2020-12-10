@@ -46,6 +46,9 @@ Note: A good place to explore Unicode characters is https://graphemica.com/
 ## From the Mongolian block:
 
 * U+1801: `᠁` - mongolian ellipsis
+* U+1805: `᠅` - mongolian four dots
+* U+180A: `᠊` - mongolian nirugu
+* U+1815: `᠕` - mongolian digit five
 
 ## From the Phonetic Extensions block:
 
@@ -231,6 +234,12 @@ Note: A good place to explore Unicode characters is https://graphemica.com/
 * U+27BC: `➼` - wedge-tailed rightwards arrow
 * U+27BD: `➽` - heavy wedge-tailed rightwards arrow
 * U+27BE: `➾` - open-outlined rightwards arrow
+
+## From the Braille Patterns block:
+
+* U+2817: `⠗` - braille pattern dots-1235
+* U+281B: `⠛` - braille pattern dots-1245
+* U+2836: `⠶` - braille pattern dots-2356
 
 ## From the Supplemental Punctuation block:
 
